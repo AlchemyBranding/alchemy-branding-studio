@@ -59,6 +59,17 @@ export const pageSeoByKeyQuery = defineQuery(`
   *[_type == "pageSeo" && pageKey == $pageKey][0] ${seoProjection}
 `);
 
+export const teamMembersQuery = defineQuery(`
+  *[_type == "teamMember"]
+    | order(order asc, name asc) {
+      _id,
+      name,
+      role,
+      bio,
+      photo ${altImageProjection}
+    }
+`);
+
 // Shape types — minimal projections, expanded as routes need more fields.
 export type FeaturedCaseStudy = {
   _id: string;
@@ -89,6 +100,14 @@ export type RecentBlogPost = {
   publishedAt: string;
   excerpt: string | null;
   featuredImage: SanityImageRef | null;
+};
+
+export type TeamMember = {
+  _id: string;
+  name: string;
+  role: string;
+  bio: string | null;
+  photo: SanityImageRef | null;
 };
 
 export type PageSeo = {

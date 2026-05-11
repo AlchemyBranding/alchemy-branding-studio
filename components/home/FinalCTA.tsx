@@ -1,7 +1,25 @@
 import Button from "@/components/Button";
 import { motionHref } from "@/lib/site";
 
-export default function FinalCTA() {
+type Props = {
+  heading?: string;
+  subtext?: string;
+  /** Override the secondary CTA. Pass null to hide it. */
+  secondary?: { label: string; href: string } | null;
+};
+
+const defaults = {
+  heading: "Ready to build something worth talking about?",
+  subtext:
+    "Book a discovery call, or grab a free brand audit — we'll show you exactly where the leaks are.",
+  secondary: { label: "Get a free audit", href: "/free-brand-audit-for-smes" },
+} as const;
+
+export default function FinalCTA({
+  heading = defaults.heading,
+  subtext = defaults.subtext,
+  secondary = defaults.secondary,
+}: Props = {}) {
   return (
     <section
       aria-labelledby="final-cta-heading"
@@ -12,22 +30,20 @@ export default function FinalCTA() {
           id="final-cta-heading"
           className="font-display text-h2 text-dawn"
         >
-          Ready to build something worth talking about?
+          {heading}
         </h2>
         <p className="mt-6 max-w-md mx-auto text-dawn text-[1rem] leading-[1.6]">
-          Book a discovery call, or grab a free brand audit — we&apos;ll show
-          you exactly where the leaks are.
+          {subtext}
         </p>
         <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
           <Button variant="primary-on-fire" href={motionHref} external>
             Book a call
           </Button>
-          <Button
-            variant="secondary-on-fire"
-            href="/free-brand-audit-for-smes"
-          >
-            Get a free audit
-          </Button>
+          {secondary ? (
+            <Button variant="secondary-on-fire" href={secondary.href}>
+              {secondary.label}
+            </Button>
+          ) : null}
         </div>
       </div>
     </section>
