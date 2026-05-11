@@ -1,7 +1,7 @@
 import Link from "next/link";
 import type { ComponentProps, ReactNode } from "react";
 
-type Variant = "primary" | "secondary";
+type Variant = "primary" | "secondary" | "primary-on-fire" | "secondary-on-fire";
 type Size = "default" | "small";
 
 type CommonProps = {
@@ -35,6 +35,11 @@ const variants: Record<Variant, string> = {
     "bg-dragon-fire text-dawn hover:bg-fire-80",
   secondary:
     "bg-dawn text-white border border-dawn-80 hover:border-dragon-fire hover:text-dragon-fire",
+  // For use on a Dragon Fire background (final CTA).
+  "primary-on-fire":
+    "bg-dawn text-white hover:bg-dawn-80",
+  "secondary-on-fire":
+    "bg-transparent text-dawn border border-dawn hover:bg-dawn hover:text-dragon-fire",
 };
 
 export default function Button(props: ButtonAsLink | ButtonAsButton) {
