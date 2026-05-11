@@ -1,14 +1,23 @@
 import type { Metadata } from "next";
+
+import CookieBanner from "@/components/CookieBanner";
+import Footer from "@/components/Footer";
+import GoogleTagManager from "@/components/GoogleTagManager";
+import Header from "@/components/Header";
 import { satoshi } from "@/lib/fonts";
+import { siteConfig } from "@/lib/site";
+
 import "./globals.css";
 
+const gtmId = process.env.NEXT_PUBLIC_GTM_ID ?? "";
+
 export const metadata: Metadata = {
+  metadataBase: new URL(siteConfig.url),
   title: {
-    default: "Alchemy Branding Studio",
-    template: "%s | Alchemy Branding Studio",
+    default: siteConfig.name,
+    template: `%s | ${siteConfig.name}`,
   },
-  description:
-    "Brand strategy, design and animation for ambitious businesses.",
+  description: siteConfig.description,
 };
 
 export default function RootLayout({
@@ -21,7 +30,11 @@ export default function RootLayout({
         <link rel="stylesheet" href="https://use.typekit.net/vhr5zqe.css" />
       </head>
       <body className="bg-dawn text-white min-h-full flex flex-col">
-        {children}
+        <Header />
+        <main className="flex-1">{children}</main>
+        <Footer />
+        <CookieBanner />
+        <GoogleTagManager gtmId={gtmId} />
       </body>
     </html>
   );

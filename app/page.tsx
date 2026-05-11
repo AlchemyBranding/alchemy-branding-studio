@@ -2,7 +2,7 @@ import Button from "@/components/Button";
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-dawn text-white px-6 md:px-16 py-24 max-w-7xl mx-auto">
+    <div className="bg-dawn text-white px-6 md:px-16 py-24 max-w-7xl mx-auto">
       <p className="text-eyebrow text-dragon-fire mb-6">Design tokens — Stage 2 check</p>
 
       <h1 className="font-display text-display text-white mb-2">
@@ -55,6 +55,6 @@ export default function Home() {
           <Button variant="secondary" size="small">Secondary small</Button>
         </div>
       </section>
-    </main>
+    </div>
   );
 }
