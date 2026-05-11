@@ -1,0 +1,151 @@
+import type { Metadata } from "next";
+import { notFound } from "next/navigation";
+
+import PortableTextContent from "@/components/case-study/PortableTextContent";
+import FinalCTA from "@/components/home/FinalCTA";
+import PostHero from "@/components/post/PostHero";
+import RelatedPosts from "@/components/post/RelatedPosts";
+import { reservedSlugs, siteConfig } from "@/lib/site";
+import { urlFor } from "@/sanity/lib/image";
+import { safeFetch } from "@/sanity/lib/fetch";
+import {
+  blogPostBySlugQuery,
+  blogPostSlugsQuery,
+  type BlogPostDetail,
+  type BlogPostSlug,
+} from "@/sanity/lib/queries";
+
+type Params = { slug: string };
+
+export async function generateStaticParams(): Promise<Params[]> {
+  const slugs = await safeFetch<BlogPostSlug[]>(blogPostSlugsQuery, []);
+  return slugs
+    .filter((s) => !!s.slug && !reservedSlugs.has(s.slug))
+    .map((s) => ({ slug: s.slug }));
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<Params>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  if (reservedSlugs.has(slug)) return {};
+
+  const post = await safeFetch<BlogPostDetail | null>(
+    blogPostBySlugQuery,
+    null,
+    { params: { slug } },
+  );
+
+  if (!post) return { title: "Post not found" };
+
+  const path = `/${post.slug}`;
+  const title = post.seo?.metaTitle ?? post.title;
+  const description =
+    post.seo?.metaDescription ??
+    post.excerpt ??
+    `${post.title} — from Alchemy Branding Studio.`;
+  const canonical = post.seo?.canonicalUrl ?? `${siteConfig.url}${path}`;
+  const seoOg = post.seo?.ogImage?.asset
+    ? urlFor(post.seo.ogImage as Parameters<typeof urlFor>[0])
+        .width(1200)
+        .height(630)
+        .auto("format")
+        .url()
+    : post.featuredImage?.asset
+      ? urlFor(post.featuredImage).width(1200).height(630).auto("format").url()
+      : `${siteConfig.url}/og-default.png`;
+
+  return {
+    title,
+    description,
+    alternates: { canonical },
+    robots: post.seo?.noIndex
+      ? { index: false, follow: false }
+      : { index: true, follow: true },
+    openGraph: {
+      title,
+      description,
+      url: canonical,
+      siteName: siteConfig.name,
+      images: [{ url: seoOg, width: 1200, height: 630 }],
+      type: "article",
+      publishedTime: post.publishedAt,
+      authors: post.author ? [post.author.name] : undefined,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: [seoOg],
+    },
+  };
+}
+
+export default async function BlogPostPage({
+  params,
+}: {
+  params: Promise<Params>;
+}) {
+  const { slug } = await params;
+
+  // Reserved slugs should never reach here in practice — Next routes static
+  // routes first — but belt-and-braces just in case.
+  if (reservedSlugs.has(slug)) notFound();
+
+  const post = await safeFetch<BlogPostDetail | null>(
+    blogPostBySlugQuery,
+    null,
+    { params: { slug } },
+  );
+
+  if (!post) notFound();
+
+  return (
+    <>
+      <PostHero
+        title={post.title}
+        category={post.category}
+        publishedAt={post.publishedAt}
+        featuredImage={post.featuredImage}
+        readTimeMins={post.readTimeMins}
+        author={post.author}
+      />
+
+      {post.body && Array.isArray(post.body) && post.body.length > 0 ? (
+        <section className="bg-dawn py-[80px]">
+          <div className="max-w-3xl mx-auto px-6 md:px-10">
+            <PortableTextContent value={post.body} />
+          </div>
+        </section>
+      ) : null}
+
+      {post.author?.name ? (
+        <section className="bg-dawn pb-[80px]">
+          <div className="max-w-3xl mx-auto px-6 md:px-10">
+            <div className="rounded-card bg-dawn-80 border border-dawn-60 p-6">
+              <p className="text-[0.75rem] font-bold uppercase tracking-[0.12em] text-dragon-fire">
+                Written by
+              </p>
+              <p className="mt-2 text-white">
+                <span className="font-bold">{post.author.name}</span>
+                {post.author.role ? (
+                  <span className="text-white/55"> — {post.author.role}</span>
+                ) : null}
+              </p>
+            </div>
+          </div>
+        </section>
+      ) : null}
+
+      <RelatedPosts posts={post.relatedPosts ?? []} />
+
+      <FinalCTA
+        heading="Liked this? See how it shows up in our work."
+        subtext="Book a discovery call, or browse projects where we've put this thinking into practice."
+        secondary={{ label: "See the work", href: "/portfolio" }}
+      />
+    </>
+  );
+}

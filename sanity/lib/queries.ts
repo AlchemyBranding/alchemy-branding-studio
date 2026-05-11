@@ -104,6 +104,42 @@ export const allBlogPostsQuery = defineQuery(`
     }
 `);
 
+export const blogPostSlugsQuery = defineQuery(`
+  *[_type == "blogPost" && defined(slug.current)] {
+    "slug": slug.current
+  }
+`);
+
+export const blogPostBySlugQuery = defineQuery(`
+  *[_type == "blogPost" && slug.current == $slug][0] {
+    _id,
+    title,
+    "slug": slug.current,
+    category,
+    publishedAt,
+    excerpt,
+    featuredImage ${altImageProjection},
+    body,
+    "readTimeMins": math::max(1, round(length(pt::text(body)) / 1125)),
+    "author": author->{
+      _id,
+      name,
+      role,
+      photo ${altImageProjection}
+    },
+    "relatedPosts": relatedPosts[]->{
+      _id,
+      title,
+      "slug": slug.current,
+      category,
+      publishedAt,
+      excerpt,
+      featuredImage ${altImageProjection}
+    },
+    seo ${seoProjection}
+  }
+`);
+
 export const caseStudyBySlugQuery = defineQuery(`
   *[_type == "caseStudy" && slug.current == $slug][0] {
     _id,
@@ -165,6 +201,23 @@ export type RecentBlogPost = {
   excerpt: string | null;
   featuredImage: SanityImageRef | null;
 };
+
+export type BlogPostAuthor = {
+  _id: string;
+  name: string;
+  role: string;
+  photo: SanityImageRef | null;
+};
+
+export type BlogPostDetail = RecentBlogPost & {
+  body: unknown[] | null;
+  readTimeMins: number | null;
+  author: BlogPostAuthor | null;
+  relatedPosts: RecentBlogPost[] | null;
+  seo: PageSeo | null;
+};
+
+export type BlogPostSlug = { slug: string };
 
 export type CaseStudyDetail = FeaturedCaseStudy & {
   publishedAt: string;

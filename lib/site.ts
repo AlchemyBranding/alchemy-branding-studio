@@ -29,6 +29,30 @@ export const socialLinks = [
   { label: "YouTube", href: "https://www.youtube.com/@alchemybrandingstudio", icon: "youtube" },
 ] as const;
 
+/**
+ * Top-level static routes that take precedence over the /[slug]/ catch-all
+ * (where blog posts live). Used by the blog post route's generateStaticParams
+ * to filter out colliding slugs at build time.
+ */
+export const reservedSlugs = new Set<string>([
+  "about",
+  "portfolio",
+  "services",
+  "packages",
+  "news",
+  "contact",
+  "project",
+  "studio",
+  "api",
+  "free-brand-audit-for-smes",
+  "custom-proposal-design",
+  "privacy-policy",
+  "cookie-policy",
+  "sitemap.xml",
+  "robots.txt",
+  "favicon.ico",
+]);
+
 export const groupSites = [
   {
     name: "Alchemy Branding Studio",
