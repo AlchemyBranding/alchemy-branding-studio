@@ -53,7 +53,7 @@ export default function Header() {
             <Image
               src="/alchemy-logo-white.svg"
               alt="Alchemy Branding Studio"
-              width={156}
+              width={128}
               height={32}
               priority
               className="h-8 w-auto"
