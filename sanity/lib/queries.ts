@@ -70,6 +70,21 @@ export const teamMembersQuery = defineQuery(`
     }
 `);
 
+export const allCaseStudiesQuery = defineQuery(`
+  *[_type == "caseStudy" && defined(slug.current)]
+    | order(publishedAt desc) {
+      _id,
+      title,
+      "slug": slug.current,
+      subtitle,
+      serviceTags,
+      clientName,
+      outcomeSummary,
+      heroImage ${altImageProjection},
+      "heroVideoUrl": heroVideo.asset->url
+    }
+`);
+
 // Shape types — minimal projections, expanded as routes need more fields.
 export type FeaturedCaseStudy = {
   _id: string;
