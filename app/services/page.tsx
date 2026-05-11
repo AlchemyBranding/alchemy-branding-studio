@@ -14,7 +14,7 @@ export async function generateMetadata(): Promise<Metadata> {
     defaults: {
       title: "Services",
       description:
-        "Where to start when the brand isn't pulling its weight. Brand Strategy Workshop for ambitious £500k–£15M businesses, then identity, web, animation and content to follow.",
+        "When the marketing isn't landing and you can't say why. The Brand Strategy Workshop names what's actually broken — positioning, messaging, language — for ambitious £500k–£15M businesses. Identity, web, animation and content follow.",
     },
   });
 }
@@ -32,10 +32,12 @@ export default function ServicesPage() {
             <span className="text-dusk italic">You can&apos;t name it.</span>
           </h1>
           <p className="mt-8 max-w-2xl text-[1.125rem] leading-[1.7] text-white/65">
-            You&apos;ve grown past the brand you started with. The site, the
-            deck, the social, the proposals — none of it feels quite right,
-            and you can&apos;t see where the gap is. That&apos;s where we
-            come in. Strategy first, craft second, scale third.
+            The site&apos;s live. The campaigns are running. The deck looks
+            fine. And the leads still aren&apos;t landing — engagement&apos;s
+            flat, sales calls drag, and you can&apos;t put your finger on
+            why. Nine times out of ten it isn&apos;t a visual problem.
+            It&apos;s positioning, messaging and language. That&apos;s
+            where we start.
           </p>
         </div>
       </section>
