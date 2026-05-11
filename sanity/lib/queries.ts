@@ -91,6 +91,19 @@ export const caseStudySlugsQuery = defineQuery(`
   }
 `);
 
+export const allBlogPostsQuery = defineQuery(`
+  *[_type == "blogPost" && defined(slug.current) && defined(publishedAt)]
+    | order(publishedAt desc) {
+      _id,
+      title,
+      "slug": slug.current,
+      category,
+      publishedAt,
+      excerpt,
+      featuredImage ${altImageProjection}
+    }
+`);
+
 export const caseStudyBySlugQuery = defineQuery(`
   *[_type == "caseStudy" && slug.current == $slug][0] {
     _id,
