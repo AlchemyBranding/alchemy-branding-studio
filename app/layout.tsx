@@ -4,6 +4,7 @@ import CookieBanner from "@/components/CookieBanner";
 import Footer from "@/components/Footer";
 import GoogleTagManager from "@/components/GoogleTagManager";
 import Header from "@/components/Header";
+import HideOnStudio from "@/components/HideOnStudio";
 import { satoshi } from "@/lib/fonts";
 import { siteConfig } from "@/lib/site";
 
@@ -30,10 +31,14 @@ export default function RootLayout({
         <link rel="stylesheet" href="https://use.typekit.net/vhr5zqe.css" />
       </head>
       <body className="bg-dawn text-white min-h-full flex flex-col">
-        <Header />
+        <HideOnStudio>
+          <Header />
+        </HideOnStudio>
         <main className="flex-1">{children}</main>
-        <Footer />
-        <CookieBanner />
+        <HideOnStudio>
+          <Footer />
+          <CookieBanner />
+        </HideOnStudio>
         <GoogleTagManager gtmId={gtmId} />
       </body>
     </html>
