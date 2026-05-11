@@ -11,8 +11,8 @@ type Props = {
 const defaults = {
   heading: "Ready to build something worth talking about?",
   subtext:
-    "Book a discovery call, or grab a free brand audit — we'll show you exactly where the leaks are.",
-  secondary: { label: "Get a free audit", href: "/free-brand-audit-for-smes" },
+    "Book a discovery call, or send us a brief — we'll be back to you within one business day.",
+  secondary: { label: "Send a brief", href: "/contact" },
 } as const;
 
 export default function FinalCTA({
