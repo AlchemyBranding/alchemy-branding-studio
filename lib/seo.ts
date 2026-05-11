@@ -48,7 +48,7 @@ export async function getPageMetadata({
         .height(630)
         .auto("format")
         .url()
-    : `${siteConfig.url}/og-default.png`;
+    : `${siteConfig.url}/opengraph-image`;
 
   return {
     title,

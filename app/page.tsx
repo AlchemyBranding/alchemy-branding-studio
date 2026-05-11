@@ -1,3 +1,5 @@
+import type { Metadata } from "next";
+
 import FeaturedWork from "@/components/home/FeaturedWork";
 import FinalCTA from "@/components/home/FinalCTA";
 import Hero from "@/components/home/Hero";
@@ -5,6 +7,8 @@ import InsightsPreview from "@/components/home/InsightsPreview";
 import LogoStrip from "@/components/home/LogoStrip";
 import ServicesOverview from "@/components/home/ServicesOverview";
 import TestimonialsCarousel from "@/components/home/TestimonialsCarousel";
+import { getPageMetadata } from "@/lib/seo";
+import { siteConfig } from "@/lib/site";
 import { safeFetch } from "@/sanity/lib/fetch";
 import {
   featuredCaseStudiesQuery,
@@ -14,6 +18,17 @@ import {
   type FeaturedTestimonial,
   type RecentBlogPost,
 } from "@/sanity/lib/queries";
+
+export async function generateMetadata(): Promise<Metadata> {
+  return getPageMetadata({
+    pageKey: "home",
+    path: "/",
+    defaults: {
+      title: siteConfig.name,
+      description: siteConfig.description,
+    },
+  });
+}
 
 export default async function HomePage() {
   const [featuredCases, testimonials, recentPosts] = await Promise.all([
