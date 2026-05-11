@@ -85,6 +85,42 @@ export const allCaseStudiesQuery = defineQuery(`
     }
 `);
 
+export const caseStudySlugsQuery = defineQuery(`
+  *[_type == "caseStudy" && defined(slug.current)] {
+    "slug": slug.current
+  }
+`);
+
+export const caseStudyBySlugQuery = defineQuery(`
+  *[_type == "caseStudy" && slug.current == $slug][0] {
+    _id,
+    title,
+    "slug": slug.current,
+    subtitle,
+    serviceTags,
+    clientName,
+    publishedAt,
+    outcomeSummary,
+    heroImage ${altImageProjection},
+    "heroVideoUrl": heroVideo.asset->url,
+    body,
+    clientQuote,
+    quoteAttribution,
+    "relatedProjects": relatedProjects[]->{
+      _id,
+      title,
+      "slug": slug.current,
+      subtitle,
+      serviceTags,
+      clientName,
+      outcomeSummary,
+      heroImage ${altImageProjection},
+      "heroVideoUrl": heroVideo.asset->url
+    },
+    seo ${seoProjection}
+  }
+`);
+
 // Shape types — minimal projections, expanded as routes need more fields.
 export type FeaturedCaseStudy = {
   _id: string;
@@ -116,6 +152,17 @@ export type RecentBlogPost = {
   excerpt: string | null;
   featuredImage: SanityImageRef | null;
 };
+
+export type CaseStudyDetail = FeaturedCaseStudy & {
+  publishedAt: string;
+  body: unknown[] | null;
+  clientQuote: string | null;
+  quoteAttribution: string | null;
+  relatedProjects: FeaturedCaseStudy[] | null;
+  seo: PageSeo | null;
+};
+
+export type CaseStudySlug = { slug: string };
 
 export type TeamMember = {
   _id: string;
