@@ -1,5 +1,4 @@
-// Folder name has a space — URL-encode it once at the prefix.
-const dir = "/Trusted%20Logos";
+const dir = "/trusted-logos";
 
 type ClientLogo = { name: string; file: string };
 
