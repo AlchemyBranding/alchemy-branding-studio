@@ -43,13 +43,10 @@ export default function Image() {
             fontWeight: 500,
             maxWidth: 960,
             letterSpacing: "-0.02em",
+            display: "flex",
           }}
         >
-          Brand strategy, design and{" "}
-          <span style={{ color: "#FAF8F7", fontStyle: "italic" }}>
-            animation
-          </span>{" "}
-          for ambitious businesses.
+          Brand strategy, design and animation for ambitious businesses.
         </div>
 
         <div
