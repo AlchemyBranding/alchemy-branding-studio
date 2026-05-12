@@ -2,18 +2,21 @@ const dir = "/trusted-logos";
 
 type ClientLogo = { name: string; file: string };
 
+// Only logos with transparent backgrounds work with the white-monochrome
+// filter below — JPGs and PNGs with solid backgrounds render as flat
+// white rectangles instead of just the mark. Dropped:
+//   - WMContact.jpg, storicyrmu_logo.jpg (JPG = no alpha channel)
+//   - images.png (couldn't ID the brand from the filename — re-add when
+//     a properly-named transparent version arrives)
+//   - Primary-Light.png (ditto)
 const clientLogos: ClientLogo[] = [
   { name: "Aqualogic", file: "Aqualogic-Master-Logo-White-Transparent.png" },
   { name: "BBF", file: "BBF__PRIMARY_OFFWHITE.png" },
   { name: "Enaid", file: "Enaid-Primary.png" },
-  { name: "Primary Light", file: "Primary-Light.png" },
   { name: "S&S", file: "SS-Primary.png" },
   { name: "VI", file: "VI-Full-Logo.png" },
   { name: "Wickedfit", file: "WF_BADGE_DARK.png" },
-  { name: "WMContact", file: "WMContact.jpg" },
-  { name: "DS", file: "ds-logo-color.svg" },
-  { name: "Client", file: "images.png" },
-  { name: "Storicy", file: "storicyrmu_logo.jpg" },
+  { name: "DS Smith", file: "ds-logo-color.svg" },
   { name: "The Nest", file: "thenest-_primary-teal-transparent.svg" },
 ];
 
