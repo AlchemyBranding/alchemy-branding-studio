@@ -1,6 +1,12 @@
 const dir = "/trusted-logos";
 
-type ClientLogo = { name: string; file: string };
+type ClientLogo = {
+  name: string;
+  file: string;
+  /** "lg" bumps the rendered size for logos whose mark is small inside
+   *  a generous canvas, so they don't look tiny next to the rest. */
+  emphasis?: "lg";
+};
 
 // Only logos with transparent backgrounds work with the white-monochrome
 // filter below — JPGs and PNGs with solid backgrounds render as flat
@@ -11,9 +17,9 @@ type ClientLogo = { name: string; file: string };
 //   - Primary-Light.png (ditto)
 const clientLogos: ClientLogo[] = [
   { name: "Aqualogic", file: "Aqualogic-Master-Logo-White-Transparent.png" },
-  { name: "BBF", file: "BBF__PRIMARY_OFFWHITE.png" },
+  { name: "Be Business Fit", file: "BBF__PRIMARY_OFFWHITE.png", emphasis: "lg" },
   { name: "Enaid", file: "Enaid-Primary.png" },
-  { name: "S&S", file: "SS-Primary.png" },
+  { name: "Smoke & Slaw", file: "SS-Primary.png", emphasis: "lg" },
   { name: "VI", file: "VI-Full-Logo.png" },
   { name: "Wickedfit", file: "WF_BADGE_DARK.png" },
   { name: "DS Smith", file: "ds-logo-color.svg" },
@@ -46,7 +52,11 @@ export default function LogoStrip() {
                   src={`${dir}/${logo.file}`}
                   alt={logo.name}
                   loading="lazy"
-                  className="h-8 w-auto max-w-[160px] object-contain opacity-50 hover:opacity-100 transition-opacity duration-200 [filter:brightness(0)_invert(1)]"
+                  className={`w-auto object-contain opacity-50 hover:opacity-100 transition-opacity duration-200 [filter:brightness(0)_invert(1)] ${
+                    logo.emphasis === "lg"
+                      ? "h-14 max-w-[240px]"
+                      : "h-8 max-w-[160px]"
+                  }`}
                 />
               </li>
             ))}
