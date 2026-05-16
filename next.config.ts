@@ -104,6 +104,36 @@ const nextConfig: NextConfig = {
         destination: "/portfolio",
         permanent: true,
       },
+      // WordPress tag archives — 30+ low-traffic indexed pages. /news already
+      // covers the topical entry surface.
+      {
+        source: "/tag/:slug",
+        destination: "/news",
+        permanent: true,
+      },
+      // Project sector archives — handful of indexed URLs.
+      {
+        source: "/project_sector/:slug",
+        destination: "/portfolio",
+        permanent: true,
+      },
+      // Two more legacy service URLs.
+      {
+        source: "/workshops",
+        destination: "/services",
+        permanent: true,
+      },
+      {
+        source: "/services-2",
+        destination: "/services",
+        permanent: true,
+      },
+      // Indexed PDF — preserve at a cleaner URL.
+      {
+        source: "/wp-content/uploads/2024/04/AB_ANIMATION_PROCESS.pdf",
+        destination: "/ab-animation-process.pdf",
+        permanent: true,
+      },
 
       // ----- Legacy blog posts → /news --------------------------------------
       // Bulk 301 for the long-tail WordPress posts that aren't being
