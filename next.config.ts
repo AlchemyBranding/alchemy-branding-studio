@@ -1,5 +1,7 @@
 import type { NextConfig } from "next";
 
+import { legacyBlogSlugs } from "./lib/legacy-blog-slugs";
+
 const nextConfig: NextConfig = {
   images: {
     remotePatterns: [
@@ -8,8 +10,8 @@ const nextConfig: NextConfig = {
   },
   async redirects() {
     return [
-      // Legacy long-form packages URL — bypasses the now-deleted /packages
-      // step and goes straight to /services.
+      // ----- Existing page-level redirects ----------------------------------
+      // Legacy long-form packages URL → /services
       {
         source: "/full-service-branding-packages-strategy-website-content",
         destination: "/services",
@@ -23,13 +25,13 @@ const nextConfig: NextConfig = {
         destination: "/services",
         permanent: true,
       },
-      // Blog -> news index (the listing moved to /news).
+      // Blog → news index (the listing moved to /news).
       {
         source: "/blog",
         destination: "/news",
         permanent: true,
       },
-      // Old /blog/:slug -> flat /:slug per the URL-structure rule.
+      // Old /blog/:slug → flat /:slug per the URL-structure rule.
       {
         source: "/blog/:slug",
         destination: "/:slug",
@@ -52,6 +54,67 @@ const nextConfig: NextConfig = {
         destination: "/free-brand-audit-for-smes",
         permanent: true,
       },
+
+      // ----- WordPress → new site migration ---------------------------------
+      // Social media management page retired; funnel through /services.
+      {
+        source: "/social-media-management",
+        destination: "/services",
+        permanent: true,
+      },
+      // Standalone brand strategy workshop landing retired; /services now
+      // centres on the workshop as the primary offer.
+      {
+        source: "/brand-strategy-workshops",
+        destination: "/services",
+        permanent: true,
+      },
+      // Dissolved client; project archived. Send inbound links to the
+      // portfolio index instead of 404ing.
+      {
+        source:
+          "/broughton-bay-gin-branding-capturing-the-essence-of-the-gower-in-a-bottle",
+        destination: "/portfolio",
+        permanent: true,
+      },
+      // Old WordPress form thank-you pages — likely no real backlinks but
+      // catch stragglers cheaply.
+      {
+        source: "/contact/confirmation",
+        destination: "/",
+        permanent: true,
+      },
+      {
+        source: "/mailing-list-confirmation",
+        destination: "/",
+        permanent: true,
+      },
+
+      // Blog category archives (10) → /news. The new site's category filter
+      // lives client-side on /news; we lose minor per-category SEO depth but
+      // those pages weren't driving meaningful traffic.
+      {
+        source: "/category/:slug",
+        destination: "/news",
+        permanent: true,
+      },
+      // Project / portfolio category archives (7) → /portfolio.
+      {
+        source: "/project_categories/:slug",
+        destination: "/portfolio",
+        permanent: true,
+      },
+
+      // ----- Legacy blog posts → /news --------------------------------------
+      // Bulk 301 for the long-tail WordPress posts that aren't being
+      // re-created in Sanity. To preserve a specific post, remove its slug
+      // from lib/legacy-blog-slugs.ts AND create the Sanity document at the
+      // matching slug — the Sanity route will start serving instead.
+      ...legacyBlogSlugs.map((slug) => ({
+        source: `/${slug}`,
+        destination: "/news",
+        permanent: true,
+      })),
     ];
   },
 };
