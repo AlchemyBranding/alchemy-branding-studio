@@ -16,7 +16,7 @@ export async function generateMetadata(): Promise<Metadata> {
     defaults: {
       title: "About",
       description:
-        "Alchemy Branding Studio — strategy, design and animation for ambitious businesses. Meet the team and learn how we work.",
+        "Alchemy Branding Studio: strategy, design and animation for ambitious businesses. Meet the team and learn how we work.",
     },
   });
 }
@@ -38,7 +38,7 @@ export default async function AboutPage() {
           <p className="mt-8 max-w-2xl text-[1.125rem] leading-[1.7] text-white/65">
             Alchemy is a creative studio for ambitious businesses. We help
             founders, marketing leaders and operators ship brands that hold
-            up — across the deck, the site, the campaign, the proposal.
+            up across the deck, the site, the campaign, the proposal.
           </p>
         </div>
       </section>
@@ -50,7 +50,7 @@ export default async function AboutPage() {
 
       <FinalCTA
         heading="Like the look of how we work?"
-        subtext="Tell us about the project, or book 30 minutes with us — whichever's easier."
+        subtext="Tell us about the project, or book 30 minutes with us. Whichever's easier."
         secondary={{ label: "Send a message", href: "/contact" }}
       />
     </>

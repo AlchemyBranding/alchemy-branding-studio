@@ -6,7 +6,7 @@ import Button from "@/components/Button";
 export const metadata: Metadata = {
   title: "Page not found",
   description:
-    "We couldn't find that page. Try one of the routes below — or head back to the home page.",
+    "We couldn't find that page. Try one of the routes below, or head back to the home page.",
   robots: { index: false, follow: true },
 };
 

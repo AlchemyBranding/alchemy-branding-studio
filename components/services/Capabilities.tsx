@@ -14,17 +14,17 @@ const capabilities: Capability[] = [
   {
     title: "Website",
     body:
-      "Strategic site design and build — fast, accessible, easy for your team to update once we hand it back.",
+      "Strategic site design and build. Fast, accessible, easy for your team to update once we hand it back.",
   },
   {
     title: "Animation & motion",
     body:
-      "Explainer videos, motion identity, social cuts and campaign work — whatever the message needs in motion.",
+      "Explainer videos, motion identity, social cuts and campaign work. Whatever the message needs in motion.",
   },
   {
     title: "Sales & proposal design",
     body:
-      "Decks, proposals and one-pagers built inside Better Proposals, Proposify or Qwilr — on-brand, on-message, ready to close.",
+      "Decks, proposals and one-pagers built inside Better Proposals, Proposify or Qwilr. On-brand, on-message, ready to close.",
   },
   {
     title: "Content & social",
@@ -55,7 +55,7 @@ export default function Capabilities() {
           We deliver everything you find on the roadmap.
         </h2>
         <p className="mt-6 max-w-2xl text-[1.0625rem] leading-[1.7] text-white/65">
-          You don&apos;t need to know what you need yet — the workshop tells
+          You don&apos;t need to know what you need yet. The workshop tells
           us. Most teams continue with some combination of these.
         </p>
 

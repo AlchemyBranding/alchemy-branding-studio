@@ -9,7 +9,7 @@ const traits = [
   },
   {
     label: "Stage",
-    detail: "Growing, hiring, scaling — and feeling the limits of the brand they started with",
+    detail: "Growing, hiring, scaling, and feeling the limits of the brand they started with",
   },
   {
     label: "Mindset",

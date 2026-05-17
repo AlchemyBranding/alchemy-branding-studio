@@ -17,7 +17,7 @@ const placeholderPosts: RecentBlogPost[] = [
   },
   {
     _id: "placeholder-b",
-    title: "Posts live at /[slug]/ — not /blog/[slug]/",
+    title: "Posts live at /[slug]/, not /blog/[slug]/",
     slug: "#",
     category: "AI",
     publishedAt: new Date().toISOString(),
@@ -32,7 +32,7 @@ const placeholderPosts: RecentBlogPost[] = [
     category: "Projects",
     publishedAt: new Date().toISOString(),
     excerpt:
-      "Categories: Insights, AI, Awards, Founders, Projects, Team — pick one per post.",
+      "Categories: Insights, AI, Awards, Founders, Projects, Team. Pick one per post.",
     featuredImage: null,
   },
 ];

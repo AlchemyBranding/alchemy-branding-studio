@@ -28,7 +28,7 @@ function validateSlugShape(value: { current?: string } | undefined): string | tr
   const s = value.current;
   if (s !== s.toLowerCase()) return "Use lowercase letters only.";
   if (/[^a-z0-9-]/.test(s)) {
-    return "Use only lowercase letters, numbers and hyphens — no slashes, spaces, or URL parts like https://";
+    return "Use only lowercase letters, numbers and hyphens. No slashes, spaces, or URL parts like https://";
   }
   if (s.startsWith("-") || s.endsWith("-")) {
     return "Cannot start or end with a hyphen.";

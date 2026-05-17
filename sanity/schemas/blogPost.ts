@@ -23,7 +23,7 @@ export const blogPost = defineType({
     slugField({
       source: "title",
       description:
-        "Lives at /[slug]/ — not /blog/[slug]/. Old /blog/ URLs 301 to /news/, /blog/:slug to /:slug. Paste only the slug (lowercase, hyphens), not the full URL.",
+        "Lives at /[slug]/, not /blog/[slug]/. Old /blog/ URLs 301 to /news/, /blog/:slug to /:slug. Paste only the slug (lowercase, hyphens), not the full URL.",
     }),
     defineField({
       name: "author",

@@ -1,11 +1,11 @@
 const items = [
   "A custom-designed proposal template in your platform, on-brand and signed off",
-  "Cover, intro, problem/solution, scope, pricing, timeline, terms, signature — every section your sales process needs",
+  "Cover, intro, problem/solution, scope, pricing, timeline, terms, signature: every section your sales process needs",
   "Image and icon library matched to your brand",
-  "Reusable content blocks — case studies, testimonials, team bios — so future proposals come together in minutes",
+  "Reusable content blocks (case studies, testimonials, team bios) so future proposals come together in minutes",
   "Pricing tables built for the way you sell (fixed, tiered, optional add-ons)",
   "Hand-off session for the sales team, so they can run it themselves",
-  "30 days of post-launch support — small tweaks, edits, fixes",
+  "30 days of post-launch support: small tweaks, edits, fixes",
 ];
 
 export default function Included() {
@@ -23,7 +23,7 @@ export default function Included() {
             id="included-heading"
             className="font-display text-h2 mt-4 text-dawn"
           >
-            A complete proposal system — not just a pretty cover.
+            A complete proposal system. Not just a pretty cover.
           </h2>
           <p className="mt-6 text-[1.0625rem] leading-[1.7] text-dawn/70 max-w-md">
             Designed so your team can spin up new proposals fast, and every

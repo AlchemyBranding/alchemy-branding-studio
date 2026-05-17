@@ -1,10 +1,10 @@
 const signals = [
   "Your team can describe what you do, but not why it matters.",
-  "You're running campaigns — but leads aren't landing, and \"do more content\" doesn't feel like the answer.",
+  "You're running campaigns, but leads aren't landing, and \"do more content\" doesn't feel like the answer.",
   "You're winning on referral. Cold inbound is flat.",
   "Two people in the same meeting describe the company two different ways.",
   "Sales calls drag, because the brand isn't doing its job before you turn up.",
-  "You've outgrown the language you started with — but the new language isn't there yet.",
+  "You've outgrown the language you started with, but the new language isn't there yet.",
 ];
 
 export default function PainSignals() {

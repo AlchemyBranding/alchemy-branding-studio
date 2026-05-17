@@ -13,7 +13,7 @@ export async function generateMetadata(): Promise<Metadata> {
     defaults: {
       title: "Insights",
       description:
-        "Thinking, perspective and practical advice on brand, strategy and design for ambitious businesses — from Alchemy Branding Studio.",
+        "Thinking, perspective and practical advice on brand, strategy and design for ambitious businesses, from Alchemy Branding Studio.",
     },
   });
 }
@@ -33,7 +33,7 @@ export default async function NewsPage() {
             <span className="text-dusk italic">in writing.</span>
           </h1>
           <p className="mt-8 max-w-2xl text-[1.125rem] leading-[1.7] text-white/65">
-            Notes from inside the studio — strategy, positioning, brand
+            Notes from inside the studio: strategy, positioning, brand
             systems, motion, and the everyday craft of making businesses
             sound like themselves.
           </p>

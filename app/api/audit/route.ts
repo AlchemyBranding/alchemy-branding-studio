@@ -62,7 +62,7 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "Invalid input", fields: errors }, { status: 422 });
   }
 
-  const subject = `Brand audit request — ${name} (${company})`;
+  const subject = `Brand audit request: ${name} (${company})`;
   const lines = [
     `<p><strong>Name:</strong> ${escapeHtml(name)}</p>`,
     `<p><strong>Email:</strong> ${escapeHtml(email)}</p>`,

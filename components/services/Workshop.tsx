@@ -4,7 +4,7 @@ import { motionHref } from "@/lib/site";
 const outcomes = [
   {
     title: "Sharp positioning",
-    body: "A short, memorable statement of who you serve, what you do, and why it matters — that your team can repeat under pressure.",
+    body: "A short, memorable statement of who you serve, what you do, and why it matters, that your team can repeat under pressure.",
   },
   {
     title: "Audience clarity",
@@ -12,11 +12,11 @@ const outcomes = [
   },
   {
     title: "A brand strategy doc",
-    body: "Story, voice, messaging pillars, proof points — everything you need to brief copy, design, sales and hiring.",
+    body: "Story, voice, messaging pillars, proof points: everything you need to brief copy, design, sales and hiring.",
   },
   {
     title: "A roadmap for what's next",
-    body: "Identity, website, content, sales collateral — sequenced and costed, so the next 6–12 months are clear.",
+    body: "Identity, website, content, sales collateral: sequenced and costed, so the next 6–12 months are clear.",
   },
 ];
 
@@ -41,7 +41,7 @@ export default function Workshop() {
             <p className="mt-6 text-[1.125rem] leading-[1.7] text-dawn/70 max-w-lg">
               Before we touch a logo, a website or a campaign, we run a
               structured workshop with your leadership team. The goal is to
-              name what&apos;s actually broken — and end with a strategy
+              name what&apos;s actually broken, and end with a strategy
               you can use, not a deck that gathers dust.
             </p>
             <p className="mt-6 text-[1.125rem] leading-[1.7] text-dawn/70 max-w-lg">

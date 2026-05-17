@@ -4,7 +4,7 @@ import { siteConfig } from "@/lib/site";
 
 export const runtime = "nodejs";
 export const alt =
-  "Alchemy Branding Studio — brand strategy, design and animation for ambitious businesses.";
+  "Alchemy Branding Studio: brand strategy, design and animation for ambitious businesses.";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 

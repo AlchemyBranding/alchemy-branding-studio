@@ -13,7 +13,7 @@ export async function generateMetadata(): Promise<Metadata> {
     defaults: {
       title: "Work",
       description:
-        "Selected work from Alchemy Branding Studio — branding, strategy, animation, websites and sales design for ambitious businesses.",
+        "Selected work from Alchemy Branding Studio: branding, strategy, animation, websites and sales design for ambitious businesses.",
     },
   });
 }
@@ -34,7 +34,7 @@ export default async function PortfolioPage() {
           </h1>
           <p className="mt-8 max-w-2xl text-[1.125rem] leading-[1.7] text-white/65">
             A selection of work across branding, strategy, websites,
-            animation and sales design — for founders, marketers and
+            animation and sales design, for founders, marketers and
             operators in growing businesses.
           </p>
         </div>

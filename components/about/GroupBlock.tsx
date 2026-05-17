@@ -18,7 +18,7 @@ export default function GroupBlock() {
         </h2>
         <p className="mt-6 max-w-2xl text-[1.0625rem] leading-[1.7] text-white/65">
           Alchemy sits inside a small group focused on commercial brand work
-          for ambitious businesses — studio, consultancy and podcast,
+          for ambitious businesses: studio, consultancy and podcast,
           each with its own surface area.
         </p>
 

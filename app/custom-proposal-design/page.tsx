@@ -15,7 +15,7 @@ export async function generateMetadata(): Promise<Metadata> {
     defaults: {
       title: "Custom Proposal Design",
       description:
-        "On-brand proposal templates built inside Better Proposals, Proposify, Qwilr or your platform of choice. A complete proposal system in four weeks — designed to win.",
+        "On-brand proposal templates built inside Better Proposals, Proposify, Qwilr or your platform of choice. A complete proposal system in four weeks, designed to win.",
     },
   });
 }
@@ -37,8 +37,8 @@ export default function CustomProposalDesignPage() {
               When the brand on your proposal doesn&apos;t match the
               business you&apos;re selling, you lose to whoever&apos;s
               sharper on the page. We design proposal templates inside
-              Better Proposals, Proposify, Qwilr — or whatever your team
-              already runs — so every send looks like the business you
+              Better Proposals, Proposify, Qwilr, or whatever your team
+              already runs, so every send looks like the business you
               want to win against.
             </p>
             <div className="mt-10 flex flex-wrap items-center gap-4">

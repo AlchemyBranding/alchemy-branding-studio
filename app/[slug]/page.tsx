@@ -51,7 +51,7 @@ export async function generateMetadata({
   const description =
     post.seo?.metaDescription ??
     post.excerpt ??
-    `${post.title} — from Alchemy Branding Studio.`;
+    `${post.title} | Alchemy Branding Studio`;
   const canonical = post.seo?.canonicalUrl ?? `${siteConfig.url}${path}`;
   const seoOg = post.seo?.ogImage?.asset
     ? urlFor(post.seo.ogImage as Parameters<typeof urlFor>[0])
@@ -115,7 +115,7 @@ export default async function BlogPostPage({
   const articleDescription =
     post.seo?.metaDescription ??
     post.excerpt ??
-    `${post.title.trim()} — from ${siteConfig.name}.`;
+    `${post.title.trim()} | ${siteConfig.name}`;
 
   return (
     <>
@@ -155,7 +155,7 @@ export default async function BlogPostPage({
               <p className="mt-2 text-white">
                 <span className="font-bold">{post.author.name}</span>
                 {post.author.role ? (
-                  <span className="text-white/55"> — {post.author.role}</span>
+                  <span className="text-white/55">, {post.author.role}</span>
                 ) : null}
               </p>
             </div>

@@ -14,7 +14,7 @@ export async function generateMetadata(): Promise<Metadata> {
     defaults: {
       title: "Services",
       description:
-        "When the marketing isn't landing and you can't say why. The Brand Strategy Workshop names what's actually broken — positioning, messaging, language — for ambitious £500k–£15M businesses. Identity, web, animation and content follow.",
+        "When the marketing isn't landing and you can't say why. The Brand Strategy Workshop names what's actually broken: positioning, messaging, language. For ambitious £500k–£15M businesses. Identity, web, animation and content follow.",
     },
   });
 }
@@ -33,7 +33,7 @@ export default function ServicesPage() {
           </h1>
           <p className="mt-8 max-w-2xl text-[1.125rem] leading-[1.7] text-white/65">
             The site&apos;s live. The campaigns are running. The deck looks
-            fine. And the leads still aren&apos;t landing — engagement&apos;s
+            fine. And the leads still aren&apos;t landing. Engagement&apos;s
             flat, sales calls drag, and you can&apos;t put your finger on
             why. Nine times out of ten it isn&apos;t a visual problem.
             It&apos;s positioning, messaging and language. That&apos;s

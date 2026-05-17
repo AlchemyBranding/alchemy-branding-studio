@@ -59,7 +59,7 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "Invalid input", fields: errors }, { status: 422 });
   }
 
-  const subject = `New enquiry — ${name}${company ? ` (${company})` : ""}`;
+  const subject = `New enquiry: ${name}${company ? ` (${company})` : ""}`;
   const lines: string[] = [
     `<p><strong>Name:</strong> ${escapeHtml(name)}</p>`,
     `<p><strong>Email:</strong> ${escapeHtml(email)}</p>`,

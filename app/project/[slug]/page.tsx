@@ -48,7 +48,7 @@ export async function generateMetadata({
     cs.seo?.metaDescription ??
     cs.outcomeSummary ??
     cs.subtitle ??
-    `${cs.title} — case study by Alchemy Branding Studio.`;
+    `${cs.title}: case study by Alchemy Branding Studio.`;
   const canonical = cs.seo?.canonicalUrl ?? `${siteConfig.url}${path}`;
   const seoOg = cs.seo?.ogImage?.asset
     ? urlFor(cs.seo.ogImage as Parameters<typeof urlFor>[0])
@@ -106,7 +106,7 @@ export default async function CaseStudyPage({
     cs.seo?.metaDescription ??
     cs.outcomeSummary ??
     cs.subtitle ??
-    `${cs.title.trim()} — case study by ${siteConfig.name}.`;
+    `${cs.title.trim()}: case study by ${siteConfig.name}.`;
 
   return (
     <>
@@ -149,7 +149,7 @@ export default async function CaseStudyPage({
 
       <FinalCTA
         heading="Got a project that needs this kind of work?"
-        subtext="Book a discovery call and we'll talk through it — or send us a brief."
+        subtext="Book a discovery call and we'll talk through it, or send us a brief."
         secondary={{ label: "Send a brief", href: "/contact" }}
       />
     </>

@@ -10,14 +10,14 @@ export async function generateMetadata(): Promise<Metadata> {
     defaults: {
       title: "Free Brand Audit for SMEs",
       description:
-        "A free, no-commitment brand audit for ambitious SMEs. We'll review your site, your positioning and your messaging — and tell you exactly where the leaks are.",
+        "A free, no-commitment brand audit for ambitious SMEs. We'll review your site, your positioning and your messaging, and tell you exactly where the leaks are.",
     },
   });
 }
 
 const whatYouGet = [
   "A short audit doc with what's working, what isn't, and what we'd fix first",
-  "Concrete notes on positioning, messaging and language — not just visual feedback",
+  "Concrete notes on positioning, messaging and language, not just visual feedback",
   "Three prioritised next steps you can action with or without us",
 ];
 
@@ -45,7 +45,7 @@ export default function FreeBrandAuditPage() {
             where you&apos;re at, drop us your site, and we&apos;ll come
             back within three business days with a short doc covering
             what&apos;s working, what isn&apos;t, and what we&apos;d
-            fix first — positioning, messaging and language included,
+            fix first. Positioning, messaging and language included,
             not just the visuals.
           </p>
         </div>
@@ -103,7 +103,7 @@ export default function FreeBrandAuditPage() {
                 ))}
               </ul>
               <p className="mt-8 text-[0.9375rem] leading-[1.6] text-white/55 max-w-md">
-                Not in this bracket? Drop us a line anyway — we&apos;ll let
+                Not in this bracket? Drop us a line anyway. We&apos;ll let
                 you know if we can still help, or point you somewhere that can.
               </p>
             </div>

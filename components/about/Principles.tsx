@@ -9,13 +9,13 @@ const principles: Principle[] = [
     number: "01",
     title: "Strategy comes first",
     description:
-      "Positioning, audience, voice, and messaging — settled before a pixel moves. Beautiful work without a sharp idea is decoration.",
+      "Positioning, audience, voice, and messaging, all settled before a pixel moves. Beautiful work without a sharp idea is decoration.",
   },
   {
     number: "02",
     title: "Craft is non-negotiable",
     description:
-      "Type, motion, layout, code — held to a high standard everywhere, not just the hero. The difference shows on the third scroll.",
+      "Type, motion, layout, code: held to a high standard everywhere, not just the hero. The difference shows on the third scroll.",
   },
   {
     number: "03",
@@ -27,7 +27,7 @@ const principles: Principle[] = [
     number: "04",
     title: "Run as a partnership",
     description:
-      "Embedded with your team. Async-friendly. No throwing decks over the wall — we ship in the open, iterate fast, defend our calls.",
+      "Embedded with your team. Async-friendly. No throwing decks over the wall. We ship in the open, iterate fast, defend our calls.",
   },
 ];
 

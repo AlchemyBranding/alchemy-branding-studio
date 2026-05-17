@@ -87,11 +87,11 @@ export default function ContactForm() {
         className="rounded-card bg-dawn-80 border border-dragon-fire/60 p-8 text-center"
       >
         <h3 className="font-display text-h3 text-white">
-          Thanks — we&apos;ve got it.
+          Thanks, we&apos;ve got it.
         </h3>
         <p className="mt-3 text-white/70">
           We&apos;ll reply within one business day. If it&apos;s urgent,
-          WhatsApp us — we&apos;re faster there.
+          WhatsApp us. We&apos;re faster there.
         </p>
         <button
           type="button"

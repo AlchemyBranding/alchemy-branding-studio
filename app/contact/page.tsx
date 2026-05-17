@@ -11,7 +11,7 @@ export async function generateMetadata(): Promise<Metadata> {
     defaults: {
       title: "Contact",
       description:
-        "Tell us about your project. Brand strategy, design and animation for ambitious businesses — we reply within one business day.",
+        "Tell us about your project. Brand strategy, design and animation for ambitious businesses. We reply within one business day.",
     },
   });
 }
@@ -30,7 +30,7 @@ export default function ContactPage() {
           </h1>
           <p className="mt-6 max-w-xl text-[1.125rem] leading-[1.7] text-white/65">
             Tell us about the project, the timeline, what you&apos;re chasing.
-            We&apos;ll get back to you within one business day — or
+            We&apos;ll get back to you within one business day, or
             faster on WhatsApp.
           </p>
         </div>

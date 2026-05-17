@@ -82,7 +82,7 @@ export default function AuditForm() {
         </h3>
         <p className="mt-3 text-white/70">
           We&apos;ll review your site and reply within three business days
-          with a short audit doc — what&apos;s working, what isn&apos;t,
+          with a short audit doc covering what&apos;s working, what isn&apos;t,
           and what we&apos;d fix first.
         </p>
         <button

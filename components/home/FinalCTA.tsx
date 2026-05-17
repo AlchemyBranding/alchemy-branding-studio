@@ -11,7 +11,7 @@ type Props = {
 const defaults = {
   heading: "Ready to build something worth talking about?",
   subtext:
-    "Book a discovery call, or grab a free brand audit — we'll show you exactly where the leaks are.",
+    "Book a discovery call, or grab a free brand audit. We'll show you exactly where the leaks are.",
   secondary: { label: "Get a free audit", href: "/free-brand-audit-for-smes" },
 } as const;
 

@@ -20,19 +20,19 @@ export default function StoryBlock() {
           <p>
             We&apos;re a London-based creative studio working with ambitious
             founders, marketing teams and operators. We pair strategic clarity
-            with craft — so the work doesn&apos;t just look the part, it earns
+            with craft, so the work doesn&apos;t just look the part, it earns
             its keep.
           </p>
           <p>
             We started Alchemy because too many brands look great in the deck
             and fall apart in the world. The polish stops at the homepage; the
             sales decks drift; the proposals show up flat. Brand should be
-            consistent, scalable and useful — across every surface that
+            consistent, scalable and useful across every surface that
             customers actually touch.
           </p>
           <p>
             That&apos;s the work. Strategy, identity, animation, content,
-            proposals — designed and produced together so it all moves in the
+            proposals, designed and produced together so it all moves in the
             same direction.
           </p>
         </div>

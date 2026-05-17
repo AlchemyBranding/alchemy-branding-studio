@@ -1,7 +1,7 @@
 const platforms = [
   {
     name: "Better Proposals",
-    note: "Our most-requested platform — clean templates, e-signing, analytics out of the box.",
+    note: "Our most-requested platform. Clean templates, e-signing, analytics out of the box.",
   },
   {
     name: "Proposify",
@@ -13,7 +13,7 @@ const platforms = [
   },
   {
     name: "Or whatever you use",
-    note: "Keynote, Google Slides, PowerPoint, Notion, PandaDoc, DocuSign — we'll design inside the tool your team already runs.",
+    note: "Keynote, Google Slides, PowerPoint, Notion, PandaDoc, DocuSign. We'll design inside the tool your team already runs.",
   },
 ];
 
@@ -35,7 +35,7 @@ export default function Platforms() {
         </h2>
         <p className="mt-6 max-w-2xl text-[1.0625rem] leading-[1.7] text-white/65">
           We don&apos;t hand over flat PDFs. The deliverable is a live
-          template in your platform of choice — your sales team can
+          template in your platform of choice. Your sales team can
           duplicate, edit and send without touching us.
         </p>
 
