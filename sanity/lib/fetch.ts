@@ -23,12 +23,13 @@ export async function safeFetch<T>(
     });
     return (data ?? fallback) as T;
   } catch (error) {
-    if (process.env.NODE_ENV === "development") {
-      console.warn(
-        "[sanity] fetch failed, using fallback:",
-        (error as Error).message,
-      );
-    }
+    // Log in production too — Vercel captures console.error, and a silent
+    // fallback here once let a broken GROQ query masquerade as "post not
+    // found" 404s across every blog detail page.
+    console.error(
+      "[sanity] fetch failed, using fallback:",
+      (error as Error).message,
+    );
     return fallback;
   }
 }

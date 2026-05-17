@@ -120,7 +120,7 @@ export const blogPostBySlugQuery = defineQuery(`
     excerpt,
     featuredImage ${altImageProjection},
     body,
-    "readTimeMins": math::max(1, round(length(pt::text(body)) / 1125)),
+    "readTimeMins": math::max([1, round(length(pt::text(body)) / 1125)]),
     "author": author->{
       _id,
       name,
