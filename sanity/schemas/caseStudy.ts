@@ -1,5 +1,7 @@
 import { defineField, defineType } from "sanity";
 
+import { slugField } from "./slug";
+
 const serviceTagOptions = [
   "Branding",
   "Animation",
@@ -25,14 +27,10 @@ export const caseStudy = defineType({
       group: "content",
       validation: (rule) => rule.required().max(120),
     }),
-    defineField({
-      name: "slug",
-      title: "Slug",
-      type: "slug",
-      group: "content",
-      options: { source: "title", maxLength: 96 },
-      description: "Lives at /project/[slug]/.",
-      validation: (rule) => rule.required(),
+    slugField({
+      source: "title",
+      description:
+        "Lives at /project/[slug]/. Paste only the slug (lowercase, hyphens), not the full URL.",
     }),
     defineField({
       name: "subtitle",
