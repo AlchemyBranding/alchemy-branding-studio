@@ -38,7 +38,10 @@ export async function generateMetadata({
   if (!cs) return { title: "Project not found" };
 
   const path = `/project/${cs.slug}`;
-  const title = cs.seo?.metaTitle ?? cs.title;
+  // Same reasoning as the blog post route — case study titles are long
+  // enough that the brand-name suffix tips them past Google's SERP cap.
+  // Editors override the SERP headline via seo.metaTitle.
+  const title = (cs.seo?.metaTitle ?? cs.title).trim();
   const description =
     cs.seo?.metaDescription ??
     cs.outcomeSummary ??
@@ -56,7 +59,7 @@ export async function generateMetadata({
       : `${siteConfig.url}/og-default.png`;
 
   return {
-    title,
+    title: { absolute: title },
     description,
     alternates: { canonical },
     robots: cs.seo?.noIndex

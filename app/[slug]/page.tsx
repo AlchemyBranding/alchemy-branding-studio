@@ -41,7 +41,11 @@ export async function generateMetadata({
   if (!post) return { title: "Post not found" };
 
   const path = `/${post.slug}`;
-  const title = post.seo?.metaTitle ?? post.title;
+  // Use the post's own title verbatim as the SERP/tab title — opt out of
+  // the root layout's "%s | Alchemy Branding Studio" template so long blog
+  // titles don't get pushed past Google's ~60-char truncation. Editors who
+  // want a different SERP headline can still override via seo.metaTitle.
+  const title = (post.seo?.metaTitle ?? post.title).trim();
   const description =
     post.seo?.metaDescription ??
     post.excerpt ??
@@ -58,7 +62,7 @@ export async function generateMetadata({
       : `${siteConfig.url}/og-default.png`;
 
   return {
-    title,
+    title: { absolute: title },
     description,
     alternates: { canonical },
     robots: post.seo?.noIndex
