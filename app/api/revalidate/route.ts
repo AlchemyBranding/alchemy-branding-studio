@@ -69,8 +69,14 @@ export async function POST(req: NextRequest) {
     secret,
   );
 
-  if (isValidSignature === false) {
-    return NextResponse.json({ error: "Invalid signature" }, { status: 401 });
+  // parseBody returns isValidSignature: null when the signature header is
+  // missing entirely, and false when it's present but doesn't match. Only
+  // accept the explicit true so unsigned requests don't reach revalidate.
+  if (isValidSignature !== true) {
+    return NextResponse.json(
+      { error: "Invalid or missing signature" },
+      { status: 401 },
+    );
   }
   if (!body?._type) {
     return NextResponse.json({ error: "Missing _type" }, { status: 400 });
