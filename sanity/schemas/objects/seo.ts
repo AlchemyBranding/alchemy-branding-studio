@@ -12,7 +12,10 @@ export const seo = defineType({
       type: "string",
       description:
         "Browser tab and search-result title. 50–60 chars is the sweet spot.",
-      validation: (rule) => rule.max(60),
+      validation: (rule) =>
+        rule
+          .max(60)
+          .warning("Over 60 chars: Google may truncate this in search results."),
     }),
     defineField({
       name: "metaDescription",
@@ -20,7 +23,10 @@ export const seo = defineType({
       type: "text",
       rows: 3,
       description: "Search-result preview. 150–160 chars.",
-      validation: (rule) => rule.max(160),
+      validation: (rule) =>
+        rule
+          .max(160)
+          .warning("Over 160 chars: Google may truncate this in search results."),
     }),
     defineField({
       name: "ogImage",

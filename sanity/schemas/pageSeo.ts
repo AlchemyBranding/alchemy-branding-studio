@@ -31,14 +31,20 @@ export const pageSeo = defineType({
       name: "metaTitle",
       title: "Meta title",
       type: "string",
-      validation: (rule) => rule.max(60),
+      validation: (rule) =>
+        rule
+          .max(60)
+          .warning("Over 60 chars: Google may truncate this in search results."),
     }),
     defineField({
       name: "metaDescription",
       title: "Meta description",
       type: "text",
       rows: 3,
-      validation: (rule) => rule.max(160),
+      validation: (rule) =>
+        rule
+          .max(160)
+          .warning("Over 160 chars: Google may truncate this in search results."),
     }),
     defineField({
       name: "ogImage",
