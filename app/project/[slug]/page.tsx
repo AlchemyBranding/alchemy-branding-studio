@@ -1,11 +1,13 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
+import ArticleJsonLd from "@/components/ArticleJsonLd";
 import CaseStudyHero from "@/components/case-study/CaseStudyHero";
 import CaseStudyQuote from "@/components/case-study/CaseStudyQuote";
 import PortableTextContent from "@/components/case-study/PortableTextContent";
 import RelatedProjects from "@/components/case-study/RelatedProjects";
 import FinalCTA from "@/components/home/FinalCTA";
+import { indexableRobots } from "@/lib/seo";
 import { siteConfig } from "@/lib/site";
 import { urlFor } from "@/sanity/lib/image";
 import { safeFetch } from "@/sanity/lib/fetch";
@@ -64,7 +66,7 @@ export async function generateMetadata({
     alternates: { canonical },
     robots: cs.seo?.noIndex
       ? { index: false, follow: false }
-      : { index: true, follow: true },
+      : indexableRobots,
     openGraph: {
       title,
       description,
@@ -96,8 +98,27 @@ export default async function CaseStudyPage({
 
   if (!cs) notFound();
 
+  const articleUrl = cs.seo?.canonicalUrl ?? `${siteConfig.url}/project/${cs.slug}`;
+  const articleImage = cs.heroImage?.asset
+    ? urlFor(cs.heroImage).width(1200).height(630).auto("format").url()
+    : `${siteConfig.url}/og-default.png`;
+  const articleDescription =
+    cs.seo?.metaDescription ??
+    cs.outcomeSummary ??
+    cs.subtitle ??
+    `${cs.title.trim()} — case study by ${siteConfig.name}.`;
+
   return (
     <>
+      <ArticleJsonLd
+        url={articleUrl}
+        headline={cs.title.trim()}
+        description={articleDescription}
+        image={articleImage}
+        datePublished={cs.publishedAt}
+        dateModified={cs._updatedAt}
+        authorName={null}
+      />
       <CaseStudyHero
         title={cs.title}
         subtitle={cs.subtitle}

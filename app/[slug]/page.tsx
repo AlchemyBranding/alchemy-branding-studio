@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
+import ArticleJsonLd from "@/components/ArticleJsonLd";
 import PortableTextContent from "@/components/case-study/PortableTextContent";
 import FinalCTA from "@/components/home/FinalCTA";
 import PostHero from "@/components/post/PostHero";
 import RelatedPosts from "@/components/post/RelatedPosts";
+import { indexableRobots } from "@/lib/seo";
 import { reservedSlugs, siteConfig } from "@/lib/site";
 import { urlFor } from "@/sanity/lib/image";
 import { safeFetch } from "@/sanity/lib/fetch";
@@ -67,7 +69,7 @@ export async function generateMetadata({
     alternates: { canonical },
     robots: post.seo?.noIndex
       ? { index: false, follow: false }
-      : { index: true, follow: true },
+      : indexableRobots,
     openGraph: {
       title,
       description,
@@ -106,8 +108,26 @@ export default async function BlogPostPage({
 
   if (!post) notFound();
 
+  const articleUrl = post.seo?.canonicalUrl ?? `${siteConfig.url}/${post.slug}`;
+  const articleImage = post.featuredImage?.asset
+    ? urlFor(post.featuredImage).width(1200).height(630).auto("format").url()
+    : `${siteConfig.url}/og-default.png`;
+  const articleDescription =
+    post.seo?.metaDescription ??
+    post.excerpt ??
+    `${post.title.trim()} — from ${siteConfig.name}.`;
+
   return (
     <>
+      <ArticleJsonLd
+        url={articleUrl}
+        headline={post.title.trim()}
+        description={articleDescription}
+        image={articleImage}
+        datePublished={post.publishedAt}
+        dateModified={post._updatedAt}
+        authorName={post.author?.name ?? null}
+      />
       <PostHero
         title={post.title}
         category={post.category}

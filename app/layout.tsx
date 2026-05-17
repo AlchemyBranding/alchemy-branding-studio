@@ -7,6 +7,7 @@ import Header from "@/components/Header";
 import HideOnStudio from "@/components/HideOnStudio";
 import JsonLd from "@/components/JsonLd";
 import { satoshi } from "@/lib/fonts";
+import { indexableRobots } from "@/lib/seo";
 import { siteConfig } from "@/lib/site";
 
 import "./globals.css";
@@ -20,7 +21,7 @@ export const metadata: Metadata = {
     template: `%s | ${siteConfig.name}`,
   },
   description: siteConfig.description,
-  robots: { index: true, follow: true },
+  robots: indexableRobots,
   alternates: { canonical: "/" },
   openGraph: {
     title: siteConfig.name,

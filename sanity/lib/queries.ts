@@ -113,6 +113,7 @@ export const blogPostSlugsQuery = defineQuery(`
 export const blogPostBySlugQuery = defineQuery(`
   *[_type == "blogPost" && slug.current == $slug][0] {
     _id,
+    _updatedAt,
     title,
     "slug": slug.current,
     category,
@@ -143,6 +144,7 @@ export const blogPostBySlugQuery = defineQuery(`
 export const caseStudyBySlugQuery = defineQuery(`
   *[_type == "caseStudy" && slug.current == $slug][0] {
     _id,
+    _updatedAt,
     title,
     "slug": slug.current,
     subtitle,
@@ -210,6 +212,7 @@ export type BlogPostAuthor = {
 };
 
 export type BlogPostDetail = RecentBlogPost & {
+  _updatedAt: string;
   body: unknown[] | null;
   readTimeMins: number | null;
   author: BlogPostAuthor | null;
@@ -220,6 +223,7 @@ export type BlogPostDetail = RecentBlogPost & {
 export type BlogPostSlug = { slug: string };
 
 export type CaseStudyDetail = FeaturedCaseStudy & {
+  _updatedAt: string;
   publishedAt: string;
   body: unknown[] | null;
   clientQuote: string | null;

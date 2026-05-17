@@ -26,6 +26,24 @@ type Args = {
 };
 
 /**
+ * Default robots config for any indexable page. Matches what the old
+ * Yoast-driven WordPress site emitted (max-image-preview:large unlocks
+ * large image previews in mobile SERPs). Routes that need to opt out
+ * can return their own robots object instead.
+ */
+export const indexableRobots = {
+  index: true,
+  follow: true,
+  googleBot: {
+    index: true,
+    follow: true,
+    "max-image-preview": "large" as const,
+    "max-snippet": -1,
+    "max-video-preview": -1,
+  },
+};
+
+/**
  * Builds Next.js Metadata for a static route, layering Sanity-stored
  * pageSeo values on top of supplied defaults. Falls back cleanly when
  * Sanity is unreachable or has no entry for the page yet.
@@ -56,7 +74,7 @@ export async function getPageMetadata({
     alternates: { canonical },
     robots: data?.noIndex
       ? { index: false, follow: false }
-      : { index: true, follow: true },
+      : indexableRobots,
     openGraph: {
       title,
       description,
