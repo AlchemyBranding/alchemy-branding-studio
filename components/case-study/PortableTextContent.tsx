@@ -1,3 +1,4 @@
+import { getImageDimensions } from "@sanity/asset-utils";
 import { PortableText, type PortableTextComponents } from "@portabletext/react";
 import Image from "next/image";
 import Link from "next/link";
@@ -56,17 +57,21 @@ const components: PortableTextComponents = {
         .width(1600)
         .auto("format")
         .url();
+      // Render at the source's natural aspect ratio. The previous 16:9
+      // crop with object-cover butchered portrait and 4:3 images.
+      const { width, height } = getImageDimensions(
+        value as Parameters<typeof getImageDimensions>[0],
+      );
       return (
         <figure className="my-12">
-          <div className="relative aspect-[16/9] overflow-hidden rounded-card bg-dawn-80">
-            <Image
-              src={src}
-              alt={value.alt ?? ""}
-              fill
-              sizes="(min-width: 1024px) 768px, 100vw"
-              className="object-cover"
-            />
-          </div>
+          <Image
+            src={src}
+            alt={value.alt ?? ""}
+            width={width}
+            height={height}
+            sizes="(min-width: 1024px) 768px, 100vw"
+            className="w-full h-auto rounded-card bg-dawn-80"
+          />
           {value.caption ? (
             <figcaption className="mt-3 text-[0.875rem] text-white/55">
               {value.caption}
