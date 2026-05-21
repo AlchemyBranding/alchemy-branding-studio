@@ -46,6 +46,7 @@ export const reservedSlugs = new Set<string>([
   "api",
   "free-brand-audit-for-smes",
   "custom-proposal-design",
+  "motion",
   "privacy-policy",
   "cookie-policy",
   "sitemap.xml",
