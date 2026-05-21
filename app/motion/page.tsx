@@ -1,9 +1,15 @@
 import type { Metadata } from "next";
 
+import Link from "next/link";
+
+import AnimatedLink from "@/components/motion/AnimatedLink";
+import BeforeAfter from "@/components/motion/BeforeAfter";
 import Counter from "@/components/motion/Counter";
 import MagneticButton from "@/components/motion/MagneticButton";
 import Reveal from "@/components/motion/Reveal";
+import Spotlight from "@/components/motion/Spotlight";
 import StaggeredList from "@/components/motion/StaggeredList";
+import TextReveal from "@/components/motion/TextReveal";
 import TiltCard from "@/components/motion/TiltCard";
 
 export const metadata: Metadata = {
@@ -257,6 +263,102 @@ export default function MotionPage() {
             </TiltCard>
           </div>
         </Reveal>
+      </Demo>
+
+      {/* 7. Text reveal word-by-word */}
+      <Demo
+        number="07"
+        title="Text reveal, word-by-word"
+        kicker="Headline as a sequence, not a wall"
+        notes="Each word fades up 60ms after the previous one when the block enters the viewport. Best reserved for the one hero headline per page. Overusing it on every heading dilutes the moment."
+      >
+        <div className="rounded-card bg-dawn-80 border border-dawn-60 p-10 md:p-16">
+          <TextReveal
+            text="Brand strategy, design and animation for ambitious businesses."
+            className="font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1.1] text-white"
+          />
+        </div>
+      </Demo>
+
+      {/* 8. Before / after */}
+      <Demo
+        number="08"
+        title="Before / after on hover"
+        kicker="The rebrand reveal"
+        notes="Default frame is the new identity. Hover to see what came before. A small badge tells the visitor which one they're looking at. Best fit: rebrand case studies (Welch Fitness, Christie Residential, Web Marketer), site redesigns, anywhere the contrast is the story. Needs a real before image per study."
+      >
+        <Reveal>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <BeforeAfter
+              afterSrc="https://cdn.sanity.io/images/kr13x7nd/production/5dc5112c40582212af28e05fcede8bcc725116a6-2560x1440.png"
+              beforeSrc="https://cdn.sanity.io/images/kr13x7nd/production/8c951e9efa22056053374719188a4b829cb1e830-1920x1080.png"
+              afterAlt="DS Smith hero (illustrative after)"
+              beforeAlt="Welch Fitness hero (illustrative before)"
+            />
+            <div className="self-center">
+              <p className="text-[0.7rem] font-bold uppercase tracking-[0.12em] text-dragon-fire">
+                Illustrative
+              </p>
+              <h4 className="font-display text-h3 text-white mt-3">
+                Hover to swap.
+              </h4>
+              <p className="mt-4 text-[0.9375rem] leading-[1.6] text-white/65">
+                The two frames here aren&apos;t a real before/after pair —
+                they&apos;re standing in to show the mechanic. In real
+                use the studio would shoot or recreate the prior
+                identity to make the contrast land.
+              </p>
+            </div>
+          </div>
+        </Reveal>
+      </Demo>
+
+      {/* 9. Animated underline link */}
+      <Demo
+        number="09"
+        title="Animated underline link"
+        kicker="Inline restraint"
+        notes="The underline draws in from left to right on hover instead of being always-on. Subtle, but it gives editorial links a touch of motion craft. Slot into the PortableText link mark in blog posts and case studies. Hover the link to see it."
+      >
+        <div className="rounded-card bg-dawn-80 border border-dawn-60 p-10 md:p-16">
+          <p className="text-[1.125rem] leading-[1.75] text-white/80 max-w-2xl">
+            When the marketing isn&apos;t landing, the diagnosis is
+            usually upstream of the campaigns. That&apos;s the case
+            for the{" "}
+            <AnimatedLink href="/services">Brand Strategy Workshop</AnimatedLink>.{" "}
+            Hover the link to see the underline draw in. Compare with
+            a regular link:{" "}
+            <Link
+              href="/services"
+              className="text-dragon-fire underline underline-offset-4"
+            >
+              Brand Strategy Workshop
+            </Link>
+            .
+          </p>
+        </div>
+      </Demo>
+
+      {/* 10. Cursor spotlight */}
+      <Demo
+        number="10"
+        title="Cursor-tracked spotlight"
+        kicker="Light follows the visitor"
+        notes="A soft dragon-fire glow follows the cursor across the block. CSS-only effect, mouse position piped through state. Best on hero CTAs and feature blocks where interactivity needs to feel discoverable but never showy. Move your cursor across the block below."
+      >
+        <Spotlight className="rounded-card bg-dawn-80 border border-dawn-60 p-10 md:p-16">
+          <p className="text-[0.7rem] font-bold uppercase tracking-[0.12em] text-dragon-fire">
+            Try it
+          </p>
+          <h3 className="font-display text-h2 mt-4 max-w-2xl text-white">
+            Glide your cursor across this block.
+          </h3>
+          <p className="mt-6 max-w-xl text-[1.0625rem] leading-[1.7] text-white/65">
+            The light follows the cursor at full size on hover, fades
+            out cleanly on leave. The block underneath stays still and
+            readable. Subtle, but the page feels alive.
+          </p>
+        </Spotlight>
       </Demo>
 
       <section className="bg-dawn py-[120px]">

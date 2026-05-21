@@ -98,6 +98,63 @@ export const caseStudy = defineType({
       validation: (rule) => rule.max(100),
     }),
     defineField({
+      name: "stats",
+      title: "Outcome stats",
+      type: "array",
+      group: "content",
+      description:
+        "Optional. 2–3 outcome numbers that animate up from zero on the case study page. Skip if you don't have real numbers — empty arrays render nothing.",
+      of: [
+        {
+          type: "object",
+          name: "stat",
+          fields: [
+            defineField({
+              name: "value",
+              title: "Value",
+              type: "number",
+              description: "The number to count up to. Decimals allowed (e.g. 3.2).",
+              validation: (rule) => rule.required(),
+            }),
+            defineField({
+              name: "prefix",
+              title: "Prefix",
+              type: "string",
+              description: 'Optional. e.g. "+", "£", "$".',
+            }),
+            defineField({
+              name: "suffix",
+              title: "Suffix",
+              type: "string",
+              description: 'Optional. e.g. "%", "x", "m", "k".',
+            }),
+            defineField({
+              name: "label",
+              title: "Label",
+              type: "string",
+              description: "Short caption beneath the number.",
+              validation: (rule) => rule.required().max(80),
+            }),
+            defineField({
+              name: "decimals",
+              title: "Decimal places",
+              type: "number",
+              description: 'Optional. Defaults to 0. Set to 1 for values like "3.2".',
+              initialValue: 0,
+            }),
+          ],
+          preview: {
+            select: { value: "value", suffix: "suffix", label: "label" },
+            prepare: ({ value, suffix, label }) => ({
+              title: `${value ?? "?"}${suffix ?? ""}`,
+              subtitle: label,
+            }),
+          },
+        },
+      ],
+      validation: (rule) => rule.max(4),
+    }),
+    defineField({
       name: "body",
       title: "Body",
       type: "blockContent",

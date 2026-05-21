@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import ArticleJsonLd from "@/components/ArticleJsonLd";
 import CaseStudyHero from "@/components/case-study/CaseStudyHero";
 import CaseStudyQuote from "@/components/case-study/CaseStudyQuote";
+import CaseStudyStats from "@/components/case-study/CaseStudyStats";
 import PortableTextContent from "@/components/case-study/PortableTextContent";
 import RelatedProjects from "@/components/case-study/RelatedProjects";
 import FinalCTA from "@/components/home/FinalCTA";
@@ -129,6 +130,8 @@ export default async function CaseStudyPage({
         heroVideoUrl={cs.heroVideoUrl}
         publishedAt={cs.publishedAt}
       />
+
+      <CaseStudyStats stats={cs.stats ?? []} />
 
       {cs.body && Array.isArray(cs.body) && cs.body.length > 0 ? (
         <section className="bg-dawn py-[80px]">

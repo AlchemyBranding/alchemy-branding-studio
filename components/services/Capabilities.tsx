@@ -1,3 +1,5 @@
+import TiltCard from "@/components/motion/TiltCard";
+
 type Capability = {
   title: string;
   body: string;
@@ -61,16 +63,18 @@ export default function Capabilities() {
 
         <ul className="mt-14 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {capabilities.map((c) => (
-            <li
-              key={c.title}
-              className="rounded-card bg-dawn-80 border border-dawn-60 p-7"
-            >
-              <h3 className="font-bold text-[1.125rem] text-white">
-                {c.title}
-              </h3>
-              <p className="mt-3 text-[0.9375rem] leading-[1.65] text-white/65">
-                {c.body}
-              </p>
+            <li key={c.title} className="h-full">
+              <TiltCard
+                strength={5}
+                className="rounded-card bg-dawn-80 border border-dawn-60 p-7 h-full"
+              >
+                <h3 className="font-bold text-[1.125rem] text-white">
+                  {c.title}
+                </h3>
+                <p className="mt-3 text-[0.9375rem] leading-[1.65] text-white/65">
+                  {c.body}
+                </p>
+              </TiltCard>
             </li>
           ))}
         </ul>

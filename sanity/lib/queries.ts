@@ -158,6 +158,7 @@ export const caseStudyBySlugQuery = defineQuery(`
     heroImage ${altImageProjection},
     "heroVideoUrl": heroVideo.asset->url,
     body,
+    stats,
     clientQuote,
     quoteAttribution,
     "relatedProjects": relatedProjects[]->{
@@ -225,10 +226,19 @@ export type BlogPostDetail = RecentBlogPost & {
 
 export type BlogPostSlug = { slug: string };
 
+export type CaseStudyStat = {
+  value: number;
+  prefix: string | null;
+  suffix: string | null;
+  label: string;
+  decimals: number | null;
+};
+
 export type CaseStudyDetail = FeaturedCaseStudy & {
   _updatedAt: string;
   publishedAt: string;
   body: unknown[] | null;
+  stats: CaseStudyStat[] | null;
   clientQuote: string | null;
   quoteAttribution: string | null;
   relatedProjects: FeaturedCaseStudy[] | null;
