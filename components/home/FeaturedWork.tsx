@@ -46,7 +46,6 @@ export default function FeaturedWork({
   projects: FeaturedCaseStudy[];
 }) {
   const items = projects.length > 0 ? projects : placeholderProjects;
-  const [large, smallA, smallB] = items;
 
   return (
     <section
@@ -65,15 +64,7 @@ export default function FeaturedWork({
           Brands we&apos;ve shaped, scaled and launched.
         </h2>
 
-        <div className="mt-14 grid grid-cols-1 lg:grid-cols-2 gap-6 lg:auto-rows-fr">
-          {large ? (
-            <div className="lg:row-span-2">
-              <PortfolioCard project={large} variant="large" />
-            </div>
-          ) : null}
-          {smallA ? <PortfolioCard project={smallA} variant="small" /> : null}
-          {smallB ? <PortfolioCard project={smallB} variant="small" /> : null}
-        </div>
+        <Grid items={items} />
 
         <div className="mt-12 text-center">
           <Button href="/portfolio" variant="primary">
@@ -82,5 +73,42 @@ export default function FeaturedWork({
         </div>
       </div>
     </section>
+  );
+}
+
+/**
+ * Adaptive layout so the grid still reads as finished when the portfolio
+ * only has one or two case studies in it:
+ *  - 1 project → single full-width card
+ *  - 2 projects → two side-by-side cards
+ *  - 3+ projects → one large card + two stacked small cards
+ */
+function Grid({ items }: { items: FeaturedCaseStudy[] }) {
+  if (items.length === 1) {
+    const [only] = items;
+    return (
+      <div className="mt-14">
+        <PortfolioCard project={only} variant="large" />
+      </div>
+    );
+  }
+  if (items.length === 2) {
+    const [a, b] = items;
+    return (
+      <div className="mt-14 grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <PortfolioCard project={a} variant="large" />
+        <PortfolioCard project={b} variant="large" />
+      </div>
+    );
+  }
+  const [large, smallA, smallB] = items;
+  return (
+    <div className="mt-14 grid grid-cols-1 lg:grid-cols-2 gap-6 lg:auto-rows-fr">
+      <div className="lg:row-span-2">
+        <PortfolioCard project={large} variant="large" />
+      </div>
+      <PortfolioCard project={smallA} variant="small" />
+      <PortfolioCard project={smallB} variant="small" />
+    </div>
   );
 }

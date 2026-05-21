@@ -15,9 +15,12 @@ const seoProjection = `{
   canonicalUrl
 }`;
 
+// Featured first (sorted newest first within that), then backfilled with
+// the most recent non-featured case studies so the homepage grid still
+// fills its three slots while the portfolio is being built out.
 export const featuredCaseStudiesQuery = defineQuery(`
-  *[_type == "caseStudy" && featured == true && defined(slug.current)]
-    | order(publishedAt desc) [0...3] {
+  *[_type == "caseStudy" && defined(slug.current)]
+    | order(coalesce(featured, false) desc, publishedAt desc) [0...3] {
       _id,
       title,
       "slug": slug.current,
