@@ -84,11 +84,18 @@ export default function FeaturedWork({
  *  - 3+ projects → one large card + two stacked small cards
  */
 function Grid({ items }: { items: FeaturedCaseStudy[] }) {
+  // The "large" PortfolioCard variant uses lg:h-full to expand into its
+  // parent, which only works when something upstream gives the parent a
+  // height (the 3-card layout below does this via lg:auto-rows-fr +
+  // row-span-2). For the 1- and 2-card cases we wrap each card in a div
+  // with an explicit aspect ratio so it has a height to fill on desktop.
   if (items.length === 1) {
     const [only] = items;
     return (
       <div className="mt-14">
-        <PortfolioCard project={only} variant="large" />
+        <div className="aspect-[4/5] lg:aspect-[16/9]">
+          <PortfolioCard project={only} variant="large" />
+        </div>
       </div>
     );
   }
@@ -96,8 +103,12 @@ function Grid({ items }: { items: FeaturedCaseStudy[] }) {
     const [a, b] = items;
     return (
       <div className="mt-14 grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <PortfolioCard project={a} variant="large" />
-        <PortfolioCard project={b} variant="large" />
+        <div className="aspect-[4/5] lg:aspect-[4/3]">
+          <PortfolioCard project={a} variant="large" />
+        </div>
+        <div className="aspect-[4/5] lg:aspect-[4/3]">
+          <PortfolioCard project={b} variant="large" />
+        </div>
       </div>
     );
   }
