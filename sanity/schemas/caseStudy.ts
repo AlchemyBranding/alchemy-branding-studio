@@ -81,11 +81,12 @@ export const caseStudy = defineType({
     }),
     defineField({
       name: "heroVideo",
-      title: "Hero hover video",
+      title: "Hero video",
       type: "file",
       group: "content",
       options: { accept: "video/mp4,video/webm" },
-      description: "Optional. Plays on hover over the portfolio card.",
+      description:
+        "Optional. Autoplays muted as the hero on the case study page, and plays on hover over the portfolio card. The hero image is used as the poster (still frame before the video loads), so it's still required. Keep the file short and compressed: a 5–15 second loop, MP4 or WebM, ideally under 5 MB.",
     }),
     defineField({
       name: "outcomeSummary",
