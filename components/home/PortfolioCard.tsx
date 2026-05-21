@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 
 import { urlFor } from "@/sanity/lib/image";
 import type { FeaturedCaseStudy } from "@/sanity/lib/queries";
@@ -14,8 +14,15 @@ type Props = {
 
 export default function PortfolioCard({ project, variant = "small" }: Props) {
   const videoRef = useRef<HTMLVideoElement>(null);
+  // Track when the video element has buffered enough to play. Without this
+  // gate, hovering an unbuffered video fades the <video> in over the image
+  // before any frames are decoded — visitors see a black rectangle until
+  // playback actually starts. Especially painful for oversized files.
+  const [canPlay, setCanPlay] = useState(false);
+  const [hovered, setHovered] = useState(false);
 
   const onEnter = () => {
+    setHovered(true);
     const v = videoRef.current;
     if (!v) return;
     v.currentTime = 0;
@@ -25,6 +32,7 @@ export default function PortfolioCard({ project, variant = "small" }: Props) {
   };
 
   const onLeave = () => {
+    setHovered(false);
     videoRef.current?.pause();
   };
 
@@ -72,7 +80,10 @@ export default function PortfolioCard({ project, variant = "small" }: Props) {
           playsInline
           preload="none"
           aria-hidden="true"
-          className="absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-500 ease-out group-hover:opacity-100"
+          onCanPlay={() => setCanPlay(true)}
+          className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-500 ease-out ${
+            hovered && canPlay ? "opacity-100" : "opacity-0"
+          }`}
         >
           <source src={project.heroVideoUrl} type="video/mp4" />
         </video>
