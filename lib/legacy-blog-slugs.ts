@@ -16,7 +16,7 @@
  *
  * Backlink-driven (per SEO team's backlink report):
  *  - /quality-over-cost-the-smart-investment-in-animated-explainer-videos
- *  - /5-reasons-brand-identity-guidelines-are-so-important
+ *  - /5-reasons-brand-identity-guidelines-are-so-important-for-brands
  *  - /why-we-dogs-are-the-best-office-companions
  *
  * Traffic-driven (>= 10 clicks / 12 months per GSC):
@@ -92,7 +92,6 @@ export const legacyBlogSlugs: readonly string[] = [
   "how-long-should-an-explainer-video-be",
   "who-needs-to-read-a-headline-when-you-can-watch-an-animated-video",
   "why-can-i-hear-an-audio-watermark-on-my-explainer-video",
-  "5-reasons-brand-identity-guidelines-are-so-important-for-brands",
   "how-to-create-animated-explainer-videos",
   "what-is-a-better-question-for-your-creative-agency-than-do-you-have-something-similar-we-can-see",
   "our-5-step-process-for-developing-your-brand-identity",
