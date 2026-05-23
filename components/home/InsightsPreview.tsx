@@ -59,13 +59,14 @@ export default function InsightsPreview({ posts }: { posts: RecentBlogPost[] }) 
     >
       <div className="max-w-7xl mx-auto px-6 md:px-10">
         <p className="text-[0.8rem] font-medium uppercase tracking-[0.12em] text-dragon-fire">
-          Insights
+          The blog
         </p>
         <h2
           id="insights-heading"
           className="font-display text-h2 mt-3 max-w-3xl text-white"
         >
-          Thinking, perspective and practical advice.
+          Straight talk on{" "}
+          <span className="italic text-dusk">brand and growth.</span>
         </h2>
 
         <ul className="mt-14 grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -120,7 +121,7 @@ export default function InsightsPreview({ posts }: { posts: RecentBlogPost[] }) 
             href="/news"
             className="inline-flex items-center text-[1rem] font-medium text-dragon-fire hover:underline underline-offset-4"
           >
-            Read all insights →
+            Read the blog →
           </Link>
         </div>
       </div>

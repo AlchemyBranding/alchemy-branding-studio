@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import FinalCTA from "@/components/home/FinalCTA";
 import PortfolioGrid from "@/components/portfolio/PortfolioGrid";
 import { getPageMetadata } from "@/lib/seo";
+import { motionHref } from "@/lib/site";
 import { safeFetch } from "@/sanity/lib/fetch";
 import { allCaseStudiesQuery, type FeaturedCaseStudy } from "@/sanity/lib/queries";
 
@@ -49,6 +50,7 @@ export default async function PortfolioPage() {
       <FinalCTA
         heading="See something that looks like the kind of work you need?"
         subtext="Book a discovery call. We'll talk through where you're at and whether the workshop's right for you."
+        primary={{ label: "Book a call", href: motionHref, external: true }}
         secondary={{ label: "Send a brief", href: "/contact" }}
       />
     </>

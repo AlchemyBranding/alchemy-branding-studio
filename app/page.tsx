@@ -1,12 +1,15 @@
 import type { Metadata } from "next";
 
+import AuditBand from "@/components/home/AuditBand";
 import FeaturedWork from "@/components/home/FeaturedWork";
 import FinalCTA from "@/components/home/FinalCTA";
 import Hero from "@/components/home/Hero";
 import InsightsPreview from "@/components/home/InsightsPreview";
 import LogoStrip from "@/components/home/LogoStrip";
-import ServicesOverview from "@/components/home/ServicesOverview";
+import PodcastTile from "@/components/home/PodcastTile";
+import PositioningStrip from "@/components/home/PositioningStrip";
 import TestimonialsCarousel from "@/components/home/TestimonialsCarousel";
+import WorkshopBlock from "@/components/home/WorkshopBlock";
 import { getPageMetadata } from "@/lib/seo";
 import { siteConfig } from "@/lib/site";
 import { safeFetch } from "@/sanity/lib/fetch";
@@ -39,12 +42,26 @@ export default async function HomePage() {
 
   return (
     <>
+      {/* 5.1 Hero (existing background video, new copy) */}
       <Hero />
+      {/* 5.2 Logo proof (LogoStrip stays for now; logo grid is Phase 4) */}
       <LogoStrip />
-      <ServicesOverview />
+      {/* 5.3 Positioning strip — "Design is the lever, growth is the point" */}
+      <PositioningStrip />
+      {/* 5.4 Workshop-led foundation (replaces the old service catalogue) */}
+      <WorkshopBlock />
+      {/* 5.5 Featured work (Sanity-driven, adaptive 1/2/3 layout) */}
       <FeaturedWork projects={featuredCases} />
+      {/* 5.6 Free brand audit lead-magnet band */}
+      <AuditBand />
+      {/* 5.7 Proof — testimonials */}
       <TestimonialsCarousel testimonials={testimonials} />
+      {/* 5.8 Owned media — blog grid + podcast tile */}
       <InsightsPreview posts={recentPosts} />
+      <PodcastTile />
+      {/* 5.9 FAQ — Phase 2 */}
+      {/* 5.10 Newsletter — Phase 3 */}
+      {/* 5.11 FinalCTA (new defaults: audit primary, Book a call secondary) */}
       <FinalCTA />
     </>
   );

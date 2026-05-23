@@ -83,6 +83,7 @@ export default function CustomProposalDesignPage() {
       <FinalCTA
         heading="Got a proposal that needs to land?"
         subtext="Book a discovery call. We'll talk through your sales flow, the platform you're using, and what'd make the biggest difference."
+        primary={{ label: "Book a call", href: motionHref, external: true }}
         secondary={{ label: "Send a brief", href: "/contact" }}
       />
     </>

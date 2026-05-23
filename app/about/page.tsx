@@ -6,6 +6,7 @@ import StoryBlock from "@/components/about/StoryBlock";
 import TeamGrid from "@/components/about/TeamGrid";
 import FinalCTA from "@/components/home/FinalCTA";
 import { getPageMetadata } from "@/lib/seo";
+import { motionHref } from "@/lib/site";
 import { safeFetch } from "@/sanity/lib/fetch";
 import { teamMembersQuery, type TeamMember } from "@/sanity/lib/queries";
 
@@ -51,6 +52,7 @@ export default async function AboutPage() {
       <FinalCTA
         heading="Like the look of how we work?"
         subtext="Tell us about the project, or book 30 minutes with us. Whichever's easier."
+        primary={{ label: "Book a call", href: motionHref, external: true }}
         secondary={{ label: "Send a message", href: "/contact" }}
       />
     </>

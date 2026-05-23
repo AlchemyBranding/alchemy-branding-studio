@@ -1,23 +1,32 @@
 import Button from "@/components/Button";
 import { motionHref } from "@/lib/site";
 
+type Cta = { label: string; href: string; external?: boolean };
+
 type Props = {
   heading?: string;
   subtext?: string;
+  /** Override the primary CTA. */
+  primary?: Cta;
   /** Override the secondary CTA. Pass null to hide it. */
-  secondary?: { label: string; href: string } | null;
+  secondary?: Cta | null;
 };
 
 const defaults = {
-  heading: "Ready to build something worth talking about?",
+  heading: "Not sure where your brand stands? Find out for free.",
   subtext:
-    "Book a discovery call, or grab a free brand audit. We'll show you exactly where the leaks are.",
-  secondary: { label: "Get a free audit", href: "/free-brand-audit-for-smes" },
+    "An honest review of how your brand shows up, the way a buyer sees it. Clear next steps, no sales pitch.",
+  primary: {
+    label: "Get your free brand audit",
+    href: "/free-brand-audit-for-smes",
+  },
+  secondary: { label: "Book a call", href: motionHref, external: true },
 } as const;
 
 export default function FinalCTA({
   heading = defaults.heading,
   subtext = defaults.subtext,
+  primary = defaults.primary,
   secondary = defaults.secondary,
 }: Props = {}) {
   return (
@@ -36,11 +45,19 @@ export default function FinalCTA({
           {subtext}
         </p>
         <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
-          <Button variant="primary-on-fire" href={motionHref} external>
-            Book a call
+          <Button
+            variant="primary-on-fire"
+            href={primary.href}
+            external={primary.external}
+          >
+            {primary.label}
           </Button>
           {secondary ? (
-            <Button variant="secondary-on-fire" href={secondary.href}>
+            <Button
+              variant="secondary-on-fire"
+              href={secondary.href}
+              external={secondary.external}
+            >
               {secondary.label}
             </Button>
           ) : null}

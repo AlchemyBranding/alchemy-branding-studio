@@ -1,6 +1,5 @@
 import Button from "@/components/Button";
 import { ArrowDownIcon } from "@/components/icons";
-import { motionHref } from "@/lib/site";
 
 export default function Hero() {
   return (
@@ -36,26 +35,34 @@ export default function Hero() {
           className="text-eyebrow text-dragon-fire animate-fade-up"
           style={{ animationDelay: "200ms" }}
         >
-          Brand Strategy · Design · Animation
+          A design consultancy for ambitious SMEs
         </p>
 
         <h1
           className="font-display text-[clamp(3.5rem,7vw,8rem)] leading-[1.02] mt-4 animate-fade-up"
           style={{ animationDelay: "400ms" }}
         >
-          <span className="block text-white">Work that</span>
-          <span className="block italic text-dusk">builds brands.</span>
+          <span className="block text-white">Look the part.</span>
+          <span className="block italic text-dusk">Win the work.</span>
         </h1>
+
+        <p
+          className="mt-8 max-w-2xl text-[1.125rem] leading-[1.6] text-white/85 animate-fade-up"
+          style={{ animationDelay: "550ms" }}
+        >
+          We build brands that are clear, credible and hard to overlook,
+          so the right clients choose you.
+        </p>
 
         <div
           className="mt-10 flex flex-wrap items-center gap-4 animate-fade-up"
-          style={{ animationDelay: "600ms" }}
+          style={{ animationDelay: "700ms" }}
         >
-          <Button variant="primary" href="#featured-work">
-            See our work
+          <Button variant="primary" href="/free-brand-audit-for-smes">
+            Get your free brand audit
           </Button>
-          <Button variant="secondary" href={motionHref} external>
-            Book a call
+          <Button variant="secondary" href="/portfolio">
+            See our work
           </Button>
         </div>
       </div>
