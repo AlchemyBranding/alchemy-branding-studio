@@ -5,28 +5,18 @@ import { useEffect, useState } from "react";
 import Button from "@/components/Button";
 
 /**
- * Auto-loading Transistor podcast player for the homepage. Fetches the
- * Brand to Scale RSS feed client-side via a CORS proxy, parses the
- * latest episode only, and renders the Transistor iframe + metadata +
- * platform CTAs.
+ * Renders the latest Brand to Scale podcast episode using data from
+ * the server route at /api/podcast/latest (which fetches + caches the
+ * Transistor RSS feed for an hour).
  *
- * Server renders a sensible fallback (title + Listen CTA) so the
- * section reads as finished on first paint and is fully indexable.
- * Client hydration replaces the fallback with the live episode card
- * if the fetch succeeds; if it fails, the fallback stays put.
- *
- * No backend, no API keys, no build step. The downside is the fetch
- * runs every visit — fine for low-cost RSS, but cache it server-side
- * in a future pass if hits get heavy.
+ * Server renders the fallback first; client hydration replaces it
+ * with the live episode card once /api/podcast/latest resolves. If
+ * the API call fails, the fallback stays put — the section is
+ * indexable and always reads as finished.
  */
 
-const RSS_URL = "https://feeds.transistor.fm/brand-to-scale";
 const PLAYER_ACCENT_HEX = "ff6e49"; // dragon-fire, no hash
 const SHOW_URL = "https://www.brandtoscale.co.uk";
-const PROXIES = [
-  (u: string) => `https://api.allorigins.win/get?url=${encodeURIComponent(u)}`,
-  (u: string) => `https://corsproxy.io/?${encodeURIComponent(u)}`,
-] as const;
 
 type Episode = {
   title: string;
@@ -43,6 +33,10 @@ type Platforms = {
   apple: string | null;
 };
 
+type ApiResponse =
+  | { ok: true; episode: Episode; platforms: Platforms }
+  | { ok: false; error?: string };
+
 export default function LatestPodcastEpisode() {
   const [episode, setEpisode] = useState<Episode | null>(null);
   const [platforms, setPlatforms] = useState<Platforms>({
@@ -53,12 +47,16 @@ export default function LatestPodcastEpisode() {
   useEffect(() => {
     let cancelled = false;
     (async () => {
-      const xml = await loadFeed();
-      if (!xml || cancelled) return;
-      const parsed = parseFeed(xml);
-      if (!parsed || cancelled) return;
-      setEpisode(parsed.episode);
-      setPlatforms(parsed.platforms);
+      try {
+        const res = await fetch("/api/podcast/latest");
+        if (!res.ok) return;
+        const data = (await res.json()) as ApiResponse;
+        if (cancelled || !data.ok) return;
+        setEpisode(data.episode);
+        setPlatforms(data.platforms);
+      } catch {
+        // Stay on the fallback if the request errors.
+      }
     })();
     return () => {
       cancelled = true;
@@ -103,7 +101,7 @@ export default function LatestPodcastEpisode() {
 }
 
 /* -------------------------------------------------------------------------- */
-/* Live episode card (rendered once the RSS fetch resolves)                   */
+/* Live episode card (rendered once /api/podcast/latest resolves)             */
 /* -------------------------------------------------------------------------- */
 
 function LiveEpisode({
@@ -115,12 +113,12 @@ function LiveEpisode({
 }) {
   return (
     <div className="mt-10 grid grid-cols-1 md:grid-cols-[220px_1fr] gap-8 md:gap-10">
-      {/* Artwork */}
+      {/* Artwork. Plain <img> rather than next/image because the host
+          (img.transistorcdn.com) isn't in next.config remotePatterns,
+          and adding it for a single dynamic image isn't worth the
+          maintenance overhead. */}
       <div className="aspect-square w-full max-w-[220px] mx-auto md:mx-0 rounded-card overflow-hidden bg-dawn border border-dawn-60">
         {episode.artwork ? (
-          // Plain <img> rather than next/image because the transistorcdn.com
-          // host isn't in next.config remotePatterns — and adding it for one
-          // dynamically-fetched image isn't worth the config maintenance.
           // eslint-disable-next-line @next/next/no-img-element
           <img
             src={episode.artwork}
@@ -196,7 +194,7 @@ function LiveEpisode({
 }
 
 /* -------------------------------------------------------------------------- */
-/* Fallback card (first paint + fetch failure)                                */
+/* Fallback card (first paint + API failure)                                  */
 /* -------------------------------------------------------------------------- */
 
 function FallbackEpisode() {
@@ -225,151 +223,4 @@ function FallbackEpisode() {
       </div>
     </div>
   );
-}
-
-/* -------------------------------------------------------------------------- */
-/* Feed loading + parsing                                                     */
-/* -------------------------------------------------------------------------- */
-
-async function loadFeed(): Promise<string | null> {
-  for (const proxyOf of PROXIES) {
-    try {
-      const res = await fetch(proxyOf(RSS_URL), { cache: "no-store" });
-      if (!res.ok) continue;
-      // allorigins wraps the body in { contents }; corsproxy.io returns raw.
-      const ct = res.headers.get("content-type") ?? "";
-      if (ct.includes("application/json")) {
-        const j = (await res.json()) as { contents?: string };
-        if (j.contents) return j.contents;
-      } else {
-        const t = await res.text();
-        if (t.includes("<rss") || t.includes("<feed")) return t;
-      }
-    } catch {
-      // try next proxy
-    }
-  }
-  return null;
-}
-
-function parseFeed(
-  xmlText: string,
-): { episode: Episode; platforms: Platforms } | null {
-  try {
-    const doc = new DOMParser().parseFromString(xmlText, "text/xml");
-    if (doc.querySelector("parsererror")) return null;
-
-    const channel = doc.querySelector("channel");
-    if (!channel) return null;
-
-    const item = channel.querySelector("item");
-    if (!item) return null;
-
-    const title = textOf(item, "title");
-    if (!title) return null;
-
-    // Description: prefer itunes:summary, fall back to <description>.
-    const itunesNs = "http://www.itunes.com/dtds/podcast-1.0.dtd";
-    const summary =
-      item.getElementsByTagNameNS(itunesNs, "summary")[0]?.textContent ?? "";
-    const description = item.querySelector("description")?.textContent ?? "";
-    const rawDesc = summary || description;
-    const cleanDesc = rawDesc
-      .replace(/<[^>]+>/g, " ")
-      .replace(/&[a-z]+;|&#\d+;/gi, " ")
-      .replace(/\s+/g, " ")
-      .trim();
-
-    const artwork =
-      item.getElementsByTagNameNS(itunesNs, "image")[0]?.getAttribute("href") ??
-      null;
-    const durationRaw =
-      item.getElementsByTagNameNS(itunesNs, "duration")[0]?.textContent ?? null;
-    const durationLabel = formatDuration(durationRaw);
-
-    const pubDateRaw = item.querySelector("pubDate")?.textContent ?? "";
-    const pubDateLabel = formatDate(pubDateRaw);
-
-    const episodeNumber =
-      item.getElementsByTagNameNS(itunesNs, "episode")[0]?.textContent ?? null;
-
-    // Episode ID: extract from the <link> inner text, which is the
-    // share.transistor.fm/s/{id} URL. The <guid> on Transistor feeds is
-    // a UUID and does NOT work for the player iframe.
-    const linkText = item.querySelector("link")?.textContent ?? "";
-    const idMatch = linkText.match(/share\.transistor\.fm\/s\/([a-z0-9]+)/i);
-    const episodeId = idMatch?.[1] ?? null;
-    if (!episodeId) return null;
-
-    // Scan the whole feed for the Spotify show + Apple Podcasts URLs.
-    const spotifyMatch = xmlText.match(
-      /https?:\/\/open\.spotify\.com\/show\/[^\s"<>]+/i,
-    );
-    const appleMatch = xmlText.match(
-      /https?:\/\/podcasts\.apple\.com\/[^\s"<>]+/i,
-    );
-
-    return {
-      episode: {
-        title,
-        description: cleanDesc,
-        artwork,
-        durationLabel,
-        pubDateLabel,
-        episodeNumber,
-        episodeId,
-      },
-      platforms: {
-        spotify: spotifyMatch?.[0] ?? null,
-        apple: appleMatch?.[0] ?? null,
-      },
-    };
-  } catch {
-    return null;
-  }
-}
-
-function textOf(parent: Element, tag: string): string {
-  return parent.querySelector(tag)?.textContent?.trim() ?? "";
-}
-
-/**
- * Transistor feeds use one of three duration formats:
- *  - "HH:MM:SS"
- *  - "MM:SS"
- *  - a raw seconds integer
- * Output: "63 min" or "63 min 7 sec" depending on length.
- */
-function formatDuration(raw: string | null): string | null {
-  if (!raw) return null;
-  const trimmed = raw.trim();
-  let totalSec: number;
-  if (/^\d+$/.test(trimmed)) {
-    totalSec = parseInt(trimmed, 10);
-  } else if (/^\d+:\d{2}(:\d{2})?$/.test(trimmed)) {
-    const parts = trimmed.split(":").map((p) => parseInt(p, 10));
-    if (parts.length === 3) {
-      totalSec = parts[0] * 3600 + parts[1] * 60 + parts[2];
-    } else {
-      totalSec = parts[0] * 60 + parts[1];
-    }
-  } else {
-    return null;
-  }
-  if (!Number.isFinite(totalSec) || totalSec <= 0) return null;
-  const min = Math.floor(totalSec / 60);
-  return `${min} min`;
-}
-
-function formatDate(raw: string): string {
-  if (!raw) return "";
-  try {
-    return new Date(raw).toLocaleDateString("en-GB", {
-      day: "numeric",
-      month: "long",
-      year: "numeric",
-    });
-  } catch {
-    return "";
-  }
 }
