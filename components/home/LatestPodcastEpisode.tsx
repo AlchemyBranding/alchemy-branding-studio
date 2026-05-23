@@ -15,7 +15,6 @@ import Button from "@/components/Button";
  * indexable and always reads as finished.
  */
 
-const PLAYER_ACCENT_HEX = "ff6e49"; // dragon-fire, no hash
 const SHOW_URL = "https://www.brandtoscale.co.uk";
 
 type Episode = {
@@ -147,15 +146,19 @@ function LiveEpisode({
           {episode.description}
         </p>
 
-        {/* Transistor iframe player */}
-        <div className="mt-6 rounded-card overflow-hidden bg-dawn">
+        {/* Transistor iframe player. /e/{id}/dark is Transistor's
+            dark-themed embed; the /e/{id} URL is the light variant.
+            Accent colour comes from the show's Transistor settings,
+            not a query string. */}
+        <div className="mt-6 rounded-card overflow-hidden">
           <iframe
-            src={`https://player.transistor.fm/episodes/${episode.episodeId}?color=${PLAYER_ACCENT_HEX}`}
+            src={`https://share.transistor.fm/e/${episode.episodeId}/dark`}
             title={`Player for ${episode.title}`}
             width="100%"
             height={180}
             frameBorder={0}
             scrolling="no"
+            seamless
             loading="lazy"
             className="block w-full"
           />
