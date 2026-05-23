@@ -4,6 +4,7 @@ import AuditBand from "@/components/home/AuditBand";
 import FeaturedWork from "@/components/home/FeaturedWork";
 import FinalCTA from "@/components/home/FinalCTA";
 import Hero from "@/components/home/Hero";
+import HomepageFaq from "@/components/home/HomepageFaq";
 import InsightsPreview from "@/components/home/InsightsPreview";
 import LatestPodcastEpisode from "@/components/home/LatestPodcastEpisode";
 import LogoStrip from "@/components/home/LogoStrip";
@@ -59,7 +60,8 @@ export default async function HomePage() {
       {/* 5.8 Owned media — blog grid + podcast tile */}
       <InsightsPreview posts={recentPosts} />
       <LatestPodcastEpisode />
-      {/* 5.9 FAQ — Phase 2 */}
+      {/* 5.9 FAQ + FAQPage JSON-LD */}
+      <HomepageFaq />
       {/* 5.10 Newsletter — Phase 3 */}
       {/* 5.11 FinalCTA (new defaults: audit primary, Book a call secondary) */}
       <FinalCTA />
