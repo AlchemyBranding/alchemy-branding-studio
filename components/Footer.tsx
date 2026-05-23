@@ -9,6 +9,7 @@ import {
   VimeoIcon,
   YouTubeIcon,
 } from "@/components/icons";
+import Spotlight from "@/components/motion/Spotlight";
 import {
   groupSites,
   motionHref,
@@ -31,8 +32,9 @@ const labelStyle =
 
 export default function Footer() {
   return (
-    <footer className="bg-dawn border-t border-dawn-80 pt-20 pb-10 mt-auto">
-      <div className="max-w-7xl mx-auto px-6 md:px-10">
+    <footer className="bg-dawn border-t border-dawn-80 mt-auto">
+      <Spotlight size={520} className="pt-20 pb-10">
+        <div className="max-w-7xl mx-auto px-6 md:px-10">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Column 1: brand + socials */}
           <div>
@@ -166,6 +168,7 @@ export default function Footer() {
           <p>Design &amp; animation by Alchemy</p>
         </div>
       </div>
+      </Spotlight>
     </footer>
   );
 }

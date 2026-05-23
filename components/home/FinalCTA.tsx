@@ -1,5 +1,4 @@
 import Button from "@/components/Button";
-import Spotlight from "@/components/motion/Spotlight";
 import { motionHref } from "@/lib/site";
 
 type Props = {
@@ -22,40 +21,31 @@ export default function FinalCTA({
   secondary = defaults.secondary,
 }: Props = {}) {
   return (
-    <Spotlight
-      // Soft white glow on the dragon-fire background — orange-on-orange
-      // would disappear. Bigger radius than the default so the light
-      // reads across the full-bleed CTA at any breakpoint.
-      color="rgba(255, 255, 255, 0.22)"
-      size={640}
-      className="bg-dragon-fire"
+    <section
+      aria-labelledby="final-cta-heading"
+      className="bg-dragon-fire py-[120px]"
     >
-      <section
-        aria-labelledby="final-cta-heading"
-        className="py-[120px]"
-      >
-        <div className="max-w-3xl mx-auto px-6 md:px-10 text-center">
-          <h2
-            id="final-cta-heading"
-            className="font-display text-h2 text-dawn"
-          >
-            {heading}
-          </h2>
-          <p className="mt-6 max-w-md mx-auto text-dawn text-[1rem] leading-[1.6]">
-            {subtext}
-          </p>
-          <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
-            <Button variant="primary-on-fire" href={motionHref} external>
-              Book a call
+      <div className="max-w-3xl mx-auto px-6 md:px-10 text-center">
+        <h2
+          id="final-cta-heading"
+          className="font-display text-h2 text-dawn"
+        >
+          {heading}
+        </h2>
+        <p className="mt-6 max-w-md mx-auto text-dawn text-[1rem] leading-[1.6]">
+          {subtext}
+        </p>
+        <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
+          <Button variant="primary-on-fire" href={motionHref} external>
+            Book a call
+          </Button>
+          {secondary ? (
+            <Button variant="secondary-on-fire" href={secondary.href}>
+              {secondary.label}
             </Button>
-            {secondary ? (
-              <Button variant="secondary-on-fire" href={secondary.href}>
-                {secondary.label}
-              </Button>
-            ) : null}
-          </div>
+          ) : null}
         </div>
-      </section>
-    </Spotlight>
+      </div>
+    </section>
   );
 }
