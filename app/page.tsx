@@ -5,8 +5,8 @@ import FeaturedWork from "@/components/home/FeaturedWork";
 import FinalCTA from "@/components/home/FinalCTA";
 import Hero from "@/components/home/Hero";
 import InsightsPreview from "@/components/home/InsightsPreview";
+import LatestPodcastEpisode from "@/components/home/LatestPodcastEpisode";
 import LogoStrip from "@/components/home/LogoStrip";
-import PodcastTile from "@/components/home/PodcastTile";
 import PositioningStrip from "@/components/home/PositioningStrip";
 import TestimonialsCarousel from "@/components/home/TestimonialsCarousel";
 import WorkshopBlock from "@/components/home/WorkshopBlock";
@@ -58,7 +58,7 @@ export default async function HomePage() {
       <TestimonialsCarousel testimonials={testimonials} />
       {/* 5.8 Owned media — blog grid + podcast tile */}
       <InsightsPreview posts={recentPosts} />
-      <PodcastTile />
+      <LatestPodcastEpisode />
       {/* 5.9 FAQ — Phase 2 */}
       {/* 5.10 Newsletter — Phase 3 */}
       {/* 5.11 FinalCTA (new defaults: audit primary, Book a call secondary) */}
