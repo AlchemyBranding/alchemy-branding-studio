@@ -115,9 +115,18 @@ export default function WorkshopBlock() {
  */
 function WorkshopCollage() {
   const images: Array<{ src: string | null; alt: string }> = [
-    { src: null, alt: "The workshop in progress" },
-    { src: null, alt: "Strategy work on the wall" },
-    { src: null, alt: "Studio team in session" },
+    {
+      src: "/workshop/workshop-main.jpg",
+      alt: "Jess Morgan facilitating a brand strategy session with the leadership team in the studio",
+    },
+    {
+      src: "/workshop/workshop-detail.png",
+      alt: "Strategy session in progress around the table",
+    },
+    {
+      src: "/workshop/workshop-accent.png",
+      alt: "Audience engaged at an Alchemy talk on building a brand-led business",
+    },
   ];
   const [main, secondary, tertiary] = images;
 
