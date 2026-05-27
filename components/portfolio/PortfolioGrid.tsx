@@ -12,6 +12,7 @@ const serviceTagOrder = [
   "Strategy",
   "Website",
   "Animation",
+  "Social Media",
   "Report Design",
   "Proposal Design",
 ] as const;
