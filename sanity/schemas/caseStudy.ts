@@ -7,6 +7,7 @@ const serviceTagOptions = [
   "Animation",
   "Website",
   "Strategy",
+  "Social Media",
   "Report Design",
   "Proposal Design",
 ] as const;
