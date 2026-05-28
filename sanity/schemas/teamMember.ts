@@ -26,13 +26,24 @@ export const teamMember = defineType({
       name: "bio",
       title: "Bio",
       type: "text",
-      rows: 4,
+      rows: 6,
+      description: "Soft cap of 180 words. Longer is allowed but gets a warning.",
       validation: (rule) =>
-        rule.custom((value) => {
-          if (!value) return true;
-          const words = value.trim().split(/\s+/).filter(Boolean).length;
-          return words <= 80 || "Bio must be 80 words or fewer";
-        }),
+        rule
+          .custom((value) => {
+            if (!value) return true;
+            const words = value.trim().split(/\s+/).filter(Boolean).length;
+            return (
+              words <= 180 || "Bio is over 180 words — consider trimming."
+            );
+          })
+          .warning(),
+    }),
+    defineField({
+      name: "linkedinUrl",
+      title: "LinkedIn URL",
+      type: "url",
+      description: "Optional. Adds a LinkedIn link to the team card.",
     }),
     defineField({
       name: "order",

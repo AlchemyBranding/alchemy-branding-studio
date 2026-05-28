@@ -69,6 +69,7 @@ export const teamMembersQuery = defineQuery(`
       name,
       role,
       bio,
+      linkedinUrl,
       photo ${altImageProjection}
     }
 `);
@@ -252,6 +253,7 @@ export type TeamMember = {
   name: string;
   role: string;
   bio: string | null;
+  linkedinUrl: string | null;
   photo: SanityImageRef | null;
 };
 
