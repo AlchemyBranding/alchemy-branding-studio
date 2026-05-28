@@ -138,24 +138,24 @@ export default async function BlogPostPage({
       />
 
       {post.body && Array.isArray(post.body) && post.body.length > 0 ? (
-        <section className="bg-dawn py-[80px]">
+        <section className="bg-dusk py-[80px]">
           <div className="max-w-3xl mx-auto px-6 md:px-10">
-            <PortableTextContent value={post.body} />
+            <PortableTextContent value={post.body} tone="light" />
           </div>
         </section>
       ) : null}
 
       {post.author?.name ? (
-        <section className="bg-dawn pb-[80px]">
+        <section className="bg-dusk pb-[80px]">
           <div className="max-w-3xl mx-auto px-6 md:px-10">
-            <div className="rounded-card bg-dawn-80 border border-dawn-60 p-6">
+            <div className="rounded-card bg-dawn/5 border border-dawn/15 p-6">
               <p className="text-[0.75rem] font-bold uppercase tracking-[0.12em] text-dragon-fire">
                 Written by
               </p>
-              <p className="mt-2 text-white">
+              <p className="mt-2 text-dawn">
                 <span className="font-bold">{post.author.name}</span>
                 {post.author.role ? (
-                  <span className="text-white/55">, {post.author.role}</span>
+                  <span className="text-dawn/55">, {post.author.role}</span>
                 ) : null}
               </p>
             </div>

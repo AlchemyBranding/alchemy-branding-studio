@@ -49,7 +49,26 @@ function vimeoId(url: string): string | null {
   }
 }
 
-const components: PortableTextComponents = {
+/**
+ * Tone-aware components map. The blog body sits on a light cream
+ * background (bg-dusk) and needs dark text; case study body sits on
+ * the dark dawn background and uses white text. The structural
+ * styling (margins, sizes, decorations) is identical in both.
+ */
+function buildComponents(tone: "dark" | "light"): PortableTextComponents {
+  // Body text colours
+  const bodyText =
+    tone === "light" ? "text-dawn/80" : "text-white/80";
+  const headingText =
+    tone === "light" ? "text-dawn" : "text-white";
+  const captionText =
+    tone === "light" ? "text-dawn/55" : "text-white/55";
+  const blockquoteText =
+    tone === "light" ? "text-dawn" : "text-white";
+  const imageBg =
+    tone === "light" ? "bg-dawn/5" : "bg-dawn-80";
+
+  return {
   types: {
     image: ({ value }: { value: ImageBlock }) => {
       if (!value?.asset) return null;
@@ -70,10 +89,10 @@ const components: PortableTextComponents = {
             width={width}
             height={height}
             sizes="(min-width: 1024px) 768px, 100vw"
-            className="w-full h-auto rounded-card bg-dawn-80"
+            className="w-full h-auto rounded-card ${imageBg}"
           />
           {value.caption ? (
-            <figcaption className="mt-3 text-[0.875rem] text-white/55">
+            <figcaption className="mt-3 text-[0.875rem] ${captionText}">
               {value.caption}
             </figcaption>
           ) : null}
@@ -131,7 +150,7 @@ const components: PortableTextComponents = {
         <figure className="my-12">
           {media}
           {caption ? (
-            <figcaption className="mt-3 text-[0.875rem] text-white/55">
+            <figcaption className="mt-3 text-[0.875rem] ${captionText}">
               {caption}
             </figcaption>
           ) : null}
@@ -168,45 +187,62 @@ const components: PortableTextComponents = {
   },
   block: {
     normal: ({ children }) => (
-      <p className="text-[1.0625rem] leading-[1.75] text-white/80 my-5">
+      <p className={`text-[1.0625rem] leading-[1.75] ${bodyText} my-5`}>
         {children}
       </p>
     ),
     h2: ({ children }) => (
-      <h2 className="font-display text-h3 text-white mt-16 mb-4">
+      <h2 className={`font-display text-h3 ${headingText} mt-16 mb-4`}>
         {children}
       </h2>
     ),
     h3: ({ children }) => (
-      <h3 className="font-bold text-[1.25rem] text-white mt-10 mb-3">
+      <h3 className={`font-bold text-[1.25rem] ${headingText} mt-10 mb-3`}>
         {children}
       </h3>
     ),
     h4: ({ children }) => (
-      <h4 className="font-bold text-[1.0625rem] text-white mt-8 mb-2">
+      <h4 className={`font-bold text-[1.0625rem] ${headingText} mt-8 mb-2`}>
         {children}
       </h4>
     ),
     blockquote: ({ children }) => (
-      <blockquote className="my-10 border-l-2 border-dragon-fire pl-6 font-display italic text-[1.375rem] leading-[1.5] text-white">
+      <blockquote className={`my-10 border-l-2 border-dragon-fire pl-6 font-display italic text-[1.375rem] leading-[1.5] ${blockquoteText}`}>
         {children}
       </blockquote>
     ),
   },
   list: {
     bullet: ({ children }) => (
-      <ul className="my-5 space-y-2 list-disc pl-6 text-[1.0625rem] leading-[1.7] text-white/80 marker:text-dragon-fire">
+      <ul className={`my-5 space-y-2 list-disc pl-6 text-[1.0625rem] leading-[1.7] ${bodyText} marker:text-dragon-fire`}>
         {children}
       </ul>
     ),
     number: ({ children }) => (
-      <ol className="my-5 space-y-2 list-decimal pl-6 text-[1.0625rem] leading-[1.7] text-white/80 marker:text-dragon-fire">
+      <ol className={`my-5 space-y-2 list-decimal pl-6 text-[1.0625rem] leading-[1.7] ${bodyText} marker:text-dragon-fire`}>
         {children}
       </ol>
     ),
   },
-};
+  };
+}
 
-export default function PortableTextContent({ value }: { value: unknown[] }) {
-  return <PortableText value={value as Parameters<typeof PortableText>[0]["value"]} components={components} />;
+const darkComponents = buildComponents("dark");
+const lightComponents = buildComponents("light");
+
+export default function PortableTextContent({
+  value,
+  tone = "dark",
+}: {
+  value: unknown[];
+  /** Background context. "dark" (default) for case studies, "light" for blog posts on bg-dusk. */
+  tone?: "dark" | "light";
+}) {
+  const components = tone === "light" ? lightComponents : darkComponents;
+  return (
+    <PortableText
+      value={value as Parameters<typeof PortableText>[0]["value"]}
+      components={components}
+    />
+  );
 }
