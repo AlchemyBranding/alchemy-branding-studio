@@ -38,7 +38,7 @@ export default async function AboutPage() {
           </h1>
           <p className="mt-8 max-w-2xl text-[1.125rem] leading-[1.7] text-white/65">
             Alchemy is a creative studio for ambitious businesses. We help
-            founders, marketing leaders and operators ship brands that hold
+            founders, marketing leaders and operators shape brands that hold
             up across the deck, the site, the campaign, the proposal.
           </p>
         </div>

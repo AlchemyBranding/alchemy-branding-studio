@@ -13,13 +13,18 @@ export const motionHref =
   process.env.NEXT_PUBLIC_MOTION_URL ??
   "https://app.usemotion.com/meet/dave-morgan/discovery-call";
 
-export const navLinks = [
+export const navLinks: ReadonlyArray<{
+  label: string;
+  href: string;
+  external?: boolean;
+}> = [
   { label: "About", href: "/about" },
   { label: "Work", href: "/portfolio" },
   { label: "Services", href: "/services" },
   { label: "Insights", href: "/news" },
+  { label: "Podcast", href: "https://www.brandtoscale.co.uk", external: true },
   { label: "Contact", href: "/contact" },
-] as const;
+];
 
 export const socialLinks = [
   { label: "Facebook", href: "https://www.facebook.com/alchemybrandingstudio", icon: "facebook" },

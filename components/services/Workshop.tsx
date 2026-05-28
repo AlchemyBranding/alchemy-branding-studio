@@ -50,15 +50,6 @@ export default function Workshop() {
               build themselves.
             </p>
 
-            <div className="mt-10 inline-flex items-baseline gap-3 rounded-card border border-dawn/15 bg-white/40 px-5 py-3">
-              <span className="text-[0.75rem] font-bold uppercase tracking-[0.12em] text-dragon-fire">
-                Investment
-              </span>
-              <span className="font-display text-[1.5rem] text-dawn">
-                From £5,000
-              </span>
-            </div>
-
             <div className="mt-10 flex flex-wrap items-center gap-4">
               <Button variant="primary" href={motionHref} external>
                 Book a discovery call

@@ -62,19 +62,28 @@ export default function Header() {
 
           {/* Centre nav (desktop) */}
           <nav className="hidden lg:flex items-center gap-8" aria-label="Primary">
-            {navLinks.map(({ label, href }) => (
-              <Link
-                key={href}
-                href={href}
-                className={`text-[0.9375rem] font-medium transition-colors duration-200 ${
-                  isActive(href)
-                    ? "text-dragon-fire"
-                    : "text-white hover:text-dragon-fire"
-                }`}
-              >
-                {label}
-              </Link>
-            ))}
+            {navLinks.map(({ label, href, external }) => {
+              const className = `text-[0.9375rem] font-medium transition-colors duration-200 ${
+                isActive(href)
+                  ? "text-dragon-fire"
+                  : "text-white hover:text-dragon-fire"
+              }`;
+              return external ? (
+                <a
+                  key={href}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={className}
+                >
+                  {label}
+                </a>
+              ) : (
+                <Link key={href} href={href} className={className}>
+                  {label}
+                </Link>
+              );
+            })}
           </nav>
 
           {/* Right CTAs (desktop) */}
@@ -140,19 +149,34 @@ export default function Header() {
             className="flex-1 flex flex-col items-start gap-6 px-8 pt-12"
             aria-label="Primary mobile"
           >
-            {navLinks.map(({ label, href }) => (
-              <Link
-                key={href}
-                href={href}
-                className={`text-[2rem] font-bold leading-none transition-colors duration-200 ${
-                  isActive(href)
-                    ? "text-dragon-fire"
-                    : "text-white hover:text-dragon-fire"
-                }`}
-              >
-                {label}
-              </Link>
-            ))}
+            {navLinks.map(({ label, href, external }) => {
+              const className = `text-[2rem] font-bold leading-none transition-colors duration-200 ${
+                isActive(href)
+                  ? "text-dragon-fire"
+                  : "text-white hover:text-dragon-fire"
+              }`;
+              return external ? (
+                <a
+                  key={href}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={className}
+                  onClick={() => setMobileOpen(false)}
+                >
+                  {label}
+                </a>
+              ) : (
+                <Link
+                  key={href}
+                  href={href}
+                  className={className}
+                  onClick={() => setMobileOpen(false)}
+                >
+                  {label}
+                </Link>
+              );
+            })}
           </nav>
 
           <div className="px-8 pb-12 flex flex-col gap-4">
