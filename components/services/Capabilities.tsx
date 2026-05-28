@@ -11,32 +11,32 @@ const capabilities: Capability[] = [
   {
     title: "Visual identity",
     body:
-      "Logo systems, type, colour, brand language and the guidelines to keep them consistent as the team grows.",
+      "Logo, type, colour and the brand language that ties it together, with guidelines that keep it consistent as the team grows and more people start using it.",
   },
   {
     title: "Website",
     body:
-      "Strategic site design and build. Fast, accessible, easy for your team to update once we hand it back.",
+      "Strategic design and build: fast, accessible, and easy for your team to keep updated once we hand it over. Built to do a job, not just to look new for a year.",
   },
   {
     title: "Animation & motion",
     body:
-      "Explainer videos, motion identity, social cuts and campaign work. Whatever the message needs in motion.",
+      "Explainer videos, motion identity, social cuts and campaign work; the message brought to life for the moments when words on a page aren't enough.",
   },
   {
     title: "Sales & proposal design",
     body:
-      "Decks, proposals and one-pagers built inside Better Proposals, Proposify or Qwilr. On-brand, on-message, ready to close.",
+      "Decks, proposals and one-pagers built to close: on-brand, on-message, and set up inside the tools you already use (Better Proposals, Proposify, Qwilr).",
   },
   {
     title: "Content & social",
     body:
-      "Content systems, social design retainers and the day-to-day craft that keeps a brand showing up consistently.",
+      "Content systems and social design retainers; the day-to-day craft that keeps the brand showing up properly, instead of going quiet between the big projects.",
   },
   {
     title: "Ongoing partnership",
     body:
-      "Embedded as your design and brand team for the long stretch. Retainers shaped to the work that needs doing.",
+      "Your design and brand team for the long stretch: embedded, on hand, with retainers shaped around the work that actually needs doing rather than a fixed package you have to grow into.",
   },
 ];
 
@@ -54,11 +54,13 @@ export default function Capabilities() {
           id="capabilities-heading"
           className="font-display text-h2 mt-4 max-w-3xl text-white"
         >
-          We deliver everything you find on the roadmap.
+          Then we build what{" "}
+          <span className="italic text-dusk">the roadmap calls for.</span>
         </h2>
         <p className="mt-6 max-w-2xl text-[1.0625rem] leading-[1.7] text-white/65">
-          You don&apos;t need to know what you need yet. The workshop tells
-          us. Most teams continue with some combination of these.
+          You don&apos;t need to know what you need yet. The workshop
+          tells us. Most teams go on to use some combination of the
+          below.
         </p>
 
         <ul className="mt-14 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">

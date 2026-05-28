@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 
 import FinalCTA from "@/components/home/FinalCTA";
 import Capabilities from "@/components/services/Capabilities";
+import HowWeFixIt from "@/components/services/HowWeFixIt";
 import PainSignals from "@/components/services/PainSignals";
 import WhoWeWorkWith from "@/components/services/WhoWeWorkWith";
 import Workshop from "@/components/services/Workshop";
@@ -33,24 +34,26 @@ export default function ServicesPage() {
             <span className="text-dusk italic">You can&apos;t name it.</span>
           </h1>
           <p className="mt-8 max-w-2xl text-[1.125rem] leading-[1.7] text-white/65">
-            The site&apos;s live. The campaigns are running. The deck looks
-            fine. And the leads still aren&apos;t landing. Engagement&apos;s
-            flat, sales calls drag, and you can&apos;t put your finger on
-            why. Nine times out of ten it isn&apos;t a visual problem.
-            It&apos;s positioning, messaging and language. That&apos;s
-            where we start.
+            The site&apos;s live. The campaigns are running. The deck
+            looks fine. On paper, it all works and yet something
+            underneath isn&apos;t pulling its weight, and you
+            can&apos;t quite put your finger on what. Nine times out
+            of ten, it isn&apos;t a visual problem. It&apos;s
+            positioning, messaging and language, the part that decides
+            whether the rest of it works. That&apos;s where we start.
           </p>
         </div>
       </section>
 
       <PainSignals />
+      <HowWeFixIt />
       <Workshop />
       <Capabilities />
       <WhoWeWorkWith />
 
       <FinalCTA
-        heading="Ready to find out where the gap is?"
-        subtext="Book a 30-minute discovery call. We'll talk through where you're at, what's not working, and whether the workshop's right for you."
+        heading="Still can't quite name it?"
+        subtext="That's usually the right place to start. Book a call and we'll help you work out what's actually going on and what's worth fixing first."
         primary={{ label: "Book a call", href: motionHref, external: true }}
         secondary={{ label: "Send a brief", href: "/contact" }}
       />

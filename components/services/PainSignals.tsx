@@ -1,10 +1,10 @@
 const signals = [
-  "Your team can describe what you do, but not why it matters.",
-  "You're running campaigns, but leads aren't landing, and \"do more content\" doesn't feel like the answer.",
-  "You're winning on referral. Cold inbound is flat.",
-  "Two people in the same meeting describe the company two different ways.",
-  "Sales calls drag, because the brand isn't doing its job before you turn up.",
-  "You've outgrown the language you started with, but the new language isn't there yet.",
+  "Your team can say what you do. None of them can quite say why it matters.",
+  "There's no shortage of activity (campaigns, content, posts), but it isn't turning into leads, and \"do more\" isn't the answer.",
+  "Referrals still come in. Cold inbound has gone quiet.",
+  "Ask two people in the same meeting what you do, and you'll get two different answers.",
+  "Every sales call starts from scratch, because nothing's done the convincing before you arrive.",
+  "The business has grown up. The language hasn't caught up.",
 ];
 
 export default function PainSignals() {
@@ -24,9 +24,9 @@ export default function PainSignals() {
           The signals are usually small, until they aren&apos;t.
         </h2>
         <p className="mt-6 max-w-2xl text-[1.0625rem] leading-[1.7] text-white/65">
-          By the time the brand becomes a problem, it&apos;s already costing
-          you in close rates, hiring and confidence. A few of the things we
-          hear most:
+          By the time the brand becomes the problem, it&apos;s already
+          costing you in close rates, hiring and confidence. Here&apos;s
+          what we hear most:
         </p>
 
         <ul className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-6">
