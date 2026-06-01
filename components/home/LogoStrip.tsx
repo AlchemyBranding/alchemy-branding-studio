@@ -5,8 +5,8 @@ type ClientLogo = {
   file: string;
   /** Bumps the rendered size for marks that read small in the strip. */
   size?: "lg";
-  /** Render in full colour (no white-monochrome filter) to keep detail,
-   *  e.g. a detailed crest that would otherwise flatten to a solid shape. */
+  /** Render in grayscale (monochrome, detail preserved) instead of the flat
+   *  white silhouette, e.g. a detailed crest that would otherwise be a blob. */
   textured?: boolean;
 };
 
@@ -69,7 +69,9 @@ export default function LogoStrip() {
                     alt={isClone ? "" : logo.name}
                     loading="lazy"
                     className={`w-auto object-contain opacity-50 hover:opacity-100 transition-opacity duration-200 ${
-                      logo.textured ? "" : "[filter:brightness(0)_invert(1)]"
+                      logo.textured
+                        ? "[filter:grayscale(1)_brightness(1.15)]"
+                        : "[filter:brightness(0)_invert(1)]"
                     } ${
                       logo.size === "lg"
                         ? "h-14 max-w-[240px]"
