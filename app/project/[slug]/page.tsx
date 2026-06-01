@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
 import ArticleJsonLd from "@/components/ArticleJsonLd";
+import BreadcrumbJsonLd from "@/components/BreadcrumbJsonLd";
 import CaseStudyHero from "@/components/case-study/CaseStudyHero";
 import CaseStudyQuote from "@/components/case-study/CaseStudyQuote";
 import CaseStudyStats from "@/components/case-study/CaseStudyStats";
@@ -119,6 +120,13 @@ export default async function CaseStudyPage({
         datePublished={cs.publishedAt}
         dateModified={cs._updatedAt}
         authorName={null}
+      />
+      <BreadcrumbJsonLd
+        items={[
+          { name: "Home", url: siteConfig.url },
+          { name: "Work", url: `${siteConfig.url}/portfolio` },
+          { name: cs.title.trim(), url: articleUrl },
+        ]}
       />
       <CaseStudyHero
         title={cs.title}

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
 import ArticleJsonLd from "@/components/ArticleJsonLd";
+import BreadcrumbJsonLd from "@/components/BreadcrumbJsonLd";
 import PortableTextContent from "@/components/case-study/PortableTextContent";
 import FinalCTA from "@/components/home/FinalCTA";
 import PostHero from "@/components/post/PostHero";
@@ -127,6 +128,13 @@ export default async function BlogPostPage({
         datePublished={post.publishedAt}
         dateModified={post._updatedAt}
         authorName={post.author?.name ?? null}
+      />
+      <BreadcrumbJsonLd
+        items={[
+          { name: "Home", url: siteConfig.url },
+          { name: "Insights", url: `${siteConfig.url}/news` },
+          { name: post.title.trim(), url: articleUrl },
+        ]}
       />
       <PostHero
         title={post.title}
