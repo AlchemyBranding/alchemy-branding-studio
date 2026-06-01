@@ -40,6 +40,7 @@ module.exports = {
     "/api/*",
     "/404",
     "/500",
+    "/portal",
   ],
   changefreq: "weekly",
   priority: 0.7,

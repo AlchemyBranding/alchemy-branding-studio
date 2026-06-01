@@ -18,6 +18,7 @@ const SUPPRESS_PREFIXES = [
   "/free-brand-audit-for-smes",
   "/contact",
   "/motion",
+  "/portal",
 ];
 
 type FieldErrors = Partial<Record<"email" | "consent", string>>;
