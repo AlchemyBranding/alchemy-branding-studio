@@ -41,6 +41,8 @@ module.exports = {
     "/404",
     "/500",
     "/portal",
+    "/motion",
+    "/opengraph-image",
   ],
   changefreq: "weekly",
   priority: 0.7,
