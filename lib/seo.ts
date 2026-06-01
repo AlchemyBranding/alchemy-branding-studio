@@ -13,7 +13,8 @@ type PageKey =
   | "news"
   | "contact"
   | "free-brand-audit"
-  | "custom-proposal-design";
+  | "custom-proposal-design"
+  | "animation";
 
 type Args = {
   pageKey: PageKey;

@@ -33,6 +33,21 @@ export const featuredCaseStudiesQuery = defineQuery(`
     }
 `);
 
+export const animationCaseStudiesQuery = defineQuery(`
+  *[_type == "caseStudy" && defined(slug.current) && "Animation" in serviceTags]
+    | order(coalesce(featured, false) desc, publishedAt desc) [0...3] {
+      _id,
+      title,
+      "slug": slug.current,
+      subtitle,
+      serviceTags,
+      clientName,
+      outcomeSummary,
+      heroImage ${altImageProjection},
+      "heroVideoUrl": heroVideo.asset->url
+    }
+`);
+
 export const featuredTestimonialsQuery = defineQuery(`
   *[_type == "testimonial" && featured == true]
     | order(order asc, _createdAt asc) {
