@@ -136,6 +136,26 @@ export default function PortalPage() {
           {links.map((link, i) => (
             <PortalLinkRow key={link.href} link={link} primary={i === 0} />
           ))}
+
+          {/* Founders' personal LinkedIn — two-up, full button width */}
+          <div className="grid grid-cols-2 gap-3">
+            {[
+              { name: "Dave", href: "https://www.linkedin.com/in/beardedtinywizard/" },
+              { name: "Jess", href: "https://www.linkedin.com/in/jessmmorgan/" },
+            ].map((person) => (
+              <a
+                key={person.href}
+                href={person.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`${person.name} on LinkedIn`}
+                className="group flex items-center justify-center gap-2 rounded-card bg-dawn-80 border border-dawn-60 px-4 py-4 text-white hover:border-dragon-fire transition-colors duration-200"
+              >
+                <LinkedInIcon className="w-4 h-4 text-dragon-fire shrink-0" />
+                <span className="font-bold text-[0.9rem]">{person.name}</span>
+              </a>
+            ))}
+          </div>
         </nav>
 
         <ul className="mt-10 flex items-center justify-center gap-5" aria-label="Social media">
