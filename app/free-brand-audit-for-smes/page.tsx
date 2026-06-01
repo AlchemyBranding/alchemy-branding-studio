@@ -15,6 +15,46 @@ export async function generateMetadata(): Promise<Metadata> {
   });
 }
 
+const howItWorks = [
+  {
+    title: "Send us the links.",
+    detail: "Your website and socials, plus a line on where you feel stuck.",
+  },
+  {
+    title: "We review it like a buyer would.",
+    detail:
+      "Across strategy, messaging, design and consistency, not just how it looks.",
+  },
+  {
+    title: "You get the doc.",
+    detail:
+      "A short, honest read: what's working, what isn't, and what we'd fix first.",
+  },
+];
+
+const whatWeLookAt = [
+  {
+    area: "Strategy and positioning",
+    question: "Is it clear who you are for, and why you are different?",
+  },
+  {
+    area: "Identity and design",
+    question: "Does the brand look as good as the work?",
+  },
+  {
+    area: "Website",
+    question: "Does a first-time visitor get it in five seconds?",
+  },
+  {
+    area: "Content and social",
+    question: "Do your channels build trust, or chip away at it?",
+  },
+  {
+    area: "Consistency and trust",
+    question: "Does it hold together across every touchpoint?",
+  },
+];
+
 const whatYouGet = [
   "A short audit doc with what's working, what isn't, and what we'd fix first",
   "Concrete notes on positioning, messaging and language, not just visual feedback",
@@ -41,12 +81,11 @@ export default function FreeBrandAuditPage() {
             <span className="text-dusk italic">where the leaks are.</span>
           </h1>
           <p className="mt-8 max-w-2xl text-[1.125rem] leading-[1.7] text-white/65">
-            A free, no-strings audit of your brand and marketing. Tell us
-            where you&apos;re at, drop us your site, and we&apos;ll come
-            back within three business days with a short doc covering
-            what&apos;s working, what isn&apos;t, and what we&apos;d
-            fix first. Positioning, messaging and language included,
-            not just the visuals.
+            A free, no-strings review of your brand and marketing. Send us your
+            site and socials, tell us where you are, and within three business
+            days you get a short doc covering what&apos;s working, what
+            isn&apos;t, and what to fix first. Positioning, messaging and
+            language included, not just the visuals.
           </p>
         </div>
       </section>
@@ -54,6 +93,72 @@ export default function FreeBrandAuditPage() {
       <section className="bg-dawn pb-[120px]">
         <div className="max-w-7xl mx-auto px-6 md:px-10 grid grid-cols-1 lg:grid-cols-[1fr_440px] gap-12 lg:gap-16 items-start">
           <div className="space-y-14">
+            <div>
+              <p className="text-[0.8rem] font-medium uppercase tracking-[0.12em] text-dragon-fire">
+                How it works
+              </p>
+              <h2 className="font-display text-h2 mt-3 text-white">
+                Three days, three steps.
+              </h2>
+              <ul className="mt-8 space-y-4">
+                {howItWorks.map((step, i) => (
+                  <li
+                    key={step.title}
+                    className="flex gap-5 border-t border-dawn-80 pt-4"
+                  >
+                    <span
+                      aria-hidden="true"
+                      className="text-dragon-fire font-bold shrink-0 w-7"
+                    >
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                    <div>
+                      <p className="text-[1.0625rem] font-medium text-white">
+                        {step.title}
+                      </p>
+                      <p className="mt-1 text-[1rem] leading-[1.6] text-white/70">
+                        {step.detail}
+                      </p>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div>
+              <p className="text-[0.8rem] font-medium uppercase tracking-[0.12em] text-dragon-fire">
+                What we look at
+              </p>
+              <h2 className="font-display text-h2 mt-3 text-white">
+                The five things we check.
+              </h2>
+              <ul className="mt-8 space-y-4">
+                {whatWeLookAt.map((item) => (
+                  <li
+                    key={item.area}
+                    className="border-t border-dawn-80 pt-4"
+                  >
+                    <p className="font-display text-[1.125rem] text-white">
+                      {item.area}
+                    </p>
+                    <p className="mt-1 text-[1rem] leading-[1.6] text-white/65">
+                      {item.question}
+                    </p>
+                  </li>
+                ))}
+              </ul>
+              <p className="mt-8 text-[0.9375rem] leading-[1.6] text-white/55 max-w-md">
+                Want to run it yourself first?{" "}
+                <a
+                  href="/alchemy-brand-checklist.pdf"
+                  download
+                  className="text-dragon-fire underline underline-offset-4 hover:text-fire-80 transition-colors"
+                >
+                  Download the brand checklist.
+                </a>
+              </p>
+            </div>
+
             <div>
               <p className="text-[0.8rem] font-medium uppercase tracking-[0.12em] text-dragon-fire">
                 What you get
@@ -103,8 +208,10 @@ export default function FreeBrandAuditPage() {
                 ))}
               </ul>
               <p className="mt-8 text-[0.9375rem] leading-[1.6] text-white/55 max-w-md">
-                Not in this bracket? Drop us a line anyway. We&apos;ll let
-                you know if we can still help, or point you somewhere that can.
+                Not in this bracket? Drop us a line anyway. We&apos;ll let you
+                know if we can still help, or point you somewhere that can. No
+                pitch, no pressure. Sometimes the honest answer is that you
+                don&apos;t need us yet.
               </p>
             </div>
           </div>
