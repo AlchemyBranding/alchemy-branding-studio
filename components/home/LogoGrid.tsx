@@ -176,7 +176,7 @@ const clientLogos: ClientLogo[] = [
 
 export default function LogoGrid() {
   return (
-    <section aria-labelledby="clients-heading" className="bg-dawn-80 py-[100px]">
+    <section aria-labelledby="clients-heading" className="bg-dawn-80 py-[72px]">
       <div className="max-w-7xl mx-auto px-6 md:px-10">
         <p
           id="clients-heading"
@@ -185,13 +185,13 @@ export default function LogoGrid() {
           Trusted by
         </p>
 
-        <ul className="mt-12 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+        <ul className="mt-10 grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-6 gap-3">
           {clientLogos.map((logo) => (
             <li key={logo.slug}>
               <Link
                 href={`/project/${logo.slug}`}
                 aria-label={`${logo.name}: view case study`}
-                className="group relative flex h-24 md:h-28 items-center justify-center rounded-card bg-white px-4 transition-transform duration-300 hover:-translate-y-0.5 outline-none focus-visible:ring-2 focus-visible:ring-dragon-fire focus-visible:ring-offset-2 focus-visible:ring-offset-dawn-80"
+                className="group relative flex h-20 md:h-24 items-center justify-center rounded-card bg-white px-3 transition-transform duration-300 hover:-translate-y-0.5 outline-none focus-visible:ring-2 focus-visible:ring-dragon-fire focus-visible:ring-offset-2 focus-visible:ring-offset-dawn-80"
               >
                 {/* Monochrome (grayscale keeps internal detail); fades out to reveal the panel. */}
                 {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -203,15 +203,15 @@ export default function LogoGrid() {
                     logo.invert ? "grayscale invert" : "grayscale"
                   } ${
                     logo.emphasis === "xl"
-                      ? "max-h-20"
+                      ? "max-h-16"
                       : logo.emphasis === "lg"
-                        ? "max-h-16"
-                        : "max-h-14"
+                        ? "max-h-14"
+                        : "max-h-12"
                   }`}
                 />
 
                 {/* Hover panel: client name + one-line outcome, dark text on the light card. */}
-                <div className="absolute inset-0 flex flex-col items-center justify-center gap-1 px-3 text-center opacity-0 transition-opacity duration-300 group-hover:opacity-100 group-focus-visible:opacity-100">
+                <div className="absolute inset-0 hidden sm:flex flex-col items-center justify-center gap-1 px-3 text-center opacity-0 transition-opacity duration-300 group-hover:opacity-100 group-focus-visible:opacity-100">
                   <span className="font-display text-[0.95rem] leading-tight text-dawn">
                     {logo.name}
                   </span>
