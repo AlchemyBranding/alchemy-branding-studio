@@ -11,8 +11,8 @@ type ClientLogo = {
   slug: string;
   /** One-line outcome shown in the hover panel (from the case study's outcomeSummary). */
   outcome: string;
-  /** "lg" bumps the rendered size for marks that sit small in a wide canvas. */
-  emphasis?: "lg";
+  /** Bumps the rendered size for marks that sit small in their canvas. */
+  emphasis?: "lg" | "xl";
   /** Logo supplied as a light/white mark; invert it so it reads on the white card. */
   invert?: boolean;
 };
@@ -55,6 +55,7 @@ const clientLogos: ClientLogo[] = [
     slug: "gwent-police-recognise-respond-campaign",
     outcome:
       "A new force procedure given a brand that travels across signage, briefings and the officer app.",
+    emphasis: "xl",
   },
   {
     name: "Medac",
@@ -123,7 +124,7 @@ const clientLogos: ClientLogo[] = [
     file: "SS-Primary.png",
     slug: "bbq-street-food-branding",
     outcome: "Brand identity and ongoing social for a Southern-style BBQ catering brand.",
-    emphasis: "lg",
+    emphasis: "xl",
   },
   {
     name: "Lavender & Lemon",
@@ -201,9 +202,11 @@ export default function LogoGrid() {
                   className={`w-auto object-contain opacity-80 transition-opacity duration-300 group-hover:opacity-0 group-focus-visible:opacity-0 ${
                     logo.invert ? "grayscale invert" : "grayscale"
                   } ${
-                    logo.emphasis === "lg"
-                      ? "h-16 max-w-[230px]"
-                      : "h-14 max-w-[200px]"
+                    logo.emphasis === "xl"
+                      ? "h-20 max-w-[250px]"
+                      : logo.emphasis === "lg"
+                        ? "h-16 max-w-[230px]"
+                        : "h-14 max-w-[200px]"
                   }`}
                 />
 
