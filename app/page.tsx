@@ -8,6 +8,7 @@ import HomepageFaq from "@/components/home/HomepageFaq";
 import InsightsPreview from "@/components/home/InsightsPreview";
 import LatestPodcastEpisode from "@/components/home/LatestPodcastEpisode";
 import LogoStrip from "@/components/home/LogoStrip";
+import NewsletterSignup from "@/components/home/NewsletterSignup";
 import PositioningStrip from "@/components/home/PositioningStrip";
 import TestimonialsCarousel from "@/components/home/TestimonialsCarousel";
 import WorkshopBlock from "@/components/home/WorkshopBlock";
@@ -62,7 +63,8 @@ export default async function HomePage() {
       <LatestPodcastEpisode />
       {/* 5.9 FAQ + FAQPage JSON-LD */}
       <HomepageFaq />
-      {/* 5.10 Newsletter — Phase 3 */}
+      {/* 5.10 Newsletter — brand checklist lead magnet */}
+      <NewsletterSignup location="homepage" />
       {/* 5.11 FinalCTA (new defaults: audit primary, Book a call secondary) */}
       <FinalCTA />
     </>
