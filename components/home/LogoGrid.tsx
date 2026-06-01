@@ -157,7 +157,7 @@ const clientLogos: ClientLogo[] = [
     file: "bean-and-bread.png",
     slug: "being-bean-breads-brand-guardians",
     outcome: "Brand strategy, identity and guidelines for an antipodean coffee shop in Abergavenny.",
-    emphasis: "lg",
+    emphasis: "xl",
   },
   {
     name: "Sales Made Easy",
