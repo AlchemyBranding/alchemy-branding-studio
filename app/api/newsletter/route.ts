@@ -13,6 +13,11 @@ import { NextResponse } from "next/server";
 
 const PORTAL_ID = process.env.HUBSPOT_PORTAL_ID;
 const FORM_GUID = process.env.HUBSPOT_NEWSLETTER_FORM_GUID;
+// Data-residency region. This portal is on EU (app-eu1), so default to eu1.
+// na1 uses the global api.hsforms.com host; other regions use api-<region>.
+const REGION = process.env.HUBSPOT_FORMS_REGION || "eu1";
+const FORMS_HOST =
+  REGION === "na1" ? "api.hsforms.com" : `api-${REGION}.hsforms.com`;
 
 type NewsletterPayload = {
   email?: string;
@@ -64,7 +69,7 @@ export async function POST(request: Request) {
     return NextResponse.json({ ok: true, simulated: true });
   }
 
-  const endpoint = `https://api.hsforms.com/submissions/v3/integration/submit/${PORTAL_ID}/${FORM_GUID}`;
+  const endpoint = `https://${FORMS_HOST}/submissions/v3/integration/submit/${PORTAL_ID}/${FORM_GUID}`;
 
   try {
     const res = await fetch(endpoint, {
