@@ -7,7 +7,7 @@ import Hero from "@/components/home/Hero";
 import HomepageFaq from "@/components/home/HomepageFaq";
 import InsightsPreview from "@/components/home/InsightsPreview";
 import LatestPodcastEpisode from "@/components/home/LatestPodcastEpisode";
-import LogoGrid from "@/components/home/LogoGrid";
+import LogoStrip from "@/components/home/LogoStrip";
 import NewsletterSignup from "@/components/home/NewsletterSignup";
 import PositioningStrip from "@/components/home/PositioningStrip";
 import TestimonialsCarousel from "@/components/home/TestimonialsCarousel";
@@ -48,8 +48,8 @@ export default async function HomePage() {
       <Hero />
       {/* 5.3 Positioning strip — "Design is the lever, growth is the point" */}
       <PositioningStrip />
-      {/* 5.2 Logo proof — linked logo grid (Phase 4, replaces LogoStrip marquee) */}
-      <LogoGrid />
+      {/* 5.2 Logo proof — scrolling logo marquee (white-on-dark) */}
+      <LogoStrip />
       {/* 5.4 Workshop-led foundation (replaces the old service catalogue) */}
       <WorkshopBlock />
       {/* 5.5 Featured work (Sanity-driven, adaptive 1/2/3 layout) */}
