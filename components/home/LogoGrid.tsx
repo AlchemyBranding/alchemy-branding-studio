@@ -199,14 +199,14 @@ export default function LogoGrid() {
                   src={`${dir}/${logo.file}`}
                   alt={logo.name}
                   loading="lazy"
-                  className={`w-auto object-contain opacity-80 transition-opacity duration-300 group-hover:opacity-0 group-focus-visible:opacity-0 ${
+                  className={`w-auto max-w-full object-contain opacity-80 transition-opacity duration-300 group-hover:opacity-0 group-focus-visible:opacity-0 ${
                     logo.invert ? "grayscale invert" : "grayscale"
                   } ${
                     logo.emphasis === "xl"
-                      ? "h-20 max-w-[250px]"
+                      ? "max-h-20"
                       : logo.emphasis === "lg"
-                        ? "h-16 max-w-[230px]"
-                        : "h-14 max-w-[200px]"
+                        ? "max-h-16"
+                        : "max-h-14"
                   }`}
                 />
 
