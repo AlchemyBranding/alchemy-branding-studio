@@ -72,14 +72,21 @@ export async function POST(request: Request) {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         fields: [{ objectTypeId: "0-1", name: "email", value: email }],
-        legalConsentOptions: {
-          consent: {
-            consentToProcess: true,
-            text: "I agree to receive the brand checklist and occasional brand insights from Alchemy Branding Studio.",
-          },
-        },
+        // Only sent when HUBSPOT_CONSENT_TEXT is set. HubSpot rejects
+        // legalConsentOptions on portals without the data-privacy feature
+        // enabled, so this stays off by default and works on Starter plans.
+        ...(process.env.HUBSPOT_CONSENT_TEXT
+          ? {
+              legalConsentOptions: {
+                consent: {
+                  consentToProcess: true,
+                  text: process.env.HUBSPOT_CONSENT_TEXT,
+                },
+              },
+            }
+          : {}),
         context: {
-          pageName: "Homepage newsletter",
+          pageName: "Newsletter signup",
           pageUri: "/",
         },
       }),
