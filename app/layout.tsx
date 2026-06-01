@@ -6,6 +6,7 @@ import GoogleTagManager from "@/components/GoogleTagManager";
 import Header from "@/components/Header";
 import HideOnStudio from "@/components/HideOnStudio";
 import JsonLd from "@/components/JsonLd";
+import NewsletterPopup from "@/components/NewsletterPopup";
 import { satoshi } from "@/lib/fonts";
 import { indexableRobots } from "@/lib/seo";
 import { siteConfig } from "@/lib/site";
@@ -56,6 +57,7 @@ export default function RootLayout({
         <HideOnStudio>
           <Footer />
           <CookieBanner />
+          <NewsletterPopup />
         </HideOnStudio>
         <GoogleTagManager gtmId={gtmId} />
       </body>
