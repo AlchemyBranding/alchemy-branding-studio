@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import Button from "@/components/Button";
+import FooterNewsletter from "@/components/FooterNewsletter";
 import {
   FacebookIcon,
   InstagramIcon,
@@ -35,6 +36,7 @@ export default function Footer() {
     <footer className="bg-dawn border-t border-dawn-80 mt-auto">
       <Spotlight size={520} className="pt-20 pb-10">
         <div className="max-w-7xl mx-auto px-6 md:px-10">
+        <FooterNewsletter />
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Column 1: brand + socials */}
           <div>
