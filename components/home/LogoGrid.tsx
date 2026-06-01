@@ -121,7 +121,7 @@ const clientLogos: ClientLogo[] = [
   },
   {
     name: "Smoke & Slaw",
-    file: "SS-Primary.png",
+    file: "smoke-slaw.png",
     slug: "bbq-street-food-branding",
     outcome: "Brand identity and ongoing social for a Southern-style BBQ catering brand.",
     emphasis: "xl",
