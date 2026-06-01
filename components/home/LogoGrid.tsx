@@ -181,7 +181,7 @@ export default function LogoGrid() {
           id="clients-heading"
           className="text-center text-[0.75rem] font-medium uppercase tracking-[0.12em] text-white/40"
         >
-          Selected work
+          Trusted by
         </p>
 
         <ul className="mt-12 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
