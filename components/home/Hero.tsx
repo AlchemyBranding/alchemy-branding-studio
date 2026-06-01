@@ -35,7 +35,7 @@ export default function Hero() {
           className="text-eyebrow text-dragon-fire animate-fade-up"
           style={{ animationDelay: "200ms" }}
         >
-          A design consultancy for ambitious SMEs
+          Brand strategy that fuels business growth
         </p>
 
         <h1

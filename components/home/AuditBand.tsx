@@ -9,7 +9,7 @@ export default function AuditBand() {
   return (
     <section
       aria-labelledby="audit-band-heading"
-      className="bg-dusk text-dawn py-[140px]"
+      className="bg-dusk text-dawn pt-[140px] pb-[72px]"
     >
       <div className="max-w-7xl mx-auto px-6 md:px-10">
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.1fr] gap-12 lg:gap-20 items-center">

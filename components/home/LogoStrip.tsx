@@ -1,22 +1,29 @@
 const dir = "/trusted-logos";
 
-type ClientLogo = { name: string; file: string };
+type ClientLogo = {
+  name: string;
+  file: string;
+  /** Bumps the rendered size for marks that read small in the strip. */
+  size?: "lg";
+  /** Render in full colour (no white-monochrome filter) to keep detail,
+   *  e.g. a detailed crest that would otherwise flatten to a solid shape. */
+  textured?: boolean;
+};
 
-// All logos are transparent, so the white-monochrome filter below renders
-// each mark in clean white on the dark strip. To add one, drop a
-// transparent PNG/SVG into /public/trusted-logos and add a row here.
+// Logos are transparent, so the white-monochrome filter renders each mark in
+// clean white on the dark strip. "textured" opts a logo out of that filter.
 const clientLogos: ClientLogo[] = [
-  { name: "DS Smith", file: "ds-logo-color.svg" },
+  { name: "DS Smith", file: "ds-logo-color.svg", size: "lg" },
   { name: "Haydale", file: "haydale.png" },
   { name: "Cegedim", file: "cegedim.webp" },
-  { name: "Gwent Police", file: "gwent-police.png" },
+  { name: "Gwent Police", file: "gwent-police.png", textured: true, size: "lg" },
   { name: "Medac", file: "medac.svg" },
   { name: "Practice Toolkit", file: "practice-toolkit.svg" },
-  { name: "Be Business Fit", file: "be-business-fit.svg" },
+  { name: "Be Business Fit", file: "be-business-fit.svg", size: "lg" },
   { name: "Healthy HR", file: "healthy-hr.svg" },
   { name: "The Clarified Company", file: "clarified-company.png" },
   { name: "Web Marketer", file: "web-marketer.svg" },
-  { name: "Welch Fitness", file: "welch-fitness.svg" },
+  { name: "Welch Fitness", file: "WF_WORDMARK_DARK.png" },
   { name: "Belle Vitale", file: "belle-vitale.png" },
   { name: "Christie Residential", file: "christie-residential.svg" },
   { name: "Smoke & Slaw", file: "smoke-slaw.png" },
@@ -25,7 +32,7 @@ const clientLogos: ClientLogo[] = [
   { name: "Femmely", file: "femmely.png" },
   { name: "The Nest", file: "thenest-_primary-teal-transparent.svg" },
   { name: "Bean & Bread", file: "bean-and-bread.png" },
-  { name: "Sales Made Easy", file: "sales-made-easy.svg" },
+  { name: "Sales Made Easy", file: "sales-made-easy.svg", size: "lg" },
   { name: "3 Sheds", file: "3-sheds.svg" },
   { name: "Aqualogic", file: "Aqualogic-Master-Logo-White-Transparent.png" },
 ];
@@ -56,13 +63,18 @@ export default function LogoStrip() {
                   className="shrink-0 flex items-center"
                   aria-hidden={isClone || undefined}
                 >
-                  {/* Force every logo to white for a cohesive strip. */}
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={`${dir}/${logo.file}`}
                     alt={isClone ? "" : logo.name}
                     loading="lazy"
-                    className="h-10 w-auto max-w-[180px] object-contain opacity-50 hover:opacity-100 transition-opacity duration-200 [filter:brightness(0)_invert(1)]"
+                    className={`w-auto object-contain opacity-50 hover:opacity-100 transition-opacity duration-200 ${
+                      logo.textured ? "" : "[filter:brightness(0)_invert(1)]"
+                    } ${
+                      logo.size === "lg"
+                        ? "h-14 max-w-[240px]"
+                        : "h-10 max-w-[180px]"
+                    }`}
                   />
                 </li>
               );

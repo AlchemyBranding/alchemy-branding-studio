@@ -46,10 +46,10 @@ export default async function HomePage() {
     <>
       {/* 5.1 Hero (existing background video, new copy) */}
       <Hero />
-      {/* 5.3 Positioning strip — "Design is the lever, growth is the point" */}
-      <PositioningStrip />
       {/* 5.2 Logo proof — scrolling logo marquee (white-on-dark) */}
       <LogoStrip />
+      {/* 5.3 Positioning strip — "Design is the lever, growth is the point" */}
+      <PositioningStrip />
       {/* 5.4 Workshop-led foundation (replaces the old service catalogue) */}
       <WorkshopBlock />
       {/* 5.5 Featured work (Sanity-driven, adaptive 1/2/3 layout) */}

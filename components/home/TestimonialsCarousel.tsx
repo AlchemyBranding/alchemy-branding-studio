@@ -51,7 +51,7 @@ export default function TestimonialsCarousel({
   return (
     <section
       aria-labelledby="testimonials-heading"
-      className="bg-dusk text-dawn py-[120px]"
+      className="bg-dusk text-dawn pt-[72px] pb-[120px]"
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
       onFocus={() => setPaused(true)}
@@ -68,12 +68,12 @@ export default function TestimonialsCarousel({
           People we&apos;ve worked with.
         </h2>
 
-        <div className="relative mt-12 min-h-[320px]">
+        <div className="mt-12 grid">
           {items.map((t, i) => (
             <article
               key={t._id}
               aria-hidden={i !== index}
-              className={`absolute inset-0 flex flex-col items-center transition-opacity ease-out ${
+              className={`col-start-1 row-start-1 flex flex-col items-center transition-opacity ease-out ${
                 i === index
                   ? "opacity-100"
                   : "opacity-0 pointer-events-none"
