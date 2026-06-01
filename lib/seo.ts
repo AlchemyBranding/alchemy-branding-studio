@@ -14,7 +14,8 @@ type PageKey =
   | "contact"
   | "free-brand-audit"
   | "custom-proposal-design"
-  | "animation";
+  | "animation"
+  | "branding-services-cardiff";
 
 type Args = {
   pageKey: PageKey;

@@ -31,6 +31,14 @@ const iconMap = {
 const labelStyle =
   "text-[0.75rem] font-bold uppercase tracking-[0.12em] text-dragon-fire";
 
+// Footer "Navigate" list = the main nav plus footer-only links (e.g. the
+// /animation landing page, which is intentionally kept out of the header).
+const footerNavLinks = [
+  ...navLinks.slice(0, 3),
+  { label: "Animation", href: "/animation" },
+  ...navLinks.slice(3),
+];
+
 export default function Footer() {
   return (
     <footer className="bg-dawn border-t border-dawn-80 mt-auto">
@@ -76,7 +84,7 @@ export default function Footer() {
           <div>
             <p className={labelStyle}>Navigate</p>
             <ul className="mt-5 space-y-2.5">
-              {navLinks.map(({ label, href }) => (
+              {footerNavLinks.map(({ label, href }) => (
                 <li key={href}>
                   <Link
                     href={href}
