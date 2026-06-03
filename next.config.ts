@@ -135,6 +135,25 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
 
+      // Three legacy "brand inconsistency" posts (internal confusion, trust
+      // erosion, lost momentum) were consolidated into one combined article.
+      // 301 each old URL to it so their individual link equity carries over.
+      {
+        source: "/brand-inconsistency-internal-confusion",
+        destination: "/the-cost-of-inconsistent-branding",
+        permanent: true,
+      },
+      {
+        source: "/brand-inconsistency-trust-erosion",
+        destination: "/the-cost-of-inconsistent-branding",
+        permanent: true,
+      },
+      {
+        source: "/brand-inconsistency-lost-momentum",
+        destination: "/the-cost-of-inconsistent-branding",
+        permanent: true,
+      },
+
       // ----- Legacy blog posts → /news --------------------------------------
       // Bulk 301 for the long-tail WordPress posts that aren't being
       // re-created in Sanity. To preserve a specific post, remove its slug

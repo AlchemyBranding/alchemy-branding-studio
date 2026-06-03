@@ -42,16 +42,19 @@
 export const legacyBlogSlugs: readonly string[] = [
   "how-i-use-adobe-express-to-help-sales-and-marketing-teams-create-consistent-content-faster",
   "how-to-scale-a-business",
-  "everyone-wants-growth-hardly-anyone-builds-the-conditions-for-it",
   "high-converting-proposals-stop-following-up",
   "how-sales-listening-skills-win-more-deals-than-logic",
-  "brand-inconsistency-internal-confusion",
-  "brand-inconsistency-trust-erosion",
-  "brand-inconsistency-lost-momentum",
-  "rebrand-your-business-with-a-strong-branding-strategy",
+  // NOTE: the three "brand-inconsistency-*" posts were consolidated into the
+  // single Sanity post /the-cost-of-inconsistent-branding. They are NOT in
+  // this list — they have dedicated 301s to that post in next.config.ts so
+  // their individual link equity carries over to the combined article.
+  // Also removed and re-created in Sanity at their exact slug (so their URL
+  // serves real content again, not a /news redirect):
+  //   - everyone-wants-growth-hardly-anyone-builds-the-conditions-for-it
+  //   - rebrand-your-business-with-a-strong-branding-strategy
+  //   - beyond-the-logo-what-brand-strategy-actually-means-for-scaling
   "alchemy-this-is-how-we-work-july-edition",
   "alchemy-this-is-how-we-work-june-edition",
-  "beyond-the-logo-what-brand-strategy-actually-means-for-scaling",
   "business-growth-strategies-podcast",
   "brand-strategy-scaling",
   "a-fresh-coat-of-alchemy-paint",
