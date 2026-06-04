@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 import Button from "@/components/Button";
 import { motionHref } from "@/lib/site";
 
@@ -57,6 +59,16 @@ export default function Workshop() {
               <Button variant="secondary" href="/contact">
                 Send a brief
               </Button>
+            </div>
+
+            <div className="mt-10 relative aspect-[3/2] w-full overflow-hidden rounded-card border border-dawn/15">
+              <Image
+                src="/desk-chairs.jpg"
+                alt="The Alchemy studio set up for a brand strategy workshop"
+                fill
+                sizes="(min-width: 1024px) 40vw, 100vw"
+                className="object-cover"
+              />
             </div>
           </div>
 

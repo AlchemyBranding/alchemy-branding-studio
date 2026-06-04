@@ -1,10 +1,13 @@
+import Image from "next/image";
+
 export default function StoryBlock() {
   return (
     <section
       aria-labelledby="story-heading"
       className="bg-dawn py-[120px] border-t border-dawn-80"
     >
-      <div className="max-w-7xl mx-auto px-6 md:px-10 grid grid-cols-1 lg:grid-cols-[1fr_2fr] gap-12 lg:gap-20">
+      <div className="max-w-7xl mx-auto px-6 md:px-10">
+        <div className="grid grid-cols-1 lg:grid-cols-[1fr_2fr] gap-12 lg:gap-20">
         <div>
           <p className="text-[0.8rem] font-medium uppercase tracking-[0.12em] text-dragon-fire">
             Our story
@@ -37,6 +40,17 @@ export default function StoryBlock() {
             day-to-day so the business stops losing momentum between the
             big projects.
           </p>
+        </div>
+        </div>
+
+        <div className="mt-16 relative aspect-[2/1] w-full overflow-hidden rounded-card border border-dawn-80">
+          <Image
+            src="/dave-jess-talk.jpg"
+            alt="Jess and Dave in conversation during a brand talk"
+            fill
+            sizes="(min-width: 1280px) 1216px, 100vw"
+            className="object-cover"
+          />
         </div>
       </div>
     </section>
