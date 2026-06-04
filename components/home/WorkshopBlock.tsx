@@ -116,8 +116,8 @@ export default function WorkshopBlock() {
 function WorkshopCollage() {
   const images: Array<{ src: string | null; alt: string }> = [
     {
-      src: "/827A3684.jpg",
-      alt: "Working through brand strategy with the Alchemy team",
+      src: "/827A3212.jpg",
+      alt: "Brand strategy workshop in progress at Alchemy",
     },
     {
       src: "/827A3629.jpg",
@@ -136,7 +136,7 @@ function WorkshopCollage() {
       <Frame
         src={main.src}
         alt={main.alt}
-        className="absolute top-0 right-0 w-[78%] aspect-[4/5] rotate-[1.5deg]"
+        className="absolute top-0 right-0 w-[78%] aspect-[4/3] rotate-[1.5deg]"
       />
       {/* Secondary, lower left, larger overlap */}
       <Frame
