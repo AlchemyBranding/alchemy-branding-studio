@@ -142,7 +142,7 @@ function WorkshopCollage() {
       <Frame
         src={secondary.src}
         alt={secondary.alt}
-        className="absolute bottom-[8%] left-0 w-[60%] aspect-[4/5] -rotate-[2deg] shadow-2xl"
+        className="absolute bottom-[8%] left-0 w-[46%] aspect-[4/5] -rotate-[2deg] shadow-2xl"
       />
       {/* Small accent tile, bottom right */}
       <Frame
