@@ -124,8 +124,8 @@ function WorkshopCollage() {
       alt: "Alchemy brand strategy session in the studio",
     },
     {
-      src: "/workshop/workshop-main.jpg",
-      alt: "Jess Morgan facilitating a brand strategy session with the leadership team in the studio",
+      src: "/dave-jess-desk.jpg",
+      alt: "Jess and Dave working through a brand project at the studio",
     },
   ];
   const [main, secondary, tertiary] = images;
@@ -148,7 +148,7 @@ function WorkshopCollage() {
       <Frame
         src={tertiary.src}
         alt={tertiary.alt}
-        className="absolute bottom-0 right-[6%] w-[42%] aspect-square rotate-[3deg] shadow-xl"
+        className="absolute bottom-0 right-[6%] w-[42%] aspect-[3/2] rotate-[3deg] shadow-xl"
       />
 
       {/* Soft dragon-fire glow behind the stack */}
