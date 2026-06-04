@@ -116,12 +116,12 @@ export default function WorkshopBlock() {
 function WorkshopCollage() {
   const images: Array<{ src: string | null; alt: string }> = [
     {
-      src: "/workshop/workshop-accent.png",
-      alt: "Audience engaged at an Alchemy talk on building a brand-led business",
+      src: "/827A3629.jpg",
+      alt: "Alchemy brand strategy session in the studio",
     },
     {
-      src: "/workshop/workshop-detail.png",
-      alt: "Strategy session in progress around the table",
+      src: "/827A3684.jpg",
+      alt: "Working through brand strategy with the Alchemy team",
     },
     {
       src: "/workshop/workshop-main.jpg",
@@ -142,7 +142,7 @@ function WorkshopCollage() {
       <Frame
         src={secondary.src}
         alt={secondary.alt}
-        className="absolute bottom-[8%] left-0 w-[60%] aspect-[4/3] -rotate-[2deg] shadow-2xl"
+        className="absolute bottom-[8%] left-0 w-[60%] aspect-[4/5] -rotate-[2deg] shadow-2xl"
       />
       {/* Small accent tile, bottom right */}
       <Frame
