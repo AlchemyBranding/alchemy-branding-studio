@@ -60,6 +60,20 @@ export function ChevronRightIcon(props: SVGProps<SVGSVGElement>) {
   );
 }
 
+export function TikTokIcon(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      aria-hidden="true"
+      {...props}
+    >
+      <path d="M16.5 2c.26 1.92 1.34 3.5 3 4.3.8.39 1.66.62 2.5.68v3.12a8.43 8.43 0 0 1-4.5-1.4v6.4a6.2 6.2 0 1 1-6.2-6.2c.3 0 .6.02.9.07v3.2a3.1 3.1 0 1 0 2.2 2.96V2h2.1Z" />
+    </svg>
+  );
+}
+
 export function FacebookIcon(props: SVGProps<SVGSVGElement>) {
   return (
     <svg

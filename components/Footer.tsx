@@ -7,6 +7,7 @@ import {
   FacebookIcon,
   InstagramIcon,
   LinkedInIcon,
+  TikTokIcon,
   VimeoIcon,
   YouTubeIcon,
 } from "@/components/icons";
@@ -26,6 +27,7 @@ const iconMap = {
   linkedin: LinkedInIcon,
   vimeo: VimeoIcon,
   youtube: YouTubeIcon,
+  tiktok: TikTokIcon,
 } as const;
 
 const labelStyle =

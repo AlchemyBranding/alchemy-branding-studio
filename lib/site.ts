@@ -32,6 +32,7 @@ export const socialLinks = [
   { label: "LinkedIn", href: "https://www.linkedin.com/company/alchemybrandingstudio", icon: "linkedin" },
   { label: "Vimeo", href: "https://vimeo.com/alchemybrandingstudio", icon: "vimeo" },
   { label: "YouTube", href: "https://www.youtube.com/@alchemybrandingstudio", icon: "youtube" },
+  { label: "TikTok", href: "https://www.tiktok.com/@jessalchemy", icon: "tiktok" },
 ] as const;
 
 /**
