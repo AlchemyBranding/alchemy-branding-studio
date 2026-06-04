@@ -8,6 +8,10 @@ type ClientLogo = {
   /** Render in grayscale (monochrome, detail preserved) instead of the flat
    *  white silhouette, e.g. a detailed crest that would otherwise be a blob. */
   textured?: boolean;
+  /** Logo has no usable colour original (e.g. a dark-only wordmark). Stays
+   *  white on hover instead of revealing colour, so it doesn't disappear on
+   *  the dark strip. */
+  monoOnly?: boolean;
 };
 
 // Logos are transparent, so the white-monochrome filter renders each mark in
@@ -23,7 +27,7 @@ const clientLogos: ClientLogo[] = [
   { name: "Healthy HR", file: "healthy-hr.svg" },
   { name: "The Clarified Company", file: "clarified-company.png" },
   { name: "Web Marketer", file: "web-marketer.svg" },
-  { name: "Welch Fitness", file: "WF_WORDMARK_DARK.png" },
+  { name: "Welch Fitness", file: "WF_WORDMARK_DARK.png", monoOnly: true },
   { name: "Belle Vitale", file: "belle-vitale.png" },
   { name: "Christie Residential", file: "christie-residential.svg" },
   { name: "Smoke & Slaw", file: "smoke-slaw.png" },
@@ -68,11 +72,11 @@ export default function LogoStrip() {
                     src={`${dir}/${logo.file}`}
                     alt={isClone ? "" : logo.name}
                     loading="lazy"
-                    className={`w-auto object-contain opacity-50 hover:opacity-100 transition-opacity duration-200 ${
+                    className={`w-auto object-contain opacity-50 transition-all duration-300 hover:opacity-100 ${
                       logo.textured
                         ? "[filter:grayscale(1)_brightness(1.15)]"
                         : "[filter:brightness(0)_invert(1)]"
-                    } ${
+                    } ${logo.monoOnly ? "" : "hover:[filter:none]"} ${
                       logo.size === "lg"
                         ? "h-14 max-w-[240px]"
                         : "h-10 max-w-[180px]"
