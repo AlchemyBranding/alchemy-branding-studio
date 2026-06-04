@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 
+import { ChevronLeftIcon, ChevronRightIcon } from "@/components/icons";
 import { urlFor } from "@/sanity/lib/image";
 import type { FeaturedTestimonial } from "@/sanity/lib/queries";
 
@@ -48,6 +49,9 @@ export default function TestimonialsCarousel({
     .filter(Boolean)
     .join(", ");
 
+  const go = (dir: number) =>
+    setIndex((i) => (i + dir + items.length) % items.length);
+
   return (
     <section
       aria-labelledby="testimonials-heading"
@@ -68,7 +72,28 @@ export default function TestimonialsCarousel({
           People we&apos;ve worked with.
         </h2>
 
-        <div className="mt-12 grid">
+        <div className="relative mt-12">
+          {items.length > 1 ? (
+            <>
+              <button
+                type="button"
+                onClick={() => go(-1)}
+                aria-label="Previous testimonial"
+                className="absolute left-0 top-1/2 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full text-dragon-fire/55 transition-all duration-200 hover:bg-dragon-fire/10 hover:text-dragon-fire focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-dragon-fire/50 md:-left-2"
+              >
+                <ChevronLeftIcon className="h-6 w-6" />
+              </button>
+              <button
+                type="button"
+                onClick={() => go(1)}
+                aria-label="Next testimonial"
+                className="absolute right-0 top-1/2 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full text-dragon-fire/55 transition-all duration-200 hover:bg-dragon-fire/10 hover:text-dragon-fire focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-dragon-fire/50 md:-right-2"
+              >
+                <ChevronRightIcon className="h-6 w-6" />
+              </button>
+            </>
+          ) : null}
+          <div className="grid px-12 md:px-14">
           {items.map((t, i) => (
             <article
               key={t._id}
@@ -117,6 +142,7 @@ export default function TestimonialsCarousel({
               </div>
             </article>
           ))}
+          </div>
         </div>
 
         {items.length > 1 ? (
