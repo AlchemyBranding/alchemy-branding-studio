@@ -61,7 +61,7 @@ export default function Workshop() {
               </Button>
             </div>
 
-            <div className="mt-10 relative aspect-[3/2] w-full overflow-hidden rounded-card border border-dawn/15">
+            <div className="mt-10 relative aspect-[16/9] w-full max-w-lg overflow-hidden rounded-card border border-dawn/15">
               <Image
                 src="/desk-chairs.jpg"
                 alt="The Alchemy studio set up for a brand strategy workshop"
