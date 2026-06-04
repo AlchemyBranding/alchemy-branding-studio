@@ -116,12 +116,12 @@ export default function WorkshopBlock() {
 function WorkshopCollage() {
   const images: Array<{ src: string | null; alt: string }> = [
     {
-      src: "/827A3629.jpg",
-      alt: "Alchemy brand strategy session in the studio",
-    },
-    {
       src: "/827A3684.jpg",
       alt: "Working through brand strategy with the Alchemy team",
+    },
+    {
+      src: "/827A3629.jpg",
+      alt: "Alchemy brand strategy session in the studio",
     },
     {
       src: "/workshop/workshop-main.jpg",
