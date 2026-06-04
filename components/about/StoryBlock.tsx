@@ -40,17 +40,17 @@ export default function StoryBlock() {
             day-to-day so the business stops losing momentum between the
             big projects.
           </p>
-        </div>
-        </div>
 
-        <div className="mt-16 relative aspect-[2/1] w-full overflow-hidden rounded-card border border-dawn-80">
-          <Image
-            src="/dave-jess-talk.jpg"
-            alt="Jess and Dave in conversation during a brand talk"
-            fill
-            sizes="(min-width: 1280px) 1216px, 100vw"
-            className="object-cover"
-          />
+          <div className="relative aspect-[16/9] w-full overflow-hidden rounded-card border border-dawn-80">
+            <Image
+              src="/dave-jess-talk.jpg"
+              alt="Jess and Dave in conversation during a brand talk"
+              fill
+              sizes="(min-width: 1024px) 55vw, 100vw"
+              className="object-cover"
+            />
+          </div>
+        </div>
         </div>
       </div>
     </section>
