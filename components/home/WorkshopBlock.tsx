@@ -136,19 +136,19 @@ function WorkshopCollage() {
       <Frame
         src={main.src}
         alt={main.alt}
-        className="absolute top-0 right-0 w-[78%] aspect-[4/3] rotate-[1.5deg]"
+        className="absolute top-0 right-0 w-[72%] aspect-[4/3] rotate-[1.5deg]"
       />
-      {/* Secondary, lower left, larger overlap */}
+      {/* Portrait, lower left */}
       <Frame
         src={secondary.src}
         alt={secondary.alt}
-        className="absolute bottom-[8%] left-0 w-[46%] aspect-[4/5] -rotate-[2deg] shadow-2xl"
+        className="absolute bottom-0 left-0 w-[42%] aspect-[4/5] -rotate-[2deg] shadow-2xl"
       />
-      {/* Small accent tile, bottom right */}
+      {/* Larger front tile, lower centre, overlapping both */}
       <Frame
         src={tertiary.src}
         alt={tertiary.alt}
-        className="absolute bottom-0 right-[6%] w-[42%] aspect-[3/2] rotate-[3deg] shadow-xl"
+        className="absolute bottom-[12%] right-[2%] z-10 w-[58%] aspect-[3/2] rotate-[3deg] shadow-2xl"
       />
 
       {/* Soft dragon-fire glow behind the stack */}
