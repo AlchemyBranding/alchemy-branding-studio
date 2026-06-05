@@ -61,6 +61,11 @@ export default function AuditForm() {
       }
       setStatus("success");
       event.currentTarget.reset();
+      // Redirect to the dedicated thank-you page. A real pageview of
+      // /free-brand-audit-for-smes/thank-you is the reliable conversion
+      // signal for Google Ads; the inline success block below is a fallback
+      // if navigation is ever blocked.
+      window.location.assign("/free-brand-audit-for-smes/thank-you");
     } catch (err) {
       setStatus("error");
       setServerError(

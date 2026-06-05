@@ -43,6 +43,7 @@ module.exports = {
     "/portal",
     "/motion",
     "/opengraph-image",
+    "/free-brand-audit-for-smes/thank-you",
   ],
   changefreq: "weekly",
   priority: 0.7,
