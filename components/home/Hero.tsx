@@ -18,10 +18,12 @@ export default function Hero() {
         className="absolute inset-0 h-full w-full object-cover"
         poster="/og-default.png"
       >
-        {/* Drop hero-showreel.webm + .mp4 into /public/video/ when ready.
-            Until then, the poster + Dawn background fill the space cleanly. */}
-        <source src="/video/hero-showreel.webm" type="video/webm" />
-        <source src="/video/hero-showreel.mp4" type="video/mp4" />
+        {/* Homepage showreel. Poster + Dawn background fill the space
+            until the video loads. */}
+        <source
+          src="/video/alchemy-branding-showreel-2026.mp4"
+          type="video/mp4"
+        />
       </video>
 
       {/* Legibility overlay: lighter at top, darker at bottom */}
