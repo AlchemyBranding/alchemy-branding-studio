@@ -53,8 +53,9 @@ export default function Hero() {
           className="mt-8 max-w-2xl text-[1.125rem] leading-[1.6] text-white/85 animate-fade-up"
           style={{ animationDelay: "550ms" }}
         >
-          We build brands that are clear, credible and hard to overlook,
-          so the right clients choose you.
+          We help you clarify the brand, sharpen the message and turn
+          both into marketing that supports sales, so the right clients
+          understand you, trust you and choose you.
         </p>
 
         <div
