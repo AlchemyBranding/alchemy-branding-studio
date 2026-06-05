@@ -48,8 +48,18 @@ module.exports = {
   priority: 0.7,
   robotsTxtOptions: {
     policies: isProduction
-      ? [{ userAgent: "*", allow: "/", disallow: ["/studio", "/api"] }]
-      : [{ userAgent: "*", disallow: "/" }],
+      ? [
+          // SEO partner's audit crawler (SEMrush Site Audit) — always allowed.
+          { userAgent: "SiteAuditBot", allow: "/" },
+          { userAgent: "*", allow: "/", disallow: ["/studio", "/api"] },
+        ]
+      : [
+          // Pre-launch everything is blocked from indexing, but allow the SEO
+          // partner's audit crawler (SEMrush Site Audit) so they can still run
+          // audits against the preview before the DNS cutover.
+          { userAgent: "SiteAuditBot", allow: "/" },
+          { userAgent: "*", disallow: "/" },
+        ],
     additionalSitemaps: isProduction ? [`${SITE_URL}/sitemap.xml`] : [],
   },
   transform: (config, path) => {
