@@ -52,6 +52,7 @@ module.exports = {
       ? [
           // SEO partner's audit crawler (SEMrush Site Audit) — always allowed.
           { userAgent: "SiteAuditBot", allow: "/" },
+          { userAgent: "ClaudeBot", allow: "/" },
           { userAgent: "*", allow: "/", disallow: ["/studio", "/api"] },
         ]
       : [
@@ -59,6 +60,7 @@ module.exports = {
           // partner's audit crawler (SEMrush Site Audit) so they can still run
           // audits against the preview before the DNS cutover.
           { userAgent: "SiteAuditBot", allow: "/" },
+          { userAgent: "ClaudeBot", allow: "/" },
           { userAgent: "*", disallow: "/" },
         ],
     additionalSitemaps: isProduction ? [`${SITE_URL}/sitemap.xml`] : [],
