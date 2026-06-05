@@ -26,13 +26,14 @@ export default function Hero() {
         />
       </video>
 
-      {/* Legibility overlay: lighter at top, darker at bottom */}
+      {/* Legibility overlay: lighter at top, darker at the bottom where the
+          hero copy sits, so it reads over the busy showreel underneath. */}
       <div
         aria-hidden="true"
-        className="absolute inset-0 bg-gradient-to-b from-dawn/30 to-dawn/70"
+        className="absolute inset-0 bg-gradient-to-b from-dawn/20 via-dawn/40 to-dawn/85"
       />
 
-      <div className="relative h-full max-w-7xl mx-auto px-6 md:px-10 flex flex-col justify-center">
+      <div className="relative h-full max-w-7xl mx-auto px-6 md:px-10 flex flex-col justify-end pb-28 md:pb-32">
         <p
           className="text-eyebrow text-dragon-fire animate-fade-up"
           style={{ animationDelay: "200ms" }}
