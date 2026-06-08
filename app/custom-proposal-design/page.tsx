@@ -13,9 +13,9 @@ export async function generateMetadata(): Promise<Metadata> {
     pageKey: "custom-proposal-design",
     path: "/custom-proposal-design",
     defaults: {
-      title: "Custom Proposal Design",
+      title: "Custom Proposal & Pitch Deck Design",
       description:
-        "On-brand proposal templates built inside Better Proposals, Proposify, Qwilr or your platform of choice. A complete proposal system in four weeks, designed to win.",
+        "Turn proposals and pitch decks into documents that win work. Designed, on-brand and built to help buyers say yes. For ambitious SME teams.",
     },
   });
 }

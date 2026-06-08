@@ -9,12 +9,12 @@ import { allCaseStudiesQuery, type FeaturedCaseStudy } from "@/sanity/lib/querie
 
 export async function generateMetadata(): Promise<Metadata> {
   return getPageMetadata({
-    pageKey: "home", // no dedicated pageSeo key for /portfolio — fall back to home's metaImage
+    pageKey: "portfolio",
     path: "/portfolio",
     defaults: {
-      title: "Work",
+      title: "Branding & Design Work: Case Studies",
       description:
-        "Selected work from Alchemy Branding Studio: branding, strategy, animation and websites for ambitious businesses.",
+        "Selected branding, web and animation projects for ambitious SMEs. See how clearer strategy and sharper design turned into real business results.",
     },
   });
 }

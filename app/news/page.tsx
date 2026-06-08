@@ -12,9 +12,9 @@ export async function generateMetadata(): Promise<Metadata> {
     pageKey: "news",
     path: "/news",
     defaults: {
-      title: "Insights",
+      title: "Brand & Marketing Insights for SMEs",
       description:
-        "Thinking, perspective and practical advice on brand, strategy and design for ambitious businesses, from Alchemy Branding Studio.",
+        "Practical articles on brand strategy, messaging and marketing for SME founders and leaders. No jargon, just what actually helps the business grow.",
     },
   });
 }

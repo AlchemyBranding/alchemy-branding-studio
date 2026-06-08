@@ -11,6 +11,7 @@ type PageKey =
   | "services"
   | "packages"
   | "news"
+  | "portfolio"
   | "contact"
   | "free-brand-audit"
   | "custom-proposal-design"

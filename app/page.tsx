@@ -13,7 +13,6 @@ import PositioningStrip from "@/components/home/PositioningStrip";
 import TestimonialsCarousel from "@/components/home/TestimonialsCarousel";
 import WorkshopBlock from "@/components/home/WorkshopBlock";
 import { getPageMetadata } from "@/lib/seo";
-import { siteConfig } from "@/lib/site";
 import { safeFetch } from "@/sanity/lib/fetch";
 import {
   featuredCaseStudiesQuery,
@@ -29,8 +28,9 @@ export async function generateMetadata(): Promise<Metadata> {
     pageKey: "home",
     path: "/",
     defaults: {
-      title: siteConfig.name,
-      description: siteConfig.description,
+      title: "Brand strategy that fuels business growth",
+      description:
+        "Brand strategy, design and animation for ambitious SMEs. We make your brand clear, credible and hard to overlook, so the right clients choose you.",
     },
   });
 }

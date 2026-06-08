@@ -6,9 +6,12 @@ const pageKeys = [
   "services",
   "packages",
   "news",
+  "portfolio",
   "contact",
   "free-brand-audit",
   "custom-proposal-design",
+  "animation",
+  "branding-services-cardiff",
 ] as const;
 
 export const pageSeo = defineType({

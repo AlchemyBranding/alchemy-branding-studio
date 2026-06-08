@@ -16,9 +16,9 @@ export async function generateMetadata(): Promise<Metadata> {
     pageKey: "animation",
     path: "/animation",
     defaults: {
-      title: "Animation & Explainer Videos",
+      title: "Explainer Videos & Brand Animation",
       description:
-        "Explainer videos and brand animation for businesses with something complicated to explain. Script-first, designed not templated, built to be reused.",
+        "Explainer videos and brand animation that make the complicated clear in seconds. Scripted, designed, and built to be reused across your marketing.",
     },
   });
 }

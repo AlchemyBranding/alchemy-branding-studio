@@ -11,9 +11,9 @@ export async function generateMetadata(): Promise<Metadata> {
     pageKey: "branding-services-cardiff",
     path: "/branding-services-cardiff",
     defaults: {
-      title: "Branding Services in Cardiff",
+      title: "Branding Agency in Cardiff & South Wales",
       description:
-        "Brand strategy, identity, websites and animation for ambitious businesses in Cardiff and across South Wales. Workshop-led branding from a studio that knows the patch.",
+        "Brand strategy, identity and design for ambitious businesses in Cardiff and across South Wales. Clear positioning, sharp design, real results.",
     },
   });
 }

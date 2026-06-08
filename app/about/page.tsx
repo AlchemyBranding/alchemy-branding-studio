@@ -15,9 +15,9 @@ export async function generateMetadata(): Promise<Metadata> {
     pageKey: "about",
     path: "/about",
     defaults: {
-      title: "About",
+      title: "About: Brand & Design Studio for SMEs",
       description:
-        "Alchemy Branding Studio: strategy, design and animation for ambitious businesses. Meet the team and learn how we work.",
+        "Alchemy is a brand and creative studio for ambitious SMEs. Senior strategy and craft in equal measure, from a team that has built and run businesses.",
     },
   });
 }

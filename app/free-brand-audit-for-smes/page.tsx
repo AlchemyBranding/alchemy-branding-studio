@@ -10,7 +10,7 @@ export async function generateMetadata(): Promise<Metadata> {
     defaults: {
       title: "Free Brand Audit for SMEs",
       description:
-        "A free, no-commitment brand audit for ambitious SMEs. We'll review your site, your positioning and your messaging, and tell you exactly where the leaks are.",
+        "A genuine, no-obligation review of your brand the way a buyer sees it. We tell you what's working, what's costing you, and what to fix first. Free.",
     },
   });
 }

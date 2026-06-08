@@ -10,9 +10,9 @@ export async function generateMetadata(): Promise<Metadata> {
     pageKey: "contact",
     path: "/contact",
     defaults: {
-      title: "Contact",
+      title: "Contact: Start a Branding Project",
       description:
-        "Tell us about your project. Brand strategy, design and animation for ambitious businesses. We reply within one business day.",
+        "Tell us about your project: brand, web or animation. We reply within one business day, or faster on WhatsApp. No hard sell, just a useful conversation.",
     },
   });
 }
