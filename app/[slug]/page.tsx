@@ -49,6 +49,9 @@ export async function generateMetadata({
   // titles don't get pushed past Google's ~60-char truncation. Editors who
   // want a different SERP headline can still override via seo.metaTitle.
   const title = (post.seo?.metaTitle ?? post.title).trim();
+  // Append the brand so the SERP/tab title differs from the on-page H1
+  // (the article headline), unless seo.metaTitle already includes it.
+  const seoTitle = /\|\s*alchemy\b/i.test(title) ? title : `${title} | Alchemy`;
   const description =
     post.seo?.metaDescription ??
     post.excerpt ??
@@ -65,7 +68,7 @@ export async function generateMetadata({
       : `${siteConfig.url}/og-default.png`;
 
   return {
-    title: { absolute: title },
+    title: { absolute: seoTitle },
     description,
     alternates: { canonical },
     robots: post.seo?.noIndex

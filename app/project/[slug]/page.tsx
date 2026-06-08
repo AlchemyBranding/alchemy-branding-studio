@@ -46,6 +46,9 @@ export async function generateMetadata({
   // enough that the brand-name suffix tips them past Google's SERP cap.
   // Editors override the SERP headline via seo.metaTitle.
   const title = (cs.seo?.metaTitle ?? cs.title).trim();
+  // Append the brand so the SERP/tab title differs from the on-page H1
+  // (the project title), unless seo.metaTitle already includes it.
+  const seoTitle = /\|\s*alchemy\b/i.test(title) ? title : `${title} | Alchemy`;
   const description =
     cs.seo?.metaDescription ??
     cs.outcomeSummary ??
@@ -63,7 +66,7 @@ export async function generateMetadata({
       : `${siteConfig.url}/og-default.png`;
 
   return {
-    title: { absolute: title },
+    title: { absolute: seoTitle },
     description,
     alternates: { canonical },
     robots: cs.seo?.noIndex

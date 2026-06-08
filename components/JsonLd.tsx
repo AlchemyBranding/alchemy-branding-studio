@@ -26,7 +26,8 @@ const localBusinessSchema = {
   address: {
     "@type": "PostalAddress",
     addressCountry: "GB",
-    addressRegion: "England",
+    addressRegion: "Wales",
+    addressLocality: "Cardiff",
   },
   priceRange: "££££",
   areaServed: "GB",

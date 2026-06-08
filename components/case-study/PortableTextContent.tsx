@@ -89,10 +89,10 @@ function buildComponents(tone: "dark" | "light"): PortableTextComponents {
             width={width}
             height={height}
             sizes="(min-width: 1024px) 768px, 100vw"
-            className="w-full h-auto rounded-card ${imageBg}"
+            className={`w-full h-auto rounded-card ${imageBg}`}
           />
           {value.caption ? (
-            <figcaption className="mt-3 text-[0.875rem] ${captionText}">
+            <figcaption className={`mt-3 text-[0.875rem] ${captionText}`}>
               {value.caption}
             </figcaption>
           ) : null}
@@ -150,7 +150,7 @@ function buildComponents(tone: "dark" | "light"): PortableTextComponents {
         <figure className="my-12">
           {media}
           {caption ? (
-            <figcaption className="mt-3 text-[0.875rem] ${captionText}">
+            <figcaption className={`mt-3 text-[0.875rem] ${captionText}`}>
               {caption}
             </figcaption>
           ) : null}
