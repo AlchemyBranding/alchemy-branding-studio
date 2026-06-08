@@ -19,7 +19,9 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
     default: siteConfig.name,
-    template: `%s | ${siteConfig.name}`,
+    // Short brand suffix keeps titles under the SERP truncation limit and
+    // leaves room for keywords. Per-page titles set the part before the pipe.
+    template: "%s | Alchemy",
   },
   description: siteConfig.description,
   robots: indexableRobots,

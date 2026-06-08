@@ -14,9 +14,9 @@ export async function generateMetadata(): Promise<Metadata> {
     pageKey: "services",
     path: "/services",
     defaults: {
-      title: "Services",
+      title: "Brand Strategy, Design & Animation for SMEs",
       description:
-        "When the marketing isn't landing and you can't say why. The Brand Strategy Workshop names what's actually broken: positioning, messaging, language. For ambitious £500k–£15M businesses. Identity, web, animation and content follow.",
+        "Brand strategy, identity design, websites, animation and content for SMEs that need clearer positioning, sharper messaging and stronger marketing.",
     },
   });
 }
