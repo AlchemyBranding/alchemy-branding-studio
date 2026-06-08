@@ -45,6 +45,7 @@ module.exports = {
     "/opengraph-image",
     "/free-brand-audit-for-smes/thank-you",
     "/holding",
+    "/holding-static",
   ],
   changefreq: "weekly",
   priority: 0.7,
