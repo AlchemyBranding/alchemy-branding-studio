@@ -20,7 +20,6 @@ const placeholderTestimonials: FeaturedTestimonial[] = [
 ];
 
 const ADVANCE_MS = 6000;
-const TRANSITION_MS = 400;
 
 export default function TestimonialsCarousel({
   testimonials,
@@ -93,55 +92,46 @@ export default function TestimonialsCarousel({
               </button>
             </>
           ) : null}
-          <div className="grid px-12 md:px-14">
-          {items.map((t, i) => (
-            <article
-              key={t._id}
-              aria-hidden={i !== index}
-              className={`col-start-1 row-start-1 flex flex-col items-center transition-opacity ease-out ${
-                i === index
-                  ? "opacity-100"
-                  : "opacity-0 pointer-events-none"
-              }`}
-              style={{ transitionDuration: `${TRANSITION_MS}ms` }}
+          {/* Render only the active testimonial so the box hugs its own
+              text (no fixed height from the tallest quote). Keyed on the
+              id so each change replays the fade-up. */}
+          <div
+            key={current._id}
+            className="flex flex-col items-center px-12 md:px-14 animate-fade-up"
+          >
+            <span
+              aria-hidden="true"
+              className="font-display text-[5rem] leading-none text-dragon-fire/40 -mb-6"
             >
-              <span
-                aria-hidden="true"
-                className="font-display text-[5rem] leading-none text-dragon-fire/40 -mb-6"
-              >
-                &ldquo;
-              </span>
-              <p className="font-display text-[1.5rem] leading-[1.5] text-dawn max-w-2xl">
-                {t.quote}
-              </p>
-              <div className="mt-8 flex items-center gap-4">
-                {t.photo?.asset ? (
-                  <Image
-                    src={urlFor(t.photo).width(104).height(104).auto("format").url()}
-                    alt={t.photo.alt || t.name}
-                    width={52}
-                    height={52}
-                    className="rounded-full border-2 border-dragon-fire object-cover"
-                  />
-                ) : (
-                  <div
-                    aria-hidden="true"
-                    className="w-[52px] h-[52px] rounded-full border-2 border-dragon-fire bg-dawn-20"
-                  />
-                )}
-                <div className="text-left">
-                  <p className="font-bold text-dawn text-[1rem] leading-tight">
-                    {t.name}
-                  </p>
-                  {attribution ? (
-                    <p className="text-[0.875rem] text-dawn-40">
-                      {attribution}
-                    </p>
-                  ) : null}
-                </div>
+              &ldquo;
+            </span>
+            <p className="font-display text-[1.5rem] leading-[1.5] text-dawn max-w-2xl">
+              {current.quote}
+            </p>
+            <div className="mt-8 flex items-center gap-4">
+              {current.photo?.asset ? (
+                <Image
+                  src={urlFor(current.photo).width(104).height(104).auto("format").url()}
+                  alt={current.photo.alt || current.name}
+                  width={52}
+                  height={52}
+                  className="rounded-full border-2 border-dragon-fire object-cover"
+                />
+              ) : (
+                <div
+                  aria-hidden="true"
+                  className="w-[52px] h-[52px] rounded-full border-2 border-dragon-fire bg-dawn-20"
+                />
+              )}
+              <div className="text-left">
+                <p className="font-bold text-dawn text-[1rem] leading-tight">
+                  {current.name}
+                </p>
+                {attribution ? (
+                  <p className="text-[0.875rem] text-dawn-40">{attribution}</p>
+                ) : null}
               </div>
-            </article>
-          ))}
+            </div>
           </div>
         </div>
 
