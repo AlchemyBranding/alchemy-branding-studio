@@ -27,6 +27,7 @@ const clientLogos: ClientLogo[] = [
   { name: "Healthy HR", file: "healthy-hr-pink.png" },
   { name: "The Clarified Company", file: "clarified-company-thistle.png" },
   { name: "Web Marketer", file: "web-marketer.svg", monoOnly: true },
+  { name: "The B2B Performance Marketing Podcast", file: "b2b-performance-marketing-podcast.png", size: "lg" },
   { name: "Welch Fitness", file: "WF_WORDMARK_DARK.png", monoOnly: true },
   { name: "Belle Vitale", file: "belle-vitale-full.png" },
   { name: "Christie Residential", file: "christie-residential-light.png" },
