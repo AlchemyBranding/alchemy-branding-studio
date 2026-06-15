@@ -14,13 +14,14 @@ const serviceOptions = [
   "Not sure yet",
 ] as const;
 
-const budgetOptions = [
-  "Under £10k",
-  "£10k – £25k",
-  "£25k – £50k",
-  "£50k – £100k",
-  "£100k+",
-  "Prefer not to say",
+const heardAboutOptions = [
+  "Google search",
+  "Social media",
+  "LinkedIn",
+  "Referral or word of mouth",
+  "Brand to Scale podcast",
+  "Event or talk",
+  "Other",
 ] as const;
 
 type FieldErrors = Partial<
@@ -179,12 +180,12 @@ export default function ContactForm() {
           </select>
         </div>
         <div>
-          <label htmlFor="budget" className={labelBase}>
-            Budget <span className="text-white/35 normal-case">(optional)</span>
+          <label htmlFor="heardAbout" className={labelBase}>
+            Where did you hear about us?
           </label>
-          <select id="budget" name="budget" defaultValue="" className={inputBase}>
+          <select id="heardAbout" name="heardAbout" defaultValue="" className={inputBase}>
             <option value="">Choose one</option>
-            {budgetOptions.map((opt) => (
+            {heardAboutOptions.map((opt) => (
               <option key={opt} value={opt}>
                 {opt}
               </option>

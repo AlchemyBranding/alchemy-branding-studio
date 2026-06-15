@@ -13,7 +13,7 @@ type ContactPayload = {
   email?: string;
   company?: string;
   service?: string;
-  budget?: string;
+  heardAbout?: string;
   message?: string;
   /** Honeypot — must stay empty. */
   website?: string;
@@ -48,7 +48,7 @@ export async function POST(request: Request) {
   const message = body.message?.trim() ?? "";
   const company = body.company?.trim() ?? "";
   const service = body.service?.trim() ?? "";
-  const budget = body.budget?.trim() ?? "";
+  const heardAbout = body.heardAbout?.trim() ?? "";
 
   const errors: Record<string, string> = {};
   if (name.length < 2) errors.name = "Please enter your name.";
@@ -66,7 +66,7 @@ export async function POST(request: Request) {
   ];
   if (company) lines.push(`<p><strong>Company:</strong> ${escapeHtml(company)}</p>`);
   if (service) lines.push(`<p><strong>Service interest:</strong> ${escapeHtml(service)}</p>`);
-  if (budget) lines.push(`<p><strong>Budget:</strong> ${escapeHtml(budget)}</p>`);
+  if (heardAbout) lines.push(`<p><strong>Heard about us:</strong> ${escapeHtml(heardAbout)}</p>`);
   lines.push(`<p><strong>Message:</strong></p><p>${escapeHtml(message).replace(/\n/g, "<br />")}</p>`);
   const html = lines.join("");
 
