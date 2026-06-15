@@ -34,11 +34,13 @@ export default function AuditForm() {
 
   async function onSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
+    // Capture the form node now: event.currentTarget is null after the await.
+    const form = event.currentTarget;
     setStatus("submitting");
     setErrors({});
     setServerError(null);
 
-    const data = new FormData(event.currentTarget);
+    const data = new FormData(form);
     const payload = Object.fromEntries(data.entries());
 
     try {
@@ -60,7 +62,7 @@ export default function AuditForm() {
         return;
       }
       setStatus("success");
-      event.currentTarget.reset();
+      form.reset();
       // Redirect to the dedicated thank-you page. A real pageview of
       // /free-brand-audit-for-smes/thank-you is the reliable conversion
       // signal for Google Ads; the inline success block below is a fallback

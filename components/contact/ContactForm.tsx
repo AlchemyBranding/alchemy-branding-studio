@@ -43,11 +43,13 @@ export default function ContactForm() {
 
   async function onSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
+    // Capture the form node now: event.currentTarget is null after the await.
+    const form = event.currentTarget;
     setStatus("submitting");
     setErrors({});
     setServerError(null);
 
-    const data = new FormData(event.currentTarget);
+    const data = new FormData(form);
     const payload = Object.fromEntries(data.entries());
 
     try {
@@ -69,7 +71,7 @@ export default function ContactForm() {
         return;
       }
       setStatus("success");
-      event.currentTarget.reset();
+      form.reset();
     } catch (err) {
       setStatus("error");
       setServerError(
