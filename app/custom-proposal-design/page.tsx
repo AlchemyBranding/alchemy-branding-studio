@@ -60,10 +60,6 @@ export default function CustomProposalDesignPage() {
                 <dd>4 weeks</dd>
               </div>
               <div className="flex items-center justify-between gap-4">
-                <dt className="text-white/55">Investment</dt>
-                <dd>From £3,500</dd>
-              </div>
-              <div className="flex items-center justify-between gap-4">
                 <dt className="text-white/55">Platforms</dt>
                 <dd className="text-right">Better Proposals · Proposify · Qwilr</dd>
               </div>
