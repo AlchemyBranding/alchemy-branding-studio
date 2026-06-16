@@ -154,6 +154,16 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
 
+      // The short and long logo-cheat-sheet slugs are the same post. The long
+      // URL was re-created in Sanity (88 clicks/yr); 301 the short variant
+      // (14 clicks/yr, indexed in GSC) to it so its traffic and equity carry
+      // over rather than 404ing.
+      {
+        source: "/your-logo-cheat-sheet",
+        destination: "/your-logo-cheat-sheet-how-to-use-logo-file-formats",
+        permanent: true,
+      },
+
       // ----- Legacy blog posts → /news --------------------------------------
       // Bulk 301 for the long-tail WordPress posts that aren't being
       // re-created in Sanity. To preserve a specific post, remove its slug
