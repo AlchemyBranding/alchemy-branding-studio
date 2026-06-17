@@ -15,7 +15,6 @@ type AuditPayload = {
   email?: string;
   company?: string;
   website?: string;
-  revenue?: string;
   challenge?: string;
   /** Honeypot — must stay empty. */
   trap?: string;
@@ -48,7 +47,6 @@ export async function POST(request: Request) {
   const email = body.email?.trim() ?? "";
   const company = body.company?.trim() ?? "";
   const website = body.website?.trim() ?? "";
-  const revenue = body.revenue?.trim() ?? "";
   const challenge = body.challenge?.trim() ?? "";
 
   const errors: Record<string, string> = {};
@@ -69,7 +67,6 @@ export async function POST(request: Request) {
     `<p><strong>Company:</strong> ${escapeHtml(company)}</p>`,
     `<p><strong>Website:</strong> ${escapeHtml(website)}</p>`,
   ];
-  if (revenue) lines.push(`<p><strong>Annual revenue:</strong> ${escapeHtml(revenue)}</p>`);
   lines.push(
     `<p><strong>Biggest brand or marketing challenge:</strong></p><p>${escapeHtml(challenge).replace(/\n/g, "<br />")}</p>`,
   );

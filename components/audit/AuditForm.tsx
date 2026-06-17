@@ -5,15 +5,6 @@ import type { FormEvent } from "react";
 
 import Button from "@/components/Button";
 
-const revenueOptions = [
-  "Under £500k",
-  "£500k – £2M",
-  "£2M – £5M",
-  "£5M – £15M",
-  "£15M+",
-  "Prefer not to say",
-] as const;
-
 type FieldErrors = Partial<
   Record<"name" | "email" | "company" | "website" | "challenge", string>
 >;
@@ -201,26 +192,6 @@ export default function AuditForm() {
             {errors.website}
           </p>
         ) : null}
-      </div>
-
-      <div>
-        <label htmlFor="audit-revenue" className={labelBase}>
-          Annual revenue{" "}
-          <span className="text-white/35 normal-case">(optional)</span>
-        </label>
-        <select
-          id="audit-revenue"
-          name="revenue"
-          defaultValue=""
-          className={inputBase}
-        >
-          <option value="">Choose one</option>
-          {revenueOptions.map((opt) => (
-            <option key={opt} value={opt}>
-              {opt}
-            </option>
-          ))}
-        </select>
       </div>
 
       <div>
