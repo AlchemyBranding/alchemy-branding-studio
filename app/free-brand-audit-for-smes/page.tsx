@@ -62,7 +62,6 @@ const whatYouGet = [
 ];
 
 const whoItsFor = [
-  "Revenue: £500k – £15M",
   "A small in-house marketing team (or no team at all)",
   "Growing fast enough that the brand is starting to creak",
   "Open to feedback that goes past \"make the logo bigger\"",
