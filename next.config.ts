@@ -77,13 +77,8 @@ const nextConfig: NextConfig = {
         destination: "/portfolio",
         permanent: true,
       },
-      // Old WordPress form thank-you pages — likely no real backlinks but
-      // catch stragglers cheaply.
-      {
-        source: "/contact/confirmation",
-        destination: "/",
-        permanent: true,
-      },
+      // Old WordPress form thank-you page — the contact form posts here again
+      // (real page at app/contact/confirmation), so no redirect.
       {
         source: "/mailing-list-confirmation",
         destination: "/",

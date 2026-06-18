@@ -73,6 +73,11 @@ export default function ContactForm() {
       }
       setStatus("success");
       form.reset();
+      // Redirect to the dedicated thank-you page (the same URL the old site
+      // used). A real pageview of /contact/confirmation is the reliable
+      // conversion signal; the inline success block below is a fallback if
+      // navigation is ever blocked.
+      window.location.assign("/contact/confirmation");
     } catch (err) {
       setStatus("error");
       setServerError(

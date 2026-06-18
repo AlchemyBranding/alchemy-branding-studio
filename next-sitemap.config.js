@@ -44,6 +44,7 @@ module.exports = {
     "/motion",
     "/opengraph-image",
     "/free-brand-audit-for-smes/thank-you",
+    "/contact/confirmation",
     "/holding",
     "/holding-static",
   ],
