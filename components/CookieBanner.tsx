@@ -38,36 +38,50 @@ export default function CookieBanner() {
   if (!mounted || !visible) return null;
 
   return (
-    <div
-      role="dialog"
-      aria-label="Cookie consent"
-      className="fixed inset-x-0 bottom-0 z-[70] bg-dawn border-t border-dragon-fire/90 px-6 py-4"
-    >
-      <div className="max-w-7xl mx-auto flex flex-col md:flex-row md:items-center justify-between gap-4">
-        <p className="text-[0.875rem] text-white max-w-2xl">
-          We use cookies to understand how people use this site.{" "}
+    <div className="fixed inset-0 z-[80] flex items-end justify-center p-4 sm:items-center sm:p-6">
+      {/* Dimming backdrop makes the choice prominent on landing. Not
+          click-to-dismiss — a deliberate accept/decline is required. */}
+      <div
+        className="absolute inset-0 bg-dawn/80 backdrop-blur-sm"
+        aria-hidden="true"
+      />
+      <div
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="cookie-consent-title"
+        aria-describedby="cookie-consent-desc"
+        className="relative w-full max-w-xl rounded-card border border-dragon-fire/70 bg-dawn-80 p-7 shadow-2xl shadow-black/50 md:p-8"
+      >
+        <h2
+          id="cookie-consent-title"
+          className="font-display text-h3 text-white"
+        >
+          Before you explore
+        </h2>
+        <p
+          id="cookie-consent-desc"
+          className="mt-3 text-[0.95rem] leading-[1.6] text-white/75"
+        >
+          We use cookies to understand how people use this site and to make it
+          better. Choose whether to allow them.{" "}
           <Link
             href="/cookie-policy"
             className="text-dragon-fire underline-offset-4 hover:underline"
           >
-            Learn more
+            Read our cookie policy
           </Link>
           .
         </p>
-        <div className="flex items-center gap-5 shrink-0">
+        <div className="mt-6 flex flex-col-reverse gap-3 sm:flex-row sm:items-center sm:justify-end sm:gap-4">
           <button
             type="button"
             onClick={() => persist("declined")}
-            className="text-[0.875rem] text-white/60 hover:text-white transition-colors duration-200"
+            className="px-2 py-2 text-[0.9rem] text-white/60 transition-colors duration-200 hover:text-white"
           >
             Decline
           </button>
-          <Button
-            variant="primary"
-            size="small"
-            onClick={() => persist("accepted")}
-          >
-            Accept
+          <Button variant="primary" onClick={() => persist("accepted")}>
+            Accept cookies
           </Button>
         </div>
       </div>
