@@ -1,45 +1,32 @@
-"use client";
-
 import Script from "next/script";
-import { useEffect, useState } from "react";
 
 const STORAGE_KEY = "alchemy-cookie-consent";
-const CONSENT_EVENT = "alchemy:consent-accepted";
 
 type Props = { gtmId: string };
 
 /**
- * Injects GTM only after the user accepts cookies.
- * Reads the consent flag from localStorage on mount, and listens for the
- * `alchemy:consent-accepted` event dispatched by CookieBanner.
+ * Loads GTM on every page with Google Consent Mode v2.
+ *
+ * Before the GTM container loads we default all consent types to "denied",
+ * then re-apply a returning visitor's stored choice. The cookie banner flips
+ * consent to "granted" on Accept (see CookieBanner). Google's GA4 / Ads tags
+ * respect this automatically — cookieless, modelled pings while denied and
+ * full tracking once granted — so analytics stay compliant without blocking
+ * GTM for visitors who haven't chosen yet.
  */
 export default function GoogleTagManager({ gtmId }: Props) {
-  const [enabled, setEnabled] = useState(false);
-
-  useEffect(() => {
-    if (!gtmId) return;
-    try {
-      if (window.localStorage.getItem(STORAGE_KEY) === "accepted") {
-        setEnabled(true);
-      }
-    } catch {
-      // no-op
-    }
-    const onAccept = () => setEnabled(true);
-    window.addEventListener(CONSENT_EVENT, onAccept);
-    return () => window.removeEventListener(CONSENT_EVENT, onAccept);
-  }, [gtmId]);
-
-  if (!gtmId || !enabled) return null;
+  if (!gtmId) return null;
 
   return (
     <>
-      <Script id="gtm-script" strategy="afterInteractive">
-        {`(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','${gtmId}');`}
+      <Script id="gtm-consent-init" strategy="afterInteractive">
+        {`
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('consent','default',{'ad_storage':'denied','analytics_storage':'denied','ad_user_data':'denied','ad_personalization':'denied','wait_for_update':500});
+try{if(window.localStorage.getItem('${STORAGE_KEY}')==='accepted'){gtag('consent','update',{'ad_storage':'granted','analytics_storage':'granted','ad_user_data':'granted','ad_personalization':'granted'});}}catch(e){}
+(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','${gtmId}');
+`}
       </Script>
       <noscript>
         <iframe

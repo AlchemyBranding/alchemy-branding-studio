@@ -6,7 +6,6 @@ import { useEffect, useState } from "react";
 import Button from "@/components/Button";
 
 const STORAGE_KEY = "alchemy-cookie-consent";
-const CONSENT_EVENT = "alchemy:consent-accepted";
 
 export default function CookieBanner() {
   const [mounted, setMounted] = useState(false);
@@ -30,9 +29,22 @@ export default function CookieBanner() {
       // no-op
     }
     setVisible(false);
-    if (value === "accepted") {
-      window.dispatchEvent(new Event(CONSENT_EVENT));
-    }
+
+    // Google Consent Mode v2: GTM loaded with all consent denied by default;
+    // flip to the visitor's choice here and signal GTM via the dataLayer.
+    const consent = value === "accepted" ? "granted" : "denied";
+    const w = window as typeof window & {
+      gtag?: (...args: unknown[]) => void;
+      dataLayer?: Record<string, unknown>[];
+    };
+    w.gtag?.("consent", "update", {
+      ad_storage: consent,
+      analytics_storage: consent,
+      ad_user_data: consent,
+      ad_personalization: consent,
+    });
+    w.dataLayer = w.dataLayer ?? [];
+    w.dataLayer.push({ event: "cookie_consent_update", consent_state: consent });
   }
 
   if (!mounted || !visible) return null;
