@@ -1,24 +1,18 @@
-import { draftMode } from "next/headers";
-import { redirect } from "next/navigation";
+import { defineEnableDraftMode } from "next-sanity/draft-mode";
+
+import { client } from "@/sanity/lib/client";
 
 /**
- * Enables Next.js draft mode so editors can preview unpublished Sanity content
- * on the real, styled page. Gated by SANITY_PREVIEW_SECRET.
+ * Enables Next.js draft mode for the Sanity Presentation tool. The Presentation
+ * pane calls this with a secure, per-session preview secret (via
+ * @sanity/preview-url-secret); defineEnableDraftMode validates it, turns on
+ * draft mode, and redirects into the preview. No static secret needed.
  *
- *   /api/draft?secret=XXXX&slug=/project/some-slug
- *
- * Disable again at /api/draft/disable.
+ * Exit preview at /api/draft/disable.
  */
-export async function GET(request: Request) {
-  const { searchParams } = new URL(request.url);
-  const secret = searchParams.get("secret");
-  const slug = searchParams.get("slug") ?? "/";
-
-  if (!process.env.SANITY_PREVIEW_SECRET || secret !== process.env.SANITY_PREVIEW_SECRET) {
-    return new Response("Invalid or missing preview secret.", { status: 401 });
-  }
-
-  (await draftMode()).enable();
-  // Only ever redirect to an internal path.
-  redirect(slug.startsWith("/") ? slug : `/${slug}`);
-}
+export const { GET } = defineEnableDraftMode({
+  client: client.withConfig({
+    token: process.env.SANITY_API_TOKEN,
+    useCdn: false,
+  }),
+});
