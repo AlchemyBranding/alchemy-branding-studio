@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { draftMode } from "next/headers";
 import { notFound } from "next/navigation";
 
 import ArticleJsonLd from "@/components/ArticleJsonLd";
@@ -35,10 +36,11 @@ export async function generateMetadata({
   const { slug } = await params;
   if (reservedSlugs.has(slug)) return {};
 
+  const { isEnabled } = await draftMode();
   const post = await safeFetch<BlogPostDetail | null>(
     blogPostBySlugQuery,
     null,
-    { params: { slug } },
+    { params: { slug }, preview: isEnabled },
   );
 
   if (!post) return { title: "Post not found" };
@@ -104,10 +106,11 @@ export default async function BlogPostPage({
   // routes first — but belt-and-braces just in case.
   if (reservedSlugs.has(slug)) notFound();
 
+  const { isEnabled } = await draftMode();
   const post = await safeFetch<BlogPostDetail | null>(
     blogPostBySlugQuery,
     null,
-    { params: { slug } },
+    { params: { slug }, preview: isEnabled },
   );
 
   if (!post) notFound();

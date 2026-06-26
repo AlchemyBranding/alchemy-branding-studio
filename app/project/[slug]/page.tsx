@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { draftMode } from "next/headers";
 import { notFound } from "next/navigation";
 
 import ArticleJsonLd from "@/components/ArticleJsonLd";
@@ -33,10 +34,11 @@ export async function generateMetadata({
   params: Promise<Params>;
 }): Promise<Metadata> {
   const { slug } = await params;
+  const { isEnabled } = await draftMode();
   const cs = await safeFetch<CaseStudyDetail | null>(
     caseStudyBySlugQuery,
     null,
-    { params: { slug } },
+    { params: { slug }, preview: isEnabled },
   );
 
   if (!cs) return { title: "Project not found" };
@@ -95,10 +97,11 @@ export default async function CaseStudyPage({
   params: Promise<Params>;
 }) {
   const { slug } = await params;
+  const { isEnabled } = await draftMode();
   const cs = await safeFetch<CaseStudyDetail | null>(
     caseStudyBySlugQuery,
     null,
-    { params: { slug } },
+    { params: { slug }, preview: isEnabled },
   );
 
   if (!cs) notFound();

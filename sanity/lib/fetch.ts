@@ -1,4 +1,4 @@
-import { client } from "./client";
+import { client, draftClient } from "./client";
 
 type FetchOptions = {
   params?: Record<string, unknown>;
@@ -6,6 +6,12 @@ type FetchOptions = {
   revalidate?: number | false;
   /** Cache tags for on-demand revalidation. */
   tags?: string[];
+  /**
+   * When true (Next draft mode), read drafts via the authenticated client and
+   * skip caching, so editors see unpublished changes. Public traffic never
+   * sets this.
+   */
+  preview?: boolean;
 };
 
 /**
@@ -15,9 +21,15 @@ type FetchOptions = {
 export async function safeFetch<T>(
   query: string,
   fallback: T,
-  { params, revalidate = 60, tags }: FetchOptions = {},
+  { params, revalidate = 60, tags, preview = false }: FetchOptions = {},
 ): Promise<T> {
   try {
+    if (preview) {
+      const data = await draftClient.fetch<T>(query, params ?? {}, {
+        cache: "no-store",
+      });
+      return (data ?? fallback) as T;
+    }
     const data = await client.fetch<T>(query, params ?? {}, {
       next: { revalidate, tags },
     });
