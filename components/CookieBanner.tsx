@@ -15,11 +15,21 @@ export default function CookieBanner() {
     setMounted(true);
     try {
       const stored = window.localStorage.getItem(STORAGE_KEY);
-      if (!stored) setVisible(true);
+      if (stored) return;
+      // Honour a Global Privacy Control browser signal as an opt-out:
+      // record a decline and don't prompt at all.
+      const nav = navigator as Navigator & { globalPrivacyControl?: boolean };
+      if (nav.globalPrivacyControl === true) {
+        persist("declined");
+        return;
+      }
+      setVisible(true);
     } catch {
       // localStorage unavailable (private mode, etc.) — show banner anyway
       setVisible(true);
     }
+    // persist is stable for the component's lifetime; safe to omit from deps.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   function persist(value: "accepted" | "declined") {

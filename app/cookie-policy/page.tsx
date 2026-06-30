@@ -16,7 +16,7 @@ export default function CookiePolicyPage() {
     <LegalLayout
       eyebrow="Legal"
       title="Cookie Policy"
-      lastUpdated="11 May 2026"
+      lastUpdated="30 June 2026"
     >
       <p>
         This page explains what cookies and similar storage we use on{" "}
@@ -64,9 +64,13 @@ export default function CookiePolicyPage() {
 
       <h3>Analytics &amp; performance</h3>
       <p>
-        These only load <em>after</em> you press &ldquo;Accept&rdquo; on the
-        cookie banner. If you decline, none of this is ever loaded into your
-        browser.
+        Google Tag Manager loads on every page to manage your consent choice,
+        but it sets no cookies of its own. The analytics and advertising cookies
+        below are only set <em>after</em> you press &ldquo;Accept&rdquo;. Before
+        that, Google Consent Mode keeps measurement cookieless. If you decline
+        &mdash; or if your browser sends a{" "}
+        <strong>Global Privacy Control (GPC)</strong> signal, which we honour as
+        an opt-out &mdash; none of these cookies are set.
       </p>
       <table>
         <thead>
@@ -96,6 +100,12 @@ export default function CookiePolicyPage() {
             <td>Throttles request rate to Google Analytics.</td>
             <td>Google Analytics</td>
             <td>1 minute</td>
+          </tr>
+          <tr>
+            <td>_gcl_au</td>
+            <td>Measures ad conversions (Google Ads conversion linker).</td>
+            <td>Google Ads (via Google Tag Manager)</td>
+            <td>Up to 90 days</td>
           </tr>
         </tbody>
       </table>

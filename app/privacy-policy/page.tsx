@@ -16,7 +16,7 @@ export default function PrivacyPolicyPage() {
     <LegalLayout
       eyebrow="Legal"
       title="Privacy Policy"
-      lastUpdated="11 May 2026"
+      lastUpdated="30 June 2026"
     >
       <p>
         This policy explains how Alchemy Branding Studio (&ldquo;Alchemy&rdquo;,
@@ -45,9 +45,13 @@ export default function PrivacyPolicyPage() {
           help you and follow up later.
         </li>
         <li>
-          <strong>When you browse the site.</strong> If you accept our cookies,
-          we use Google Tag Manager and associated analytics tools to understand
-          how the site is used. If you decline, none of that runs. See our{" "}
+          <strong>When you browse the site.</strong> We load Google Tag Manager
+          to manage your cookie choice. Until you accept, no analytics or
+          advertising cookies are set &mdash; Google Consent Mode keeps everything
+          in a cookieless, privacy-preserving state. If you accept, Google
+          Analytics 4 and Google Ads conversion measurement run. We also honour{" "}
+          <strong>Global Privacy Control (GPC)</strong> browser signals as an
+          opt-out. See our{" "}
           <Link href="/cookie-policy">Cookie Policy</Link> for the detail.
         </li>
       </ul>
@@ -95,9 +99,10 @@ export default function PrivacyPolicyPage() {
             <td>Delivers the emails our forms generate to our inbox.</td>
           </tr>
           <tr>
-            <td>Google (Tag Manager + Analytics)</td>
-            <td>Only loads after you accept cookies. Tells us aggregated usage
-              patterns. See <Link href="/cookie-policy">Cookie Policy</Link>.</td>
+            <td>Google (Tag Manager, Analytics 4, Ads)</td>
+            <td>Tag Manager loads to manage consent. Analytics 4 (aggregated
+              usage) and Ads conversion measurement run only after you accept.
+              See <Link href="/cookie-policy">Cookie Policy</Link>.</td>
           </tr>
           <tr>
             <td>Motion / WhatsApp / our email host</td>
@@ -146,6 +151,15 @@ export default function PrivacyPolicyPage() {
           ico.org.uk
         </a>
         .
+      </p>
+
+      <h2>Children&apos;s privacy</h2>
+      <p>
+        This site and our services are aimed at businesses, not children. We
+        don&apos;t knowingly collect personal data from anyone under 16. If you
+        believe a child has given us their data, email{" "}
+        <a href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a> and
+        we&apos;ll delete it.
       </p>
 
       <h2>Changes to this policy</h2>
