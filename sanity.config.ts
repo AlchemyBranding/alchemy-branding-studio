@@ -1,6 +1,5 @@
 import { visionTool } from "@sanity/vision";
 import { defineConfig } from "sanity";
-import { defineLocations, presentationTool } from "sanity/presentation";
 import { structureTool } from "sanity/structure";
 
 import { previewAction } from "@/sanity/actions/previewAction";
@@ -15,45 +14,12 @@ export default defineConfig({
   dataset,
   schema: { types: schemaTypes },
   document: {
-    // Add an "Open preview" action to case studies and blog posts.
+    // One-click "Open preview" action on case studies and blog posts
+    // (opens the styled draft in a new tab via /api/draft).
     actions: (prev, context) =>
       context.schemaType === "caseStudy" || context.schemaType === "blogPost"
         ? [...prev, previewAction]
         : prev,
   },
-  plugins: [
-    structureTool(),
-    // Live "Preview" pane: renders the real, styled page (draft content) next
-    // to the editor. Draft mode is enabled via /api/draft using a secure,
-    // per-session preview secret (no static secret in the bundle).
-    presentationTool({
-      previewUrl: { previewMode: { enable: "/api/draft" } },
-      resolve: {
-        locations: {
-          caseStudy: defineLocations({
-            select: { title: "title", slug: "slug.current" },
-            resolve: (doc) => ({
-              locations: [
-                {
-                  title: doc?.title || "Case study",
-                  href: `/project/${doc?.slug}`,
-                },
-                { title: "Work index", href: "/portfolio" },
-              ],
-            }),
-          }),
-          blogPost: defineLocations({
-            select: { title: "title", slug: "slug.current" },
-            resolve: (doc) => ({
-              locations: [
-                { title: doc?.title || "Post", href: `/${doc?.slug}` },
-                { title: "News index", href: "/news" },
-              ],
-            }),
-          }),
-        },
-      },
-    }),
-    visionTool({ defaultApiVersion: apiVersion }),
-  ],
+  plugins: [structureTool(), visionTool({ defaultApiVersion: apiVersion })],
 });
