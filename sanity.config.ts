@@ -3,6 +3,7 @@ import { defineConfig } from "sanity";
 import { defineLocations, presentationTool } from "sanity/presentation";
 import { structureTool } from "sanity/structure";
 
+import { previewAction } from "@/sanity/actions/previewAction";
 import { apiVersion, dataset, projectId } from "@/sanity/env";
 import { schemaTypes } from "@/sanity/schemas";
 
@@ -13,6 +14,13 @@ export default defineConfig({
   projectId,
   dataset,
   schema: { types: schemaTypes },
+  document: {
+    // Add an "Open preview" action to case studies and blog posts.
+    actions: (prev, context) =>
+      context.schemaType === "caseStudy" || context.schemaType === "blogPost"
+        ? [...prev, previewAction]
+        : prev,
+  },
   plugins: [
     structureTool(),
     // Live "Preview" pane: renders the real, styled page (draft content) next
