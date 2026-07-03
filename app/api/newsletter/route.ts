@@ -13,6 +13,8 @@ import { NextResponse } from "next/server";
 
 const PORTAL_ID = process.env.HUBSPOT_PORTAL_ID;
 const FORM_GUID = process.env.HUBSPOT_NEWSLETTER_FORM_GUID;
+const CONSENT_TEXT = process.env.HUBSPOT_CONSENT_TEXT;
+const NEWSLETTER_SUBSCRIPTION_ID = process.env.HUBSPOT_NEWSLETTER_SUBSCRIPTION_ID;
 // Data-residency region. This portal is on EU (app-eu1), so default to eu1.
 // na1 uses the global api.hsforms.com host; other regions use api-<region>.
 const REGION = process.env.HUBSPOT_FORMS_REGION || "eu1";
@@ -77,15 +79,31 @@ export async function POST(request: Request) {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         fields: [{ objectTypeId: "0-1", name: "email", value: email }],
-        // Only sent when HUBSPOT_CONSENT_TEXT is set. HubSpot rejects
-        // legalConsentOptions on portals without the data-privacy feature
-        // enabled, so this stays off by default and works on Starter plans.
-        ...(process.env.HUBSPOT_CONSENT_TEXT
+        // Record the visitor's on-site opt-in in HubSpot so the contact is
+        // logged as subscribed rather than "Not Specified". Requires
+        // HUBSPOT_CONSENT_TEXT; when HUBSPOT_NEWSLETTER_SUBSCRIPTION_ID is also
+        // set, the contact is explicitly opted in to that subscription type
+        // (the newsletter). Omitted entirely otherwise, so it stays safe on
+        // portals without the data-privacy feature (e.g. Starter plans).
+        ...(CONSENT_TEXT
           ? {
               legalConsentOptions: {
                 consent: {
                   consentToProcess: true,
-                  text: process.env.HUBSPOT_CONSENT_TEXT,
+                  text: CONSENT_TEXT,
+                  ...(NEWSLETTER_SUBSCRIPTION_ID
+                    ? {
+                        communications: [
+                          {
+                            value: true,
+                            subscriptionTypeId: Number(
+                              NEWSLETTER_SUBSCRIPTION_ID,
+                            ),
+                            text: CONSENT_TEXT,
+                          },
+                        ],
+                      }
+                    : {}),
                 },
               },
             }
