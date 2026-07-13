@@ -2,7 +2,42 @@ import { defineField, defineType } from "sanity";
 
 import { slugField } from "./slug";
 
-const categories = ["Insights", "AI", "Awards", "Founders", "Projects", "Team"] as const;
+const categories = [
+  "Insights",
+  "AI",
+  "Awards",
+  "Founders",
+  "Projects",
+  "Team",
+  "Brand Strategy",
+  "Brand Identity",
+  "Animation & Video",
+  "Report Design",
+  "Growth & Leadership",
+  "Studio News",
+] as const;
+
+const topics = [
+  "Brand Strategy",
+  "Positioning",
+  "Brand Identity",
+  "Brand Guidelines",
+  "Messaging",
+  "Storytelling",
+  "Rebrand",
+  "Brand Discovery",
+  "Logo Design",
+  "Animation",
+  "Explainer Video",
+  "Report Design",
+  "Sales",
+  "Growth",
+  "Leadership",
+  "Scaling",
+  "SME",
+  "Case Study",
+  "AI",
+] as const;
 
 export const blogPost = defineType({
   name: "blogPost",
@@ -42,6 +77,19 @@ export const blogPost = defineType({
         layout: "radio",
       },
       validation: (rule) => rule.required(),
+    }),
+    defineField({
+      name: "topics",
+      title: "Topics",
+      type: "array",
+      group: "content",
+      of: [{ type: "string" }],
+      options: {
+        list: topics.map((value) => ({ title: value, value })),
+        layout: "tags",
+      },
+      description:
+        "Cross-cutting topic tags for related content and filtering. Pick any that apply, in addition to the single Category above.",
     }),
     defineField({
       name: "publishedAt",
