@@ -20,7 +20,7 @@ const seoProjection = `{
 // fills its three slots while the portfolio is being built out.
 export const featuredCaseStudiesQuery = defineQuery(`
   *[_type == "caseStudy" && defined(slug.current)]
-    | order(coalesce(featured, false) desc, publishedAt desc) [0...3] {
+    | order(coalesce(featuredHero, false) desc, coalesce(featured, false) desc, publishedAt desc) [0...3] {
       _id,
       title,
       "slug": slug.current,

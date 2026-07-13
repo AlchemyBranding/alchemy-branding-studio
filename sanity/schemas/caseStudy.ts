@@ -67,6 +67,15 @@ export const caseStudy = defineType({
       description: "Up to 3 featured projects show in the homepage portfolio grid.",
     }),
     defineField({
+      name: "featuredHero",
+      title: "Large homepage tile",
+      type: "boolean",
+      group: "content",
+      initialValue: false,
+      description:
+        "Show this project as the big tile on the homepage grid. Pick one featured project; if more than one is set, the newest wins.",
+    }),
+    defineField({
       name: "publishedAt",
       title: "Published at",
       type: "datetime",
