@@ -14,6 +14,7 @@ const placeholderProjects: FeaturedCaseStudy[] = [
     clientName: null,
     outcomeSummary: null,
     heroImage: null,
+    cardImage: null,
     heroVideoUrl: null,
   },
   {
@@ -25,6 +26,7 @@ const placeholderProjects: FeaturedCaseStudy[] = [
     clientName: null,
     outcomeSummary: null,
     heroImage: null,
+    cardImage: null,
     heroVideoUrl: null,
   },
   {
@@ -36,6 +38,7 @@ const placeholderProjects: FeaturedCaseStudy[] = [
     clientName: null,
     outcomeSummary: null,
     heroImage: null,
+    cardImage: null,
     heroVideoUrl: null,
   },
 ];
