@@ -29,6 +29,7 @@ export const featuredCaseStudiesQuery = defineQuery(`
       clientName,
       outcomeSummary,
       heroImage ${altImageProjection},
+      cardImage ${altImageProjection},
       "heroVideoUrl": heroVideo.asset->url
     }
 `);
@@ -44,6 +45,7 @@ export const animationCaseStudiesQuery = defineQuery(`
       clientName,
       outcomeSummary,
       heroImage ${altImageProjection},
+      cardImage ${altImageProjection},
       "heroVideoUrl": heroVideo.asset->url
     }
 `);
@@ -100,6 +102,7 @@ export const allCaseStudiesQuery = defineQuery(`
       clientName,
       outcomeSummary,
       heroImage ${altImageProjection},
+      cardImage ${altImageProjection},
       "heroVideoUrl": heroVideo.asset->url
     }
 `);
@@ -202,6 +205,7 @@ export type FeaturedCaseStudy = {
   clientName: string | null;
   outcomeSummary: string | null;
   heroImage: SanityImageRef | null;
+  cardImage: SanityImageRef | null;
   heroVideoUrl: string | null;
 };
 

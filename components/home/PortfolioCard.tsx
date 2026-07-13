@@ -37,9 +37,15 @@ export default function PortfolioCard({ project, variant = "small" }: Props) {
   };
 
   const primaryTag = project.serviceTags?.[0] ?? null;
-  const hasImage = !!project.heroImage?.asset;
+  // The large tile is tall/portrait, so prefer a dedicated portrait card
+  // image when one is set; otherwise fall back to the (landscape) hero image.
+  const cardSource =
+    variant === "large" && project.cardImage?.asset
+      ? project.cardImage
+      : project.heroImage;
+  const hasImage = !!cardSource?.asset;
   const imageUrl = hasImage
-    ? urlFor(project.heroImage!)
+    ? urlFor(cardSource!)
         .width(variant === "large" ? 1200 : 900)
         .auto("format")
         .url()
@@ -59,7 +65,7 @@ export default function PortfolioCard({ project, variant = "small" }: Props) {
       {imageUrl ? (
         <Image
           src={imageUrl}
-          alt={project.heroImage?.alt ?? project.title}
+          alt={cardSource?.alt ?? project.title}
           fill
           sizes={
             variant === "large"

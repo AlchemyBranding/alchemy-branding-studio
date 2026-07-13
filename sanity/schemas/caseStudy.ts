@@ -90,6 +90,14 @@ export const caseStudy = defineType({
       validation: (rule) => rule.required(),
     }),
     defineField({
+      name: "cardImage",
+      title: "Card image (portrait)",
+      type: "altImage",
+      group: "content",
+      description:
+        "Optional. A portrait (≈4:5) image used when this project is the large tile on the homepage grid. Falls back to the hero image if empty.",
+    }),
+    defineField({
       name: "heroVideo",
       title: "Hero video",
       type: "file",
