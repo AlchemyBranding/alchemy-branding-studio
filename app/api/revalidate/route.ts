@@ -31,13 +31,20 @@ const pageKeyToPath: Record<string, string> = {
 function pathsForPayload(p: WebhookPayload): string[] {
   switch (p._type) {
     case "blogPost":
-      return ["/", "/news", p.slug ? `/${p.slug}` : null].filter(
+      // /sitemap.xml is included because the sitemap is now a dynamic route
+      // (app/sitemap.ts) rather than a static file written by next-sitemap at
+      // build time. Without this, new posts stay absent from the sitemap until
+      // its own revalidate window elapses.
+      return ["/", "/news", "/sitemap.xml", p.slug ? `/${p.slug}` : null].filter(
         (x): x is string => Boolean(x),
       );
     case "caseStudy":
-      return ["/", "/portfolio", p.slug ? `/project/${p.slug}` : null].filter(
-        (x): x is string => Boolean(x),
-      );
+      return [
+        "/",
+        "/portfolio",
+        "/sitemap.xml",
+        p.slug ? `/project/${p.slug}` : null,
+      ].filter((x): x is string => Boolean(x));
     case "testimonial":
       return ["/"];
     case "teamMember":
