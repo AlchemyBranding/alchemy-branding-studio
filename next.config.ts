@@ -164,6 +164,15 @@ const nextConfig: NextConfig = {
       // re-created in Sanity. To preserve a specific post, remove its slug
       // from lib/legacy-blog-slugs.ts AND create the Sanity document at the
       // matching slug — the Sanity route will start serving instead.
+      // The WordPress URL for this post was the short form; the Sanity slug
+      // ends "-for-brands". The post itself was deliberately preserved (see
+      // lib/legacy-blog-slugs.ts) but nothing bridged the two spellings, so
+      // the old URL still 404s. Google last crawled it on 11 July 2026.
+      {
+        source: "/5-reasons-brand-identity-guidelines-are-so-important",
+        destination: "/5-reasons-brand-identity-guidelines-are-so-important-for-brands",
+        permanent: true,
+      },
       ...legacyBlogSlugs.map((slug) => ({
         source: `/${slug}`,
         destination: "/news",
