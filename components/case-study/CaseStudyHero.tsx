@@ -9,6 +9,7 @@ type Props = Pick<
   | "subtitle"
   | "serviceTags"
   | "clientName"
+  | "clientUrl"
   | "outcomeSummary"
   | "heroImage"
   | "heroVideoUrl"
@@ -91,7 +92,15 @@ export default function CaseStudyHero(props: Props) {
       <div className="border-y border-dawn-80">
         <div className="max-w-7xl mx-auto px-6 md:px-10 py-8 grid grid-cols-2 md:grid-cols-4 gap-6">
           {props.clientName ? (
-            <Meta label="Client" value={props.clientName} />
+            props.clientUrl ? (
+              <MetaLink
+                label="Client"
+                value={props.clientName}
+                href={props.clientUrl}
+              />
+            ) : (
+              <Meta label="Client" value={props.clientName} />
+            )
           ) : null}
           {props.serviceTags && props.serviceTags.length > 0 ? (
             <Meta label="Services" value={props.serviceTags.join(", ")} />
@@ -103,6 +112,34 @@ export default function CaseStudyHero(props: Props) {
         </div>
       </div>
     </section>
+  );
+}
+
+function MetaLink({
+  label,
+  value,
+  href,
+}: {
+  label: string;
+  value: string;
+  href: string;
+}) {
+  return (
+    <div>
+      <p className="text-[0.7rem] font-bold uppercase tracking-[0.12em] text-dragon-fire">
+        {label}
+      </p>
+      <p className="mt-1.5 text-[0.9375rem] leading-[1.5]">
+        <a
+          href={href}
+          target="_blank"
+          rel="noopener"
+          className="text-white/80 underline decoration-white/30 underline-offset-4 transition-colors hover:text-white hover:decoration-dragon-fire"
+        >
+          {value}
+        </a>
+      </p>
+    </div>
   );
 }
 

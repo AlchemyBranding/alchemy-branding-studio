@@ -59,6 +59,16 @@ export const caseStudy = defineType({
       group: "content",
     }),
     defineField({
+      name: "clientUrl",
+      title: "Client website",
+      type: "url",
+      group: "content",
+      description:
+        "The client's live website. Renders as an outbound link on the case study. Link out first, then it is fair to ask them for a credit linking back.",
+      validation: (rule) =>
+        rule.uri({ scheme: ["http", "https"] }).error("Must be a full URL starting http:// or https://"),
+    }),
+    defineField({
       name: "featured",
       title: "Feature on homepage",
       type: "boolean",

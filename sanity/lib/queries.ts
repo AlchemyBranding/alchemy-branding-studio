@@ -172,6 +172,7 @@ export const caseStudyBySlugQuery = defineQuery(`
     subtitle,
     serviceTags,
     clientName,
+    clientUrl,
     publishedAt,
     outcomeSummary,
     heroImage ${altImageProjection},
@@ -256,6 +257,7 @@ export type CaseStudyStat = {
 
 export type CaseStudyDetail = FeaturedCaseStudy & {
   _updatedAt: string;
+  clientUrl: string | null;
   publishedAt: string;
   body: unknown[] | null;
   stats: CaseStudyStat[] | null;

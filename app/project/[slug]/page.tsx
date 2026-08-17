@@ -139,6 +139,7 @@ export default async function CaseStudyPage({
         subtitle={cs.subtitle}
         serviceTags={cs.serviceTags}
         clientName={cs.clientName}
+        clientUrl={cs.clientUrl}
         outcomeSummary={cs.outcomeSummary}
         heroImage={cs.heroImage}
         heroVideoUrl={cs.heroVideoUrl}
