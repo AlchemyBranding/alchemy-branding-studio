@@ -29,7 +29,7 @@ export async function generateMetadata(): Promise<Metadata> {
     defaults: {
       title: "Brand Strategy Workshop for SME Leadership Teams",
       description:
-        "A brand strategy workshop for SME leadership teams. Four to six hours, and you leave with a written positioning sentence and an agreed answer on who you are not for.",
+        "A brand strategy workshop for SME leadership teams. Half a day, or a full day for a bigger team. You leave with a positioning sentence and an agreed answer on who you are not for.",
     },
   });
 }
@@ -71,7 +71,7 @@ const serviceSchema = {
   serviceType: "Brand strategy workshop",
   url: `${siteConfig.url}/brand-strategy-workshop`,
   description:
-    "A brand strategy workshop for SME leadership teams. Four to six hours, ending in a written positioning sentence and an agreed answer on who the business is not for.",
+    "A brand strategy workshop for SME leadership teams. Typically half a day, scaling to a full day or more depending on the size of the team and the complexity of the business. Ends in a written positioning sentence and an agreed answer on who the business is not for.",
   provider: {
     "@type": "Organization",
     name: siteConfig.name,
@@ -93,7 +93,7 @@ const inTheRoom = [
   {
     title: "Leadership only.",
     detail:
-      "Not the whole company. The people who can make a decision and make it hold. Six in the room is a sensible maximum.",
+      "Not the whole company. The people who can make a decision and make it hold. A bigger team is workable, it just makes for a longer session.",
   },
   {
     title: "Your place or ours.",
@@ -169,8 +169,10 @@ export default async function BrandStrategyWorkshopPage() {
             <span className="text-dusk italic">not a deck.</span>
           </h1>
           <p className="mt-8 max-w-2xl text-[1.125rem] leading-[1.7] text-white/65">
-            We run a brand strategy workshop with your leadership team. Four to
-            six hours, in our studio in Abergavenny or at your place. The
+            We run a brand strategy workshop with your leadership team.
+            Typically half a day, scaling to a full day or more as the team gets
+            bigger and the business gets more complicated. In our studio in
+            Abergavenny or at your place. The
             session exists to settle one argument: what your business is for,
             and who it is not for. You leave with a positioning sentence in
             writing. Everything after it, identity, website, content, sales
@@ -201,7 +203,7 @@ export default async function BrandStrategyWorkshopPage() {
             id="in-the-room-heading"
             className="font-display text-h2 mt-3 max-w-3xl text-white"
           >
-            Half a day, and the whole thing hangs on who is in it.
+            The whole thing hangs on who is in the room.
           </h2>
           <ul className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-6">
             {inTheRoom.map((item) => (
@@ -240,8 +242,8 @@ export default async function BrandStrategyWorkshopPage() {
               </h2>
               <p className="mt-6 text-[1.125rem] leading-[1.7] text-dawn/70 max-w-lg">
                 Both lists end up on the wall. The team argues about the second
-                one, and that argument is the reason the session is worth half a
-                day of your leadership team&apos;s time.
+                one, and that argument is the reason the session is worth
+                clearing the diary for.
               </p>
             </div>
 
@@ -407,8 +409,9 @@ export default async function BrandStrategyWorkshopPage() {
             for what to build next.
           </p>
           <p className="mt-5 text-[1.0625rem] leading-[1.75] text-dawn/80">
-            Where it lands above that depends on how many people are in the room
-            and how much work the strategy needs after the session.
+            Where it lands above that depends on the size of your team, whether
+            the session runs to a full day, and how much work the strategy needs
+            afterwards.
           </p>
         </div>
       </section>
