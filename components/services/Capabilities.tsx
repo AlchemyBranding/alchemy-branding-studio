@@ -1,12 +1,21 @@
+import Link from "next/link";
+
 import TiltCard from "@/components/motion/TiltCard";
 
 type Capability = {
   title: string;
   body: string;
+  /** Omitted where no dedicated page exists yet. */
+  href?: string;
 };
 
-// Deliberately not a service catalogue — these are the typical follow-on
+// Deliberately not a service catalogue. These are the typical follow-on
 // engagements that fall out of the workshop, not a tick-the-box menu.
+//
+// Three of the six have no page to link to. That gap is the point of the
+// optional href rather than something to paper over with a link to /contact:
+// a card that promises a page and delivers a contact form is worse than one
+// that stays quiet.
 const capabilities: Capability[] = [
   {
     title: "Visual identity",
@@ -17,16 +26,19 @@ const capabilities: Capability[] = [
     title: "Website",
     body:
       "Strategic design and build: fast, accessible, and easy for your team to keep updated once we hand it over. Built to do a job, not just to look new for a year.",
+    href: "/website-design",
   },
   {
     title: "Animation & motion",
     body:
       "Explainer videos, motion identity, social cuts and campaign work; the message brought to life for the moments when words on a page aren't enough.",
+    href: "/animation",
   },
   {
     title: "Sales & proposal design",
     body:
       "Decks, proposals and one-pagers built to close: on-brand, on-message, and set up inside the tools you already use (Better Proposals, Proposify, Qwilr).",
+    href: "/custom-proposal-design",
   },
   {
     title: "Content & social",
@@ -68,7 +80,7 @@ export default function Capabilities() {
             <li key={c.title} className="h-full">
               <TiltCard
                 strength={5}
-                className="rounded-card bg-dawn-80 border border-dawn-60 p-7 h-full"
+                className="rounded-card bg-dawn-80 border border-dawn-60 p-7 h-full flex flex-col"
               >
                 <h3 className="font-bold text-[1.125rem] text-white">
                   {c.title}
@@ -76,6 +88,18 @@ export default function Capabilities() {
                 <p className="mt-3 text-[0.9375rem] leading-[1.65] text-white/65">
                   {c.body}
                 </p>
+                {c.href ? (
+                  <Link
+                    href={c.href}
+                    className="mt-5 inline-flex items-center gap-1.5 self-start text-[0.875rem] font-bold uppercase tracking-[0.08em] text-dragon-fire hover:text-fire-60 transition-colors"
+                  >
+                    <span>
+                      {c.title}
+                      <span className="sr-only"> service page</span>
+                    </span>
+                    <span aria-hidden="true">&rarr;</span>
+                  </Link>
+                ) : null}
               </TiltCard>
             </li>
           ))}

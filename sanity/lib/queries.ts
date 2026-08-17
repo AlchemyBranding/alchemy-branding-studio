@@ -50,6 +50,42 @@ export const animationCaseStudiesQuery = defineQuery(`
     }
 `);
 
+export const websiteCaseStudiesQuery = defineQuery(`
+  *[_type == "caseStudy" && defined(slug.current) && "Website" in serviceTags]
+    | order(coalesce(featured, false) desc, publishedAt desc) [0...3] {
+      _id,
+      title,
+      "slug": slug.current,
+      subtitle,
+      serviceTags,
+      clientName,
+      outcomeSummary,
+      heroImage ${altImageProjection},
+      cardImage ${altImageProjection},
+      "heroVideoUrl": heroVideo.asset->url
+    }
+`);
+
+// There is no "Workshop" serviceTag, so this cannot mirror the tag-driven
+// queries above. The slugs are passed in by the page and pinned deliberately:
+// these are the three published case studies whose write-up actually opens on
+// the workshop, so the proof on the page is checkable rather than whatever a
+// loose text match happens to return.
+export const caseStudiesBySlugsQuery = defineQuery(`
+  *[_type == "caseStudy" && slug.current in $slugs] {
+    _id,
+    title,
+    "slug": slug.current,
+    subtitle,
+    serviceTags,
+    clientName,
+    outcomeSummary,
+    heroImage ${altImageProjection},
+    cardImage ${altImageProjection},
+    "heroVideoUrl": heroVideo.asset->url
+  }
+`);
+
 export const featuredTestimonialsQuery = defineQuery(`
   *[_type == "testimonial" && featured == true]
     | order(order asc, _createdAt asc) {

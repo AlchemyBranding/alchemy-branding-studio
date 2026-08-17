@@ -52,12 +52,19 @@ export default function Workshop() {
               build themselves.
             </p>
 
+            {/*
+              Secondary action points at the workshop page rather than /contact.
+              "brand strategy workshop" is the largest non-brand query on the
+              site and this section is the strongest internal signal for it, so
+              it needs to hand off to the page that answers the query. /contact
+              is still one click away from the CTA at the foot of this page.
+            */}
             <div className="mt-10 flex flex-wrap items-center gap-4">
               <Button variant="primary" href={motionHref} external>
                 Book a discovery call
               </Button>
-              <Button variant="secondary" href="/contact">
-                Send a brief
+              <Button variant="secondary" href="/brand-strategy-workshop">
+                How the workshop works
               </Button>
             </div>
 

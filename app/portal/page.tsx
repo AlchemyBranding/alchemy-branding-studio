@@ -37,7 +37,7 @@ const links: PortalLink[] = [
   {
     label: "The Brand Strategy Workshop",
     note: "Where every brand build starts",
-    href: "/services",
+    href: "/brand-strategy-workshop",
   },
   {
     label: "Download the brand checklist",

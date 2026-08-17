@@ -25,7 +25,7 @@ const capabilities: Capability[] = [
     title: "Brand strategy and positioning",
     detail:
       "Where every project starts. A focused workshop that gets you clear on who you are for and why you are different.",
-    href: "/services",
+    href: "/brand-strategy-workshop",
   },
   {
     title: "Identity and design",
@@ -36,6 +36,7 @@ const capabilities: Capability[] = [
     title: "Websites",
     detail:
       "Fast, clear websites that tell your story in five seconds and give visitors one obvious next step.",
+    href: "/website-design",
   },
   {
     title: "Animation and video",

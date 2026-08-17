@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 
 import Button from "@/components/Button";
 import FinalCTA from "@/components/home/FinalCTA";
-import PortfolioCard from "@/components/home/PortfolioCard";
+import WorkGrid from "@/components/home/WorkGrid";
 import { getPageMetadata } from "@/lib/seo";
 import { motionHref } from "@/lib/site";
 import { safeFetch } from "@/sanity/lib/fetch";
@@ -211,42 +211,5 @@ export default async function AnimationPage() {
         secondary={{ label: "See our work", href: "/portfolio" }}
       />
     </>
-  );
-}
-
-/**
- * Adaptive layout mirroring the homepage Featured Work grid so the section
- * still reads as finished with 1, 2 or 3 case studies.
- */
-function WorkGrid({ items }: { items: FeaturedCaseStudy[] }) {
-  if (items.length === 1) {
-    return (
-      <div className="mt-14">
-        <div className="aspect-[4/5] lg:aspect-[16/9]">
-          <PortfolioCard project={items[0]} variant="large" />
-        </div>
-      </div>
-    );
-  }
-  if (items.length === 2) {
-    return (
-      <div className="mt-14 grid grid-cols-1 lg:grid-cols-2 gap-6">
-        {items.map((p) => (
-          <div key={p._id} className="aspect-[4/5] lg:aspect-[4/3]">
-            <PortfolioCard project={p} variant="large" />
-          </div>
-        ))}
-      </div>
-    );
-  }
-  const [large, smallA, smallB] = items;
-  return (
-    <div className="mt-14 grid grid-cols-1 lg:grid-cols-2 gap-6 lg:auto-rows-fr">
-      <div className="lg:row-span-2">
-        <PortfolioCard project={large} variant="large" />
-      </div>
-      <PortfolioCard project={smallA} variant="small" />
-      <PortfolioCard project={smallB} variant="small" />
-    </div>
   );
 }

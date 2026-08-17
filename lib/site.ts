@@ -53,6 +53,8 @@ export const reservedSlugs = new Set<string>([
   "free-brand-audit-for-smes",
   "custom-proposal-design",
   "animation",
+  "brand-strategy-workshop",
+  "website-design",
   "branding-services-cardiff",
   "motion",
   "portal",
