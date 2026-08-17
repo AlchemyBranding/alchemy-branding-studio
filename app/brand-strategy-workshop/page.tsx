@@ -6,7 +6,7 @@ import FinalCTA from "@/components/home/FinalCTA";
 import NewsletterSignup from "@/components/home/NewsletterSignup";
 import WorkGrid from "@/components/home/WorkGrid";
 import { getPageMetadata } from "@/lib/seo";
-import { motionHref } from "@/lib/site";
+import { motionHref, siteConfig } from "@/lib/site";
 import { safeFetch } from "@/sanity/lib/fetch";
 import {
   caseStudiesBySlugsQuery,
@@ -44,6 +44,50 @@ const WORKSHOP_CASE_STUDY_SLUGS = [
   "healthy-hr-brand-workshop-branding-and-website",
   "be-business-fit-workshop-branding-and-website",
 ];
+
+/**
+ * One source for the price. The visible copy and the Offer markup below both
+ * read from it, so the two cannot drift apart. A marked-up price that disagrees
+ * with the page is the easiest way to earn a manual action, and the usual cause
+ * is somebody changing one of the two.
+ */
+const WORKSHOP_PRICE_GBP = 2500;
+const WORKSHOP_PRICE_DISPLAY = `£${WORKSHOP_PRICE_GBP.toLocaleString("en-GB")}`;
+
+/**
+ * Service and Offer, following the JSON-LD pattern already used for Article,
+ * Breadcrumb and FAQ. Deliberately minimal: it states what is sold, who sells
+ * it, and the floor price. No rating, no review count, no availability, none of
+ * which we have.
+ *
+ * The floor price is expressed as a PriceSpecification minPrice rather than a
+ * flat Offer price. "From £2,500" is a minimum, and a flat price would state it
+ * as an exact one.
+ */
+const serviceSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  name: "Brand Strategy Workshop",
+  serviceType: "Brand strategy workshop",
+  url: `${siteConfig.url}/brand-strategy-workshop`,
+  description:
+    "A brand strategy workshop for SME leadership teams. Four to six hours, ending in a written positioning sentence and an agreed answer on who the business is not for.",
+  provider: {
+    "@type": "Organization",
+    name: siteConfig.name,
+    url: siteConfig.url,
+  },
+  areaServed: "GB",
+  offers: {
+    "@type": "Offer",
+    priceSpecification: {
+      "@type": "PriceSpecification",
+      minPrice: WORKSHOP_PRICE_GBP,
+      priceCurrency: "GBP",
+      valueAddedTaxIncluded: false,
+    },
+  },
+};
 
 const inTheRoom = [
   {
@@ -107,6 +151,11 @@ export default async function BrandStrategyWorkshopPage() {
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
+      />
+
       {/* Hero */}
       <section className="bg-dawn pt-[160px] md:pt-[200px] pb-[80px]">
         <div className="max-w-7xl mx-auto px-6 md:px-10">
@@ -332,6 +381,37 @@ export default async function BrandStrategyWorkshopPage() {
           </div>
         </section>
       ) : null}
+
+      {/*
+        Price sits after fit and after proof, and well clear of the hero.
+        Someone arriving on "brand strategy workshop" needs to know what it is
+        and whether it is for them before a number helps them decide.
+      */}
+      <section
+        aria-labelledby="price-heading"
+        className="bg-dusk text-dawn py-[120px]"
+      >
+        <div className="max-w-3xl mx-auto px-6 md:px-10">
+          <p className="text-[0.8rem] font-medium uppercase tracking-[0.12em] text-dragon-fire">
+            What it costs
+          </p>
+          <h2
+            id="price-heading"
+            className="font-display text-h2 mt-4 text-dawn"
+          >
+            From {WORKSHOP_PRICE_DISPLAY} plus VAT.
+          </h2>
+          <p className="mt-8 text-[1.0625rem] leading-[1.75] text-dawn/80">
+            That covers the session itself and everything you leave with: the
+            positioning sentence, the words you have ruled out, and the sequence
+            for what to build next.
+          </p>
+          <p className="mt-5 text-[1.0625rem] leading-[1.75] text-dawn/80">
+            Where it lands above that depends on how many people are in the room
+            and how much work the strategy needs after the session.
+          </p>
+        </div>
+      </section>
 
       {/* Hands informational intent to the three articles that own it */}
       <section
