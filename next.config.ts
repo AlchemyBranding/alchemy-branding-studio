@@ -62,11 +62,13 @@ const nextConfig: NextConfig = {
         destination: "/services",
         permanent: true,
       },
-      // Standalone brand strategy workshop landing retired; /services now
-      // centres on the workshop as the primary offer.
+      // The old WordPress workshop landing page. Pointed at /services from the
+      // migration until 18 Aug 2026, because there was no workshop page to
+      // send it to. /brand-strategy-workshop now exists and answers exactly
+      // this intent, so the redirect goes there rather than to the hub.
       {
         source: "/brand-strategy-workshops",
-        destination: "/services",
+        destination: "/brand-strategy-workshop",
         permanent: true,
       },
       // Dissolved client; project archived. Send inbound links to the
@@ -140,10 +142,11 @@ const nextConfig: NextConfig = {
         destination: "/portfolio",
         permanent: true,
       },
-      // Two more legacy service URLs.
+      // Two more legacy service URLs. /workshops carries the same intent as
+      // /brand-strategy-workshops above, so it lands on the same page.
       {
         source: "/workshops",
-        destination: "/services",
+        destination: "/brand-strategy-workshop",
         permanent: true,
       },
       {
