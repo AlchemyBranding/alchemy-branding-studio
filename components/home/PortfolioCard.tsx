@@ -37,12 +37,28 @@ export default function PortfolioCard({ project, variant = "small" }: Props) {
   };
 
   const primaryTag = project.serviceTags?.[0] ?? null;
+  const isTallSlot = variant === "large";
   // The large tile is tall/portrait, so prefer a dedicated portrait card
   // image when one is set; otherwise fall back to the (landscape) hero image.
-  const cardSource =
-    variant === "large" && project.cardImage?.asset
-      ? project.cardImage
-      : project.heroImage;
+  const usingCardImage = isTallSlot && !!project.cardImage?.asset;
+  const cardSource = usingCardImage ? project.cardImage : project.heroImage;
+
+  /**
+   * In the tall slot, anything that is not a purpose-made portrait cardImage is
+   * contained rather than cropped.
+   *
+   * Why: object-cover on a landscape source in this box keeps only ~45% of the
+   * image width. On 18 Aug that cut the Vale Investments headline down to
+   * "om plan to progre" on /brand-strategy-workshop. Most hero images in this
+   * dataset are website screenshots with the headline baked into the middle,
+   * so cropping will keep doing this. Containing cannot remove content at any
+   * aspect ratio, so the failure mode is a letterbox rather than lost words.
+   *
+   * The hover video is always the wide site hero, so it is contained in the
+   * tall slot too, even when a portrait cardImage supplies the still.
+   */
+  const containImage = isTallSlot && !usingCardImage;
+  const containVideo = isTallSlot;
   const hasImage = !!cardSource?.asset;
   const imageUrl = hasImage
     ? urlFor(cardSource!)
@@ -63,17 +79,27 @@ export default function PortfolioCard({ project, variant = "small" }: Props) {
       onMouseLeave={onLeave}
     >
       {imageUrl ? (
-        <Image
-          src={imageUrl}
-          alt={cardSource?.alt ?? project.title}
-          fill
-          sizes={
-            variant === "large"
-              ? "(min-width: 1024px) 50vw, 100vw"
-              : "(min-width: 1024px) 50vw, 100vw"
-          }
-          className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
-        />
+        <>
+          {isTallSlot ? (
+            <Image
+              src={imageUrl}
+              alt=""
+              aria-hidden="true"
+              fill
+              sizes="(min-width: 1024px) 50vw, 100vw"
+              className="object-cover scale-110 blur-2xl opacity-40"
+            />
+          ) : null}
+          <Image
+            src={imageUrl}
+            alt={cardSource?.alt ?? project.title}
+            fill
+            sizes="(min-width: 1024px) 50vw, 100vw"
+            className={`${
+              containImage ? "object-contain" : "object-cover"
+            } transition-transform duration-700 ease-out group-hover:scale-[1.03]`}
+          />
+        </>
       ) : (
         <PlaceholderArtwork title={project.title} />
       )}
@@ -87,7 +113,9 @@ export default function PortfolioCard({ project, variant = "small" }: Props) {
           preload="none"
           aria-hidden="true"
           onCanPlay={() => setCanPlay(true)}
-          className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-500 ease-out ${
+          className={`absolute inset-0 h-full w-full ${
+            containVideo ? "object-contain" : "object-cover"
+          } transition-opacity duration-500 ease-out ${
             hovered && canPlay ? "opacity-100" : "opacity-0"
           }`}
         >
