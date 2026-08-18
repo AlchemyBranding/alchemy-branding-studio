@@ -85,6 +85,22 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
 
+      // Two posts unpublished on 17 Aug 2026 during the taxonomy tidy: an
+      // office-dogs post from 2022 and a "our new website is live" post from
+      // June 2026. Unpublishing left both slugs 404ing at the root, where blog
+      // posts live. Reasoning in
+      // alchemy-content-engine/decisions/blog-taxonomy.md.
+      {
+        source: "/why-we-dogs-are-the-best-office-companions",
+        destination: "/news",
+        permanent: true,
+      },
+      {
+        source: "/our-new-website-is-live",
+        destination: "/news",
+        permanent: true,
+      },
+
       // Blog category archives (10) → /news. The new site's category filter
       // lives client-side on /news; we lose minor per-category SEO depth but
       // those pages weren't driving meaningful traffic.
@@ -109,6 +125,18 @@ const nextConfig: NextConfig = {
       // Project sector archives — handful of indexed URLs.
       {
         source: "/project_sector/:slug",
+        destination: "/portfolio",
+        permanent: true,
+      },
+      // /work was the WordPress portfolio index. The new site uses
+      // /portfolio. Any historic inbound link to /work was 404ing.
+      {
+        source: "/work",
+        destination: "/portfolio",
+        permanent: true,
+      },
+      {
+        source: "/work/:slug",
         destination: "/portfolio",
         permanent: true,
       },

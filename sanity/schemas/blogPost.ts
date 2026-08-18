@@ -2,41 +2,17 @@ import { defineField, defineType } from "sanity";
 
 import { slugField } from "./slug";
 
+// Four values, nothing below four articles. The eight removed on 18 Aug 2026
+// (Insights, AI, Awards, Founders, Projects, Team, Report Design, Studio News)
+// each held zero published posts, verified against the published perspective.
+// The filter row on /news exists to make someone read a second article, and an
+// option with one article behind it guaranteed they could not.
+// Reasoning in alchemy-content-engine/decisions/blog-taxonomy.md.
 const categories = [
-  "Insights",
-  "AI",
-  "Awards",
-  "Founders",
-  "Projects",
-  "Team",
   "Brand Strategy",
   "Brand Identity",
   "Animation & Video",
-  "Report Design",
   "Growth & Leadership",
-  "Studio News",
-] as const;
-
-const topics = [
-  "Brand Strategy",
-  "Positioning",
-  "Brand Identity",
-  "Brand Guidelines",
-  "Messaging",
-  "Storytelling",
-  "Rebrand",
-  "Brand Discovery",
-  "Logo Design",
-  "Animation",
-  "Explainer Video",
-  "Report Design",
-  "Sales",
-  "Growth",
-  "Leadership",
-  "Scaling",
-  "SME",
-  "Case Study",
-  "AI",
 ] as const;
 
 export const blogPost = defineType({
@@ -77,19 +53,6 @@ export const blogPost = defineType({
         layout: "radio",
       },
       validation: (rule) => rule.required(),
-    }),
-    defineField({
-      name: "topics",
-      title: "Topics",
-      type: "array",
-      group: "content",
-      of: [{ type: "string" }],
-      options: {
-        list: topics.map((value) => ({ title: value, value })),
-        layout: "tags",
-      },
-      description:
-        "Cross-cutting topic tags for related content and filtering. Pick any that apply, in addition to the single Category above.",
     }),
     defineField({
       name: "publishedAt",
