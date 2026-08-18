@@ -66,11 +66,15 @@ export const websiteCaseStudiesQuery = defineQuery(`
     }
 `);
 
-// There is no "Workshop" serviceTag, so this cannot mirror the tag-driven
-// queries above. The slugs are passed in by the page and pinned deliberately:
-// these are the three published case studies whose write-up actually opens on
-// the workshop, so the proof on the page is checkable rather than whatever a
-// loose text match happens to return.
+// Shared by the service pages whose proof cannot be selected by a serviceTag.
+// The slugs are passed in by the page and pinned deliberately, so the work on
+// each page is checkable rather than whatever a loose text match returns.
+//
+// /brand-strategy-workshop: there is no "Workshop" tag, and these three are the
+// case studies whose write-up actually opens on the workshop.
+// /brand-identity: there is no "Identity" tag, and the nearest one, "Branding",
+// returns the same three featured entries as /website-design, which would have
+// put identical work on two service pages.
 export const caseStudiesBySlugsQuery = defineQuery(`
   *[_type == "caseStudy" && slug.current in $slugs] {
     _id,
@@ -232,7 +236,7 @@ export const caseStudyBySlugQuery = defineQuery(`
   }
 `);
 
-// Shape types — minimal projections, expanded as routes need more fields.
+// Shape types: minimal projections, expanded as routes need more fields.
 export type FeaturedCaseStudy = {
   _id: string;
   title: string;

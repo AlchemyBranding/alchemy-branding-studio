@@ -31,6 +31,7 @@ const capabilities: Capability[] = [
     title: "Identity and design",
     detail:
       "Logos, colour, type and the full system, built to look as good as the work you do.",
+    href: "/brand-identity",
   },
   {
     title: "Websites",

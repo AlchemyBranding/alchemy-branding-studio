@@ -16,7 +16,7 @@ export default function PortfolioCard({ project, variant = "small" }: Props) {
   const videoRef = useRef<HTMLVideoElement>(null);
   // Track when the video element has buffered enough to play. Without this
   // gate, hovering an unbuffered video fades the <video> in over the image
-  // before any frames are decoded — visitors see a black rectangle until
+  // before any frames are decoded, so visitors see a black rectangle until
   // playback actually starts. Especially painful for oversized files.
   const [canPlay, setCanPlay] = useState(false);
   const [hovered, setHovered] = useState(false);
@@ -27,7 +27,7 @@ export default function PortfolioCard({ project, variant = "small" }: Props) {
     if (!v) return;
     v.currentTime = 0;
     v.play().catch(() => {
-      /* autoplay blocked — fine, image stays */
+      /* autoplay blocked, fine, the image stays */
     });
   };
 

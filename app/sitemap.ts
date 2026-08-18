@@ -4,7 +4,7 @@ import { client } from "@/sanity/lib/client";
 
 /**
  * Dynamic sitemap. Replaces the `next-sitemap` postbuild step, which could only
- * regenerate when the site was rebuilt — so anything published in Sanity after
+ * regenerate when the site was rebuilt, so anything published in Sanity after
  * the last deploy never appeared. Verified 10 Aug 2026: the 28 July post and
  * seven case studies were live but missing from /sitemap.xml.
  *
@@ -49,6 +49,7 @@ const STATIC_ROUTES: ReadonlyArray<{ path: string; priority: number }> = [
   // query on the site, so it sits with /services rather than at the 0.7 default.
   { path: "/brand-strategy-workshop", priority: 0.9 },
   { path: "/website-design", priority: 0.8 },
+  { path: "/brand-identity", priority: 0.8 },
   { path: "/animation", priority: 0.7 },
   { path: "/branding-services-cardiff", priority: 0.7 },
   { path: "/cookie-policy", priority: 0.7 },

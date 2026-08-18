@@ -12,7 +12,7 @@ type Capability = {
 // Deliberately not a service catalogue. These are the typical follow-on
 // engagements that fall out of the workshop, not a tick-the-box menu.
 //
-// Three of the six have no page to link to. That gap is the point of the
+// Two of the six have no page to link to. That gap is the point of the
 // optional href rather than something to paper over with a link to /contact:
 // a card that promises a page and delivers a contact form is worse than one
 // that stays quiet.
@@ -21,6 +21,7 @@ const capabilities: Capability[] = [
     title: "Visual identity",
     body:
       "Logo, type, colour and the brand language that ties it together, with guidelines that keep it consistent as the team grows and more people start using it.",
+    href: "/brand-identity",
   },
   {
     title: "Website",

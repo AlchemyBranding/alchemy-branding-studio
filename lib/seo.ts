@@ -16,6 +16,7 @@ type PageKey =
   | "free-brand-audit"
   | "custom-proposal-design"
   | "animation"
+  | "brand-identity"
   | "brand-strategy-workshop"
   | "website-design"
   | "branding-services-cardiff";
@@ -32,7 +33,7 @@ type Args = {
 
 /**
  * Default robots config for any indexable page. Matches what the old
- * Yoast-driven WordPress site emitted (max-image-preview:large unlocks
+ * Yoast-driven WordPress site emitted (max-image-preview:large enables
  * large image previews in mobile SERPs). Routes that need to opt out
  * can return their own robots object instead.
  */
