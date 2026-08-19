@@ -186,7 +186,7 @@ export default async function WebsiteDesignPage() {
       {projects.length > 0 ? (
         <section
           aria-labelledby="website-work-heading"
-          className="bg-dawn-80 py-[120px] border-y border-dawn-60"
+          className="bg-dusk text-dawn py-[140px]"
         >
           <div className="max-w-7xl mx-auto px-6 md:px-10">
             <p className="text-[0.8rem] font-medium uppercase tracking-[0.12em] text-dragon-fire">
@@ -194,7 +194,7 @@ export default async function WebsiteDesignPage() {
             </p>
             <h2
               id="website-work-heading"
-              className="font-display text-h2 mt-3 max-w-3xl text-white"
+              className="font-display text-h2 mt-3 max-w-3xl text-dawn"
             >
               Sites built on a settled argument.
             </h2>

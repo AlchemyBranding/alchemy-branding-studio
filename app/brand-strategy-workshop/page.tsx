@@ -318,7 +318,7 @@ export default async function BrandStrategyWorkshopPage() {
       {/* Who it suits */}
       <section
         aria-labelledby="who-heading"
-        className="bg-dawn-80 py-[120px] border-y border-dawn-60"
+        className="bg-dusk text-dawn py-[140px]"
       >
         <div className="max-w-7xl mx-auto px-6 md:px-10">
           <p className="text-[0.8rem] font-medium uppercase tracking-[0.12em] text-dragon-fire">
@@ -326,12 +326,12 @@ export default async function BrandStrategyWorkshopPage() {
           </p>
           <h2
             id="who-heading"
-            className="font-display text-h2 mt-3 max-w-3xl text-white"
+            className="font-display text-h2 mt-3 max-w-3xl text-dawn"
           >
             Businesses that have outgrown how they describe themselves.
           </h2>
           <div className="mt-10 grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16">
-            <div className="space-y-6 text-[1.0625rem] leading-[1.75] text-white/70">
+            <div className="space-y-6 text-[1.0625rem] leading-[1.75] text-dawn/80">
               <p>
                 SMEs turning over roughly £500k to £15M. Usually something has
                 changed. A service was added, the business moved upmarket, or it
@@ -343,11 +343,11 @@ export default async function BrandStrategyWorkshopPage() {
                 both versions.
               </p>
             </div>
-            <div className="rounded-card bg-dawn border border-dawn-60 p-7">
-              <h3 className="font-display text-[1.375rem] text-white">
+            <div className="rounded-card bg-white/60 border border-dawn/10 p-7">
+              <h3 className="font-display text-[1.375rem] text-dawn">
                 When it is the wrong call
               </h3>
-              <p className="mt-3 text-[1rem] leading-[1.65] text-white/65">
+              <p className="mt-3 text-[1rem] leading-[1.65] text-dawn/70">
                 It suits you less if you are pre-revenue, or if one person
                 already makes every decision without needing the room to agree.
                 A call is cheaper and will probably do. We would rather tell you

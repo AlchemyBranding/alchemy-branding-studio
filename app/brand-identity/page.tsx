@@ -147,7 +147,7 @@ export default async function BrandIdentityPage() {
       {/* What we make */}
       <section
         aria-labelledby="what-we-make-heading"
-        className="bg-dawn-80 py-[120px] border-y border-dawn-60"
+        className="bg-dusk text-dawn py-[140px]"
       >
         <div className="max-w-7xl mx-auto px-6 md:px-10">
           <p className="text-[0.8rem] font-medium uppercase tracking-[0.12em] text-dragon-fire">
@@ -155,7 +155,7 @@ export default async function BrandIdentityPage() {
           </p>
           <h2
             id="what-we-make-heading"
-            className="font-display text-h2 mt-3 max-w-3xl text-white"
+            className="font-display text-h2 mt-3 max-w-3xl text-dawn"
           >
             A mark, and everything that keeps it honest.
           </h2>
@@ -163,12 +163,12 @@ export default async function BrandIdentityPage() {
             {whatWeMake.map((item) => (
               <li
                 key={item.title}
-                className="rounded-card bg-dawn border border-dawn-60 p-7"
+                className="rounded-card bg-white/60 border border-dawn/10 p-7"
               >
-                <h3 className="font-display text-[1.375rem] text-white">
+                <h3 className="font-display text-[1.375rem] text-dawn">
                   {item.title}
                 </h3>
-                <p className="mt-3 text-[1rem] leading-[1.65] text-white/65">
+                <p className="mt-3 text-[1rem] leading-[1.65] text-dawn/70">
                   {item.detail}
                 </p>
               </li>
