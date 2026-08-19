@@ -4,6 +4,8 @@ import Link from "next/link";
 import Button from "@/components/Button";
 import FinalCTA from "@/components/home/FinalCTA";
 import NewsletterSignup from "@/components/home/NewsletterSignup";
+import Reveal from "@/components/motion/Reveal";
+import StaggeredList from "@/components/motion/StaggeredList";
 import WorkGrid from "@/components/home/WorkGrid";
 import { getPageMetadata } from "@/lib/seo";
 import { motionHref } from "@/lib/site";
@@ -164,7 +166,7 @@ export default async function WebsiteDesignPage() {
           >
             Designed, built, and handed over working.
           </h2>
-          <ul className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-6">
+          <StaggeredList as="ul" className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-6">
             {included.map((item) => (
               <li
                 key={item.title}
@@ -178,7 +180,7 @@ export default async function WebsiteDesignPage() {
                 </p>
               </li>
             ))}
-          </ul>
+          </StaggeredList>
         </div>
       </section>
 
@@ -198,7 +200,9 @@ export default async function WebsiteDesignPage() {
             >
               Sites built on a settled argument.
             </h2>
-            <WorkGrid items={projects} />
+            <Reveal>
+              <WorkGrid items={projects} />
+            </Reveal>
             <div className="mt-12 text-center">
               <Button href="/portfolio" variant="primary">
                 View all work

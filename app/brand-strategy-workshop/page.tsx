@@ -4,6 +4,8 @@ import Link from "next/link";
 import Button from "@/components/Button";
 import FinalCTA from "@/components/home/FinalCTA";
 import NewsletterSignup from "@/components/home/NewsletterSignup";
+import Reveal from "@/components/motion/Reveal";
+import StaggeredList from "@/components/motion/StaggeredList";
 import WorkGrid from "@/components/home/WorkGrid";
 import { getPageMetadata } from "@/lib/seo";
 import { motionHref, siteConfig } from "@/lib/site";
@@ -205,7 +207,7 @@ export default async function BrandStrategyWorkshopPage() {
           >
             The whole thing hangs on who is in the room.
           </h2>
-          <ul className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-6">
+          <StaggeredList as="ul" className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-6">
             {inTheRoom.map((item) => (
               <li
                 key={item.title}
@@ -219,7 +221,7 @@ export default async function BrandStrategyWorkshopPage() {
                 </p>
               </li>
             ))}
-          </ul>
+          </StaggeredList>
         </div>
       </section>
 
@@ -247,7 +249,7 @@ export default async function BrandStrategyWorkshopPage() {
               </p>
             </div>
 
-            <ol className="space-y-6">
+            <StaggeredList as="ol" className="space-y-6">
               <li className="rounded-card bg-white/60 border border-dawn/10 p-7">
                 <p className="text-dragon-fire font-bold text-[0.9rem] tracking-wider">
                   Question 01
@@ -274,7 +276,7 @@ export default async function BrandStrategyWorkshopPage() {
                   way.
                 </p>
               </li>
-            </ol>
+            </StaggeredList>
           </div>
         </div>
       </section>
@@ -294,7 +296,7 @@ export default async function BrandStrategyWorkshopPage() {
           >
             Four things, and none of them is a slide deck.
           </h2>
-          <ul className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-6">
+          <StaggeredList as="ul" className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-6">
             {outputs.map((item, i) => (
               <li key={item.title} className="border-t border-dawn-60 pt-5">
                 <span
@@ -311,7 +313,7 @@ export default async function BrandStrategyWorkshopPage() {
                 </p>
               </li>
             ))}
-          </ul>
+          </StaggeredList>
         </div>
       </section>
 
@@ -374,7 +376,9 @@ export default async function BrandStrategyWorkshopPage() {
             >
               Three brands that started in the same room.
             </h2>
-            <WorkGrid items={ordered} />
+            <Reveal>
+              <WorkGrid items={ordered} />
+            </Reveal>
             <div className="mt-12 text-center">
               <Button href="/portfolio" variant="primary">
                 View all work

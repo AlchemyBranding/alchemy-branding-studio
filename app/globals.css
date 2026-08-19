@@ -92,6 +92,31 @@ body {
   letter-spacing: 0.15em;
 }
 
+/* ---------------------------------------------------------------------------
+   Reduced motion.
+
+   Added 19 Aug 2026. Nothing on this site honoured prefers-reduced-motion
+   before: not the fade-up, marquee and bounce animations below, and not the
+   Reveal, StaggeredList, Spotlight, TiltCard or MagneticButton components that
+   already ship on the homepage. This is the site-wide backstop.
+
+   The two scroll-reveal components additionally skip straight to their visible
+   state, because a near-zero transition still leaves content at opacity 0 until
+   an observer fires. Content must never be held behind an effect that is not
+   going to run.
+   --------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    transition-delay: 0ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
 @keyframes fade-up {
   from { opacity: 0; transform: translateY(24px); }
   to { opacity: 1; transform: translateY(0); }

@@ -4,6 +4,8 @@ import Link from "next/link";
 import Button from "@/components/Button";
 import FinalCTA from "@/components/home/FinalCTA";
 import NewsletterSignup from "@/components/home/NewsletterSignup";
+import Reveal from "@/components/motion/Reveal";
+import StaggeredList from "@/components/motion/StaggeredList";
 import WorkGrid from "@/components/home/WorkGrid";
 import { getPageMetadata } from "@/lib/seo";
 import { motionHref } from "@/lib/site";
@@ -159,7 +161,7 @@ export default async function BrandIdentityPage() {
           >
             A mark, and everything that keeps it honest.
           </h2>
-          <ul className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-6">
+          <StaggeredList as="ul" className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-6">
             {whatWeMake.map((item) => (
               <li
                 key={item.title}
@@ -173,7 +175,7 @@ export default async function BrandIdentityPage() {
                 </p>
               </li>
             ))}
-          </ul>
+          </StaggeredList>
         </div>
       </section>
 
@@ -189,7 +191,7 @@ export default async function BrandIdentityPage() {
           >
             The design is the last decision, not the first.
           </h2>
-          <ul className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6">
+          <StaggeredList as="ul" className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6">
             {approach.map((item, i) => (
               <li key={item.title} className="border-t border-dawn-60 pt-5">
                 <span
@@ -206,7 +208,7 @@ export default async function BrandIdentityPage() {
                 </p>
               </li>
             ))}
-          </ul>
+          </StaggeredList>
         </div>
       </section>
 
@@ -264,7 +266,9 @@ export default async function BrandIdentityPage() {
             >
               Identities built to be used, not admired.
             </h2>
-            <WorkGrid items={ordered} />
+            <Reveal>
+              <WorkGrid items={ordered} />
+            </Reveal>
             <div className="mt-12 text-center">
               <Button href="/portfolio" variant="primary">
                 View all work

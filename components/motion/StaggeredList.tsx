@@ -1,12 +1,24 @@
 "use client";
 
-import type { ReactNode } from "react";
-import { Children, useEffect, useRef, useState } from "react";
+import type { ReactElement, ReactNode } from "react";
+import {
+  Children,
+  cloneElement,
+  isValidElement,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 
 /**
  * Reveals each direct child in sequence when the container enters the
  * viewport. Each child shifts up + fades in 80ms after the previous one.
  * Useful for principles, capabilities, deliverables lists, etc.
+ *
+ * By default it wraps each child in a div. Pass `as="ul"` or `as="ol"` and the
+ * children are cloned instead of wrapped, so <li> stays a direct child of the
+ * list. Wrapping list items in divs would produce invalid markup and drop the
+ * list semantics that screen readers announce.
  */
 type Props = {
   children: ReactNode;
@@ -14,6 +26,8 @@ type Props = {
   stepMs?: number;
   className?: string;
   itemClassName?: string;
+  /** Container element. "ul" and "ol" clone their children rather than wrap. */
+  as?: "div" | "ul" | "ol";
 };
 
 export default function StaggeredList({
@@ -21,6 +35,7 @@ export default function StaggeredList({
   stepMs = 80,
   className = "",
   itemClassName = "",
+  as = "div",
 }: Props) {
   const ref = useRef<HTMLDivElement>(null);
   const [shown, setShown] = useState(false);
@@ -29,6 +44,12 @@ export default function StaggeredList({
   useEffect(() => {
     const node = ref.current;
     if (!node) return;
+    // Show immediately rather than transitioning. A near-zero transition would
+    // still leave every item at opacity 0 until the observer fires.
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      setShown(true);
+      return;
+    }
     const obs = new IntersectionObserver(
       (entries) => {
         for (const entry of entries) {
@@ -44,16 +65,38 @@ export default function StaggeredList({
     return () => obs.disconnect();
   }, []);
 
+  const motionClass = (extra: string) =>
+    `transition-all duration-[700ms] ease-[cubic-bezier(0.16,1,0.3,1)] ${
+      shown ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+    } ${extra}`;
+  const delayFor = (i: number) => ({
+    transitionDelay: shown ? `${i * stepMs}ms` : "0ms",
+  });
+
+  if (as === "ul" || as === "ol") {
+    const List = as;
+    return (
+      <List ref={ref as React.Ref<HTMLUListElement & HTMLOListElement>} className={className}>
+        {items.map((child, i) => {
+          if (!isValidElement(child)) return child;
+          const el = child as ReactElement<{
+            className?: string;
+            style?: React.CSSProperties;
+          }>;
+          return cloneElement(el, {
+            key: i,
+            className: motionClass(el.props.className ?? ""),
+            style: { ...(el.props.style ?? {}), ...delayFor(i) },
+          });
+        })}
+      </List>
+    );
+  }
+
   return (
     <div ref={ref} className={className}>
       {items.map((child, i) => (
-        <div
-          key={i}
-          style={{ transitionDelay: shown ? `${i * stepMs}ms` : "0ms" }}
-          className={`transition-all duration-[700ms] ease-[cubic-bezier(0.16,1,0.3,1)] ${
-            shown ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
-          } ${itemClassName}`}
-        >
+        <div key={i} style={delayFor(i)} className={motionClass(itemClassName)}>
           {child}
         </div>
       ))}

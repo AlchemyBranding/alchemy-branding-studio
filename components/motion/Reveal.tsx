@@ -5,7 +5,7 @@ import { useEffect, useRef, useState } from "react";
 
 /**
  * Fades + translates the child up into place when it enters the viewport.
- * One-shot — once revealed it stays revealed, even after scrolling away.
+ * One-shot: once revealed it stays revealed, even after scrolling away.
  *
  * Pairs with the existing animate-fade-up vocabulary in globals.css but
  * triggered on scroll instead of on mount.
@@ -23,6 +23,12 @@ export default function Reveal({ children, delayMs = 0, className = "" }: Props)
   useEffect(() => {
     const node = ref.current;
     if (!node) return;
+    // Show immediately rather than transitioning. A near-zero transition would
+    // still leave the content invisible until the observer fires.
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      setShown(true);
+      return;
+    }
     const obs = new IntersectionObserver(
       (entries) => {
         for (const entry of entries) {
