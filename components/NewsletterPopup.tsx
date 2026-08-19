@@ -19,6 +19,16 @@ const SUPPRESS_PREFIXES = [
   "/contact",
   "/motion",
   "/portal",
+  // The three service pages already carry the same Brand Checklist opt-in
+  // inline, so this was the existing "pages with their own form" rule simply
+  // not being applied to pages that did not exist when the list was written.
+  //
+  // It also fired at the wrong moment. The trigger is 40% scroll plus seven
+  // seconds, which on /brand-strategy-workshop lands on the "What it costs"
+  // band: a modal over the price, on the one page carrying a figure.
+  "/brand-strategy-workshop",
+  "/brand-identity",
+  "/website-design",
 ];
 
 type FieldErrors = Partial<Record<"email" | "consent", string>>;

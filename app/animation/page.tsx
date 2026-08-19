@@ -16,9 +16,9 @@ export async function generateMetadata(): Promise<Metadata> {
     pageKey: "animation",
     path: "/animation",
     defaults: {
-      title: "Explainer Videos & Brand Animation",
+      title: "Explainer Videos, Brand Animation & Style Frames",
       description:
-        "Explainer videos and brand animation that make the complicated clear in seconds. Scripted, designed, and built to be reused across your marketing.",
+        "Explainer videos and brand animation that make the complicated clear in seconds. We lock the look in style frames first, then animate.",
     },
   });
 }
@@ -86,7 +86,8 @@ export default async function AnimationPage() {
             We make explainer videos and brand animation for businesses with
             something genuinely hard to get across: a regulation, a technology,
             a process, a product. We start with the one idea the piece has to
-            land, then design and animate around it. The result earns attention
+            land, lock the look in style frames, then animate around it. The
+            result earns attention
             without shouting, and says the same thing as the rest of your brand.
           </p>
           <div className="mt-10 flex flex-wrap items-center gap-4">
