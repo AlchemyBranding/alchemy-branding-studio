@@ -58,7 +58,14 @@ export default function PortfolioCard({ project, variant = "small" }: Props) {
    * tall slot too, even when a portrait cardImage supplies the still.
    */
   const containImage = isTallSlot && !usingCardImage;
-  const containVideo = isTallSlot;
+
+  /**
+   * Portrait cardImages are composed top-down: the client's logo or lockup sits
+   * at the top of the frame. Centre-cropping the small overflow takes a slice
+   * off the top and clips it, which is what happened to the Vale Investments
+   * card. Anchor to the top so the overflow comes off the bottom instead.
+   */
+  const imagePosition = usingCardImage ? "object-top" : "object-center";
   const hasImage = !!cardSource?.asset;
   const imageUrl = hasImage
     ? urlFor(cardSource!)
@@ -97,7 +104,7 @@ export default function PortfolioCard({ project, variant = "small" }: Props) {
             sizes="(min-width: 1024px) 50vw, 100vw"
             className={`${
               containImage ? "object-contain" : "object-cover"
-            } transition-transform duration-700 ease-out group-hover:scale-[1.03]`}
+            } ${imagePosition} transition-transform duration-700 ease-out group-hover:scale-[1.03]`}
           />
         </>
       ) : (
@@ -113,13 +120,18 @@ export default function PortfolioCard({ project, variant = "small" }: Props) {
           preload="none"
           aria-hidden="true"
           onCanPlay={() => setCanPlay(true)}
-          className={`absolute inset-0 h-full w-full ${
-            containVideo ? "object-contain" : "object-cover"
-          } transition-opacity duration-500 ease-out ${
+          className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-500 ease-out ${
             hovered && canPlay ? "opacity-100" : "opacity-0"
           }`}
         >
-          <source src={project.heroVideoUrl} type="video/mp4" />
+          <source
+            src={project.heroVideoUrl}
+            type={
+              project.heroVideoUrl.endsWith(".webm")
+                ? "video/webm"
+                : "video/mp4"
+            }
+          />
         </video>
       ) : null}
 

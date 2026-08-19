@@ -99,7 +99,7 @@ export default async function WebsiteDesignPage() {
         className="bg-dusk text-dawn py-[140px]"
       >
         <div className="max-w-7xl mx-auto px-6 md:px-10">
-          <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.4fr] gap-12 lg:gap-20 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.3fr] gap-12 lg:gap-20 items-start">
             <div className="lg:sticky lg:top-32">
               <p className="text-[0.8rem] font-medium uppercase tracking-[0.12em] text-dragon-fire">
                 Why the order matters

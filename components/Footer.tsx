@@ -33,12 +33,26 @@ const iconMap = {
 const labelStyle =
   "text-[0.75rem] font-bold uppercase tracking-[0.12em] text-dragon-fire";
 
-// Footer "Navigate" list = the main nav plus footer-only links (e.g. the
-// /animation landing page, which is intentionally kept out of the header).
-const footerNavLinks = [
-  ...navLinks.slice(0, 3),
-  { label: "Animation", href: "/animation" },
-  ...navLinks.slice(3),
+// Footer "Navigate" list = the main nav, unchanged. /animation used to be
+// injected here as a footer-only link because it was the one service page that
+// existed. It now sits in the service list below with the other three, rather
+// than appearing in both.
+const footerNavLinks = navLinks;
+
+/**
+ * The four service pages. None of them is in the header, so before this the
+ * only route to three of them was the /services hub or a link inside a case
+ * study. Listing them here gives every page on the site a direct path to the
+ * commercial pages.
+ *
+ * Kept in this file rather than lib/site.ts because the footer is the only
+ * consumer. Promote it if a second one appears.
+ */
+const servicePageLinks = [
+  { label: "Brand strategy workshop", href: "/brand-strategy-workshop" },
+  { label: "Brand identity", href: "/brand-identity" },
+  { label: "Websites", href: "/website-design" },
+  { label: "Animation & motion", href: "/animation" },
 ];
 
 export default function Footer() {
@@ -87,6 +101,20 @@ export default function Footer() {
             <p className={labelStyle}>Navigate</p>
             <ul className="mt-5 space-y-2.5">
               {footerNavLinks.map(({ label, href }) => (
+                <li key={href}>
+                  <Link
+                    href={href}
+                    className="text-[0.9rem] text-white/70 hover:text-dragon-fire transition-colors duration-200"
+                  >
+                    {label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+
+            <p className={`${labelStyle} mt-10`}>Services</p>
+            <ul className="mt-5 space-y-2.5">
+              {servicePageLinks.map(({ label, href }) => (
                 <li key={href}>
                   <Link
                     href={href}

@@ -229,7 +229,7 @@ export default async function BrandStrategyWorkshopPage() {
         className="bg-dusk text-dawn py-[140px]"
       >
         <div className="max-w-7xl mx-auto px-6 md:px-10">
-          <div className="grid grid-cols-1 lg:grid-cols-[1fr_1fr] gap-12 lg:gap-20 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.3fr] gap-12 lg:gap-20 items-start">
             <div className="lg:sticky lg:top-32">
               <p className="text-[0.8rem] font-medium uppercase tracking-[0.12em] text-dragon-fire">
                 The two questions it turns on
@@ -391,28 +391,34 @@ export default async function BrandStrategyWorkshopPage() {
       */}
       <section
         aria-labelledby="price-heading"
-        className="bg-dusk text-dawn py-[120px]"
+        className="bg-dusk text-dawn py-[140px]"
       >
-        <div className="max-w-3xl mx-auto px-6 md:px-10">
-          <p className="text-[0.8rem] font-medium uppercase tracking-[0.12em] text-dragon-fire">
-            What it costs
-          </p>
-          <h2
-            id="price-heading"
-            className="font-display text-h2 mt-4 text-dawn"
-          >
-            From {WORKSHOP_PRICE_DISPLAY} plus VAT.
-          </h2>
-          <p className="mt-8 text-[1.0625rem] leading-[1.75] text-dawn/80">
-            That covers the session itself and everything you leave with: the
-            positioning sentence, the words you have ruled out, and the sequence
-            for what to build next.
-          </p>
-          <p className="mt-5 text-[1.0625rem] leading-[1.75] text-dawn/80">
-            Where it lands above that depends on the size of your team, whether
-            the session runs to a full day, and how much work the strategy needs
-            afterwards.
-          </p>
+        <div className="max-w-7xl mx-auto px-6 md:px-10">
+          <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.3fr] gap-12 lg:gap-20 items-start">
+            <div className="lg:sticky lg:top-32">
+              <p className="text-[0.8rem] font-medium uppercase tracking-[0.12em] text-dragon-fire">
+                What it costs
+              </p>
+              <h2
+                id="price-heading"
+                className="font-display text-h2 mt-4 text-dawn"
+              >
+                From {WORKSHOP_PRICE_DISPLAY} plus VAT.
+              </h2>
+            </div>
+            <div className="space-y-6 text-[1.0625rem] leading-[1.75] text-dawn/80">
+              <p>
+                That covers the session itself and everything you leave with:
+                the positioning sentence, the words you have ruled out, and the
+                sequence for what to build next.
+              </p>
+              <p>
+                Where it lands above that depends on the size of your team,
+                whether the session runs to a full day, and how much work the
+                strategy needs afterwards.
+              </p>
+            </div>
+          </div>
         </div>
       </section>
 
