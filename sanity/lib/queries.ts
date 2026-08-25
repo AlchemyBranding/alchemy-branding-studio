@@ -50,9 +50,13 @@ export const animationCaseStudiesQuery = defineQuery(`
     }
 `);
 
+// featuredHero leads the sort, the same first key featuredCaseStudiesQuery
+// uses, so the large tile here is the build the homepage leads on. Without it
+// the large slot fell to whichever featured case study was published most
+// recently, and the two grids disagreed about which build is the flagship.
 export const websiteCaseStudiesQuery = defineQuery(`
   *[_type == "caseStudy" && defined(slug.current) && "Website" in serviceTags]
-    | order(coalesce(featured, false) desc, publishedAt desc) [0...3] {
+    | order(coalesce(featuredHero, false) desc, coalesce(featured, false) desc, publishedAt desc) [0...3] {
       _id,
       title,
       "slug": slug.current,
