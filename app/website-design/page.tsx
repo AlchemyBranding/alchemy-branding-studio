@@ -102,6 +102,23 @@ export default async function WebsiteDesignPage() {
         edge. Reveal falls back to a plain render under prefers-reduced-motion.
       */}
       <section className="relative overflow-hidden bg-dawn pt-[160px] md:pt-[200px] pb-[80px]">
+        {/*
+          Dragon-fire glow behind the laptop, the same treatment as the
+          WorkshopBlock stack on the homepage, sized up to give the flat dawn
+          ground some depth. It spans the whole section rather than sitting in
+          a smaller box: an inset box leaves a hard vertical seam where the
+          element ends before the gradient has finished fading, which was
+          plainly visible at 390. No blur filter either, because at this size
+          the gradient's own falloff is soft enough and blurring an element
+          this large is work the browser does not need to do on every paint.
+        */}
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-0 z-0 bg-[radial-gradient(70%_45%_at_74%_28%,rgba(255,110,73,0.16),transparent_70%)] lg:bg-[radial-gradient(52%_72%_at_72%_46%,rgba(255,110,73,0.18),transparent_70%)]"
+        />
+
+        {/* Not relative: the media below is positioned against the section so
+            it can bleed past the container edge. */}
         <div className="max-w-7xl mx-auto px-6 md:px-10">
           <div className="relative z-10 lg:max-w-[56%]">
             <p className="text-[0.8rem] font-medium uppercase tracking-[0.12em] text-dragon-fire">
@@ -132,7 +149,7 @@ export default async function WebsiteDesignPage() {
             </div>
           </div>
 
-          <Reveal className="mt-14 md:mt-16 lg:mt-0 lg:absolute lg:inset-y-0 lg:right-[-4%] lg:z-0 lg:flex lg:w-[62%] lg:items-center">
+          <Reveal className="relative z-[1] mt-14 md:mt-16 lg:mt-0 lg:absolute lg:inset-y-0 lg:right-[-4%] lg:flex lg:w-[62%] lg:items-center">
             <Image
               src="/builds/smoke-and-slaw-laptop.jpg"
               alt="A laptop showing the Smoke & Slaw homepage: close-up sliced brisket filling the screen behind the logo and the line 'Wood-fired BBQ. Smoked overnight. Served at its best.'"
