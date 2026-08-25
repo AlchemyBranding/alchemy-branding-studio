@@ -92,8 +92,10 @@ export default async function WebsiteDesignPage() {
         Hero. The laptop sits behind the copy and bleeds off the right edge
         from lg up, and drops back into the flow under the buttons below that,
         where there is no room beside the text. The composite's own background
-        is already #191919, the same as bg-dawn, so no frame edge shows and
-        only the laptop reads against the section.
+        is transparent, so the dragon-fire burst behind it shows through around
+        the laptop and through its drop shadow. It was a JPEG with #191919
+        baked in, which was invisible against bg-dawn until the burst went in
+        behind it and turned it into a black rectangle over the glow.
 
         The laptop is a licensed Freepik mockup from ALCHEMY 2025/17 LANDING
         PAGE PROJECT; the Smoke & Slaw homepage is warped onto its screen with
@@ -151,10 +153,10 @@ export default async function WebsiteDesignPage() {
 
           <Reveal className="relative z-[1] mt-14 md:mt-16 lg:mt-0 lg:absolute lg:inset-y-0 lg:right-[-4%] lg:flex lg:w-[62%] lg:items-center">
             <Image
-              src="/builds/smoke-and-slaw-laptop.jpg"
+              src="/builds/smoke-and-slaw-laptop.webp"
               alt="A laptop showing the Smoke & Slaw homepage: close-up sliced brisket filling the screen behind the logo and the line 'Wood-fired BBQ. Smoked overnight. Served at its best.'"
-              width={1540}
-              height={880}
+              width={1468}
+              height={811}
               sizes="(min-width: 1024px) 62vw, 100vw"
               className="h-auto w-full lg:[mask-image:linear-gradient(to_right,transparent_0%,#000_44%)]"
               priority
