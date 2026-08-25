@@ -80,6 +80,33 @@ const included = [
 const FROM_PRICE_GBP = 6000;
 const FROM_PRICE_DISPLAY = `£${FROM_PRICE_GBP.toLocaleString("en-GB")}`;
 
+/**
+ * Live builds shown in the hero. Captured from the running sites at 1280x960
+ * rather than composited into device mockups: the claim is that we build the
+ * thing, so the evidence should be the thing. Alt text describes each image
+ * rather than repeating the heading above it.
+ */
+const heroBuilds = [
+  {
+    src: "/builds/vale-investments-home.jpg",
+    alt: "The Vale Investments homepage: an aerial photograph of green fields and woodland, with the line 'From plan to progress, together.' and a 'Start a conversation' button over it.",
+    client: "Vale Investments",
+    slug: "vale-investments-brand-strategy-website",
+  },
+  {
+    src: "/builds/lisa-jewel-piano-home.jpg",
+    alt: "The Lisa Jewel Piano homepage: an upright piano with sheet music open in a bright front room, behind the line 'One-to-one piano lessons, taught from my home in Abergavenny.'",
+    client: "Lisa Jewel Piano",
+    slug: "lisa-jewel-piano-website",
+  },
+  {
+    src: "/builds/smoke-and-slaw-home.jpg",
+    alt: "The Smoke & Slaw homepage: close-up sliced brisket filling the screen behind the logo and the line 'Wood-fired BBQ. Smoked overnight. Served at its best.'",
+    client: "Smoke & Slaw",
+    slug: "smoke-and-slaw-brand-voice-and-website",
+  },
+];
+
 export default async function WebsiteDesignPage() {
   const projects = await safeFetch<FeaturedCaseStudy[]>(
     websiteCaseStudiesQuery,
@@ -118,37 +145,39 @@ export default async function WebsiteDesignPage() {
           </div>
 
           {/*
-            The page opened on type alone. This is the live Vale Investments
-            homepage as it actually is, rather than a device mockup with a
-            screen composited into it: the claim above is that we build the
-            thing, so the evidence should be the thing. Reveal already bails
-            out to a plain render under prefers-reduced-motion.
+            The page opened on type alone. These are three live builds as they
+            actually are, not device mockups with screens composited in.
+            StaggeredList already falls back to a plain render under
+            prefers-reduced-motion, so the sequence honours the global rule.
           */}
-          <Reveal className="mt-16 md:mt-20">
-            <figure>
-              <div className="overflow-hidden rounded-card border border-dawn-60">
-                <Image
-                  src="/builds/vale-investments-site.jpg"
-                  alt="The Vale Investments homepage: an aerial photograph of green Welsh farmland under heavy cloud, with the line 'From plan to progress, together.' and a 'Start a conversation' button over it."
-                  width={1440}
-                  height={900}
-                  sizes="(min-width: 1280px) 1200px, 100vw"
-                  className="w-full h-auto"
-                />
-              </div>
-              <figcaption className="mt-4 text-[0.9rem] leading-[1.6] text-white/50">
-                Vale Investments, built on the positioning the founders settled
-                first.{" "}
-                <Link
-                  href="/project/vale-investments-brand-strategy-website"
-                  className="text-dragon-fire underline underline-offset-4 hover:text-fire-60 transition-colors"
-                >
-                  Read the project
-                </Link>
-                .
-              </figcaption>
-            </figure>
-          </Reveal>
+          <StaggeredList
+            as="ul"
+            className="mt-16 md:mt-20 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
+          >
+            {heroBuilds.map((build) => (
+              <li key={build.slug}>
+                <figure>
+                  <Link
+                    href={`/project/${build.slug}`}
+                    className="group block overflow-hidden rounded-card border border-dawn-60"
+                  >
+                    <Image
+                      src={build.src}
+                      alt={build.alt}
+                      width={1280}
+                      height={960}
+                      sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+                      className="w-full h-auto transition-transform duration-700 ease-out group-hover:scale-[1.03]"
+                    />
+                  </Link>
+                  <figcaption className="mt-3 text-[0.9rem] leading-[1.6] text-white/50">
+                    {build.client}
+                  </figcaption>
+                </figure>
+              </li>
+            ))}
+          </StaggeredList>
+
         </div>
       </section>
 
