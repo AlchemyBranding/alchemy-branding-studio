@@ -16,21 +16,34 @@ import {
 } from "@/sanity/lib/queries";
 
 /**
- * Unlike /brand-strategy-workshop, this page has no search evidence behind it:
- * the 12 Aug 2026 keyword pull covered all 1,000 queries with 20+ impressions
- * and returned nothing web-design related. It is justified by conversion, not
- * traffic. Nine published case studies are website builds and none of them had
- * anywhere to send a reader who wanted to know how we build. Written as a sales
- * page first, so no keyword targets have been invented to dress it up.
+ * Written first as a sales page with no search evidence behind it: the 12 Aug
+ * 2026 keyword pull covered all 1,000 queries with 20+ impressions and returned
+ * nothing web-design related.
+ *
+ * Retargeted 25 Aug 2026. A Mangools pull (UK) found the cluster the page was
+ * missing, and the page did not contain the phrase anywhere:
+ *
+ *   website redesign services   1,200/mo  KD 13
+ *   website redesign companies    110/mo  KD 12
+ *   website redesign agency       110/mo  KD 18
+ *   website redesign cost          50/mo  KD 16
+ *
+ * KD 12 to 18 is the lowest difficulty anywhere in this site's keyword set. All
+ * four share one head phrase, so they get one treatment, not four sections: the
+ * phrase sits in the title, H1, meta and opening, and the existing proof
+ * section below carries the shortlist intent behind "companies" and "agency".
+ * /website-design is the only page that should carry this phrase.
  */
 export async function generateMetadata(): Promise<Metadata> {
   return getPageMetadata({
     pageKey: "website-design",
     path: "/website-design",
     defaults: {
-      title: "Website Design and Build for SMEs",
+      // The root layout template appends " | Alchemy", so the rendered
+      // <title> is "Website Redesign Services for Growing SMEs | Alchemy" (52).
+      title: "Website Redesign Services for Growing SMEs",
       description:
-        "We build websites as the execution of a brand strategy, not a separate project. Strategic design, an accessible build, and a site your own team can keep updated.",
+        "A website redesign that starts with the positioning, not the homepage. Strategic design, an accessible build, and a site your own team can update.",
     },
   });
 }
@@ -58,6 +71,14 @@ const included = [
   },
 ];
 
+/**
+ * One source for the floor price, the same pattern as WORKSHOP_PRICE_GBP on
+ * /brand-strategy-workshop so the two pages read as one approach. Checked
+ * against real project values on 25 Aug 2026.
+ */
+const FROM_PRICE_GBP = 6000;
+const FROM_PRICE_DISPLAY = `£${FROM_PRICE_GBP.toLocaleString("en-GB")}`;
+
 export default async function WebsiteDesignPage() {
   const projects = await safeFetch<FeaturedCaseStudy[]>(
     websiteCaseStudiesQuery,
@@ -73,14 +94,16 @@ export default async function WebsiteDesignPage() {
             Websites
           </p>
           <h1 className="font-display text-display mt-4 max-w-5xl leading-[1.04]">
-            <span className="text-white">A website is the brand strategy,</span>{" "}
-            <span className="text-dusk italic">built.</span>
+            <span className="text-white">
+              A website redesign is the brand strategy,
+            </span>{" "}
+            <span className="text-dusk italic">rebuilt.</span>
           </h1>
           <p className="mt-8 max-w-2xl text-[1.125rem] leading-[1.7] text-white/65">
-            Most website projects start with a design and work backwards to an
+            Most website redesigns start with a design and work backwards to an
             argument. That order is why they run long, why the copy gets written
             last, and why the finished site reads as an expensive brochure. We
-            settle the positioning first, then build the site that makes the
+            settle the positioning first, then rebuild the site that makes the
             case. What you get says the same thing as the rest of your brand,
             loads quickly, and your team can update it without booking us in.
           </p>
@@ -181,6 +204,65 @@ export default async function WebsiteDesignPage() {
               </li>
             ))}
           </StaggeredList>
+        </div>
+      </section>
+
+      {/*
+        Cost sits after the build detail and well clear of the hero, the same
+        order as /brand-strategy-workshop: what it is, then what it costs. A
+        dawn-80 band rather than another dusk section, so it does not merge into
+        the light proof section that follows.
+      */}
+      <section
+        aria-labelledby="cost-heading"
+        className="bg-dawn-80 py-[120px] border-y border-dawn-60"
+      >
+        <div className="max-w-7xl mx-auto px-6 md:px-10">
+          <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.3fr] gap-12 lg:gap-20 items-start">
+            <div className="lg:sticky lg:top-32">
+              <p className="text-[0.8rem] font-medium uppercase tracking-[0.12em] text-dragon-fire">
+                Cost
+              </p>
+              <h2
+                id="cost-heading"
+                className="font-display text-h2 mt-4 text-white"
+              >
+                What a website redesign costs.
+              </h2>
+            </div>
+
+            <div className="space-y-6 text-[1.0625rem] leading-[1.75] text-white/70">
+              <p className="font-display text-[1.75rem] leading-[1.3] text-white">
+                From {FROM_PRICE_DISPLAY} plus VAT.
+              </p>
+              <p>
+                That is a real floor rather than a headline number. It buys a
+                small site built on positioning that is already settled,
+                designed, built and handed over working, with a team that can
+                update it without booking us in.
+              </p>
+              <p>
+                What moves it up: how many page templates the site needs,
+                whether the content has to be written rather than migrated,
+                whether you are selling or taking bookings through it, and
+                whether the brand strategy still has to be done first. That last
+                one is the biggest single factor. A redesign for a business that
+                knows what it is arguing is a build job. One for a business that
+                does not is a strategy job with a website at the end, and it
+                costs accordingly.
+              </p>
+              <p>
+                If the positioning is not settled, start with the{" "}
+                <Link
+                  href="/brand-strategy-workshop"
+                  className="text-dragon-fire underline underline-offset-4 hover:text-fire-60 transition-colors"
+                >
+                  brand strategy workshop
+                </Link>
+                . The site is cheaper and faster afterwards.
+              </p>
+            </div>
+          </div>
         </div>
       </section>
 
