@@ -88,73 +88,61 @@ export default async function WebsiteDesignPage() {
 
   return (
     <>
-      {/* Hero */}
-      <section className="bg-dawn pt-[160px] md:pt-[200px] pb-[80px]">
+      {/*
+        Hero. The laptop sits behind the copy and bleeds off the right edge
+        from lg up, and drops back into the flow under the buttons below that,
+        where there is no room beside the text. The composite's own background
+        is already #191919, the same as bg-dawn, so no frame edge shows and
+        only the laptop reads against the section.
+
+        The laptop is a licensed Freepik mockup from ALCHEMY 2025/17 LANDING
+        PAGE PROJECT; the Smoke & Slaw homepage is warped onto its screen with
+        a four-point homography, because the lid is a slight trapezoid and a
+        plain rectangle left the mockup's own screen content showing down one
+        edge. Reveal falls back to a plain render under prefers-reduced-motion.
+      */}
+      <section className="relative overflow-hidden bg-dawn pt-[160px] md:pt-[200px] pb-[80px]">
         <div className="max-w-7xl mx-auto px-6 md:px-10">
-          <p className="text-[0.8rem] font-medium uppercase tracking-[0.12em] text-dragon-fire">
-            Websites
-          </p>
-          <h1 className="font-display text-display mt-4 max-w-5xl leading-[1.04]">
-            <span className="text-white">
-              A website redesign is the brand strategy,
-            </span>{" "}
-            <span className="text-dusk italic">rebuilt.</span>
-          </h1>
-          <p className="mt-8 max-w-2xl text-[1.125rem] leading-[1.7] text-white/65">
-            Most website redesigns start with a design and work backwards to an
-            argument. That order is why they run long, why the copy gets written
-            last, and why the finished site reads as an expensive brochure. We
-            settle the positioning first, then rebuild the site that makes the
-            case. What you get says the same thing as the rest of your brand,
-            loads quickly, and your team can update it without booking us in.
-          </p>
-          <div className="mt-10 flex flex-wrap items-center gap-4">
-            <Button variant="primary" href={motionHref} external>
-              Book a call
-            </Button>
-            <Button variant="secondary" href="/portfolio">
-              See the work
-            </Button>
+          <div className="relative z-10 lg:max-w-[56%]">
+            <p className="text-[0.8rem] font-medium uppercase tracking-[0.12em] text-dragon-fire">
+              Websites
+            </p>
+            <h1 className="font-display text-display mt-4 max-w-5xl leading-[1.04]">
+              <span className="text-white">
+                A website redesign is the brand strategy,
+              </span>{" "}
+              <span className="text-dusk italic">rebuilt.</span>
+            </h1>
+            <p className="mt-8 max-w-2xl text-[1.125rem] leading-[1.7] text-white/65">
+              Most website redesigns start with a design and work backwards to
+              an argument. That order is why they run long, why the copy gets
+              written last, and why the finished site reads as an expensive
+              brochure. We settle the positioning first, then rebuild the site
+              that makes the case. What you get says the same thing as the rest
+              of your brand, loads quickly, and your team can update it without
+              booking us in.
+            </p>
+            <div className="mt-10 flex flex-wrap items-center gap-4">
+              <Button variant="primary" href={motionHref} external>
+                Book a call
+              </Button>
+              <Button variant="secondary" href="/portfolio">
+                See the work
+              </Button>
+            </div>
           </div>
 
-          {/*
-            One build on a screen rather than a row of thumbnails. The laptop
-            is a licensed Freepik mockup from ALCHEMY 2025/17 LANDING PAGE
-            PROJECT; the Smoke & Slaw homepage is warped onto its screen with a
-            four-point homography, because the lid is a slight trapezoid and a
-            plain rectangle left the mockup's own screen content showing down
-            one edge. Reveal already falls back to a plain render under
-            prefers-reduced-motion.
-          */}
-          <Reveal className="mt-14 md:mt-16">
-            <figure>
-              <Link
-                href="/project/smoke-and-slaw-brand-voice-and-website"
-                className="group block"
-              >
-                <Image
-                  src="/builds/smoke-and-slaw-laptop.jpg"
-                  alt="A laptop showing the Smoke & Slaw homepage: close-up sliced brisket filling the screen behind the logo and the line 'Wood-fired BBQ. Smoked overnight. Served at its best.'"
-                  width={1540}
-                  height={880}
-                  sizes="(min-width: 1280px) 1200px, 100vw"
-                  className="w-full h-auto"
-                  priority
-                />
-              </Link>
-              <figcaption className="mt-2 text-center text-[0.9rem] leading-[1.6] text-white/50">
-                Smoke & Slaw.{" "}
-                <Link
-                  href="/project/smoke-and-slaw-brand-voice-and-website"
-                  className="text-dragon-fire underline underline-offset-4 hover:text-fire-60 transition-colors"
-                >
-                  Read the project
-                </Link>
-                .
-              </figcaption>
-            </figure>
+          <Reveal className="mt-14 md:mt-16 lg:mt-0 lg:absolute lg:inset-y-0 lg:right-[-4%] lg:z-0 lg:flex lg:w-[62%] lg:items-center">
+            <Image
+              src="/builds/smoke-and-slaw-laptop.jpg"
+              alt="A laptop showing the Smoke & Slaw homepage: close-up sliced brisket filling the screen behind the logo and the line 'Wood-fired BBQ. Smoked overnight. Served at its best.'"
+              width={1540}
+              height={880}
+              sizes="(min-width: 1024px) 62vw, 100vw"
+              className="h-auto w-full lg:[mask-image:linear-gradient(to_right,transparent_0%,#000_44%)]"
+              priority
+            />
           </Reveal>
-
         </div>
       </section>
 
