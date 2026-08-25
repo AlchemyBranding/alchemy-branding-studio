@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 
 import Button from "@/components/Button";
@@ -115,6 +116,39 @@ export default async function WebsiteDesignPage() {
               See the work
             </Button>
           </div>
+
+          {/*
+            The page opened on type alone. This is the live Vale Investments
+            homepage as it actually is, rather than a device mockup with a
+            screen composited into it: the claim above is that we build the
+            thing, so the evidence should be the thing. Reveal already bails
+            out to a plain render under prefers-reduced-motion.
+          */}
+          <Reveal className="mt-16 md:mt-20">
+            <figure>
+              <div className="overflow-hidden rounded-card border border-dawn-60">
+                <Image
+                  src="/builds/vale-investments-site.jpg"
+                  alt="The Vale Investments homepage: an aerial photograph of green Welsh farmland under heavy cloud, with the line 'From plan to progress, together.' and a 'Start a conversation' button over it."
+                  width={1440}
+                  height={900}
+                  sizes="(min-width: 1280px) 1200px, 100vw"
+                  className="w-full h-auto"
+                />
+              </div>
+              <figcaption className="mt-4 text-[0.9rem] leading-[1.6] text-white/50">
+                Vale Investments, built on the positioning the founders settled
+                first.{" "}
+                <Link
+                  href="/project/vale-investments-brand-strategy-website"
+                  className="text-dragon-fire underline underline-offset-4 hover:text-fire-60 transition-colors"
+                >
+                  Read the project
+                </Link>
+                .
+              </figcaption>
+            </figure>
+          </Reveal>
         </div>
       </section>
 
