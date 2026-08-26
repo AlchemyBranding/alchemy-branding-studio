@@ -336,3 +336,106 @@ export type SanityImageRef = {
   crop?: { top: number; bottom: number; left: number; right: number } | null;
   alt: string;
 };
+
+// --- Stori Cymru client portal -------------------------------------------
+// Password-gated status page. Content lives in Sanity rather than the repo
+// because it carries client-confidential delivery detail and live share
+// links, and the repo is public.
+
+const storiAssetProjection = `{
+  label,
+  url,
+  kind,
+  "webFileUrl": webFile.asset->url,
+  "webFileMime": webFile.asset->mimeType
+}`;
+
+export const storiCymruQuery = defineQuery(`{
+  "project": *[_type == "storiProject"][0] {
+    title,
+    subtitle,
+    overview,
+    safeguardingPrinciples,
+    safeguardingNote,
+    welshIntro,
+    welshResponsibilities,
+    voiceoverArtistName,
+    voiceoverArtistUrl,
+    voiceoverArtistNote
+  },
+  "tiers": *[_type == "storiTier"] | order(order asc) {
+    _id,
+    label,
+    ageRange,
+    description,
+    "slug": slug.current,
+    "sharedAssets": coalesce(sharedAssets[] ${storiAssetProjection}, []),
+    "topics": *[_type == "storiTopic" && tier._ref == ^._id] | order(order asc) {
+      _id,
+      title,
+      lead,
+      onHold,
+      note,
+      stages,
+      "assets": coalesce(assets[] ${storiAssetProjection}, [])
+    }
+  },
+  "lastUpdated": *[_type in ["storiProject", "storiTier", "storiTopic"]]
+    | order(_updatedAt desc)[0]._updatedAt
+}`);
+
+export type StoriStageStatus = "not-started" | "in-progress" | "signed-off";
+
+export type StoriStageKey =
+  | "scriptEn"
+  | "scriptCy"
+  | "storyboard"
+  | "voiceover"
+  | "animation";
+
+export type StoriAsset = {
+  label: string;
+  url: string;
+  kind: "document" | "video" | "audio" | "image" | "folder" | null;
+  webFileUrl: string | null;
+  webFileMime: string | null;
+};
+
+export type StoriTopic = {
+  _id: string;
+  title: string;
+  lead: string | null;
+  onHold: boolean | null;
+  note: string | null;
+  stages: Record<StoriStageKey, StoriStageStatus>;
+  assets: StoriAsset[];
+};
+
+export type StoriTier = {
+  _id: string;
+  label: string;
+  ageRange: string;
+  description: string;
+  slug: string;
+  sharedAssets: StoriAsset[];
+  topics: StoriTopic[];
+};
+
+export type StoriProject = {
+  title: string;
+  subtitle: string | null;
+  overview: string;
+  safeguardingPrinciples: string[] | null;
+  safeguardingNote: string | null;
+  welshIntro: string | null;
+  welshResponsibilities: string[] | null;
+  voiceoverArtistName: string | null;
+  voiceoverArtistUrl: string | null;
+  voiceoverArtistNote: string | null;
+};
+
+export type StoriCymruData = {
+  project: StoriProject | null;
+  tiers: StoriTier[];
+  lastUpdated: string | null;
+};

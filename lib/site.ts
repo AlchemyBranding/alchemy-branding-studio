@@ -59,6 +59,7 @@ export const reservedSlugs = new Set<string>([
   "branding-services-cardiff",
   "motion",
   "portal",
+  "projects",
   "privacy-policy",
   "cookie-policy",
   "sitemap.xml",

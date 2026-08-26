@@ -38,6 +38,9 @@ yarn-error.log*
 # vercel
 .vercel
 
+# local setup notes with secrets — never commit
+STORI-CYMRU-SETUP.md
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts
