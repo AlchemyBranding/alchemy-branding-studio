@@ -1,11 +1,14 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 
 import HeroReel from "@/components/animation/HeroReel";
+import LoopClip from "@/components/animation/LoopClip";
 import Button from "@/components/Button";
+import { YouTubeIcon } from "@/components/icons";
 import FinalCTA from "@/components/home/FinalCTA";
 import WorkGrid from "@/components/home/WorkGrid";
 import { getPageMetadata } from "@/lib/seo";
-import { motionHref } from "@/lib/site";
+import { motionHref, socialLinks } from "@/lib/site";
 import { safeFetch } from "@/sanity/lib/fetch";
 import {
   animationCaseStudiesQuery,
@@ -44,6 +47,55 @@ const whatWeMake = [
     title: "Style frames and direction",
     detail:
       "See the look before a frame moves. We lock the visual direction in style frames, then animate with confidence.",
+  },
+];
+
+// Read from socialLinks rather than hardcoded, so the channel URL stays in one
+// place alongside the footer and portal.
+const youtubeHref =
+  socialLinks.find((s) => s.icon === "youtube")?.href ??
+  "https://www.youtube.com/@alchemybrandingstudio";
+
+// Development artwork: the hand-drawn stage, pulled from the project folders.
+// Roughs, thumbnails and storyboards rather than finished style frames, because
+// that is what the section copy claims. The finished concept art and style
+// frames go in the background collage instead.
+const developmentArtwork = [
+  {
+    src: "/builds/dev-age-cymru-rough.webp",
+    client: "Age Cymru",
+    stage: "Character rough",
+    alt: "Age Cymru character rough: three figures drawn in red construction lines over blue guides.",
+  },
+  {
+    src: "/builds/dev-cardiff-thumbs.webp",
+    client: "Cardiff Council",
+    stage: "Thumbnail sketches",
+    alt: "Cardiff Council thumbnail sketches: a grid of pencil frames with handwritten timing notes.",
+  },
+  {
+    src: "/builds/dev-venture-life-paper.webp",
+    client: "Venture Life",
+    stage: "Storyboard on paper",
+    alt: "Venture Life storyboard drawn in pencil on paper, annotated '15 second ver 2'.",
+  },
+  {
+    src: "/builds/dev-wjec-rough.webp",
+    client: "WJEC",
+    stage: "Storyboard frame",
+    alt: "WJEC storyboard frame: a line drawing of a school group outside a stone building.",
+  },
+  {
+    src: "/builds/dev-mailosaur-rough.webp",
+    client: "Mailosaur",
+    stage: "Storyboard rough",
+    alt: "Mailosaur storyboard rough: a briefcase with envelopes flying out, marked with red motion arrows.",
+  },
+  {
+    src: "/builds/dev-bullies-out-rough.webp",
+    client: "BulliesOut",
+    stage: "Storyboard frame",
+    alt: "BulliesOut storyboard frame: three inked troll characters lit from below, with red motion arrows.",
   },
 ];
 
@@ -116,12 +168,90 @@ export default async function AnimationPage() {
         </div>
       </section>
 
+      {/* Development artwork */}
+      <section
+        aria-labelledby="development-heading"
+        className="relative overflow-hidden bg-dawn-80 py-[120px] border-y border-dawn-60"
+      >
+        {/* Roughs and storyboards scattered as if left out on a table. The
+            overlaps and shadows are baked into one composite rather than built
+            from positioned <img> tags: cheaper, and it cannot reflow. */}
+        <Image
+          src="/builds/dev-artwork-table-v2.webp"
+          alt=""
+          aria-hidden="true"
+          fill
+          sizes="100vw"
+          className="object-cover opacity-[0.45]"
+        />
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 bg-gradient-to-b from-dawn-80 via-dawn-80/55 to-dawn-80"
+        />
+
+        <div className="relative max-w-7xl mx-auto px-6 md:px-10">
+          <p className="text-[0.8rem] font-medium uppercase tracking-[0.12em] text-dragon-fire">
+            Development
+          </p>
+          <h2
+            id="development-heading"
+            className="font-display text-h2 mt-3 max-w-3xl text-white"
+          >
+            The look gets settled before anything moves.
+          </h2>
+          <p className="mt-6 max-w-2xl text-[1.0625rem] leading-[1.7] text-white/65">
+            Every film starts on paper. Rough panels to work out the order,
+            storyboards to test whether the story holds, then style frames that
+            fix the palette, the characters and the world. By the time we
+            animate, you have already seen and signed off what it will look
+            like.
+          </p>
+
+          <ul className="mt-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {developmentArtwork.map((art) => (
+              <li key={art.src}>
+                <figure>
+                  {/* object-contain, not cover: these are drawings, and the
+                      sheets are not all 16:9. Cropping a thumbnail page cuts
+                      panels off the edges. */}
+                  <div className="relative aspect-video overflow-hidden rounded-2xl border border-dawn-60 bg-dawn shadow-2xl">
+                    <Image
+                      src={art.src}
+                      alt={art.alt}
+                      fill
+                      sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+                      className="object-contain"
+                    />
+                  </div>
+                  <figcaption className="mt-3 text-[0.875rem] text-white/55">
+                    <span className="text-white/80">{art.client}</span>
+                    <span aria-hidden="true"> · </span>
+                    {art.stage}
+                  </figcaption>
+                </figure>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
       {/* What we make */}
       <section
         aria-labelledby="what-we-make-heading"
-        className="bg-dawn-80 py-[120px] border-y border-dawn-60"
+        className="relative overflow-hidden bg-dawn-80 py-[120px] border-y border-dawn-60"
       >
-        <div className="max-w-7xl mx-auto px-6 md:px-10">
+        {/* Clip runs behind the section as texture, not as content. The scrim
+            is deliberately heavy: this is body copy over moving pictures, which
+            is a much harder read than the hero's short headline. */}
+        <LoopClip
+          fill
+          src="/video/loop-bumblebee.mp4"
+          poster="/video/loop-bumblebee-poster.jpg"
+          description="A clip from the Bumblebee Conservation Trust animation: an illustrated bumblebee flying over a row of houses."
+        />
+        <div aria-hidden="true" className="absolute inset-0 bg-dawn-80/88" />
+
+        <div className="relative max-w-7xl mx-auto px-6 md:px-10">
           <p className="text-[0.8rem] font-medium uppercase tracking-[0.12em] text-dragon-fire">
             What we make
           </p>
@@ -149,12 +279,73 @@ export default async function AnimationPage() {
         </div>
       </section>
 
+      {/* YouTube channel */}
+      <section
+        aria-labelledby="youtube-heading"
+        className="relative overflow-hidden bg-dawn py-[120px] border-b border-dawn-60"
+      >
+        {/* A real grab of the channel, so the proof is the actual back
+            catalogue rather than a stock play button. It will date as YouTube
+            redesigns and as view counts move: re-shoot it when it looks old. */}
+        <Image
+          src="/builds/youtube-channel.webp"
+          alt=""
+          aria-hidden="true"
+          fill
+          sizes="100vw"
+          className="object-cover object-left opacity-[0.22]"
+        />
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 bg-gradient-to-r from-dawn via-dawn/92 to-dawn/70"
+        />
+
+        <div className="relative max-w-7xl mx-auto px-6 md:px-10">
+          <div className="flex flex-col gap-10 lg:flex-row lg:items-end lg:justify-between">
+            <div className="max-w-2xl">
+              <p className="flex items-center gap-2.5 text-[0.8rem] font-medium uppercase tracking-[0.12em] text-dragon-fire">
+                <YouTubeIcon className="h-5 w-5 text-[#FF0000]" />
+                On YouTube
+              </p>
+              <h2
+                id="youtube-heading"
+                className="font-display text-h2 mt-4 text-white"
+              >
+                Watch the work in full.
+              </h2>
+              <p className="mt-6 text-[1.0625rem] leading-[1.7] text-white/70">
+                The clips on this page are seconds long. The films are not. The
+                channel has the finished animations end to end, with the
+                voiceover and sound design they were built for, sorted into
+                playlists by sector so you can find work close to yours.
+              </p>
+            </div>
+
+            <div className="shrink-0">
+              <Button href={youtubeHref} variant="primary" external>
+                Visit our channel
+              </Button>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* How we approach it */}
       <section
         aria-labelledby="approach-heading"
-        className="bg-dawn py-[120px]"
+        className="relative overflow-hidden bg-dawn py-[120px]"
       >
-        <div className="max-w-7xl mx-auto px-6 md:px-10">
+        {/* Heaviest scrim of the three: this section's list items sit directly
+            on the background with no card behind them. */}
+        <LoopClip
+          fill
+          src="/video/loop-selwood.mp4"
+          poster="/video/loop-selwood-poster.jpg"
+          description="A clip from the Selwood customer journey animation: illustrated staff at a depot, with the Selwood wordmark."
+        />
+        <div aria-hidden="true" className="absolute inset-0 bg-dawn/93" />
+
+        <div className="relative max-w-7xl mx-auto px-6 md:px-10">
           <p className="text-[0.8rem] font-medium uppercase tracking-[0.12em] text-dragon-fire">
             How we approach it
           </p>
@@ -198,9 +389,17 @@ export default async function AnimationPage() {
       {projects.length > 0 ? (
         <section
           aria-labelledby="animation-work-heading"
-          className="bg-dawn-80 py-[120px] border-t border-dawn-60"
+          className="relative overflow-hidden bg-dawn-80 py-[120px] border-t border-dawn-60"
         >
-          <div className="max-w-7xl mx-auto px-6 md:px-10">
+          <LoopClip
+            fill
+            src="/video/loop-cambridgeshire.mp4"
+            poster="/video/loop-cambridgeshire-poster.jpg"
+            description="A clip from the Cambridgeshire Constabulary Recognise and Respond animation: illustrated officers beside the app interface."
+          />
+          <div aria-hidden="true" className="absolute inset-0 bg-dawn-80/88" />
+
+          <div className="relative max-w-7xl mx-auto px-6 md:px-10">
             <p className="text-[0.8rem] font-medium uppercase tracking-[0.12em] text-dragon-fire">
               Selected work
             </p>
