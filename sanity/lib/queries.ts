@@ -34,9 +34,14 @@ export const featuredCaseStudiesQuery = defineQuery(`
     }
 `);
 
+// Ordered by _createdAt, not publishedAt. publishedAt is the date of the work
+// itself, so a case study written this month about a 2021 animation sorted to
+// the bottom and never appeared: the newest write-ups were the least visible.
+// _createdAt is when the case study was actually added, which is what "new"
+// means here, and it does not shift when an old doc is edited.
 export const animationCaseStudiesQuery = defineQuery(`
   *[_type == "caseStudy" && defined(slug.current) && "Animation" in serviceTags]
-    | order(coalesce(featured, false) desc, publishedAt desc) [0...3] {
+    | order(coalesce(featured, false) desc, _createdAt desc) [0...9] {
       _id,
       title,
       "slug": slug.current,
