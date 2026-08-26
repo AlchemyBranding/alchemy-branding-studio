@@ -119,7 +119,9 @@ export default function NewsletterPopup() {
     document.body.style.overflow = "hidden";
 
     const node = dialogRef.current;
-    node?.querySelector<HTMLElement>("[data-autofocus]")?.focus();
+    node?.querySelector<HTMLElement>("[data-autofocus]")?.focus({
+      preventScroll: true,
+    });
 
     const onKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape") {
@@ -147,7 +149,11 @@ export default function NewsletterPopup() {
     return () => {
       document.removeEventListener("keydown", onKeyDown);
       document.body.style.overflow = prevOverflow;
-      prevActive?.focus?.();
+      // preventScroll, because prevActive is not always on screen. Focus
+      // survives a client-side navigation, so after arriving here from a
+      // footer link prevActive is still that link, and a plain focus() call
+      // scrolls the page back down to the footer on dismiss.
+      prevActive?.focus?.({ preventScroll: true });
     };
   }, [open, close]);
 

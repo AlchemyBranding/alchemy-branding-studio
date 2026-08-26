@@ -7,6 +7,7 @@ import Header from "@/components/Header";
 import HideOnStudio from "@/components/HideOnStudio";
 import JsonLd from "@/components/JsonLd";
 import NewsletterPopup from "@/components/NewsletterPopup";
+import RouteFocusReset from "@/components/RouteFocusReset";
 import { satoshi } from "@/lib/fonts";
 import { indexableRobots } from "@/lib/seo";
 import { siteConfig } from "@/lib/site";
@@ -55,12 +56,16 @@ export default function RootLayout({
         <HideOnStudio>
           <Header />
         </HideOnStudio>
-        <main className="flex-1">{children}</main>
+        {/* tabIndex allows RouteFocusReset to land focus here on navigation. */}
+        <main tabIndex={-1} className="flex-1 outline-none">
+          {children}
+        </main>
         <HideOnStudio>
           <Footer />
           <CookieBanner />
           <NewsletterPopup />
         </HideOnStudio>
+        <RouteFocusReset />
         <GoogleTagManager gtmId={gtmId} />
       </body>
     </html>
