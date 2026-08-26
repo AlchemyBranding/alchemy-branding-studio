@@ -34,27 +34,6 @@ export const featuredCaseStudiesQuery = defineQuery(`
     }
 `);
 
-// Ordered by _createdAt, not publishedAt. publishedAt is the date of the work
-// itself, so a case study written this month about a 2021 animation sorted to
-// the bottom and never appeared: the newest write-ups were the least visible.
-// _createdAt is when the case study was actually added, which is what "new"
-// means here, and it does not shift when an old doc is edited.
-export const animationCaseStudiesQuery = defineQuery(`
-  *[_type == "caseStudy" && defined(slug.current) && "Animation" in serviceTags]
-    | order(coalesce(featured, false) desc, _createdAt desc) [0...9] {
-      _id,
-      title,
-      "slug": slug.current,
-      subtitle,
-      serviceTags,
-      clientName,
-      outcomeSummary,
-      heroImage ${altImageProjection},
-      cardImage ${altImageProjection},
-      "heroVideoUrl": heroVideo.asset->url
-    }
-`);
-
 // featuredHero leads the sort, the same first key featuredCaseStudiesQuery
 // uses, so the large tile here is the build the homepage leads on. Without it
 // the large slot fell to whichever featured case study was published most
@@ -84,6 +63,9 @@ export const websiteCaseStudiesQuery = defineQuery(`
 // /brand-identity: there is no "Identity" tag, and the nearest one, "Branding",
 // returns the same three featured entries as /website-design, which would have
 // put identical work on two service pages.
+// /animation: the "Animation" tag returns nineteen, ordered by publishedAt,
+// which is the date of the work rather than of the write-up. The newest case
+// studies are all of older projects, so they sorted last and never showed.
 export const caseStudiesBySlugsQuery = defineQuery(`
   *[_type == "caseStudy" && slug.current in $slugs] {
     _id,

@@ -12,7 +12,7 @@ import { getPageMetadata } from "@/lib/seo";
 import { motionHref, socialLinks } from "@/lib/site";
 import { safeFetch } from "@/sanity/lib/fetch";
 import {
-  animationCaseStudiesQuery,
+  caseStudiesBySlugsQuery,
   type FeaturedCaseStudy,
 } from "@/sanity/lib/queries";
 
@@ -106,6 +106,16 @@ const developmentArtwork = [
   },
 ];
 
+// Pinned rather than sorted. The "Animation" tag returns nineteen case studies
+// ordered by publishedAt, which is the date of the work: the newest write-ups
+// are all of older projects, so they sorted to the bottom and never appeared.
+// Naming the three keeps the section current and checkable.
+const ANIMATION_CASE_STUDY_SLUGS = [
+  "aneurin-bevan-help-us-help-you-animated-campaign",
+  "gwent-police-recognise-respond-animation-series",
+  "bumblebee-conservation-trust-bee-the-change-animation",
+];
+
 const approach = [
   {
     title: "Script and idea first.",
@@ -126,9 +136,16 @@ const approach = [
 
 export default async function AnimationPage() {
   const projects = await safeFetch<FeaturedCaseStudy[]>(
-    animationCaseStudiesQuery,
+    caseStudiesBySlugsQuery,
     [],
+    { params: { slugs: ANIMATION_CASE_STUDY_SLUGS } },
   );
+
+  // GROQ returns document order, not the order of the slug list. Sort back so
+  // Aneurin Bevan takes the large tile.
+  const ordered = ANIMATION_CASE_STUDY_SLUGS.map((slug) =>
+    projects.find((p) => p.slug === slug),
+  ).filter((p): p is FeaturedCaseStudy => Boolean(p));
 
   return (
     <>
@@ -397,7 +414,7 @@ export default async function AnimationPage() {
       </section>
 
       {/* Selected animation work */}
-      {projects.length > 0 ? (
+      {ordered.length > 0 ? (
         <section
           aria-labelledby="animation-work-heading"
           className="relative overflow-hidden bg-dawn-80 py-[120px] border-t border-dawn-60"
@@ -420,7 +437,7 @@ export default async function AnimationPage() {
             >
               Complex stories, told in motion.
             </h2>
-            <WorkGrid items={projects} />
+            <WorkGrid items={ordered} />
             <div className="mt-12 text-center">
               <Button href="/portfolio" variant="primary">
                 View all work
