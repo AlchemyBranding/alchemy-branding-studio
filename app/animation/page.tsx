@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import Link from "next/link";
 
 import HeroReel from "@/components/animation/HeroReel";
 import LoopClip from "@/components/animation/LoopClip";
@@ -62,40 +63,46 @@ const youtubeHref =
 // frames go in the background collage instead.
 const developmentArtwork = [
   {
-    src: "/builds/dev-age-cymru-rough.webp",
+    src: "/builds/dev2-veeqo.webp",
+    client: "Veeqo (an Amazon company)",
+    stage: "Storyboard rough",
+    href: "/project/veeqo-amazon-product-animation-suite",
+    alt: "Veeqo storyboard rough: an inked hand tapping a FREE button on a tablet.",
+  },
+  {
+    src: "/builds/dev2-age-cymru.webp",
     client: "Age Cymru",
     stage: "Character rough",
+    href: "/project/age-cymru-dementia-advocacy-bilingual-animation",
     alt: "Age Cymru character rough: three figures drawn in red construction lines over blue guides.",
   },
   {
-    src: "/builds/dev-cardiff-thumbs.webp",
+    src: "/builds/dev2-cardiff.webp",
     client: "Cardiff Council",
     stage: "Thumbnail sketches",
-    alt: "Cardiff Council thumbnail sketches: a grid of pencil frames with handwritten timing notes.",
+    href: "/project/cardiff-council-mipermit-animated-explainers",
+    alt: "Cardiff Council thumbnail sketches: a grid of pencil frames with handwritten notes.",
   },
   {
-    src: "/builds/dev-venture-life-paper.webp",
-    client: "Venture Life",
-    stage: "Storyboard on paper",
-    alt: "Venture Life storyboard drawn in pencil on paper, annotated '15 second ver 2'.",
+    src: "/builds/dev2-aneurin-bevan.webp",
+    client: "Aneurin Bevan University Health Board",
+    stage: "Character sketches",
+    href: "/project/aneurin-bevan-help-us-help-you-animated-campaign",
+    alt: "Aneurin Bevan character sketches: pencil turnarounds of a character drawn on paper.",
   },
   {
-    src: "/builds/dev-wjec-rough.webp",
-    client: "WJEC",
-    stage: "Storyboard frame",
-    alt: "WJEC storyboard frame: a line drawing of a school group outside a stone building.",
+    src: "/builds/dev2-bam.webp",
+    client: "BAM Construct UK",
+    stage: "Character poses",
+    href: "/project/bam-construct-uk-social-value-animation",
+    alt: "BAM Construct UK character poses: a sheet of figures sketched in red line.",
   },
   {
-    src: "/builds/dev-mailosaur-rough.webp",
-    client: "Mailosaur",
-    stage: "Storyboard rough",
-    alt: "Mailosaur storyboard rough: a briefcase with envelopes flying out, marked with red motion arrows.",
-  },
-  {
-    src: "/builds/dev-bullies-out-rough.webp",
-    client: "BulliesOut",
-    stage: "Storyboard frame",
-    alt: "BulliesOut storyboard frame: three inked troll characters lit from below, with red motion arrows.",
+    src: "/builds/dev2-ds-smith.webp",
+    client: "DS Smith",
+    stage: "Character designs",
+    href: "/project/ds-smith-explaining-eudr-compliance-through-confident-clear-animation",
+    alt: "DS Smith character designs: pencil roughs surrounding two finished coloured figures.",
   },
 ];
 
@@ -177,7 +184,7 @@ export default async function AnimationPage() {
             overlaps and shadows are baked into one composite rather than built
             from positioned <img> tags: cheaper, and it cannot reflow. */}
         <Image
-          src="/builds/dev-artwork-table-v2.webp"
+          src="/builds/dev-artwork-table-v3.webp"
           alt=""
           aria-hidden="true"
           fill
@@ -210,7 +217,8 @@ export default async function AnimationPage() {
           <ul className="mt-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {developmentArtwork.map((art) => (
               <li key={art.src}>
-                <figure>
+                <Link href={art.href} className="group block">
+                  <figure>
                   {/* object-contain, not cover: these are drawings, and the
                       sheets are not all 16:9. Cropping a thumbnail page cuts
                       panels off the edges. */}
@@ -223,12 +231,15 @@ export default async function AnimationPage() {
                       className="object-contain"
                     />
                   </div>
-                  <figcaption className="mt-3 text-[0.875rem] text-white/55">
-                    <span className="text-white/80">{art.client}</span>
-                    <span aria-hidden="true"> · </span>
-                    {art.stage}
-                  </figcaption>
-                </figure>
+                    <figcaption className="mt-3 text-[0.875rem] text-white/55">
+                      <span className="text-white/80 group-hover:text-dragon-fire transition-colors duration-200">
+                        {art.client}
+                      </span>
+                      <span aria-hidden="true"> · </span>
+                      {art.stage}
+                    </figcaption>
+                  </figure>
+                </Link>
               </li>
             ))}
           </ul>
@@ -393,9 +404,9 @@ export default async function AnimationPage() {
         >
           <LoopClip
             fill
-            src="/video/loop-cambridgeshire.mp4"
-            poster="/video/loop-cambridgeshire-poster.jpg"
-            description="A clip from the Cambridgeshire Constabulary Recognise and Respond animation: illustrated officers beside the app interface."
+            src="/video/loop-cardiff-council.mp4"
+            poster="/video/loop-cardiff-council-poster.jpg"
+            description="A clip from the Cardiff Council MiPermit animation: illustrated drivers queuing in the rain beside the parking app."
           />
           <div aria-hidden="true" className="absolute inset-0 bg-dawn-80/88" />
 
