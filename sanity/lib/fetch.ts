@@ -38,9 +38,15 @@ export async function safeFetch<T>(
     // Log in production too — Vercel captures console.error, and a silent
     // fallback here once let a broken GROQ query masquerade as "post not
     // found" 404s across every blog detail page.
+    // `fetch failed` on its own says nothing useful; the real reason lives on
+    // `cause` (e.g. UNABLE_TO_VERIFY_LEAF_SIGNATURE behind a TLS-inspecting
+    // proxy, which fails every request locally while production is fine).
+    const err = error as Error & { cause?: { message?: string; code?: string } };
     console.error(
       "[sanity] fetch failed, using fallback:",
-      (error as Error).message,
+      err.message,
+      "| cause:",
+      err.cause?.code ?? err.cause?.message ?? "none",
     );
     return fallback;
   }
