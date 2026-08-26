@@ -84,11 +84,11 @@ const developmentArtwork = [
     alt: "Cardiff Council thumbnail sketches: a grid of pencil frames with handwritten notes.",
   },
   {
-    src: "/builds/dev2-aneurin-bevan.webp",
+    src: "/builds/dev3-aneurin-bevan.webp",
     client: "Aneurin Bevan University Health Board",
     stage: "Character sketches",
     href: "/project/aneurin-bevan-help-us-help-you-animated-campaign",
-    alt: "Aneurin Bevan character sketches: pencil turnarounds of a character drawn on paper.",
+    alt: "Aneurin Bevan character sketches: three pencil character roughs on paper, an older man, a crying woman and a child in a hood.",
   },
   {
     src: "/builds/dev2-bam.webp",
