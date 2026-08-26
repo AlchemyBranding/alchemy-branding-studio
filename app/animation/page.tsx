@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 
+import HeroReel from "@/components/animation/HeroReel";
 import Button from "@/components/Button";
 import FinalCTA from "@/components/home/FinalCTA";
 import WorkGrid from "@/components/home/WorkGrid";
@@ -73,8 +74,22 @@ export default async function AnimationPage() {
   return (
     <>
       {/* Hero */}
-      <section className="bg-dawn pt-[160px] md:pt-[200px] pb-[80px]">
-        <div className="max-w-7xl mx-auto px-6 md:px-10">
+      <section className="relative overflow-hidden bg-dawn pt-[160px] md:pt-[200px] pb-[80px]">
+        <HeroReel fill />
+
+        {/* Legibility overlay: the reel runs light in places (Tate & Lyle,
+            Burges Salmon), so the copy side needs a heavier scrim than the
+            homepage uses. */}
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 bg-gradient-to-r from-dawn via-dawn/85 to-dawn/40"
+        />
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 bg-gradient-to-t from-dawn/80 via-transparent to-dawn/50"
+        />
+
+        <div className="relative max-w-7xl mx-auto px-6 md:px-10">
           <p className="text-[0.8rem] font-medium uppercase tracking-[0.12em] text-dragon-fire">
             Animation
           </p>
@@ -82,13 +97,13 @@ export default async function AnimationPage() {
             <span className="text-white">Animation that makes the complicated</span>{" "}
             <span className="text-dusk italic">feel simple.</span>
           </h1>
-          <p className="mt-8 max-w-2xl text-[1.125rem] leading-[1.7] text-white/65">
+          <p className="mt-8 max-w-2xl text-[1.125rem] leading-[1.7] text-white/75">
             We make explainer videos and brand animation for businesses with
             something genuinely hard to get across: a regulation, a technology,
             a process, a product. We start with the one idea the piece has to
             land, lock the look in style frames, then animate around it. The
-            result earns attention
-            without shouting, and says the same thing as the rest of your brand.
+            result earns attention without shouting, and says the same thing as
+            the rest of your brand.
           </p>
           <div className="mt-10 flex flex-wrap items-center gap-4">
             <Button variant="primary" href={motionHref} external>
