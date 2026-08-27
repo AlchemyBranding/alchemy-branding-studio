@@ -363,6 +363,7 @@ export const storiCymruQuery = defineQuery(`{
       lead,
       onHold,
       note,
+      deadlineNote,
       stages,
       "assets": coalesce(assets[] ${storiAssetProjection}, [])
     }
@@ -394,6 +395,7 @@ export type StoriTopic = {
   lead: string | null;
   onHold: boolean | null;
   note: string | null;
+  deadlineNote: string | null;
   stages: Record<StoriStageKey, StoriStageStatus>;
   assets: StoriAsset[];
 };

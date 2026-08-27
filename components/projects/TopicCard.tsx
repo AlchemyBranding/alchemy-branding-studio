@@ -27,6 +27,24 @@ export default function TopicCard({ topic }: Props) {
         ) : null}
       </div>
 
+      {topic.deadlineNote ? (
+        <p className="mt-3 inline-flex items-center gap-1.5 rounded-full bg-dragon-fire px-3 py-1 text-[0.72rem] font-bold uppercase tracking-[0.06em] text-dawn">
+          <svg
+            viewBox="0 0 16 16"
+            className="h-3 w-3"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="1.6"
+            strokeLinecap="round"
+            aria-hidden="true"
+          >
+            <circle cx="8" cy="8" r="6.25" />
+            <path d="M8 4.75V8l2.25 1.75" />
+          </svg>
+          {topic.deadlineNote}
+        </p>
+      ) : null}
+
       {topic.onHold ? (
         <p className="mt-3 inline-block rounded-full border border-pixie-pink/30 bg-pixie-pink/10 px-3 py-1 text-[0.75rem] text-pixie-pink">
           On hold{topic.note ? `: ${topic.note}` : ""}

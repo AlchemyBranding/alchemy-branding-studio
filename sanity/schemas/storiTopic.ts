@@ -42,6 +42,13 @@ export const storiTopic = defineType({
         'Shown under the title. When on hold this is the reason, so write it to read after "On hold:".',
     }),
     defineField({
+      name: "deadlineNote",
+      title: "Deadline note",
+      type: "string",
+      description:
+        'Short deadline flag shown in red on the card, e.g. "Done by Sept". Leave blank for no flag.',
+    }),
+    defineField({
       name: "stages",
       title: "Production stages",
       type: "storiStages",
