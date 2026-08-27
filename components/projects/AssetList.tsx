@@ -31,6 +31,47 @@ function kindFor(asset: StoriAsset): AssetKind {
   return "document";
 }
 
+/**
+ * Assets always read in production order regardless of the order they were
+ * added in: planning doc, script, storyboard, voiceover, animation. Anything
+ * that isn't one of those (tier concept art, project folders) leads.
+ */
+const STAGE_ORDER: { rank: number; test: RegExp }[] = [
+  { rank: 1, test: /planning doc/i },
+  { rank: 2, test: /script/i },
+  { rank: 3, test: /storyboard/i },
+  { rank: 4, test: /voiceover/i },
+  { rank: 5, test: /animation|style test/i },
+];
+
+const stageRank = (label: string) =>
+  STAGE_ORDER.find((s) => s.test.test(label))?.rank ?? 0;
+
+/** English before Welsh within a stage. */
+const langRank = (label: string) =>
+  /\((?:cy|welsh)\)|welsh|\bcym\b/i.test(label) ? 1 : 0;
+
+/** v1 before v2; an unversioned label sorts first within its stage. */
+const versionRank = (label: string) => {
+  const m = label.match(/\bv(\d+)\b/i);
+  return m ? Number(m[1]) : 0;
+};
+
+function inProductionOrder(assets: StoriAsset[]): StoriAsset[] {
+  return assets
+    .map((asset, index) => ({ asset, index }))
+    .sort((a, b) => {
+      const byStage = stageRank(a.asset.label) - stageRank(b.asset.label);
+      if (byStage !== 0) return byStage;
+      const byLang = langRank(a.asset.label) - langRank(b.asset.label);
+      if (byLang !== 0) return byLang;
+      const byVersion = versionRank(a.asset.label) - versionRank(b.asset.label);
+      if (byVersion !== 0) return byVersion;
+      return a.index - b.index;
+    })
+    .map((entry) => entry.asset);
+}
+
 /** Where the asset lives, so the client can see what a link will open. */
 function sourceFor(url: string): string | null {
   if (url.includes("dropbox.com")) return "Dropbox";
@@ -117,7 +158,7 @@ export default function AssetList({ assets, title }: Props) {
       ) : null}
 
       <ul className={`${title ? "mt-2" : ""} border-t border-dawn-60`}>
-        {assets.map((asset) => {
+        {inProductionOrder(assets).map((asset) => {
           const kind = kindFor(asset);
           const source = sourceFor(asset.url);
 

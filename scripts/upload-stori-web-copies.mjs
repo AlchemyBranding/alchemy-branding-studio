@@ -6,10 +6,12 @@
  * smaller web copy with ffmpeg, uploads it to Sanity, and points the asset's
  * `webFile` field at it. The original link stays on the page alongside.
  *
- * One playable asset per language per topic: the current English cut and the
- * current Welsh cut get a web copy, everything else stays a plain Dropbox
- * link. Pass --prune to strip web copies from assets that no longer win their
- * language, deleting the orphaned files.
+ * Only the current cut of each thing is playable. Assets are grouped by media
+ * type and language, so a topic can offer its current English animation,
+ * current Welsh animation, current English voiceover and current Welsh
+ * voiceover; superseded versions stay as plain Dropbox links. Pass --prune to
+ * strip web copies from assets that are no longer current, deleting the
+ * orphaned files.
  *
  * Idempotent: assets that already have a webFile are skipped, so it can be
  * re-run as new animations are delivered.
@@ -75,30 +77,26 @@ const versionOf = (label) => {
   return m ? Number(m[1]) : Infinity;
 };
 
-/** The animation is the deliverable, so it outranks a voiceover. */
-const kindRank = (kind) => (kind === "video" ? 1 : 0);
-
 /**
- * One playable asset per language per topic: the client should see the
- * current English cut and the current Welsh cut, and nothing else. Everything
- * that loses stays on the page as a plain Dropbox link.
+ * English and Welsh are separate deliverables, and so are an animation and
+ * its voiceover. Group by media type and language, then keep the newest in
+ * each group: the current English animation, the current Welsh animation,
+ * the current English voiceover and the current Welsh voiceover can all
+ * play. Older cuts stay on the page as plain Dropbox links.
  *
- * Ranked by: video over audio, then version number (unversioned wins), then
- * array order so the later entry breaks a tie.
+ * Ranked by version number (unversioned wins, it is the finished thing
+ * rather than a numbered draft), then array order to break a tie.
  */
 function currentKeys(list) {
   const best = new Map();
   list.forEach((a, i) => {
     if (!["video", "audio"].includes(a.kind)) return;
-    const lang = langOf(a.label);
-    const rank = [kindRank(a.kind), versionOf(a.label), i];
-    const prev = best.get(lang);
+    const group = `${a.kind}:${langOf(a.label)}`;
+    const rank = [versionOf(a.label), i];
+    const prev = best.get(group);
     const wins =
-      !prev ||
-      rank[0] > prev.rank[0] ||
-      (rank[0] === prev.rank[0] && rank[1] > prev.rank[1]) ||
-      (rank[0] === prev.rank[0] && rank[1] === prev.rank[1] && rank[2] > prev.rank[2]);
-    if (wins) best.set(lang, { key: a._key, rank });
+      !prev || rank[0] > prev.rank[0] || (rank[0] === prev.rank[0] && rank[1] > prev.rank[1]);
+    if (wins) best.set(group, { key: a._key, rank });
   });
   return new Set([...best.values()].map((v) => v.key));
 }
