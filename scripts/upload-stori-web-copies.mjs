@@ -6,6 +6,11 @@
  * smaller web copy with ffmpeg, uploads it to Sanity, and points the asset's
  * `webFile` field at it. The original link stays on the page alongside.
  *
+ * One playable asset per language per topic: the current English cut and the
+ * current Welsh cut get a web copy, everything else stays a plain Dropbox
+ * link. Pass --prune to strip web copies from assets that no longer win their
+ * language, deleting the orphaned files.
+ *
  * Idempotent: assets that already have a webFile are skipped, so it can be
  * re-run as new animations are delivered.
  *
@@ -26,6 +31,7 @@ const token = process.env.SANITY_WRITE_TOKEN;
 if (!token) throw new Error("SANITY_WRITE_TOKEN is required (a Sanity editor token).");
 
 const dryRun = process.argv.includes("--dry-run");
+const prune = process.argv.includes("--prune");
 const onlyArg = process.argv.find((a) => a.startsWith("--only="));
 const only = onlyArg ? onlyArg.slice("--only=".length).toLowerCase() : null;
 
@@ -57,6 +63,46 @@ const ffmpegArgs = (input, output, kind) =>
         "-movflags", "+faststart", output,
       ];
 
+/** Welsh copies are marked in the label, e.g. "Animation v1 (CY)". */
+const langOf = (label) => (/\((?:cy|welsh)\)|welsh|\bcym\b/i.test(label) ? "cy" : "en");
+
+/**
+ * "Animation v2 (signed off)" -> 2. A label with no version number is the
+ * finished thing rather than a numbered draft, so it outranks every vN.
+ */
+const versionOf = (label) => {
+  const m = label.match(/\bv(\d+)\b/i);
+  return m ? Number(m[1]) : Infinity;
+};
+
+/** The animation is the deliverable, so it outranks a voiceover. */
+const kindRank = (kind) => (kind === "video" ? 1 : 0);
+
+/**
+ * One playable asset per language per topic: the client should see the
+ * current English cut and the current Welsh cut, and nothing else. Everything
+ * that loses stays on the page as a plain Dropbox link.
+ *
+ * Ranked by: video over audio, then version number (unversioned wins), then
+ * array order so the later entry breaks a tie.
+ */
+function currentKeys(list) {
+  const best = new Map();
+  list.forEach((a, i) => {
+    if (!["video", "audio"].includes(a.kind)) return;
+    const lang = langOf(a.label);
+    const rank = [kindRank(a.kind), versionOf(a.label), i];
+    const prev = best.get(lang);
+    const wins =
+      !prev ||
+      rank[0] > prev.rank[0] ||
+      (rank[0] === prev.rank[0] && rank[1] > prev.rank[1]) ||
+      (rank[0] === prev.rank[0] && rank[1] === prev.rank[1] && rank[2] > prev.rank[2]);
+    if (wins) best.set(lang, { key: a._key, rank });
+  });
+  return new Set([...best.values()].map((v) => v.key));
+}
+
 const docs = await client.fetch(`*[_type in ["storiTopic","storiTier"]]{
   _id, _type, title, label,
   "assets": coalesce(assets[]{_key, label, kind, url, "has": defined(webFile.asset)}, []),
@@ -64,10 +110,16 @@ const docs = await client.fetch(`*[_type in ["storiTopic","storiTier"]]{
 }`);
 
 const jobs = [];
+const superseded = [];
 for (const doc of docs) {
   for (const [field, list] of [["assets", doc.assets], ["sharedAssets", doc.sharedAssets]]) {
+    const current = currentKeys(list);
     for (const a of list) {
       if (!["video", "audio"].includes(a.kind)) continue;
+      if (!current.has(a._key)) {
+        if (prune && a.has) superseded.push({ docId: doc._id, owner: doc.title ?? doc.label, field, ...a });
+        continue;
+      }
       if (a.has) continue;
       if (only && !`${doc.title ?? doc.label} ${a.label}`.toLowerCase().includes(only)) continue;
       jobs.push({ docId: doc._id, owner: doc.title ?? doc.label, field, ...a });
@@ -75,10 +127,30 @@ for (const doc of docs) {
   }
 }
 
-console.log(`${jobs.length} asset(s) need a web copy.\n`);
-if (!jobs.length) process.exit(0);
-for (const j of jobs) console.log(`  ${j.owner} / ${j.label} (${j.kind})`);
+console.log(`${jobs.length} asset(s) need a web copy.`);
+for (const j of jobs) console.log(`  + ${j.owner} / ${j.label} (${j.kind})`);
+if (prune) {
+  console.log(`${superseded.length} superseded asset(s) will drop back to a plain link.`);
+  for (const j of superseded) console.log(`  - ${j.owner} / ${j.label}`);
+}
 if (dryRun) { console.log("\nDRY RUN, nothing downloaded or written."); process.exit(0); }
+
+// Strip the player from versions that have been superseded, and delete the
+// file behind it so the dataset does not accumulate orphaned uploads.
+for (const j of superseded) {
+  try {
+    const doc = await client.getDocument(j.docId);
+    const item = (doc[j.field] ?? []).find((a) => a._key === j._key);
+    const assetId = item?.webFile?.asset?._ref;
+    await client.patch(j.docId).unset([`${j.field}[_key=="${j._key}"].webFile`]).commit();
+    if (assetId) await client.delete(assetId);
+    console.log(`  unlinked ${j.owner} / ${j.label}`);
+  } catch (error) {
+    console.error(`  FAILED to unlink ${j.owner} / ${j.label}: ${error.message}`);
+  }
+}
+
+if (!jobs.length) { console.log("\nNothing to encode."); process.exit(0); }
 
 const work = await mkdtemp(join(tmpdir(), "stori-web-"));
 let done = 0, failed = 0, savedBytes = 0;

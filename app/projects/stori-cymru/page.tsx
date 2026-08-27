@@ -53,7 +53,10 @@ export default async function StoriCymruProjectPage() {
     <>
       <section className="bg-dawn pt-[140px] md:pt-[180px] pb-16 border-b border-dawn-80">
         <div className="max-w-4xl mx-auto px-6 md:px-10">
-          <p className="text-eyebrow text-dragon-fire">Client project</p>
+          <div className="flex flex-wrap items-center justify-between gap-4">
+            <p className="text-eyebrow text-dragon-fire">Client project</p>
+            <LogoutButton />
+          </div>
           <h1 className="font-display text-display mt-4 text-white">{project.title}</h1>
           {project.subtitle ? (
             <p className="mt-2 text-[1.05rem] text-white/60">{project.subtitle}</p>
@@ -155,7 +158,7 @@ export default async function StoriCymruProjectPage() {
       </section>
 
       <section className="bg-dawn py-10">
-        <div className="max-w-4xl mx-auto px-6 md:px-10 flex flex-wrap items-center justify-between gap-4">
+        <div className="max-w-4xl mx-auto px-6 md:px-10 flex flex-wrap items-center justify-between gap-6">
           <p className="text-[0.8rem] text-white/40">
             {updated ? `Last updated ${updated} · ` : ""}Alchemy Branding Studio ·{" "}
             <a href={`mailto:${siteConfig.email}`} className="hover:text-dragon-fire">
