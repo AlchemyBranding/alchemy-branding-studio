@@ -206,11 +206,11 @@ export default async function AnimationPage() {
           aria-hidden="true"
           fill
           sizes="100vw"
-          className="object-cover opacity-[0.62]"
+          className="object-cover opacity-[0.80]"
         />
         <div
           aria-hidden="true"
-          className="absolute inset-0 bg-gradient-to-b from-dawn-80/95 via-dawn-80/35 to-dawn-80/95"
+          className="absolute inset-0 bg-gradient-to-b from-dawn-80/88 via-dawn-80/20 to-dawn-80/88"
         />
 
         <div className="relative max-w-7xl mx-auto px-6 md:px-10">
@@ -223,7 +223,7 @@ export default async function AnimationPage() {
           >
             The look gets settled before anything moves.
           </h2>
-          <p className="mt-6 max-w-2xl text-[1.0625rem] leading-[1.7] text-white/85">
+          <p className="mt-6 max-w-2xl text-[1.0625rem] leading-[1.7] text-white/90">
             Every film starts on paper. Rough panels to work out the order,
             storyboards to test whether the story holds, then style frames that
             fix the palette, the characters and the world. By the time we
@@ -248,7 +248,7 @@ export default async function AnimationPage() {
                       className="object-contain"
                     />
                   </div>
-                    <figcaption className="mt-3 text-[0.875rem] text-white/75">
+                    <figcaption className="mt-3 text-[0.875rem] text-white/85">
                       <span className="text-white group-hover:text-dragon-fire transition-colors duration-200">
                         {art.client}
                       </span>
@@ -277,7 +277,7 @@ export default async function AnimationPage() {
           poster="/video/loop-bumblebee-poster.jpg"
           description="A clip from the Bumblebee Conservation Trust animation: an illustrated bumblebee flying over a row of houses."
         />
-        <div aria-hidden="true" className="absolute inset-0 bg-dawn-80/76" />
+        <div aria-hidden="true" className="absolute inset-0 bg-dawn-80/64" />
 
         <div className="relative max-w-7xl mx-auto px-6 md:px-10">
           <p className="text-[0.8rem] font-medium uppercase tracking-[0.12em] text-dragon-fire">
@@ -321,11 +321,11 @@ export default async function AnimationPage() {
           aria-hidden="true"
           fill
           sizes="100vw"
-          className="object-cover object-left opacity-[0.34]"
+          className="object-cover object-left opacity-[0.48]"
         />
         <div
           aria-hidden="true"
-          className="absolute inset-0 bg-gradient-to-r from-dawn/95 via-dawn/82 to-dawn/55"
+          className="absolute inset-0 bg-gradient-to-r from-dawn/92 via-dawn/70 to-dawn/38"
         />
 
         <div className="relative max-w-7xl mx-auto px-6 md:px-10">
@@ -371,7 +371,7 @@ export default async function AnimationPage() {
           poster="/video/loop-selwood-poster.jpg"
           description="A clip from the Selwood customer journey animation: illustrated staff at a depot, with the Selwood wordmark."
         />
-        <div aria-hidden="true" className="absolute inset-0 bg-dawn/86" />
+        <div aria-hidden="true" className="absolute inset-0 bg-dawn/76" />
 
         <div className="relative max-w-7xl mx-auto px-6 md:px-10">
           <p className="text-[0.8rem] font-medium uppercase tracking-[0.12em] text-dragon-fire">
@@ -425,7 +425,7 @@ export default async function AnimationPage() {
             poster="/video/loop-cardiff-council-poster.jpg"
             description="A clip from the Cardiff Council MiPermit animation: illustrated drivers queuing in the rain beside the parking app."
           />
-          <div aria-hidden="true" className="absolute inset-0 bg-dawn-80/76" />
+          <div aria-hidden="true" className="absolute inset-0 bg-dawn-80/64" />
 
           <div className="relative max-w-7xl mx-auto px-6 md:px-10">
             <p className="text-[0.8rem] font-medium uppercase tracking-[0.12em] text-dragon-fire">
