@@ -84,16 +84,16 @@ const whatWeMake = [
 
 const applications = [
   {
-    src: "/identity/bbf-stationery-portrait.webp",
-    alt: "Be Business Fit business cards and a compliments slip, the navy mark on white and the white mark on navy, fanned on a dark blue surface.",
+    src: "/identity/christie-for-sale-board.webp",
+    alt: "A Christie Residential For Sale board standing in a front garden, the hexagon house mark in orange, teal and olive above the line 'Your home, handled with care'.",
   },
   {
-    src: "/identity/bbf-lanyard.webp",
-    alt: "A navy Be Business Fit lanyard printed with the brand's starburst pattern, coiled on a bright orange ground.",
+    src: "/identity/christie-merch.webp",
+    alt: "A teal Christie Residential tote bag hanging on a wooden chair, the house mark and wordmark printed in white.",
   },
   {
-    src: "/identity/bbf-poster.webp",
-    alt: "A framed Be Business Fit poster on a concrete wall in raking sunlight, reading Leadership, Teamwork, Goals above the brand line.",
+    src: "/identity/christie-digital.webp",
+    alt: "A Christie Residential web module reading 'Ready to find your next home?' beside a photograph of a family in a kitchen.",
   },
 ];
 
@@ -102,16 +102,22 @@ const approach = [
     title: "Strategy first, always.",
     detail:
       "We do not open a design file until the positioning is settled. Design executes an argument. Without one it is decoration, and it gets rejected on taste.",
+    src: "/identity/christie-logo-construction.webp",
+    alt: "The Christie Residential mark drawn out on its construction grid, next to the finished hexagon house in orange, teal and olive on a dark ground.",
   },
   {
     title: "Designed for the hardest application.",
     detail:
       "Anything looks good large and centred on a white page. We test the mark small, in one colour, on a vehicle and on a phone, because that is where identities come apart.",
+    src: "/identity/christie-banner.webp",
+    alt: "A yellow Christie Residential banner lashed to scaffolding on a brick building, the brand line and mark still reading clearly at distance and half in shadow.",
   },
   {
     title: "Built to be handed over.",
     detail:
       "You get the files, the rules and the reasoning. The measure of the job is whether your team still gets it right in a year, with us not involved.",
+    src: "/identity/christie-guidelines.webp",
+    alt: "Spreads from the Christie Residential brand guidelines laid out in a grid, covering primary logos, brand typography and the colour palette.",
   },
 ];
 
@@ -132,8 +138,9 @@ export default async function BrandIdentityPage() {
     <>
       {/*
         Hero. The headline claims an identity holds together once other people
-        start using it, so the evidence is the Be Business Fit identity on a
-        conference screen in front of an audience: other people, using it.
+        start using it, so the evidence is the Christie Residential identity on
+        the actual shopfront in Abergavenny: the thing out in the world, being
+        used, rather than a mockup of it.
 
         Composed as a full-height column flush to the right edge rather than the
         floating object /website-design uses, so the two service pages do not
@@ -180,8 +187,8 @@ export default async function BrandIdentityPage() {
 
           <Reveal className="relative z-[1] mt-14 md:mt-16 lg:mt-0 lg:absolute lg:inset-y-0 lg:right-0 lg:w-[44%]">
             <Image
-              src="/identity/bbf-conference-tall.webp"
-              alt="The Be Business Fit identity on a conference screen in front of a full auditorium: the Strength Model diagram beside the line 'Lead with Strength. Build with Integrity.'"
+              src="/identity/christie-shopfront.webp"
+              alt="The Christie Residential shopfront in Abergavenny after refurbishment, the hexagon house mark and wordmark in white on a deep teal fascia above the window."
               width={1000}
               height={1500}
               sizes="(min-width: 1024px) 44vw, 100vw"
@@ -261,10 +268,10 @@ export default async function BrandIdentityPage() {
                 ))}
               </StaggeredList>
               <figcaption className="mt-4 text-[0.9375rem] leading-[1.6] text-dawn/55">
-                Be Business Fit: one identity, holding across stationery, a
-                lanyard, print and the conference stage.{" "}
+                Christie Residential: one identity, holding across a garden
+                board, a tote and the website.{" "}
                 <Link
-                  href="/project/be-business-fit-workshop-branding-and-website"
+                  href="/project/handled-with-care-repositioning-christie-residential"
                   className="text-dragon-fire underline underline-offset-4 hover:text-fire-60 transition-colors"
                 >
                   Read the project
@@ -288,21 +295,34 @@ export default async function BrandIdentityPage() {
           >
             The design is the last decision, not the first.
           </h2>
-          <StaggeredList as="ul" className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6">
+          {/* Each claim carries the evidence for itself: the mark on its
+              construction grid, the mark surviving a scaffold banner, and the
+              guidelines that let the client keep it right without us. */}
+          <StaggeredList as="ul" className="mt-14 grid grid-cols-1 gap-10 md:grid-cols-3 md:gap-8">
             {approach.map((item, i) => (
-              <li key={item.title} className="border-t border-dawn-60 pt-5">
-                <span
-                  aria-hidden="true"
-                  className="text-dragon-fire font-bold text-[0.875rem]"
-                >
-                  {String(i + 1).padStart(2, "0")}
-                </span>
-                <h3 className="font-display text-[1.25rem] mt-2 text-white">
-                  {item.title}
-                </h3>
-                <p className="mt-2 text-[0.9375rem] leading-[1.6] text-white/60">
-                  {item.detail}
-                </p>
+              <li key={item.title}>
+                <Image
+                  src={item.src}
+                  alt={item.alt}
+                  width={900}
+                  height={675}
+                  sizes="(min-width: 768px) 33vw, 100vw"
+                  className="aspect-[4/3] w-full rounded-card border border-dawn-60 object-cover"
+                />
+                <div className="mt-5 border-t border-dawn-60 pt-5">
+                  <span
+                    aria-hidden="true"
+                    className="font-display text-[1.125rem] leading-none text-dragon-fire"
+                  >
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <h3 className="font-display text-[1.3125rem] mt-2 text-white">
+                    {item.title}
+                  </h3>
+                  <p className="mt-2 text-[0.9375rem] leading-[1.65] text-white/65">
+                    {item.detail}
+                  </p>
+                </div>
               </li>
             ))}
           </StaggeredList>
@@ -326,6 +346,14 @@ export default async function BrandIdentityPage() {
               >
                 You stop paying for it <span className="italic">twice.</span>
               </h2>
+              <Image
+                src="/identity/christie-brand-line.webp"
+                alt="The Christie Residential brand line, 'Your home, handled with care', set in the brand serif on a soft sage ground with the house mark at the edge."
+                width={900}
+                height={675}
+                sizes="(min-width: 1024px) 34vw, 100vw"
+                className="mt-8 aspect-[4/3] w-full rounded-card object-cover"
+              />
             </div>
             <div className="space-y-6 text-[1.0625rem] leading-[1.75] text-dawn/80">
               <p>
