@@ -21,9 +21,14 @@ export async function generateMetadata(): Promise<Metadata> {
     pageKey: "animation",
     path: "/animation",
     defaults: {
-      title: "Explainer Videos, Brand Animation & Style Frames",
+      // "Style frames" came off the title and description on 26 Aug 2026.
+      // /how-style-frames-can-help-you-meet-your-video-deadline carries the
+      // phrase in its own metaTitle, so the two were competing for one term
+      // that only has informational intent behind it. The article owns it now
+      // and this page links to it; the title went back to commercial intent.
+      title: "Explainer Videos and Brand Animation for SMEs",
       description:
-        "Explainer videos and brand animation that make the complicated clear in seconds. We lock the look in style frames first, then animate.",
+        "Explainer videos and brand animation that make the complicated clear in seconds. We settle the one idea the film has to land, then design around it.",
     },
   });
 }
@@ -225,8 +230,14 @@ export default async function AnimationPage() {
           </h2>
           <p className="mt-6 max-w-2xl text-[1.0625rem] leading-[1.7] text-white/90">
             Every film starts on paper. Rough panels to work out the order,
-            storyboards to test whether the story holds, then style frames that
-            fix the palette, the characters and the world. By the time we
+            storyboards to test whether the story holds, then{" "}
+            <Link
+              href="/how-style-frames-can-help-you-meet-your-video-deadline"
+              className="text-dragon-fire underline underline-offset-4 hover:text-fire-60 transition-colors"
+            >
+              style frames
+            </Link>{" "}
+            that fix the palette, the characters and the world. By the time we
             animate, you have already seen and signed off what it will look
             like.
           </p>
