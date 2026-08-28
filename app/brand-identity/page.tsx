@@ -88,12 +88,16 @@ const applications = [
     alt: "A Christie Residential For Sale board standing in a front garden, the hexagon house mark in orange, teal and olive above the line 'Your home, handled with care'.",
   },
   {
-    src: "/identity/christie-merch.webp",
+    src: "/identity/sme-social.webp",
+    alt: "A Sales Made Easy Instagram post on a phone, red on cobalt blue, reading 'we keep it simple' above 'Jargon free training that speaks to everyone.'",
+  },
+  {
+    src: "/identity/christie-tote.webp",
     alt: "A teal Christie Residential tote bag hanging on a wooden chair, the house mark and wordmark printed in white.",
   },
   {
-    src: "/identity/christie-digital.webp",
-    alt: "A Christie Residential web module reading 'Ready to find your next home?' beside a photograph of a family in a kitchen.",
+    src: "/identity/sme-print.webp",
+    alt: "Sales Made Easy printed folders and a brochure fanned on a pale surface, cobalt on navy, the cover asking 'what is sales?'.",
   },
 ];
 
@@ -137,10 +141,14 @@ export default async function BrandIdentityPage() {
   return (
     <>
       {/*
-        Hero. The headline claims an identity holds together once other people
-        start using it, so the evidence is the Christie Residential identity on
-        the actual shopfront in Abergavenny: the thing out in the world, being
-        used, rather than a mockup of it.
+        Hero. The paragraph below says what decides whether an identity
+        survives is the system underneath it, so the evidence is a system: part
+        of the Sales Made Easy icon set, every icon on the same grid and the
+        same line weight.
+
+        Flat colour rather than a photograph. The Christie shopfront was here
+        first and did not hold the column: a dark, busy interior shot goes to
+        mush at this width, where a graphic holds at any size.
 
         Composed as a full-height column flush to the right edge rather than the
         floating object /website-design uses, so the two service pages do not
@@ -187,8 +195,8 @@ export default async function BrandIdentityPage() {
 
           <Reveal className="relative z-[1] mt-14 md:mt-16 lg:mt-0 lg:absolute lg:inset-y-0 lg:right-0 lg:w-[44%]">
             <Image
-              src="/identity/christie-shopfront.webp"
-              alt="The Christie Residential shopfront in Abergavenny after refurbishment, the hexagon house mark and wordmark in white on a deep teal fascia above the window."
+              src="/identity/sme-icon-system.webp"
+              alt="Part of the Sales Made Easy icon set, twelve pink line icons on cobalt blue, each drawn to the same weight and grid."
               width={1000}
               height={1500}
               sizes="(min-width: 1024px) 44vw, 100vw"
@@ -254,7 +262,7 @@ export default async function BrandIdentityPage() {
 
           <Reveal className="mt-16 md:mt-20">
             <figure>
-              <StaggeredList className="grid grid-cols-1 gap-4 sm:grid-cols-3 sm:gap-6">
+              <StaggeredList className="grid grid-cols-2 gap-4 lg:grid-cols-4 lg:gap-6">
                 {applications.map((shot) => (
                   <Image
                     key={shot.src}
@@ -268,15 +276,21 @@ export default async function BrandIdentityPage() {
                 ))}
               </StaggeredList>
               <figcaption className="mt-4 text-[0.9375rem] leading-[1.6] text-dawn/55">
-                Christie Residential: one identity, holding across a garden
-                board, a tote and the website.{" "}
+                Two identities, four surfaces:{" "}
                 <Link
                   href="/project/handled-with-care-repositioning-christie-residential"
                   className="text-dragon-fire underline underline-offset-4 hover:text-fire-60 transition-colors"
                 >
-                  Read the project
-                </Link>
-                .
+                  Christie Residential
+                </Link>{" "}
+                on a garden board and a tote,{" "}
+                <Link
+                  href="/project/sales-made-easy-branding-design-and-support"
+                  className="text-dragon-fire underline underline-offset-4 hover:text-fire-60 transition-colors"
+                >
+                  Sales Made Easy
+                </Link>{" "}
+                on social and in print.
               </figcaption>
             </figure>
           </Reveal>
