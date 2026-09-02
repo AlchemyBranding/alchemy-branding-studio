@@ -240,7 +240,12 @@ export default async function BrandStrategyWorkshopPage() {
           <p className="text-[0.8rem] font-medium uppercase tracking-[0.12em] text-dragon-fire">
             Brand strategy workshop
           </p>
-          <h1 className="font-display text-display mt-4 leading-[1.04]">
+          {/* Not text-display. That token is clamp(3rem,6vw,7rem), sized for a
+              full-width headline, and at 1920 it puts 112px type into a 794px
+              column: six lines, a 1383px hero, and the CTA 1192px down, below
+              the fold. This clamp is the largest that still sets in four lines
+              at 1920, which brings the hero to 1034px and the CTA to 842px. */}
+          <h1 className="font-display mt-4 leading-[1.04] text-[clamp(2.75rem,5.2vw,5.25rem)]">
             <span className="text-white">
               A brand strategy workshop that ends in a decision,
             </span>{" "}

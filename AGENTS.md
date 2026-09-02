@@ -151,6 +151,17 @@ ground is 2.6:1, under the 4.5:1 that 0.8rem text needs. Every eyebrow on every
 page-level fix. Adding a photograph behind "Who it suits" moved it to 2.5:1,
 which is to say it changed nothing.
 
+### `text-display` assumes a full-width headline
+
+`[verified 2 Sep]` `--text-display` is `clamp(3rem, 6vw, 7rem)`, which is sized
+for a headline that gets the whole container. Drop it into a narrower column
+and it does not know: at 1920 in the workshop hero's 62% column it set 112px
+type in 794px, six lines, a 1383px hero, and put the CTA 1192px down, below the
+fold on a 1080 screen. The hero now uses `clamp(2.75rem,5.2vw,5.25rem)`, the
+largest that still sets in four lines there. Any hero with copy in a column
+wants its own clamp, and the test is where the CTA lands, not how the type
+looks.
+
 ## Design tokens are in CSS, not a Tailwind theme
 
 `app/globals.css` holds them as custom properties: `--color-dawn` `#191919`,
