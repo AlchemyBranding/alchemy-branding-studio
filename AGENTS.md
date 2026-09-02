@@ -35,7 +35,7 @@ Three service pages, three shapes, on purpose. This is written in a comment in
 |---|---|
 | `/brand-identity` | Copy in a 56% column, full-height media column flush right, masked with a left-to-right gradient |
 | `/website-design` | Copy in a 56% column, floating laptop object bleeding off the right edge |
-| `/brand-strategy-workshop` | Full-bleed photograph behind the whole hero, full-width copy sitting on it over a directional scrim |
+| `/brand-strategy-workshop` | Full-bleed photograph behind the whole hero, copy in a right-hand 62% column over a directional scrim. The only one of the three with the copy on the right, and that is the point |
 
 Before adding a hero to a fourth page, look at all three and pick something
 none of them does.
@@ -119,7 +119,7 @@ the picture has to carry, and both are keyed to their section's ground:
 
 | Section | Scrim colour | Because |
 |---|---|---|
-| `/brand-strategy-workshop` hero | dawn `rgba(25,25,25,…)`, 0.95 left to 0.18 right | white text on dark |
+| `/brand-strategy-workshop` hero | dawn `rgba(25,25,25,…)`, 0.96 right to 0.08 left | white text on dark, copy on the right |
 | "Who it suits" | dusk `rgba(250,248,247,…)`, 0.86 left to 0.62 right | dark text on light |
 
 Mobile gets an even veil instead of a horizontal gradient, because the copy
@@ -133,8 +133,17 @@ back to white/65. Composite the gradients onto the real image and sample the
 regions the text occupies, rather than reasoning from the photograph's own
 brightness.
 
-`[verified 2 Sep]` Measured on the built composite at 1440x848: hero eyebrow
-5.6:1, h1 13.2:1, h1's right end 8.5:1, body 7.4:1. At 390 the body is 6.5:1.
+`[verified 2 Sep]` Measured on the built composite at 1440x954, copy right:
+hero eyebrow 5.1:1, h1 16.0:1, body 7.8:1. At 390 the body is 6.3:1.
+
+The hero's stops were not chosen by eye. They came out of a grid search over
+the knee position, the depth of the drop, the far-side floor and the vertical
+gradient's mid value, scored on three contrast ratios and on how bright the
+subject ends up. Two things worth keeping from that: every combination tried
+cleared 4.5:1, so contrast was never the binding constraint, and the binding
+constraint was the Dragon Fire eyebrow, which needs its ground at 51 or darker
+to reach 4.5:1 and therefore sets how far right the scrim has to stay heavy.
+Re-tune with the harness rather than by hand if the copy or the crop moves.
 
 One known failure, and it predates any of this: `text-dragon-fire` on a light
 ground is 2.6:1, under the 4.5:1 that 0.8rem text needs. Every eyebrow on every

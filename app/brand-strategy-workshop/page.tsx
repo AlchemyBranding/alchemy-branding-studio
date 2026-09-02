@@ -168,16 +168,15 @@ export default async function BrandStrategyWorkshopPage() {
 
         The scrims below do the legibility work, not the image file. The
         photograph is served at full exposure and only the composite under the
-        copy is darkened, heaviest at the left where the text is and easing to
-        almost nothing at the right, so the room keeps its light. That is the
+        copy is darkened, heaviest at the right where the text is and easing off
+        to the left so Dave and the room keep their light. That is the
         only way to put white text on a bright white-walled photograph without
         breaking the rule in core/featured-image-procedure.md against
         underexposing.
 
-        Known and accepted: Dave sits at 25 to 32 percent of the frame, which
-        is behind the copy at desktop, and the image is width-limited there so
-        object-position cannot pan him clear. The right of the frame carries
-        the picture instead.
+        Dave sits at 25 to 32 percent of the frame and the image is
+        width-limited at every desktop size, so object-position cannot move
+        him. The copy went right instead of the photograph going anywhere.
 
         The photograph is BATCH 3-106, July 2021. Jess stood to Dave's right
         facing the room and asked to be taken out, so she was erased and the
@@ -212,26 +211,36 @@ export default async function BrandStrategyWorkshopPage() {
           aria-hidden="true"
           className="pointer-events-none absolute inset-0 z-[1] bg-dawn/72 md:hidden"
         />
-        {/* Desktop: heavy under the copy on the left, almost clear on the
-            right so the room, the screen and the listeners keep their light. */}
+        {/* Desktop: heavy under the copy on the right, easing off to the left
+            so Dave, at 25 to 32 percent of the frame, stays in the clear. The
+            stops are measured against the composite, not guessed: see the
+            contrast table in AGENTS.md. */}
         <div
           aria-hidden="true"
-          className="pointer-events-none absolute inset-0 z-[1] hidden md:block bg-[linear-gradient(to_right,rgba(25,25,25,0.95)_0%,rgba(25,25,25,0.88)_35%,rgba(25,25,25,0.70)_60%,rgba(25,25,25,0.44)_80%,rgba(25,25,25,0.18)_100%)]"
+          className="pointer-events-none absolute inset-0 z-[1] hidden md:block bg-[linear-gradient(to_left,rgba(25,25,25,0.96)_0%,rgba(25,25,25,0.93)_35%,rgba(25,25,25,0.90)_55%,rgba(25,25,25,0.86)_60%,rgba(25,25,25,0.22)_68%,rgba(25,25,25,0.08)_86%,rgba(25,25,25,0.08)_100%)]"
         />
         {/* Top edge under the nav, bottom edge into the section below. */}
         <div
           aria-hidden="true"
-          className="pointer-events-none absolute inset-0 z-[2] bg-[linear-gradient(to_bottom,rgba(25,25,25,0.88)_0%,rgba(25,25,25,0.25)_22%,rgba(25,25,25,0.18)_62%,rgba(25,25,25,0.85)_92%,rgb(25,25,25)_100%)]"
+          className="pointer-events-none absolute inset-0 z-[2] bg-[linear-gradient(to_bottom,rgba(25,25,25,0.88)_0%,rgba(25,25,25,0.12)_22%,rgba(25,25,25,0.05)_62%,rgba(25,25,25,0.85)_92%,rgb(25,25,25)_100%)]"
         />
         <div
           aria-hidden="true"
           className="pointer-events-none absolute inset-x-0 top-0 z-[3] h-[70%] bg-[radial-gradient(60%_60%_at_22%_30%,rgba(255,110,73,0.13),transparent_70%)]"
         />
         <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-10">
+          {/* Copy sits right, against the grain of /brand-identity and
+              /website-design, which both run a copy column on the left. It is
+              here because the photograph decides it: Dave is left of centre and
+              the image is width-limited at every desktop size, so
+              object-position cannot pan him out from under a left-hand column.
+              Moving the words is the only way to leave him visible. Full width
+              on mobile, where there is no room to take sides. */}
+          <div className="md:ml-auto md:w-[62%]">
           <p className="text-[0.8rem] font-medium uppercase tracking-[0.12em] text-dragon-fire">
             Brand strategy workshop
           </p>
-          <h1 className="font-display text-display mt-4 max-w-5xl leading-[1.04]">
+          <h1 className="font-display text-display mt-4 leading-[1.04]">
             <span className="text-white">
               A brand strategy workshop that ends in a decision,
             </span>{" "}
@@ -255,6 +264,7 @@ export default async function BrandStrategyWorkshopPage() {
             <Button variant="secondary" href="/contact">
               Send a brief
             </Button>
+          </div>
           </div>
         </div>
       </section>
