@@ -35,7 +35,7 @@ Three service pages, three shapes, on purpose. This is written in a comment in
 |---|---|
 | `/brand-identity` | Copy in a 56% column, full-height media column flush right, masked with a left-to-right gradient |
 | `/website-design` | Copy in a 56% column, floating laptop object bleeding off the right edge |
-| `/brand-strategy-workshop` | Full-width copy, then a full-bleed letterbox photograph band underneath |
+| `/brand-strategy-workshop` | Full-bleed photograph behind the whole hero, full-width copy sitting on it over a directional scrim |
 
 Before adding a hero to a fourth page, look at all three and pick something
 none of them does.
@@ -80,9 +80,22 @@ exactly the rendered band.
   the session produces written decisions.
 - `TW_CANDID_*` and `BATCH 3-*` — usable, but they are Tiny Wizard era, 2021
   and 2022, from the previous business.
-- `1779*.jpg` — **not usable.** All four are from a Zokit networking event and
-  the frame is dominated by other companies' branding, phone numbers and
-  accreditation logos.
+- `1779*.jpg` — **not usable as they stand.** All four are from a Zokit
+  networking event and the frame is dominated by other companies' branding,
+  phone numbers and accreditation logos. `[verified 2 Sep]` One sanctioned
+  exception exists, `workshop-audience.webp` below. Anything else cut from
+  these four needs the same test: every third-party wordmark, QR code and URL
+  outside the frame, and no caption or alt text calling it an Alchemy session.
+- `workshop-audience.webp` — the background of "Who it suits". A 1090x580 crop
+  of `1779791616888.jpg` at left 700, top 790, exported at saturation 0.55 with
+  shadows lifted (linear 0.62/66) and blurred at sigma 2.6. The crop puts the
+  Zokit banner, the MDSS wordmark, the National Business Show banner and its QR
+  code, and the Zokit tote outside the frame; the treatment takes the small
+  print left on the stand behind Jess from legible to under 2 levels of local
+  contrast, while the room still reads. The treatment is baked into the file on
+  purpose, so the branding is gone from the asset and not merely hidden under a
+  CSS overlay. **Re-exporting without it puts the branding back.** And it is a
+  Zokit event, not an Alchemy workshop: do not caption it as one.
 - `workshop-accent.png` — **do not use.** It has AI artefacts: the signage text
   is mangled, and it carries a generative-AI badge and a carousel counter. It
   is an upscaled screenshot. `[verified 2 Sep]` Git reports this file and
@@ -92,6 +105,42 @@ exactly the rendered band.
   the deletions are recoverable and harmless. They are still unstaged, which is
   one more reason `git add -A` in this tree is dangerous. Whether to commit the
   deletions or restore the files is Dave's call and is still open.
+
+## Scrims go over the photograph, never into the file
+
+`[verified 2 Sep]` Two sections now run text over a photograph, and both do the
+legibility work with a CSS overlay rather than by darkening the asset. That is
+what keeps `core/featured-image-procedure.md`'s "desaturate, do not
+underexpose" true: the file is served at full exposure and only the composite
+under the text moves.
+
+Both scrims are directional, heaviest where the copy is and easing off where
+the picture has to carry, and both are keyed to their section's ground:
+
+| Section | Scrim colour | Because |
+|---|---|---|
+| `/brand-strategy-workshop` hero | dawn `rgba(25,25,25,…)`, 0.95 left to 0.18 right | white text on dark |
+| "Who it suits" | dusk `rgba(250,248,247,…)`, 0.86 left to 0.62 right | dark text on light |
+
+Mobile gets an even veil instead of a horizontal gradient, because the copy
+runs the full width and there is no clear side to ease towards.
+
+Check the numbers, not the look. Estimating the composite by eye is what goes
+wrong: the hero's copy looked like it was sitting on a bright wall, so the body
+paragraph was raised to white/80, and measuring the actual composite showed the
+ground behind it is 35 out of 255 and white/65 already gives 7.4:1. It went
+back to white/65. Composite the gradients onto the real image and sample the
+regions the text occupies, rather than reasoning from the photograph's own
+brightness.
+
+`[verified 2 Sep]` Measured on the built composite at 1440x848: hero eyebrow
+5.6:1, h1 13.2:1, h1's right end 8.5:1, body 7.4:1. At 390 the body is 6.5:1.
+
+One known failure, and it predates any of this: `text-dragon-fire` on a light
+ground is 2.6:1, under the 4.5:1 that 0.8rem text needs. Every eyebrow on every
+`bg-dusk` section is affected, so it is a site-wide decision rather than a
+page-level fix. Adding a photograph behind "Who it suits" moved it to 2.5:1,
+which is to say it changed nothing.
 
 ## Design tokens are in CSS, not a Tailwind theme
 

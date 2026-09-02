@@ -163,13 +163,21 @@ export default async function BrandStrategyWorkshopPage() {
         Hero. Deliberately NOT the shape /brand-identity or /website-design
         use. Both of those put the copy in a 56% column with media bleeding off
         the right, and the note on /brand-identity says the service pages must
-        not converge on one hero shape. This is the third: copy at full column
-        width, then the photograph full-bleed underneath as a letterbox band.
+        not converge on one hero shape. This is the third: the photograph
+        full-bleed behind the whole hero, with the copy sitting on it.
 
-        The subject decided it. This is a room, wide, with Dave left of centre
-        and listeners in the foreground. Cropped into a 44% tall column it
-        becomes an unreadable slice of shoulders. Given the full width it reads
-        as what the page is selling: a session with people in it.
+        The scrims below do the legibility work, not the image file. The
+        photograph is served at full exposure and only the composite under the
+        copy is darkened, heaviest at the left where the text is and easing to
+        almost nothing at the right, so the room keeps its light. That is the
+        only way to put white text on a bright white-walled photograph without
+        breaking the rule in core/featured-image-procedure.md against
+        underexposing.
+
+        Known and accepted: Dave sits at 25 to 32 percent of the frame, which
+        is behind the copy at desktop, and the image is width-limited there so
+        object-position cannot pan him clear. The right of the frame carries
+        the picture instead.
 
         The photograph is BATCH 3-106, July 2021. Jess stood to Dave's right
         facing the room and asked to be taken out, so she was erased and the
@@ -184,14 +192,40 @@ export default async function BrandStrategyWorkshopPage() {
 
         Treatment follows core/featured-image-procedure.md in the content
         engine: desaturate to knock competing colour back rather than
-        underexpose. The teal screen is the thing fighting Dragon Fire. The top
-        edge fades into the ground so the band emerges from the section instead
-        of sitting on it as a pasted rectangle.
+        underexpose. The teal screen is the thing fighting Dragon Fire. Both
+        edges fade into the ground so the photograph emerges from the page
+        rather than sitting on it as a pasted rectangle.
       */}
-      <section className="relative overflow-hidden bg-dawn pt-[160px] md:pt-[200px] pb-0">
+      <section className="relative isolate overflow-hidden bg-dawn pt-[160px] pb-[110px] md:pt-[200px] md:pb-[140px]">
+        <Image
+          src="/workshop/workshop-hero.webp"
+          alt="Dave Morgan pointing as he answers a question in a brand workshop, with the room turned towards him."
+          fill
+          sizes="100vw"
+          className="object-cover object-[44%_28%] saturate-[0.82] md:object-[38%_34%]"
+          priority
+        />
+
+        {/* Mobile has no room for a left-to-right scrim, because the copy runs
+            the full width. It gets an even veil instead. */}
         <div
           aria-hidden="true"
-          className="pointer-events-none absolute inset-x-0 top-0 z-0 h-[70%] bg-[radial-gradient(60%_60%_at_22%_30%,rgba(255,110,73,0.13),transparent_70%)]"
+          className="pointer-events-none absolute inset-0 z-[1] bg-dawn/72 md:hidden"
+        />
+        {/* Desktop: heavy under the copy on the left, almost clear on the
+            right so the room, the screen and the listeners keep their light. */}
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-0 z-[1] hidden md:block bg-[linear-gradient(to_right,rgba(25,25,25,0.95)_0%,rgba(25,25,25,0.88)_35%,rgba(25,25,25,0.70)_60%,rgba(25,25,25,0.44)_80%,rgba(25,25,25,0.18)_100%)]"
+        />
+        {/* Top edge under the nav, bottom edge into the section below. */}
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-0 z-[2] bg-[linear-gradient(to_bottom,rgba(25,25,25,0.88)_0%,rgba(25,25,25,0.25)_22%,rgba(25,25,25,0.18)_62%,rgba(25,25,25,0.85)_92%,rgb(25,25,25)_100%)]"
+        />
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-x-0 top-0 z-[3] h-[70%] bg-[radial-gradient(60%_60%_at_22%_30%,rgba(255,110,73,0.13),transparent_70%)]"
         />
         <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-10">
           <p className="text-[0.8rem] font-medium uppercase tracking-[0.12em] text-dragon-fire">
@@ -223,24 +257,6 @@ export default async function BrandStrategyWorkshopPage() {
             </Button>
           </div>
         </div>
-
-        <Reveal className="relative z-[1] mt-16 md:mt-20">
-          {/* Fades the top edge of the photograph into bg-dawn so the band
-              emerges from the section rather than starting at a hard line. */}
-          <div
-            aria-hidden="true"
-            className="pointer-events-none absolute inset-x-0 top-0 z-10 h-24 bg-gradient-to-b from-dawn to-transparent md:h-32"
-          />
-          <Image
-            src="/workshop/workshop-hero.webp"
-            alt="Dave Morgan pointing as he answers a question in a brand workshop, with the room turned towards him."
-            width={3000}
-            height={2000}
-            sizes="100vw"
-            className="h-[280px] w-full object-cover object-[38%_34%] saturate-[0.82] sm:h-[380px] lg:h-[520px] 2xl:h-[560px]"
-            priority
-          />
-        </Reveal>
       </section>
 
       {/* What happens in the room */}
@@ -329,6 +345,31 @@ export default async function BrandStrategyWorkshopPage() {
               </li>
             </StaggeredList>
           </div>
+
+          {/*
+            "Both lists end up on the wall" is the claim in the left column.
+            This is the wall. The word-association exercise is exercise 2 in
+            /5-brand-strategy-exercises-you-can-do-for-free and it is the same
+            two questions written up, so the picture belongs against them
+            rather than against the outputs list further down.
+
+            TW_CANDID_616, June 2022. Same room, same work, older business.
+            Caption is dawn rather than white here: this section is bg-dusk.
+          */}
+          <Reveal className="mt-16 lg:mt-20">
+            <Image
+              src="/workshop/workshop-whiteboard.webp"
+              alt="A whiteboard filled with words a leadership team used to describe their business, being added to during a session."
+              width={2400}
+              height={1600}
+              sizes="(min-width: 1280px) 1280px, 100vw"
+              className="w-full rounded-card object-cover saturate-[0.85]"
+            />
+            <p className="mt-4 max-w-2xl text-[0.875rem] leading-[1.6] text-dawn/60">
+              The word-association exercise, roughly an hour in. Everything on
+              the board gets cut down to one sentence before the day ends.
+            </p>
+          </Reveal>
         </div>
       </section>
 
@@ -365,40 +406,47 @@ export default async function BrandStrategyWorkshopPage() {
               </li>
             ))}
           </StaggeredList>
-
-          {/*
-            The claim above is that you leave with things written down rather
-            than a deck. This is the evidence for it: the word-association
-            exercise mid-session, which is exercise 2 in
-            /5-brand-strategy-exercises-you-can-do-for-free. Placed directly
-            after the list rather than at the top of the section, so it reads
-            as proof of the four outputs instead of decoration.
-
-            TW_CANDID_616, June 2022. Same room, same work, older business.
-          */}
-          <Reveal className="mt-16">
-            <Image
-              src="/workshop/workshop-whiteboard.webp"
-              alt="A whiteboard filled with words a leadership team used to describe their business, being added to during a session."
-              width={2400}
-              height={1600}
-              sizes="(min-width: 1280px) 1280px, 100vw"
-              className="w-full rounded-card object-cover saturate-[0.85]"
-            />
-            <p className="mt-4 max-w-2xl text-[0.875rem] leading-[1.6] text-white/50">
-              The word-association exercise, roughly an hour in. Everything on
-              the board gets cut down to one sentence before the day ends.
-            </p>
-          </Reveal>
         </div>
       </section>
 
       {/* Who it suits */}
+      {/*
+        The background here is workshop-audience.webp, a crop of
+        1779791616888.jpg. The source frame is a Zokit networking event, not an
+        Alchemy workshop, and AGENTS.md rules the 1779* originals out because
+        they are dominated by other companies' branding. The crop is the
+        exception and it is deliberate: it keeps Jess presenting to a full room
+        and puts the Zokit banner, the MDSS wordmark, the National Business
+        Show banner with its QR code and the Zokit tote outside the frame. What
+        survives is small print on the stand behind her, and the asset itself
+        takes that to nothing: it is baked at saturation 0.55, shadows lifted
+        (linear 0.62/66) and blurred at sigma 2.6 before export, which drops
+        the local contrast on "DOCUMENT SHREDDING" to under 2 levels while the
+        people stay readable as shapes. Suppressing it in the file rather than
+        under a CSS overlay means it is gone from the asset too, not just from
+        the composite. Do not re-export this without that treatment.
+
+        Two rules that come with it. The alt text describes what is in the
+        picture and never calls it an Alchemy workshop. The veil is dusk rather
+        than dawn because this section runs dark text on light, the opposite of
+        the hero.
+      */}
       <section
         aria-labelledby="who-heading"
-        className="bg-dusk text-dawn py-[140px]"
+        className="relative isolate overflow-hidden bg-dusk text-dawn py-[140px]"
       >
-        <div className="max-w-7xl mx-auto px-6 md:px-10">
+        <Image
+          src="/workshop/workshop-audience.webp"
+          alt="Jess Morgan presenting to a room of business owners seated around tables."
+          fill
+          sizes="100vw"
+          className="object-cover object-[52%_42%]"
+        />
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-0 z-[1] bg-[linear-gradient(to_right,rgba(250,248,247,0.86)_0%,rgba(250,248,247,0.82)_45%,rgba(250,248,247,0.72)_75%,rgba(250,248,247,0.62)_100%)]"
+        />
+        <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-10">
           <p className="text-[0.8rem] font-medium uppercase tracking-[0.12em] text-dragon-fire">
             Who it suits
           </p>
