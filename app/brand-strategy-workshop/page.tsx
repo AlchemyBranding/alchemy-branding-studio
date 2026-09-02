@@ -175,9 +175,12 @@ export default async function BrandStrategyWorkshopPage() {
         facing the room and asked to be taken out, so she was erased and the
         wall behind her rebuilt. The first erase pass invented a man's head in
         front of the screen, which is why there was a second pass over that
-        area. There is still a faint cool cast where the wall was repaired;
-        it survives at hero width, so it wants a proper clean-up in Photoshop
-        against the original before this is called finished.
+        area. That repair left the rebuilt wall in two tinted blocks, warm
+        above and cool below, with a hard seam between them and a blue fringe
+        against the TV. Fixed 2 September 2026 by measuring the wall's real
+        colour off the untouched parts of the same frame and replacing the
+        repair's low-frequency colour with it, so the whole wall now runs one
+        neutral gradient. Photographic grain was kept.
 
         Treatment follows core/featured-image-procedure.md in the content
         engine: desaturate to knock competing colour back rather than

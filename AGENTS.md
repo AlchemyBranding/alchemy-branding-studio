@@ -53,11 +53,29 @@ width, and the first version of the workshop hero cut the top of the subject's
 head off at 1920 while looking correct at 1440. Simulating the object-cover
 maths is enough; a browser is better.
 
+`[verified 2 Sep]` A fixed band height also means the crop keeps tightening as
+the viewport grows past the last breakpoint, because the image scales with
+width while the band does not. The workshop hero clears the subject's head at
+all four widths above but clips it past roughly 2985px, which is real on a
+3440-wide monitor. A band that must survive arbitrary width needs its height in
+`vw` above the last breakpoint, not a fixed pixel value.
+
+The Browser pane's screenshots on this machine come back black once the page is
+scrolled, whatever the emulated size. Playwright is the reliable way to see a
+crop: set the viewport, then screenshot the `img` element itself, which returns
+exactly the rendered band.
+
 ### What is usable in `public/workshop/`
 
 - `workshop-hero.webp` — the current hero. BATCH 3-106 with a second person
-  erased at her request. **There is a faint cool cast where the wall behind her
-  was rebuilt**, visible at hero width. Not yet fixed.
+  erased at her request. `[verified 2 Sep]` The erase left the rebuilt wall in
+  two tinted blocks, warm above and cool below, with a hard seam between them
+  and a blue fringe against the TV. **Fixed 2 September 2026**: the wall's real
+  colour was measured off the untouched parts of the same frame (neutral, with
+  blue about 2 levels under red, darkening roughly 12 levels top to bottom) and
+  the repair's low-frequency colour replaced with it, keeping the grain. The
+  wall now reads as one surface. `workshop-hero-dave.jpg` is the same corrected
+  render, and only the webp is referenced by the page.
 - `workshop-whiteboard.webp` — the word-association exercise. Real proof that
   the session produces written decisions.
 - `TW_CANDID_*` and `BATCH 3-*` — usable, but they are Tiny Wizard era, 2021
@@ -67,9 +85,13 @@ maths is enough; a browser is better.
   accreditation logos.
 - `workshop-accent.png` — **do not use.** It has AI artefacts: the signage text
   is mangled, and it carries a generative-AI badge and a carousel counter. It
-  is an upscaled screenshot. Note that git currently reports this file and
-  `workshop-detail.png` as deleted while they are still on disk. Nobody has
-  explained that yet.
+  is an upscaled screenshot. `[verified 2 Sep]` Git reports this file and
+  `workshop-detail.png` as deleted because they genuinely are: neither is on
+  disk. The earlier note here saying they were still on disk was wrong. Both
+  are tracked at `b6c1911` and nothing in the codebase references either, so
+  the deletions are recoverable and harmless. They are still unstaged, which is
+  one more reason `git add -A` in this tree is dangerous. Whether to commit the
+  deletions or restore the files is Dave's call and is still open.
 
 ## Design tokens are in CSS, not a Tailwind theme
 
