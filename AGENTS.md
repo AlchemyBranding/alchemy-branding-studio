@@ -96,15 +96,17 @@ exactly the rendered band.
   purpose, so the branding is gone from the asset and not merely hidden under a
   CSS overlay. **Re-exporting without it puts the branding back.** And it is a
   Zokit event, not an Alchemy workshop: do not caption it as one.
-- `workshop-accent.png` — **do not use.** It has AI artefacts: the signage text
-  is mangled, and it carries a generative-AI badge and a carousel counter. It
-  is an upscaled screenshot. `[verified 2 Sep]` Git reports this file and
-  `workshop-detail.png` as deleted because they genuinely are: neither is on
-  disk. The earlier note here saying they were still on disk was wrong. Both
-  are tracked at `b6c1911` and nothing in the codebase references either, so
-  the deletions are recoverable and harmless. They are still unstaged, which is
-  one more reason `git add -A` in this tree is dangerous. Whether to commit the
-  deletions or restore the files is Dave's call and is still open.
+- `workshop-accent.png` and `workshop-detail.png` — **gone, deliberately.**
+  `[verified 3 Sep]` Both were deleted from disk by someone at some point and
+  the deletions sat unstaged in the tree for weeks; they are now committed. An
+  earlier version of this note claimed the files were still on disk, which was
+  wrong. Nothing in the codebase referenced either.
+
+  `workshop-accent.png` should not come back: it has AI artefacts, the signage
+  text is mangled, and it carries a generative-AI badge and a carousel counter,
+  because it is an upscaled screenshot. `workshop-detail.png` has no such
+  objection recorded, so if it turns out to have been deleted by accident,
+  recover it from `b6c1911` rather than assuming it was junk.
 
 ## Scrims go over the photograph, never into the file
 
