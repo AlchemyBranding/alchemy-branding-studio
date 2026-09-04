@@ -43,15 +43,25 @@ const nextConfig: NextConfig = {
         destination: "https://www.brandtoscale.co.uk",
         permanent: true,
       },
-      // Two legacy landing URLs both feed the brand audit page.
+      // The free brand audit was retired on 4 September 2026: three delivered
+      // in twelve months, no paid work, and eight articles were funnelling
+      // into it. The workshop is the entry product now. These three sources
+      // all land there. The app/free-brand-audit-for-smes directory is dead
+      // once this ships and should be deleted; redirects are evaluated before
+      // filesystem routes, so the page is already unreachable.
+      {
+        source: "/free-brand-audit-for-smes",
+        destination: "/brand-strategy-workshop",
+        permanent: true,
+      },
       {
         source: "/is-your-brand-holding-you-back",
-        destination: "/free-brand-audit-for-smes",
+        destination: "/brand-strategy-workshop",
         permanent: true,
       },
       {
         source: "/free-brand-audit-for-smes-form",
-        destination: "/free-brand-audit-for-smes",
+        destination: "/brand-strategy-workshop",
         permanent: true,
       },
 
