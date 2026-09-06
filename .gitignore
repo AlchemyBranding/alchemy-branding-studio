@@ -49,3 +49,10 @@ next-env.d.ts
 /public/sitemap.xml
 /public/sitemap-*.xml
 /public/robots.txt
+
+# Source photos for hero upload scripts (uploaded to Sanity, not served from /public)
+/public/workshop/*.jpg
+!/public/workshop/workshop-hero-dave.jpg
+!/public/workshop/workshop-main.jpg
+/scripts/heroes/
+/scripts/upload-hero-brand-story.bat
