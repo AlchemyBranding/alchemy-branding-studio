@@ -115,6 +115,40 @@ const inTheRoom = [
   },
 ];
 
+/**
+ * Three questions the "brand strategy workshop" cluster asks and the pillar
+ * did not answer (seo/clusters/brand-strategy-workshop.md, 6 Sep 2026): what
+ * a branding workshop is, what it costs, and half day or full day. Answered
+ * here rather than in three thin articles that would compete with this page
+ * for its own buyers. The cost answer reads WORKSHOP_PRICE_DISPLAY so it
+ * cannot drift from the price section or the Offer markup. FAQPage JSON-LD
+ * follows components/home/HomepageFaq.tsx.
+ */
+const faqs: { q: string; a: string }[] = [
+  {
+    q: "What is a branding workshop?",
+    a: "A working session where a leadership team decides what the business is for and who it is not for, and writes that down. Ours turns on two questions: which words you want associated with the brand, and which you do not. Nothing is designed on the day. You leave with a positioning sentence and the words you have ruled out, and everything built afterwards is briefed against them.",
+  },
+  {
+    q: "How much does a brand strategy workshop cost?",
+    a: `From ${WORKSHOP_PRICE_DISPLAY} plus VAT. That covers the session and the written outputs. It rises with the size of the team, whether the session runs to a full day, and how much strategy work is needed afterwards. We confirm the figure on a discovery call before anything is booked.`,
+  },
+  {
+    q: "Half a day or a full day?",
+    a: "Half a day for most leadership teams of three to six people. A full day when the team is bigger, the business has several distinct services, or it has just come through a merger or buyout and there is more to settle. We tell you which on the call, before you clear the diary.",
+  },
+];
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqs.map(({ q, a }) => ({
+    "@type": "Question",
+    name: q,
+    acceptedAnswer: { "@type": "Answer", text: a },
+  })),
+};
+
 const outputs = [
   {
     title: "A positioning sentence, written down",
@@ -157,6 +191,10 @@ export default async function BrandStrategyWorkshopPage() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
 
       {/*
@@ -565,7 +603,50 @@ export default async function BrandStrategyWorkshopPage() {
         </div>
       </section>
 
-      {/* Hands informational intent to the three articles that own it */}
+      {/* FAQ. Native <details>, same pattern as the homepage FAQ. */}
+      <section
+        aria-labelledby="workshop-faq-heading"
+        className="bg-dawn py-[120px]"
+      >
+        <div className="max-w-4xl mx-auto px-6 md:px-10">
+          <p className="text-[0.8rem] font-medium uppercase tracking-[0.12em] text-dragon-fire">
+            Common questions
+          </p>
+          <h2
+            id="workshop-faq-heading"
+            className="font-display text-h2 mt-3 text-white"
+          >
+            What people ask{" "}
+            <span className="italic text-dusk">before they book.</span>
+          </h2>
+          <ul className="mt-12 border-t border-dawn-60">
+            {faqs.map((f) => (
+              <li key={f.q} className="border-b border-dawn-60">
+                <details className="group">
+                  <summary className="flex items-start justify-between gap-6 py-6 cursor-pointer list-none [&::-webkit-details-marker]:hidden hover:text-dragon-fire transition-colors duration-200">
+                    <span className="font-display text-[1.25rem] leading-[1.35] text-white group-hover:text-dragon-fire transition-colors duration-200">
+                      {f.q}
+                    </span>
+                    <span
+                      aria-hidden="true"
+                      className="shrink-0 mt-1 text-dragon-fire text-[1.5rem] leading-none transition-transform duration-300 ease-out group-open:rotate-45"
+                    >
+                      +
+                    </span>
+                  </summary>
+                  <div className="pb-7 -mt-1 max-w-3xl">
+                    <p className="text-[1rem] leading-[1.7] text-white/70">
+                      {f.a}
+                    </p>
+                  </div>
+                </details>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      {/* Hands informational intent to the four articles that own it */}
       <section
         aria-labelledby="before-you-book-heading"
         className="bg-dawn-80 py-[120px] border-y border-dawn-60"
@@ -595,8 +676,16 @@ export default async function BrandStrategyWorkshopPage() {
             >
               what a brand discovery workshop produces
             </Link>{" "}
-            before paying for one, that is written up in full. Where a business
-            sells through a team, there is a strong case for{" "}
+            before paying for one, that is written up in full. If you would
+            rather run the whole thing without us, the guide to how to{" "}
+            <Link
+              href="/do-your-own-brand-strategy"
+              className="text-dragon-fire underline underline-offset-4 hover:text-fire-60 transition-colors"
+            >
+              do your own brand strategy
+            </Link>{" "}
+            covers it end to end. Where a business sells through a team, there
+            is a strong case for{" "}
             <Link
               href="/why-your-sales-team-should-be-in-the-brand-strategy-workshop"
               className="text-dragon-fire underline underline-offset-4 hover:text-fire-60 transition-colors"
