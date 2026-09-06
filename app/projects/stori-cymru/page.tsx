@@ -32,7 +32,7 @@ export default async function StoriCymruProjectPage() {
   const { project, tiers, lastUpdated } = await safeFetch<StoriCymruData>(
     storiCymruQuery,
     emptyData,
-    { revalidate: 60, tags: ["stori-cymru"] },
+    { revalidate: 3600, tags: ["stori-cymru"] },
   );
 
   if (!project) notFound();

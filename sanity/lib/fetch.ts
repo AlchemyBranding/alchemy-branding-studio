@@ -2,7 +2,7 @@ import { client, draftClient } from "./client";
 
 type FetchOptions = {
   params?: Record<string, unknown>;
-  /** ISR revalidation in seconds. Default 60. */
+  /** ISR revalidation in seconds. Default 3600: the Sanity publish webhook (app/api/revalidate) handles freshness; this is only a safety net. 60s here cost ~270K ISR writes/month on Vercel. */
   revalidate?: number | false;
   /** Cache tags for on-demand revalidation. */
   tags?: string[];
@@ -21,7 +21,7 @@ type FetchOptions = {
 export async function safeFetch<T>(
   query: string,
   fallback: T,
-  { params, revalidate = 60, tags, preview = false }: FetchOptions = {},
+  { params, revalidate = 3600, tags, preview = false }: FetchOptions = {},
 ): Promise<T> {
   try {
     if (preview) {
