@@ -65,6 +65,18 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
 
+      // /motion was a demo page built during the site build in May 2026 to try
+      // out the motion components. It was never linked from anywhere, never
+      // added to the sitemap, and Google never discovered it. Deleted 8 Sep
+      // 2026. The redirect is insurance only: nothing points at this URL, but
+      // it is a guessable path for an animation studio and /animation is the
+      // page that answers that intent.
+      {
+        source: "/motion",
+        destination: "/animation",
+        permanent: true,
+      },
+
       // ----- WordPress → new site migration ---------------------------------
       // Social media management page retired; funnel through /services.
       {
