@@ -72,8 +72,9 @@ export default function Capabilities() {
         </h2>
         <p className="mt-6 max-w-2xl text-[1.0625rem] leading-[1.7] text-white/65">
           You don&apos;t need to know what you need yet. The workshop
-          tells us. Most teams go on to use some combination of the
-          below.
+          tells us. And if you already do know, that works too, which is
+          the next section. Most teams go on to use some combination of
+          the below.
         </p>
 
         <ul className="mt-14 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">

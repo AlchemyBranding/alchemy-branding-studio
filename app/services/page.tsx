@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 
 import FinalCTA from "@/components/home/FinalCTA";
 import Capabilities from "@/components/services/Capabilities";
+import DirectRoute from "@/components/services/DirectRoute";
 import HowWeFixIt from "@/components/services/HowWeFixIt";
 import PainSignals from "@/components/services/PainSignals";
 import WhoWeWorkWith from "@/components/services/WhoWeWorkWith";
@@ -49,6 +50,7 @@ export default function ServicesPage() {
       <HowWeFixIt />
       <Workshop />
       <Capabilities />
+      <DirectRoute />
       <WhoWeWorkWith />
 
       <FinalCTA

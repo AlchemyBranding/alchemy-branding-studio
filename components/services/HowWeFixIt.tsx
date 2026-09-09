@@ -36,10 +36,10 @@ export default function HowWeFixIt() {
           <span className="italic text-dusk">we fix it.</span>
         </h2>
         <p className="mt-6 max-w-2xl text-[1.0625rem] leading-[1.7] text-white/65">
-          We don&apos;t start with a logo, a content calendar or a list
-          of things to post. We start by working out what you actually
-          stand for, then build everything outward from there. Strategy
-          first, then the useful stuff.
+          When the brief is open, we don&apos;t start with a logo, a
+          content calendar or a list of things to post. We start by
+          working out what you actually stand for, then build everything
+          outward from there. Strategy first, then the useful stuff.
         </p>
 
         <ol className="mt-14 grid grid-cols-1 md:grid-cols-3 gap-6">

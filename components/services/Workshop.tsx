@@ -41,10 +41,11 @@ export default function Workshop() {
               The Brand Strategy Workshop.
             </h2>
             <p className="mt-6 text-[1.125rem] leading-[1.7] text-dawn/70 max-w-lg">
-              Before we touch a logo, a website or a campaign, we run a
-              structured workshop with your leadership team. The goal is to
-              name what&apos;s actually broken, and end with a strategy
-              you can use, not a deck that gathers dust.
+              Where the problem isn&apos;t obvious yet, we start with a
+              structured workshop with your leadership team, before the
+              logo or the website or the campaign. The goal is to name
+              what&apos;s actually broken, and end with a strategy you can
+              use, not a deck that gathers dust.
             </p>
             <p className="mt-6 text-[1.125rem] leading-[1.7] text-dawn/70 max-w-lg">
               Most teams leave the workshop with a clearer view of their
