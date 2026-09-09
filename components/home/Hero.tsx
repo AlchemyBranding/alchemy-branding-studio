@@ -1,5 +1,6 @@
 import Button from "@/components/Button";
 import { ArrowDownIcon } from "@/components/icons";
+import { motionHref } from "@/lib/site";
 
 export default function Hero() {
   return (
@@ -62,8 +63,8 @@ export default function Hero() {
           className="mt-10 flex flex-wrap items-center gap-4 animate-fade-up"
           style={{ animationDelay: "700ms" }}
         >
-          <Button variant="primary" href="/free-brand-audit-for-smes">
-            Get your free brand audit
+          <Button variant="primary" href={motionHref} external>
+            Book a call
           </Button>
           <Button variant="secondary" href="/portfolio">
             See our work

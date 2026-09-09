@@ -54,7 +54,7 @@ export default function TestimonialsCarousel({
   return (
     <section
       aria-labelledby="testimonials-heading"
-      className="bg-dusk text-dawn pt-[72px] pb-[120px]"
+      className="bg-dusk text-dawn pt-[120px] pb-[120px]"
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
       onFocus={() => setPaused(true)}

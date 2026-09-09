@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 
-import AuditBand from "@/components/home/AuditBand";
 import FeaturedWork from "@/components/home/FeaturedWork";
 import FinalCTA from "@/components/home/FinalCTA";
 import Hero from "@/components/home/Hero";
@@ -54,8 +53,6 @@ export default async function HomePage() {
       <WorkshopBlock />
       {/* 5.5 Featured work (Sanity-driven, adaptive 1/2/3 layout) */}
       <FeaturedWork projects={featuredCases} />
-      {/* 5.6 Free brand audit lead-magnet band */}
-      <AuditBand />
       {/* 5.7 Proof — testimonials */}
       <TestimonialsCarousel testimonials={testimonials} />
       {/* 5.8 Owned media — blog grid + podcast tile */}
@@ -65,7 +62,7 @@ export default async function HomePage() {
       <HomepageFaq />
       {/* 5.10 Newsletter — brand checklist lead magnet */}
       <NewsletterSignup location="homepage" />
-      {/* 5.11 FinalCTA (new defaults: audit primary, Book a call secondary) */}
+      {/* 5.11 FinalCTA (defaults: Book a call primary, Send a brief secondary) */}
       <FinalCTA />
     </>
   );

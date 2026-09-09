@@ -13,14 +13,11 @@ type Props = {
 };
 
 const defaults = {
-  heading: "Not sure where your brand stands? Find out for free.",
+  heading: "Not sure where your brand stands?",
   subtext:
-    "An honest review of how your brand shows up, the way a buyer sees it. Clear next steps, no sales pitch.",
-  primary: {
-    label: "Get your free brand audit",
-    href: "/free-brand-audit-for-smes",
-  },
-  secondary: { label: "Book a call", href: motionHref, external: true },
+    "Book 30 minutes. We will talk through where you are, what is not working, and what is worth fixing first.",
+  primary: { label: "Book a call", href: motionHref, external: true },
+  secondary: { label: "Send a brief", href: "/contact" },
 } as const;
 
 export default function FinalCTA({
