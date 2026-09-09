@@ -25,6 +25,15 @@ const capabilities = [
 /**
  * Workshop-led foundation block. The brief says no service catalogue,
  * so capabilities sit BENEATH the main story rather than as the lead.
+ *
+ * The copy stops short of saying every project starts here, and says so
+ * deliberately. Until 9 September 2026 the eyebrow and the h2 both claimed
+ * it did, which was the strongest version of that claim anywhere on the
+ * site and was not true: standalone work is taken, and /services says so
+ * in its DirectRoute section (decisions/OPEN.md item 53). The workshop is
+ * the recommended start, not a precondition. Keep it recommended and keep
+ * it prominent. If this block ever reads as one option on a menu, it has
+ * gone too far the other way.
  * Visual treatment: left-column copy + a stacked image collage on the
  * right (workshop in action), with subtle stagger reveal on scroll.
  *
@@ -45,13 +54,13 @@ export default function WorkshopBlock() {
           <div>
             <Reveal>
               <p className="text-[0.8rem] font-medium uppercase tracking-[0.12em] text-dragon-fire">
-                Where every project starts
+                Where the work starts
               </p>
               <h2
                 id="workshop-heading"
                 className="font-display text-h2 mt-4 text-white"
               >
-                Every project starts with{" "}
+                Start with{" "}
                 <span className="italic text-dusk">the workshop.</span>
               </h2>
               <p className="mt-8 text-[1.0625rem] leading-[1.75] text-white/75 max-w-xl">
@@ -59,7 +68,8 @@ export default function WorkshopBlock() {
                 who you are for, what you stand for, and why anyone
                 should choose you. It is the foundation everything
                 else is built on: identity, website, animation and
-                content all flow from it.
+                content all flow from it. And if you already know what
+                you need, you can commission that on its own.
               </p>
             </Reveal>
 
