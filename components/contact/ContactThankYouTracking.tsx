@@ -5,7 +5,7 @@ import { useEffect } from "react";
 /**
  * Fires a dataLayer event when the contact thank-you page loads, so GTM /
  * Google Ads can record the lead (in addition to the dedicated thank-you URL
- * pageview). Mirrors AuditThankYouTracking.
+ * pageview).
  */
 export default function ContactThankYouTracking() {
   useEffect(() => {

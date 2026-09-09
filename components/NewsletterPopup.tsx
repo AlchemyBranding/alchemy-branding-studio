@@ -15,9 +15,7 @@ const MIN_DWELL_MS = 7000; // engagement gate (mobile-safe: never on entry)
 /** Paths where the pop-up should never arm (Studio + pages with their own form). */
 const SUPPRESS_PREFIXES = [
   "/studio",
-  "/free-brand-audit-for-smes",
   "/contact",
-  "/motion",
   "/portal",
   // The three service pages already carry the same Brand Checklist opt-in
   // inline, so this was the existing "pages with their own form" rule simply

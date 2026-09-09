@@ -24,7 +24,10 @@ const pageKeyToPath: Record<string, string> = {
   packages: "/services",
   news: "/news",
   contact: "/contact",
-  "free-brand-audit": "/free-brand-audit-for-smes",
+  // The audit was retired on 4 September 2026. Its pageSeo doc may still
+  // exist in Sanity, so the key points at the page its URL now 308s to,
+  // the same way "packages" points at /services.
+  "free-brand-audit": "/brand-strategy-workshop",
   "custom-proposal-design": "/custom-proposal-design",
 };
 
