@@ -68,11 +68,11 @@ export default function BrandingCardiffPage() {
             the work.
           </p>
           <div className="mt-10 flex flex-wrap items-center gap-4">
-            <Button variant="primary" href="/free-brand-audit-for-smes">
-              Get your free brand audit
-            </Button>
-            <Button variant="secondary" href={motionHref} external>
+            <Button variant="primary" href={motionHref} external>
               Book a call
+            </Button>
+            <Button variant="secondary" href="/brand-strategy-workshop">
+              See the workshop
             </Button>
           </div>
         </div>
@@ -168,9 +168,9 @@ export default function BrandingCardiffPage() {
 
       <FinalCTA
         heading="Thinking about your brand?"
-        subtext="Start with a free brand audit, or book a call. We'll give you an honest read on where your brand stands and what we'd do first."
-        primary={{ label: "Get your free brand audit", href: "/free-brand-audit-for-smes" }}
-        secondary={{ label: "Book a call", href: motionHref, external: true }}
+        subtext="Book 30 minutes. We'll give you an honest read on where your brand stands and what we'd do first."
+        primary={{ label: "Book a call", href: motionHref, external: true }}
+        secondary={{ label: "Send a brief", href: "/contact" }}
       />
     </>
   );

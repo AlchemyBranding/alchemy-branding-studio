@@ -30,11 +30,6 @@ type PortalLink = {
 
 const links: PortalLink[] = [
   {
-    label: "Get your free brand audit",
-    note: "An honest read on your brand, back in three days",
-    href: "/free-brand-audit-for-smes",
-  },
-  {
     label: "The Brand Strategy Workshop",
     note: "Where every brand build starts",
     href: "/brand-strategy-workshop",

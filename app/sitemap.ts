@@ -30,6 +30,10 @@ const SITE_URL =
  * /portal, /motion, /holding, /holding-static, /projects, /opengraph-image,
  * /free-brand-audit-for-smes/thank-you and /contact/confirmation.
  *
+ * Not included: /free-brand-audit-for-smes. The audit was retired on
+ * 4 September 2026, the page is deleted and the URL 308s to
+ * /brand-strategy-workshop, which is in the sitemap in its own right.
+ *
  * Also excluded, and new: /apple-icon.png and /icon.svg. next-sitemap listed
  * them as pages because files in app/ become routes. They are assets.
  *
@@ -42,7 +46,6 @@ const STATIC_ROUTES: ReadonlyArray<{ path: string; priority: number }> = [
   { path: "/portfolio", priority: 0.9 },
   { path: "/about", priority: 0.8 },
   { path: "/contact", priority: 0.8 },
-  { path: "/free-brand-audit-for-smes", priority: 0.8 },
   { path: "/custom-proposal-design", priority: 0.8 },
   { path: "/news", priority: 0.8 },
   // Commercial service pages. The workshop page carries the largest non-brand
