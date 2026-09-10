@@ -1,9 +1,9 @@
 import { getImageDimensions } from "@sanity/asset-utils";
 import { PortableText, type PortableTextComponents } from "@portabletext/react";
-import Image from "next/image";
 import Link from "next/link";
 import type { ReactNode } from "react";
 
+import ZoomableImage from "@/components/case-study/ZoomableImage";
 import { urlFor } from "@/sanity/lib/image";
 
 type ImageBlock = {
@@ -81,22 +81,24 @@ function buildComponents(tone: "dark" | "light"): PortableTextComponents {
       const { width, height } = getImageDimensions(
         value as Parameters<typeof getImageDimensions>[0],
       );
+      // A second, larger source for the overlay. Screenshots of an interface
+      // are unreadable at the 768px article width, so the full-size version is
+      // what the lightbox actually shows.
+      const zoomSrc = urlFor(value as Parameters<typeof urlFor>[0])
+        .width(Math.min(width, 2800))
+        .auto("format")
+        .url();
       return (
-        <figure className="my-12">
-          <Image
-            src={src}
-            alt={value.alt ?? ""}
-            width={width}
-            height={height}
-            sizes="(min-width: 1024px) 768px, 100vw"
-            className={`w-full h-auto rounded-card ${imageBg}`}
-          />
-          {value.caption ? (
-            <figcaption className={`mt-3 text-[0.875rem] ${captionText}`}>
-              {value.caption}
-            </figcaption>
-          ) : null}
-        </figure>
+        <ZoomableImage
+          src={src}
+          zoomSrc={zoomSrc}
+          alt={value.alt ?? ""}
+          width={width}
+          height={height}
+          caption={value.caption}
+          className={imageBg}
+          captionClassName={captionText}
+        />
       );
     },
     videoEmbed: ({ value }: { value: VideoEmbedBlock }) => {

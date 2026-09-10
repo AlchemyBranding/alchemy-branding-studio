@@ -6,6 +6,7 @@ const serviceTagOptions = [
   "Branding",
   "Animation",
   "Website",
+  "Apps",
   "Strategy",
   "Social Media",
   "Report Design",

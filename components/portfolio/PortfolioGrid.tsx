@@ -11,6 +11,7 @@ const serviceTagOrder = [
   "Branding",
   "Strategy",
   "Website",
+  "Apps",
   "Animation",
   "Social Media",
   "Report Design",
