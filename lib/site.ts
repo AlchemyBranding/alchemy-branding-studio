@@ -29,7 +29,7 @@ export const navLinks: ReadonlyArray<{
 export const socialLinks = [
   { label: "Facebook", href: "https://www.facebook.com/alchemybrandingstudio", icon: "facebook" },
   { label: "Instagram", href: "https://www.instagram.com/alchemybrandingstudio", icon: "instagram" },
-  { label: "LinkedIn", href: "https://www.linkedin.com/company/alchemybrandingstudio", icon: "linkedin" },
+  { label: "LinkedIn", href: "https://www.linkedin.com/company/alchemy-branding-studio", icon: "linkedin" },
   { label: "Vimeo", href: "https://vimeo.com/alchemybrandingstudio", icon: "vimeo" },
   { label: "YouTube", href: "https://www.youtube.com/@alchemybrandingstudio", icon: "youtube" },
   { label: "TikTok", href: "https://www.tiktok.com/@jessalchemy", icon: "tiktok" },

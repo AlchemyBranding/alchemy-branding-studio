@@ -23,14 +23,25 @@ const localBusinessSchema = {
     process.env.NEXT_PUBLIC_WHATSAPP_NUMBER
       ? `+${process.env.NEXT_PUBLIC_WHATSAPP_NUMBER}`
       : "+447734794779",
+  // Must match the Google Business Profile, which is in Abergavenny. The only
+  // Cardiff address is a virtual office, and Google does not allow a Business
+  // Profile at one, so Cardiff is named as a served area instead. No street or
+  // postcode until it is settled whether the profile shows its address.
+  // alchemy-content-engine/decisions/OPEN.md item 58.
   address: {
     "@type": "PostalAddress",
     addressCountry: "GB",
     addressRegion: "Wales",
-    addressLocality: "Cardiff",
+    addressLocality: "Abergavenny",
   },
   priceRange: "££££",
-  areaServed: "GB",
+  areaServed: [
+    { "@type": "City", name: "Cardiff" },
+    { "@type": "City", name: "Newport" },
+    { "@type": "City", name: "Bristol" },
+    { "@type": "AdministrativeArea", name: "Monmouthshire" },
+    { "@type": "AdministrativeArea", name: "Wales" },
+  ],
   sameAs: socialLinks.map((s) => s.href),
 };
 
