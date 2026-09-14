@@ -1,4 +1,6 @@
-import type { StoriStageKey, StoriTopic } from "@/sanity/lib/queries";
+import { Fragment } from "react";
+
+import type { StoriStageKey, StoriStageStatus, StoriTopic } from "@/sanity/lib/queries";
 import AssetList from "./AssetList";
 import StatusPill from "./StatusPill";
 
@@ -19,17 +21,20 @@ export const stageOrder: { key: StoriStageKey; label: string }[] = [
 const isWelsh = (label: string) => /\((?:cy|welsh)\)|welsh|\bcym\b/i.test(label);
 
 export default function TopicCard({ topic }: Props) {
-  // The Welsh animation gets its own pill, but only once one has been
-  // delivered: orange while it awaits approval, green once approved.
-  const hasWelshAnimation = topic.assets.some(
-    (a) => a.kind === "video" && isWelsh(a.label),
-  );
-  const welshApproved = Boolean(topic.stages.animationCyApproved);
-  const welshAnimationStatus = welshApproved
-    ? "signed-off"
-    : hasWelshAnimation
-      ? "in-progress"
-      : null;
+  // Welsh cuts get their own pills, but only once one has been delivered:
+  // orange while it awaits approval, green once approved in the Studio.
+  const welshStatus = (
+    kind: "video" | "audio",
+    approved: boolean | null | undefined,
+  ): StoriStageStatus | null => {
+    if (approved) return "signed-off";
+    const delivered = topic.assets.some((a) => a.kind === kind && isWelsh(a.label));
+    return delivered ? "in-progress" : null;
+  };
+  const welshPills: Partial<Record<StoriStageKey, { label: string; status: StoriStageStatus | null }>> = {
+    voiceover: { label: "Voiceover (CY)", status: welshStatus("audio", topic.stages.voiceoverCyApproved) },
+    animation: { label: "Animation (CY)", status: welshStatus("video", topic.stages.animationCyApproved) },
+  };
 
   return (
     <div className="rounded-card bg-dawn-80 border border-dawn-60 p-6">
@@ -70,12 +75,15 @@ export default function TopicCard({ topic }: Props) {
             <p className="mt-2 text-[0.8rem] text-white/45">{topic.note}</p>
           ) : null}
           <div className="mt-4 flex flex-wrap gap-2">
-            {stageOrder.map(({ key, label }) => (
-              <StatusPill key={key} label={label} status={topic.stages[key]} />
-            ))}
-            {welshAnimationStatus ? (
-              <StatusPill label="Animation (CY)" status={welshAnimationStatus} />
-            ) : null}
+            {stageOrder.map(({ key, label }) => {
+              const welsh = welshPills[key];
+              return (
+                <Fragment key={key}>
+                  <StatusPill label={label} status={topic.stages[key]} />
+                  {welsh?.status ? <StatusPill label={welsh.label} status={welsh.status} /> : null}
+                </Fragment>
+              );
+            })}
           </div>
         </>
       )}

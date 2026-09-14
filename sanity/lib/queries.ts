@@ -397,7 +397,10 @@ export type StoriTopic = {
   onHold: boolean | null;
   note: string | null;
   deadlineNote: string | null;
-  stages: Record<StoriStageKey, StoriStageStatus> & { animationCyApproved?: boolean | null };
+  stages: Record<StoriStageKey, StoriStageStatus> & {
+    voiceoverCyApproved?: boolean | null;
+    animationCyApproved?: boolean | null;
+  };
   assets: StoriAsset[];
 };
 

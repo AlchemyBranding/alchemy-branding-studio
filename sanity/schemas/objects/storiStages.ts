@@ -34,6 +34,14 @@ export const storiStages = defineType({
     // Kept out of STORI_STAGE_FIELDS so it does not count towards the five
     // stages every topic moves through: only topics with a Welsh cut show it.
     defineField({
+      name: "voiceoverCyApproved",
+      title: "Welsh voiceover approved",
+      type: "boolean",
+      initialValue: false,
+      description:
+        "A Voiceover (CY) pill appears automatically once a Welsh voiceover is added: orange until this is ticked, green after.",
+    }),
+    defineField({
       name: "animationCyApproved",
       title: "Welsh animation approved",
       type: "boolean",
