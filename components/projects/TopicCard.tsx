@@ -16,7 +16,7 @@ export const stageOrder: { key: StoriStageKey; label: string }[] = [
 ];
 
 /** Welsh cuts are marked in the label, e.g. "Animation v1 (CY)". */
-const isWelsh = (label: string) => /((?:cy|welsh))|welsh|cym/i.test(label);
+const isWelsh = (label: string) => /\((?:cy|welsh)\)|welsh|\bcym\b/i.test(label);
 
 export default function TopicCard({ topic }: Props) {
   // The Welsh animation gets its own pill, but only once one has been
