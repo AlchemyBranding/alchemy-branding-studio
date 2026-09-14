@@ -8,6 +8,12 @@ import { safeFetch } from "@/sanity/lib/fetch";
 import { storiCymruQuery, type StoriCymruData } from "@/sanity/lib/queries";
 import { siteConfig } from "@/lib/site";
 
+// Render on every request. This is a live status page: Studio edits must show
+// up straight away, and fetch-level revalidation alone left Vercel serving an
+// edge-cached copy more than 20 minutes stale. Traffic is a handful of
+// logged-in client users, so there is nothing to gain from caching the HTML.
+export const dynamic = "force-dynamic";
+
 export const metadata: Metadata = {
   title: "Stori Cymru · Project status",
   robots: { index: false, follow: false },
