@@ -20,14 +20,26 @@ export const storiStages = defineType({
   title: "Production stages",
   type: "object",
   options: { columns: 1 },
-  fields: STORI_STAGE_FIELDS.map(({ name, title }) =>
+  fields: [
+    ...STORI_STAGE_FIELDS.map(({ name, title }) =>
+      defineField({
+        name,
+        title,
+        type: "string",
+        options: { list: [...STORI_STAGE_STATUSES], layout: "radio", direction: "horizontal" },
+        initialValue: "not-started",
+        validation: (rule) => rule.required(),
+      }),
+    ),
+    // Kept out of STORI_STAGE_FIELDS so it does not count towards the five
+    // stages every topic moves through: only topics with a Welsh cut show it.
     defineField({
-      name,
-      title,
-      type: "string",
-      options: { list: [...STORI_STAGE_STATUSES], layout: "radio", direction: "horizontal" },
-      initialValue: "not-started",
-      validation: (rule) => rule.required(),
+      name: "animationCyApproved",
+      title: "Welsh animation approved",
+      type: "boolean",
+      initialValue: false,
+      description:
+        "An Animation (CY) pill appears automatically once a Welsh animation is added: orange until this is ticked, green after.",
     }),
-  ),
+  ],
 });

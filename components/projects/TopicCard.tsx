@@ -15,7 +15,22 @@ export const stageOrder: { key: StoriStageKey; label: string }[] = [
   { key: "animation", label: "Animation" },
 ];
 
+/** Welsh cuts are marked in the label, e.g. "Animation v1 (CY)". */
+const isWelsh = (label: string) => /\((?:cy|welsh)\)|welsh|cym/i.test(label);
+
 export default function TopicCard({ topic }: Props) {
+  // The Welsh animation gets its own pill, but only once one has been
+  // delivered: orange while it awaits approval, green once approved.
+  const hasWelshAnimation = topic.assets.some(
+    (a) => a.kind === "video" && isWelsh(a.label),
+  );
+  const welshApproved = Boolean(topic.stages.animationCyApproved);
+  const welshAnimationStatus = welshApproved
+    ? "signed-off"
+    : hasWelshAnimation
+      ? "in-progress"
+      : null;
+
   return (
     <div className="rounded-card bg-dawn-80 border border-dawn-60 p-6">
       <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
@@ -58,6 +73,9 @@ export default function TopicCard({ topic }: Props) {
             {stageOrder.map(({ key, label }) => (
               <StatusPill key={key} label={label} status={topic.stages[key]} />
             ))}
+            {welshAnimationStatus ? (
+              <StatusPill label="Animation (CY)" status={welshAnimationStatus} />
+            ) : null}
           </div>
         </>
       )}
