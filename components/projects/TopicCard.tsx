@@ -22,9 +22,8 @@ const isWelsh = (label: string) => /\((?:cy|welsh)\)|welsh|\bcym\b/i.test(label)
 
 export default function TopicCard({ topic }: Props) {
   // Welsh cuts get their own pills: green once approved in the Studio, orange
-  // while a delivered cut awaits approval. The Welsh animation pill always
-  // shows (grey until one exists) so the client can see which topics still
-  // owe a Welsh version; the Welsh voiceover pill only appears once delivered.
+  // while a delivered cut awaits approval, grey until one exists. Both always
+  // show, so the client can see every stage a topic still owes.
   const welshStatus = (
     kind: "video" | "audio",
     approved: boolean | null | undefined,
@@ -36,7 +35,7 @@ export default function TopicCard({ topic }: Props) {
     return showWhenMissing ? "not-started" : null;
   };
   const welshPills: Partial<Record<StoriStageKey, { label: string; status: StoriStageStatus | null }>> = {
-    voiceover: { label: "Voiceover (CY)", status: welshStatus("audio", topic.stages.voiceoverCyApproved, false) },
+    voiceover: { label: "Voiceover (CY)", status: welshStatus("audio", topic.stages.voiceoverCyApproved, true) },
     animation: { label: "Animation (CY)", status: welshStatus("video", topic.stages.animationCyApproved, true) },
   };
 
