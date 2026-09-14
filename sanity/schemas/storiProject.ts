@@ -22,6 +22,14 @@ export const storiProject = defineType({
       type: "string",
     }),
     defineField({
+      name: "totalAnimations",
+      title: "Animations in scope",
+      type: "number",
+      description:
+        "How many animations the commission covers (English and Welsh count as one). The headline stats measure progress against this, so a topic card added before its work starts does not change the target.",
+      validation: (rule) => rule.integer().positive(),
+    }),
+    defineField({
       name: "overview",
       title: "Overview",
       type: "text",

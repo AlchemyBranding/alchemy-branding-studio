@@ -41,10 +41,14 @@ export default async function StoriCymruProjectPage() {
   const countSignedOff = (key: "scriptEn" | "storyboard" | "animation") =>
     allTopics.filter((topic) => topic.stages?.[key] === "signed-off").length;
 
+  // Measure against the committed scope, not the number of cards: topics can
+  // be listed before any work starts, and that should not move the target.
+  const total = project.totalAnimations ?? allTopics.length;
+
   const stats = [
-    { label: "Scripts (EN) signed off", value: `${countSignedOff("scriptEn")} / ${allTopics.length}` },
-    { label: "Storyboards signed off", value: `${countSignedOff("storyboard")} / ${allTopics.length}` },
-    { label: "Topics fully animated", value: `${countSignedOff("animation")} / ${allTopics.length}` },
+    { label: "Scripts (EN) signed off", value: `${countSignedOff("scriptEn")} / ${total}` },
+    { label: "Storyboards signed off", value: `${countSignedOff("storyboard")} / ${total}` },
+    { label: "Topics fully animated", value: `${countSignedOff("animation")} / ${total}` },
   ];
 
   const updated = formatUpdated(lastUpdated);

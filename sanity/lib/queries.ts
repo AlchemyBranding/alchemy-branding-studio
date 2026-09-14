@@ -341,6 +341,7 @@ export const storiCymruQuery = defineQuery(`{
   "project": *[_type == "storiProject"][0] {
     title,
     subtitle,
+    totalAnimations,
     overview,
     safeguardingPrinciples,
     safeguardingNote,
@@ -413,6 +414,7 @@ export type StoriTier = {
 export type StoriProject = {
   title: string;
   subtitle: string | null;
+  totalAnimations: number | null;
   overview: string;
   safeguardingPrinciples: string[] | null;
   safeguardingNote: string | null;
