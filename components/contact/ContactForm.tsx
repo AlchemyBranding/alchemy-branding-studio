@@ -14,18 +14,25 @@ const serviceOptions = [
   "Not sure yet",
 ] as const;
 
+// Required, and kept in step with the channels in the marketing plan, so every
+// enquiry arrives with a source. Changing a label here changes what lands in
+// HubSpot's enquiry_source property: keep the HubSpot dropdown options identical.
 const heardAboutOptions = [
   "Google search",
-  "Social media",
-  "LinkedIn",
-  "Referral or word of mouth",
+  "Google Maps or Business Profile",
+  "LinkedIn: Jess Morgan",
+  "LinkedIn: Dave Morgan",
+  "LinkedIn: Alchemy page",
+  "Instagram",
+  "TikTok",
   "Brand to Scale podcast",
+  "Referral or word of mouth",
   "Event or talk",
   "Other",
 ] as const;
 
 type FieldErrors = Partial<
-  Record<"name" | "email" | "message", string>
+  Record<"name" | "email" | "message" | "heardAbout", string>
 >;
 
 type Status = "idle" | "submitting" | "success" | "error";
@@ -188,7 +195,15 @@ export default function ContactForm() {
           <label htmlFor="heardAbout" className={labelBase}>
             Where did you hear about us?
           </label>
-          <select id="heardAbout" name="heardAbout" defaultValue="" className={inputBase}>
+          <select
+            id="heardAbout"
+            name="heardAbout"
+            defaultValue=""
+            required
+            className={inputBase}
+            aria-invalid={Boolean(errors.heardAbout)}
+            aria-describedby={errors.heardAbout ? "heardAbout-error" : undefined}
+          >
             <option value="">Choose one</option>
             {heardAboutOptions.map((opt) => (
               <option key={opt} value={opt}>
@@ -196,6 +211,11 @@ export default function ContactForm() {
               </option>
             ))}
           </select>
+          {errors.heardAbout ? (
+            <p id="heardAbout-error" className="mt-2 text-[0.8rem] text-dragon-fire">
+              {errors.heardAbout}
+            </p>
+          ) : null}
         </div>
       </div>
 
