@@ -39,11 +39,36 @@ export default function TopicCard({ topic }: Props) {
     animation: { label: "Animation (CY)", status: welshStatus("video", topic.stages.animationCyApproved, true) },
   };
 
+  // A topic is finished only when both deliverables are approved: the English
+  // animation signed off, and the Welsh cut approved alongside it. The whole
+  // card turns green so a finished topic reads at a glance.
+  const isComplete = topic.stages.animation === "signed-off" && Boolean(topic.stages.animationCyApproved);
+
   return (
-    <div className="rounded-card bg-dawn-80 border border-dawn-60 p-6">
+    <div
+      className={`rounded-card border p-6 ${
+        isComplete ? "border-mindaro/40 bg-mindaro/10" : "border-dawn-60 bg-dawn-80"
+      }`}
+    >
       <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
         <h3 className="font-display text-[1.15rem] text-white">{topic.title}</h3>
-        {topic.lead ? (
+        {isComplete ? (
+          <span className="inline-flex items-center gap-1.5 rounded-full border border-mindaro/30 bg-mindaro/15 px-2.5 py-1 text-[0.7rem] font-medium text-mindaro">
+            <svg
+              viewBox="0 0 16 16"
+              className="h-3 w-3"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              aria-hidden="true"
+            >
+              <path d="M3.5 8.5 6.5 11.5 12.5 4.5" />
+            </svg>
+            Complete, EN and CY
+          </span>
+        ) : topic.lead ? (
           <span className="text-[0.75rem] uppercase tracking-[0.08em] text-white/40">
             Lead: {topic.lead}
           </span>
