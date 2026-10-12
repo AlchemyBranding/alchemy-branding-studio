@@ -67,6 +67,12 @@ exactly the rendered band.
 
 ### What is usable in `public/workshop/`
 
+- `workshop-hero-jess.webp` — **the current hero from 12 Oct 2026.** 827A3606
+  from the May 2026 shoot (ALCHEMY BRANDING/02 IMAGERY/MAY 2026/HIGH RES),
+  Jess running a workshop, 2400x3600. Portrait, so the hero takes a band at
+  42% on desktop and pans to 22% on mobile. Swapped in because Jess runs every
+  workshop. The scrim stops below were measured on the old photograph.
+- `workshop-hero.webp` — the previous hero, no longer referenced.
 - `workshop-hero.webp` — the current hero. BATCH 3-106 with a second person
   erased at her request. `[verified 2 Sep]` The erase left the rebuilt wall in
   two tinted blocks, warm above and cool below, with a hard seam between them

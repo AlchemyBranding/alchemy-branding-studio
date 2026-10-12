@@ -57,8 +57,7 @@ export default function Workshop() {
             </p>
             <p className="mt-6 text-[1.125rem] leading-[1.7] text-dawn/70 max-w-lg">
               Most teams leave the workshop with a clearer view of their
-              business than they came in with. The next steps usually
-              build themselves.
+              business than they came in with.
             </p>
 
             {/*

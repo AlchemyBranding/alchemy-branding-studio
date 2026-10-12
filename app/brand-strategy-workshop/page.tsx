@@ -273,47 +273,26 @@ export default async function BrandStrategyWorkshopPage() {
 
       {/*
         Hero. Deliberately NOT the shape /brand-identity or /website-design
-        use. Both of those put the copy in a 56% column with media bleeding off
-        the right, and the note on /brand-identity says the service pages must
-        not converge on one hero shape. This is the third: the photograph
-        full-bleed behind the whole hero, with the copy sitting on it.
+        use: the photograph runs full-bleed behind the whole hero, with the copy
+        sitting on it in a right-hand column. The scrims below do the legibility
+        work, not the image file (see AGENTS.md).
 
-        The scrims below do the legibility work, not the image file. The
-        photograph is served at full exposure and only the composite under the
-        copy is darkened, heaviest at the right where the text is and easing off
-        to the left so Dave and the room keep their light. That is the
-        only way to put white text on a bright white-walled photograph without
-        breaking the rule in core/featured-image-procedure.md against
-        underexposing.
-
-        Dave sits at 25 to 32 percent of the frame and the image is
-        width-limited at every desktop size, so object-position cannot move
-        him. The copy went right instead of the photograph going anywhere.
-
-        The photograph is BATCH 3-106, July 2021. Jess stood to Dave's right
-        facing the room and asked to be taken out, so she was erased and the
-        wall behind her rebuilt. The first erase pass invented a man's head in
-        front of the screen, which is why there was a second pass over that
-        area. That repair left the rebuilt wall in two tinted blocks, warm
-        above and cool below, with a hard seam between them and a blue fringe
-        against the TV. Fixed 2 September 2026 by measuring the wall's real
-        colour off the untouched parts of the same frame and replacing the
-        repair's low-frequency colour with it, so the whole wall now runs one
-        neutral gradient. Photographic grain was kept.
-
-        Treatment follows core/featured-image-procedure.md in the content
-        engine: desaturate to knock competing colour back rather than
-        underexpose. The teal screen is the thing fighting Dragon Fire. Both
-        edges fade into the ground so the photograph emerges from the page
-        rather than sitting on it as a pasted rectangle.
+        The photograph is 827A3606 from the May 2026 shoot: Jess running a
+        workshop in the studio. Swapped in 12 Oct 2026 because Jess facilitates
+        every workshop. It is portrait, so object-cover takes a horizontal band
+        on desktop; the band sits at 42% so her face and the slide stay in
+        frame from 1440 to 1920. She stands in the left third, clear of the
+        62% copy column. On mobile the crop pans to 22% so she stays in view
+        under the even veil. The slide behind her is darkened by the scrim, so
+        its client text does not read.
       */}
       <section className="relative isolate overflow-hidden bg-dawn pt-[160px] pb-[110px] md:pt-[200px] md:pb-[140px]">
         <Image
-          src="/workshop/workshop-hero.webp"
-          alt="Dave Morgan pointing as he answers a question in a brand workshop, with the room turned towards him."
+          src="/workshop/workshop-hero-jess.webp"
+          alt="Jess Morgan leading a brand workshop in the Alchemy studio, in front of a slide of questions."
           fill
           sizes="100vw"
-          className="object-cover object-[44%_28%] saturate-[0.82] md:object-[38%_34%]"
+          className="object-cover object-[22%_40%] saturate-[0.9] md:object-[50%_42%]"
           priority
         />
 
@@ -324,9 +303,9 @@ export default async function BrandStrategyWorkshopPage() {
           className="pointer-events-none absolute inset-0 z-[1] bg-dawn/72 md:hidden"
         />
         {/* Desktop: heavy under the copy on the right, easing off to the left
-            so Dave, at 25 to 32 percent of the frame, stays in the clear. The
-            stops are measured against the composite, not guessed: see the
-            contrast table in AGENTS.md. */}
+            so Jess, in the left third of the frame, stays in the clear. The
+            stops were measured against the previous photograph's composite
+            (AGENTS.md); re-check contrast against this one on the preview. */}
         <div
           aria-hidden="true"
           className="pointer-events-none absolute inset-0 z-[1] hidden md:block bg-[linear-gradient(to_left,rgba(25,25,25,0.96)_0%,rgba(25,25,25,0.93)_35%,rgba(25,25,25,0.90)_55%,rgba(25,25,25,0.86)_60%,rgba(25,25,25,0.22)_68%,rgba(25,25,25,0.08)_86%,rgba(25,25,25,0.08)_100%)]"
@@ -342,12 +321,9 @@ export default async function BrandStrategyWorkshopPage() {
         />
         <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-10">
           {/* Copy sits right, against the grain of /brand-identity and
-              /website-design, which both run a copy column on the left. It is
-              here because the photograph decides it: Dave is left of centre and
-              the image is width-limited at every desktop size, so
-              object-position cannot pan him out from under a left-hand column.
-              Moving the words is the only way to leave him visible. Full width
-              on mobile, where there is no room to take sides. */}
+              /website-design, which both run a copy column on the left. Jess
+              stands in the left third of the photograph, so the words go right
+              to leave her visible. Full width on mobile. */}
           <div className="md:ml-auto md:w-[62%]">
           <p className="text-[0.8rem] font-medium uppercase tracking-[0.12em] text-dragon-fire">
             Brand &amp; Growth Workshop. A brand strategy workshop for
