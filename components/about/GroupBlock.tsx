@@ -14,7 +14,7 @@ export default function GroupBlock() {
           id="group-heading"
           className="font-display text-h2 mt-4 max-w-3xl text-white"
         >
-          Three brands. One operator.
+          One business, three doors.
         </h2>
         <p className="mt-6 max-w-2xl text-[1.0625rem] leading-[1.7] text-white/65">
           Alchemy sits inside a small group focused on commercial brand work

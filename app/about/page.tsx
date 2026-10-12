@@ -52,7 +52,7 @@ export default async function AboutPage() {
       <FinalCTA
         heading="Like the look of how we work?"
         subtext="Tell us about the project, or book 30 minutes with us. Whichever's easier."
-        primary={{ label: "Book a call", href: motionHref, external: true }}
+        primary={{ label: "Book a Clarity Call", href: motionHref, external: true }}
         secondary={{ label: "Send a message", href: "/contact" }}
       />
     </>

@@ -49,8 +49,8 @@ export default async function PortfolioPage() {
 
       <FinalCTA
         heading="See something that looks like the kind of work you need?"
-        subtext="Book a discovery call. We'll talk through where you're at and whether the workshop's right for you."
-        primary={{ label: "Book a call", href: motionHref, external: true }}
+        subtext="Book a Clarity Call. We'll talk through where you're at and whether the workshop's right for you."
+        primary={{ label: "Book a Clarity Call", href: motionHref, external: true }}
         secondary={{ label: "Send a brief", href: "/contact" }}
       />
     </>

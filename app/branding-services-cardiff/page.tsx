@@ -69,7 +69,7 @@ export default function BrandingCardiffPage() {
           </p>
           <div className="mt-10 flex flex-wrap items-center gap-4">
             <Button variant="primary" href={motionHref} external>
-              Book a call
+              Book a Clarity Call
             </Button>
             <Button variant="secondary" href="/brand-strategy-workshop">
               See the workshop
@@ -155,7 +155,7 @@ export default function BrandingCardiffPage() {
               coffee shops and wellness studios in Abergavenny, a public-sector
               campaign for Gwent Police, and ambitious businesses well beyond
               the M4. Being on your doorstep means we can sit in the room with
-              you for the Brand Strategy Workshop where every project starts.
+              you for the Brand &amp; Growth Workshop where every project starts.
             </p>
             <div className="mt-10">
               <Button variant="primary" href="/portfolio">
@@ -169,7 +169,7 @@ export default function BrandingCardiffPage() {
       <FinalCTA
         heading="Thinking about your brand?"
         subtext="Book 30 minutes. We'll give you an honest read on where your brand stands and what we'd do first."
-        primary={{ label: "Book a call", href: motionHref, external: true }}
+        primary={{ label: "Book a Clarity Call", href: motionHref, external: true }}
         secondary={{ label: "Send a brief", href: "/contact" }}
       />
     </>

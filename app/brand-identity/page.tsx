@@ -185,7 +185,7 @@ export default async function BrandIdentityPage() {
             </p>
             <div className="mt-10 flex flex-wrap items-center gap-4">
               <Button variant="primary" href={motionHref} external>
-                Book a call
+                Book a Clarity Call
               </Button>
               <Button variant="secondary" href="/portfolio">
                 See the work
@@ -470,9 +470,9 @@ export default async function BrandIdentityPage() {
       <NewsletterSignup location="brand-identity" />
 
       <FinalCTA
-        heading="Book a call."
+        heading="Book a Clarity Call."
         subtext="Tell us what is not working. We will tell you honestly whether it is an identity problem or a positioning one, and which to fix first."
-        primary={{ label: "Book a call", href: motionHref, external: true }}
+        primary={{ label: "Book a Clarity Call", href: motionHref, external: true }}
         secondary={{ label: "Send a brief", href: "/contact" }}
       />
     </>

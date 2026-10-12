@@ -70,7 +70,7 @@ export default function Image() {
               fontWeight: 700,
             }}
           >
-            Book a call
+            Book a Clarity Call
           </span>
         </div>
       </div>

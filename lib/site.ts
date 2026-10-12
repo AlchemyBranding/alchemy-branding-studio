@@ -70,7 +70,7 @@ export const reservedSlugs = new Set<string>([
 export const groupSites = [
   {
     name: "Alchemy Branding Studio",
-    descriptor: "Creative agency",
+    descriptor: "Strategy, brand and delivery",
     href: null,
   },
   {
@@ -79,8 +79,8 @@ export const groupSites = [
     href: "https://www.brandtoscale.co.uk",
   },
   {
-    name: "Jessica Morgan",
-    descriptor: "Commercial brand consultancy",
+    name: "Jessica Morgan Consulting",
+    descriptor: "Ongoing support for leadership teams",
     href: "https://www.jessicamorganconsulting.co.uk",
   },
 ] as const;

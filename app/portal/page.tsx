@@ -30,7 +30,7 @@ type PortalLink = {
 
 const links: PortalLink[] = [
   {
-    label: "The Brand Strategy Workshop",
+    label: "The Brand & Growth Workshop",
     note: "Where every brand build starts",
     href: "/brand-strategy-workshop",
   },
@@ -47,7 +47,7 @@ const links: PortalLink[] = [
     href: "https://www.brandtoscale.co.uk",
     external: true,
   },
-  { label: "Book a call", href: motionHref, external: true },
+  { label: "Book a Clarity Call", href: motionHref, external: true },
   { label: "Message us on WhatsApp", href: whatsappHref, external: true },
 ];
 

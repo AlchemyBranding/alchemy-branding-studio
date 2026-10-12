@@ -32,7 +32,7 @@ export async function generateMetadata(): Promise<Metadata> {
     defaults: {
       title: "Brand Strategy Workshop for SME Leadership Teams",
       description:
-        "A brand strategy workshop for SME leadership teams. Half a day, or a full day for a bigger team. You leave with a positioning sentence and an agreed answer on who you are not for.",
+        "The Brand & Growth Workshop: one day with your leadership team, then a full brand strategy within two weeks, and a clear plan for what comes next.",
     },
   });
 }
@@ -53,28 +53,38 @@ const WORKSHOP_CASE_STUDY_SLUGS = [
  * read from it, so the two cannot drift apart. A marked-up price that disagrees
  * with the page is the easiest way to earn a manual action, and the usual cause
  * is somebody changing one of the two.
+ *
+ * Go-live copy, approved 8 Oct 2026: a range, shown only after the value
+ * ("What you get" and "What happens after") and in the FAQ. Never in the hero
+ * or the meta description.
  */
-const WORKSHOP_PRICE_GBP = 2500;
-const WORKSHOP_PRICE_DISPLAY = `£${WORKSHOP_PRICE_GBP.toLocaleString("en-GB")}`;
+const WORKSHOP_PRICE_MIN_GBP = 2000;
+const WORKSHOP_PRICE_MAX_GBP = 5000;
+const gbp = (n: number) => `£${n.toLocaleString("en-GB")}`;
+const WORKSHOP_PRICE_DISPLAY = `${gbp(WORKSHOP_PRICE_MIN_GBP)} to ${gbp(WORKSHOP_PRICE_MAX_GBP)}`;
+
+/**
+ * Where "Read all our Google reviews" points. Replace with the Business
+ * Profile's own share link (Google Business Profile, Share, copy link) if the
+ * search URL below does not land on the profile.
+ */
+const GOOGLE_REVIEWS_URL =
+  "https://www.google.com/maps/search/?api=1&query=Alchemy+Branding+Studio+Abergavenny";
 
 /**
  * Service and Offer, following the JSON-LD pattern already used for Article,
  * Breadcrumb and FAQ. Deliberately minimal: it states what is sold, who sells
- * it, and the floor price. No rating, no review count, no availability, none of
- * which we have.
- *
- * The floor price is expressed as a PriceSpecification minPrice rather than a
- * flat Offer price. "From £2,500" is a minimum, and a flat price would state it
- * as an exact one.
+ * it, and the price range. No rating, no review count, no availability, none
+ * of which we mark up.
  */
 const serviceSchema = {
   "@context": "https://schema.org",
   "@type": "Service",
-  name: "Brand Strategy Workshop",
+  name: "Brand & Growth Workshop",
   serviceType: "Brand strategy workshop",
   url: `${siteConfig.url}/brand-strategy-workshop`,
   description:
-    "A brand strategy workshop for SME leadership teams. Typically half a day, scaling to a full day or more depending on the size of the team and the complexity of the business. Ends in a written positioning sentence and an agreed answer on who the business is not for.",
+    "The Brand & Growth Workshop: one day with your leadership team, then a full brand strategy within two weeks, and a clear plan for what comes next.",
   provider: {
     "@type": "Organization",
     name: siteConfig.name,
@@ -85,7 +95,8 @@ const serviceSchema = {
     "@type": "Offer",
     priceSpecification: {
       "@type": "PriceSpecification",
-      minPrice: WORKSHOP_PRICE_GBP,
+      minPrice: WORKSHOP_PRICE_MIN_GBP,
+      maxPrice: WORKSHOP_PRICE_MAX_GBP,
       priceCurrency: "GBP",
       valueAddedTaxIncluded: false,
     },
@@ -94,9 +105,9 @@ const serviceSchema = {
 
 const inTheRoom = [
   {
-    title: "Leadership only.",
+    title: "The right people in the room.",
     detail:
-      "Not the whole company. The people who can make a decision and make it hold. A bigger team is workable, it just makes for a longer session.",
+      "Usually your leadership team, and sometimes your marketing or sales team too, depending on how the business is set up.",
   },
   {
     title: "Your place or ours.",
@@ -104,38 +115,124 @@ const inTheRoom = [
       "The studio in Abergavenny, or your office if getting the team off site is the harder ask.",
   },
   {
-    title: "It is a working session.",
+    title: "It's a working session.",
     detail:
-      "We are not presenting to you. Your team does most of the talking and we write down what you actually mean, which is rarely what the current website says.",
+      "We're not presenting to you. Your team does most of the talking, and we write down what you actually mean, which is rarely what the current website says.",
   },
   {
     title: "Nothing gets designed on the day.",
     detail:
-      "No logos, no colours, no layouts. The moment design enters the room the argument stops, and everyone starts having opinions about type.",
+      "No logos, no colours, no layouts. The moment design enters the room, the argument stops and everyone starts having opinions about type.",
+  },
+  {
+    title: "We do the homework first.",
+    detail:
+      "We research the business beforehand and use the Clarity Call to shape the questions, so the day is built around you.",
+  },
+];
+
+const howTheDayWorks = [
+  "Every workshop is built around your business. Before the day, Jess researches the business and uses the Clarity Call to plan the questions.",
+  "On the day, it's open, honest questions, difficult conversations and the odd debate: where the business wants to be in five to ten years and how it gets there, how it wins customers, what it does well, who it's really for, and what it would turn down. The aim is to get everything out of your team's heads and onto the table.",
+  "Then Jess analyses it all and turns it into your brand strategy. That's what the next two weeks are for.",
+];
+
+const strategyContents = [
+  {
+    title: "Where the business is going.",
+    detail:
+      "Your growth goals for the next five to ten years, how you plan to get there and how you win customers, so sales and marketing are set up to support it.",
+  },
+  {
+    title: "Positioning.",
+    detail: "Short enough that your team can repeat it under pressure.",
+  },
+  {
+    title: "Who you're for, and who you're not.",
+    detail:
+      "In writing, so turning work down stops being a judgement call somebody makes alone.",
+  },
+  {
+    title: "Messaging and tone of voice.",
+    detail:
+      "What a copywriter, designer or new hire needs to get your language right first time.",
+  },
+  {
+    title: "Values and messaging pillars.",
+    detail: "What every piece of marketing should come back to.",
+  },
+  {
+    title: "A plan for putting it to work.",
+    detail:
+      "Where it helps, we show how it carries into your website and social media, with structure and sample copy.",
+  },
+];
+
+const afterOptions = [
+  {
+    title: "You take it from here.",
+    detail:
+      "The strategy is yours to run with. We book a follow-up at 90 days when you sign off, to see how it's going.",
+  },
+  {
+    title: "We guide your team.",
+    detail: "Jess works alongside the people you already have.",
+  },
+  {
+    title: "We deliver it.",
+    detail:
+      "Alchemy builds and runs it: identity, website, content, social, animation.",
   },
 ];
 
 /**
- * Three questions the "brand strategy workshop" cluster asks and the pillar
- * did not answer (seo/clusters/brand-strategy-workshop.md, 6 Sep 2026): what
- * a branding workshop is, what it costs, and half day or full day. Answered
- * here rather than in three thin articles that would compete with this page
- * for its own buyers. The cost answer reads WORKSHOP_PRICE_DISPLAY so it
- * cannot drift from the price section or the Offer markup. FAQPage JSON-LD
- * follows components/home/HomepageFaq.tsx.
+ * Google reviews approved for this page (08-proof.md section 4). Words exactly
+ * as approved in 01-workshop-page.md, names as on Google, company only where
+ * the reviewer named it. Lee Horton's quote joins two passages of his review.
+ */
+const reviews = [
+  {
+    quote:
+      "From the very first branding workshop, I felt truly seen and heard. They helped me articulate thoughts and feelings I'd been struggling to put into words, which was such an amazing breakthrough.",
+    name: "Yasmin Neves",
+  },
+  {
+    quote:
+      "We weren't looking for 'just a logo' or a marketing exercise. Jess took the time to truly understand our business, our culture, our values and our long-term vision before putting pen to paper. They deliver insight, strategy, creativity and a genuine partnership.",
+    name: "Lee Horton, Athena Security Solutions",
+  },
+  {
+    quote:
+      "From the first step to the last, they asked brilliant questions and listened intently to the answers. What they built for me works better than I could have imagined.",
+    name: "Gareth Thomas",
+  },
+];
+
+/**
+ * Go-live FAQ, approved 8 Oct 2026. The cost answer reads
+ * WORKSHOP_PRICE_DISPLAY so it cannot drift from the price section or the
+ * Offer markup. FAQPage JSON-LD follows components/home/HomepageFaq.tsx.
  */
 const faqs: { q: string; a: string }[] = [
   {
-    q: "What is a branding workshop?",
-    a: "A working session where a leadership team decides what the business is for and who it is not for, and writes that down. Ours turns on two questions: which words you want associated with the brand, and which you do not. Nothing is designed on the day. You leave with a positioning sentence and the words you have ruled out, and everything built afterwards is briefed against them.",
+    q: "What is a brand strategy workshop?",
+    a: "A working session where your team decides where the business is going, who it's for and who it isn't for, and we write it down. It's planned around your business, then runs on open, honest questions. Nothing is designed on the day. Within two weeks you get a full brand strategy, and everything built afterwards is briefed against it.",
   },
   {
-    q: "How much does a brand strategy workshop cost?",
-    a: `From ${WORKSHOP_PRICE_DISPLAY} plus VAT. That covers the session and the written outputs. It rises with the size of the team, whether the session runs to a full day, and how much strategy work is needed afterwards. We confirm the figure on a discovery call before anything is booked.`,
+    q: "How much does it cost?",
+    a: `${WORKSHOP_PRICE_DISPLAY} plus VAT, including the strategy document. Where you land depends on the size and complexity of the business. We confirm the figure on the Clarity Call.`,
   },
   {
-    q: "Half a day or a full day?",
-    a: "Half a day for most leadership teams of three to six people. A full day when the team is bigger, the business has several distinct services, or it has just come through a merger or buyout and there is more to settle. We tell you which on the call, before you clear the diary.",
+    q: "How long does it take?",
+    a: "One day on site. The strategy follows within two weeks.",
+  },
+  {
+    q: "What happens after the workshop?",
+    a: "The strategy ends with our recommendation: you take it from here (with a follow-up at 90 days), we guide your team, or we deliver it. You decide once you've seen it.",
+  },
+  {
+    q: "Who should be in the room?",
+    a: "Usually your leadership team, and sometimes your marketing or sales team too. We'll suggest who to bring on the Clarity Call.",
   },
 ];
 
@@ -148,29 +245,6 @@ const faqSchema = {
     acceptedAnswer: { "@type": "Answer", text: a },
   })),
 };
-
-const outputs = [
-  {
-    title: "A positioning sentence, written down",
-    detail:
-      "Short enough that your team can repeat it under pressure without checking a document first.",
-  },
-  {
-    title: "An agreed answer on who you are not for",
-    detail:
-      "In writing, with the leadership team behind it, so turning work down stops being a judgement call somebody makes alone.",
-  },
-  {
-    title: "The words you own, and the ones you have ruled out",
-    detail:
-      "Which is what a copywriter, a designer or a new hire actually needs to get your language right first time.",
-  },
-  {
-    title: "A sequence for what to build next",
-    detail:
-      "So the identity or the website starts from a decision rather than a blank page.",
-  },
-];
 
 export default async function BrandStrategyWorkshopPage() {
   const projects = await safeFetch<FeaturedCaseStudy[]>(
@@ -276,7 +350,8 @@ export default async function BrandStrategyWorkshopPage() {
               on mobile, where there is no room to take sides. */}
           <div className="md:ml-auto md:w-[62%]">
           <p className="text-[0.8rem] font-medium uppercase tracking-[0.12em] text-dragon-fire">
-            Brand strategy workshop
+            Brand &amp; Growth Workshop. A brand strategy workshop for
+            leadership teams.
           </p>
           {/* Not text-display. That token is clamp(3rem,6vw,7rem), sized for a
               full-width headline, and at 1920 it puts 112px type into a 794px
@@ -285,24 +360,28 @@ export default async function BrandStrategyWorkshopPage() {
               at 1920, which brings the hero to 1034px and the CTA to 842px. */}
           <h1 className="font-display mt-4 leading-[1.04] text-[clamp(2.75rem,5.2vw,5.25rem)]">
             <span className="text-white">
-              A brand strategy workshop that ends in a decision,
+              Growth stalls without foundations.
             </span>{" "}
-            <span className="text-dusk italic">not a deck.</span>
+            <span className="text-dusk italic">This is where we build them.</span>
           </h1>
-          <p className="mt-8 max-w-2xl text-[1.125rem] leading-[1.7] text-white/65">
-            We run a brand strategy workshop with your leadership team.
-            Typically half a day, scaling to a full day or more as the team gets
-            bigger and the business gets more complicated. In our studio in
-            Abergavenny or at your place. The
-            session exists to settle one argument: what your business is for,
-            and who it is not for. You leave with a positioning sentence in
-            writing. Everything after it, identity, website, content, sales
-            collateral, gets briefed against that sentence rather than against
-            opinion.
-          </p>
+          <div className="mt-8 max-w-2xl space-y-5 text-[1.125rem] leading-[1.7] text-white/65">
+            <p>
+              The thinking behind your brand usually lives in the heads of the
+              people who run the business. How it&apos;s positioned, who
+              it&apos;s for, what it turns down. It&apos;s never been written
+              down, so everyone selling and marketing the business is working
+              from a guess.
+            </p>
+            <p>
+              The Brand &amp; Growth Workshop gets it out of those heads and
+              onto paper. One day with your team, then a full brand strategy
+              within two weeks, with a clear recommendation for what to do
+              next.
+            </p>
+          </div>
           <div className="mt-10 flex flex-wrap items-center gap-4">
             <Button variant="primary" href={motionHref} external>
-              Book a discovery call
+              Book a Clarity Call
             </Button>
             <Button variant="secondary" href="/contact">
               Send a brief
@@ -318,14 +397,11 @@ export default async function BrandStrategyWorkshopPage() {
         className="bg-dawn-80 py-[120px] border-y border-dawn-60"
       >
         <div className="max-w-7xl mx-auto px-6 md:px-10">
-          <p className="text-[0.8rem] font-medium uppercase tracking-[0.12em] text-dragon-fire">
-            What happens in the room
-          </p>
           <h2
             id="in-the-room-heading"
-            className="font-display text-h2 mt-3 max-w-3xl text-white"
+            className="font-display text-h2 max-w-3xl text-white"
           >
-            The whole thing hangs on who is in the room.
+            What happens in the room
           </h2>
           <StaggeredList as="ul" className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-6">
             {inTheRoom.map((item) => (
@@ -345,69 +421,32 @@ export default async function BrandStrategyWorkshopPage() {
         </div>
       </section>
 
-      {/* The two questions */}
+      {/* How the day works */}
       <section
-        aria-labelledby="two-questions-heading"
+        aria-labelledby="how-the-day-works-heading"
         className="bg-dusk text-dawn py-[140px]"
       >
         <div className="max-w-7xl mx-auto px-6 md:px-10">
           <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.3fr] gap-12 lg:gap-20 items-start">
             <div className="lg:sticky lg:top-32">
-              <p className="text-[0.8rem] font-medium uppercase tracking-[0.12em] text-dragon-fire">
-                The two questions it turns on
-              </p>
               <h2
-                id="two-questions-heading"
-                className="font-display text-h2 mt-4 text-dawn"
+                id="how-the-day-works-heading"
+                className="font-display text-h2 text-dawn"
               >
-                One is easy. <span className="italic">One is the work.</span>
+                How the day works
               </h2>
-              <p className="mt-6 text-[1.125rem] leading-[1.7] text-dawn/70 max-w-lg">
-                Both lists end up on the wall. The team argues about the second
-                one, and that argument is the reason the session is worth
-                clearing the diary for.
-              </p>
             </div>
-
-            <StaggeredList as="ol" className="space-y-6">
-              <li className="rounded-card bg-white/60 border border-dawn/10 p-7">
-                <p className="text-dragon-fire font-bold text-[0.9rem] tracking-wider">
-                  Question 01
-                </p>
-                <h3 className="mt-2 font-bold text-[1.25rem] text-dawn">
-                  What words would you like associated with your brand?
-                </h3>
-                <p className="mt-3 text-[1rem] leading-[1.65] text-dawn/70">
-                  Teams answer this quickly and tend to agree. It is a warm-up,
-                  and it is the half most branding processes stop at.
-                </p>
-              </li>
-              <li className="rounded-card bg-white/60 border border-dawn/10 p-7">
-                <p className="text-dragon-fire font-bold text-[0.9rem] tracking-wider">
-                  Question 02
-                </p>
-                <h3 className="mt-2 font-bold text-[1.25rem] text-dawn">
-                  What words would you not?
-                </h3>
-                <p className="mt-3 text-[1rem] leading-[1.65] text-dawn/70">
-                  Harder, slower, and the one people skip. It is also where the
-                  positioning comes from. A business that will not rule anything
-                  out has not decided anything, and its marketing reads that
-                  way.
-                </p>
-              </li>
-            </StaggeredList>
+            <div className="space-y-6 text-[1.0625rem] leading-[1.75] text-dawn/80">
+              {howTheDayWorks.map((para) => (
+                <p key={para}>{para}</p>
+              ))}
+            </div>
           </div>
 
           {/*
-            "Both lists end up on the wall" is the claim in the left column.
-            This is the wall. The word-association exercise is exercise 2 in
-            /5-brand-strategy-exercises-you-can-do-for-free and it is the same
-            two questions written up, so the picture belongs against them
-            rather than against the outputs list further down.
-
-            TW_CANDID_616, June 2022. Same room, same work, older business.
-            Caption is dawn rather than white here: this section is bg-dusk.
+            TW_CANDID_616, June 2022. The word-association exercise: real proof
+            that the day produces written decisions. Same room, same work, older
+            business. No caption: the go-live copy does not include one.
           */}
           <Reveal className="mt-16 lg:mt-20">
             <Image
@@ -418,31 +457,38 @@ export default async function BrandStrategyWorkshopPage() {
               sizes="(min-width: 1280px) 1280px, 100vw"
               className="w-full rounded-card object-cover saturate-[0.85]"
             />
-            <p className="mt-4 max-w-2xl text-[0.875rem] leading-[1.6] text-dawn/60">
-              The word-association exercise, roughly an hour in. Everything on
-              the board gets cut down to one sentence before the day ends.
-            </p>
           </Reveal>
         </div>
       </section>
 
-      {/* What you leave with */}
+      {/* What you get */}
       <section
         aria-labelledby="outputs-heading"
         className="bg-dawn py-[120px]"
       >
         <div className="max-w-7xl mx-auto px-6 md:px-10">
-          <p className="text-[0.8rem] font-medium uppercase tracking-[0.12em] text-dragon-fire">
-            What you leave with
-          </p>
           <h2
             id="outputs-heading"
-            className="font-display text-h2 mt-3 max-w-3xl text-white"
+            className="font-display text-h2 max-w-3xl text-white"
           >
-            Four things, and none of them is a slide deck.
+            What you get
           </h2>
-          <StaggeredList as="ul" className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-6">
-            {outputs.map((item, i) => (
+          <div className="mt-10 max-w-3xl space-y-6 text-[1.0625rem] leading-[1.75] text-white/70">
+            <p>
+              <strong className="font-bold text-white">On the day:</strong> the
+              decisions. Who you&apos;re for, who you&apos;re not for, and how
+              you want to be seen.
+            </p>
+            <p>
+              <strong className="font-bold text-white">
+                Within two weeks: your brand strategy.
+              </strong>{" "}
+              A full document that sets out how your business talks about
+              itself:
+            </p>
+          </div>
+          <StaggeredList as="ol" className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-6">
+            {strategyContents.map((item, i) => (
               <li key={item.title} className="border-t border-dawn-60 pt-5">
                 <span
                   aria-hidden="true"
@@ -459,6 +505,71 @@ export default async function BrandStrategyWorkshopPage() {
               </li>
             ))}
           </StaggeredList>
+          <p className="mt-12 max-w-3xl text-[1.0625rem] leading-[1.75] text-white/70">
+            We send it over for you to digest, then go through it with you on a
+            call.
+          </p>
+        </div>
+      </section>
+
+      {/* What happens after */}
+      <section
+        aria-labelledby="after-heading"
+        className="bg-dawn-80 py-[120px] border-y border-dawn-60"
+      >
+        <div className="max-w-7xl mx-auto px-6 md:px-10">
+          <h2
+            id="after-heading"
+            className="font-display text-h2 max-w-3xl text-white"
+          >
+            What happens after
+          </h2>
+          <p className="mt-10 max-w-3xl text-[1.0625rem] leading-[1.75] text-white/70">
+            Most brand projects stop at the guidelines. This one ends with a
+            recommendation for what happens next, based on what your business
+            actually needs. It might be a rebrand. It might be content. It might
+            be guidance as your team grows. You don&apos;t commit to anything
+            beyond the workshop until you&apos;ve seen the strategy.
+          </p>
+          <StaggeredList as="ol" className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6">
+            {afterOptions.map((item, i) => (
+              <li
+                key={item.title}
+                className="rounded-card bg-dawn border border-dawn-60 p-7"
+              >
+                <span
+                  aria-hidden="true"
+                  className="text-dragon-fire font-bold text-[0.875rem]"
+                >
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <h3 className="mt-2 font-display text-[1.375rem] text-white">
+                  {item.title}
+                </h3>
+                <p className="mt-3 text-[1rem] leading-[1.65] text-white/65">
+                  {item.detail}
+                </p>
+              </li>
+            ))}
+          </StaggeredList>
+          <div className="mt-12 max-w-3xl space-y-6 text-[1.0625rem] leading-[1.75] text-white/70">
+            <p>
+              Where we deliver it, you&apos;ll see progress within six weeks of
+              signing off the next step: everyone in the business clear on the
+              decisions, what happens next, and what you and Alchemy each need
+              to do to put them to work.
+            </p>
+            <p>
+              <strong className="font-bold text-white">
+                No capped rounds of amends.
+              </strong>{" "}
+              Plenty of businesses have paid an agency, run out of revisions and
+              been left with work they didn&apos;t like. We keep going until
+              you&apos;re happy, because we only publish work we&apos;re proud
+              of. It rarely takes many rounds, because the strategy is settled
+              first and we ask for feedback at the right points.
+            </p>
+          </div>
         </div>
       </section>
 
@@ -509,30 +620,17 @@ export default async function BrandStrategyWorkshopPage() {
           >
             Businesses that have outgrown how they describe themselves.
           </h2>
-          <div className="mt-10 grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16">
-            <div className="space-y-6 text-[1.0625rem] leading-[1.75] text-dawn/80">
-              <p>
-                SMEs turning over roughly £500k to £15M. Usually something has
-                changed. A service was added, the business moved upmarket, or it
-                came through a buyout, and the language never caught up.
-              </p>
-              <p>
-                The clearest signal is simple. If two people on your leadership
-                team describe the business differently, your buyers are getting
-                both versions.
-              </p>
-            </div>
-            <div className="rounded-card bg-white/60 border border-dawn/10 p-7">
-              <h3 className="font-display text-[1.375rem] text-dawn">
-                When it is the wrong call
-              </h3>
-              <p className="mt-3 text-[1rem] leading-[1.65] text-dawn/70">
-                It suits you less if you are pre-revenue, or if one person
-                already makes every decision without needing the room to agree.
-                A call is cheaper and will probably do. We would rather tell you
-                that on the call than halfway through the session.
-              </p>
-            </div>
+          <div className="mt-10 max-w-3xl space-y-6 text-[1.0625rem] leading-[1.75] text-dawn/80">
+            <p>
+              SMEs turning over roughly £500k to £15M. Usually something has
+              changed. A service was added, the business moved upmarket, or it
+              came through a buyout, and the language never caught up.
+            </p>
+            <p>
+              The clearest signal is simple. If two people on your leadership
+              team describe the business differently, your buyers are getting
+              both versions.
+            </p>
           </div>
         </div>
       </section>
@@ -565,6 +663,48 @@ export default async function BrandStrategyWorkshopPage() {
         </section>
       ) : null}
 
+      {/* What clients say. Sits above the price (08-proof.md section 4). */}
+      <section
+        aria-labelledby="reviews-heading"
+        className="bg-dawn-80 py-[120px] border-y border-dawn-60"
+      >
+        <div className="max-w-7xl mx-auto px-6 md:px-10">
+          <h2
+            id="reviews-heading"
+            className="font-display text-h2 max-w-3xl text-white"
+          >
+            What clients say
+          </h2>
+          <StaggeredList as="ul" className="mt-12 grid grid-cols-1 lg:grid-cols-3 gap-6">
+            {reviews.map((r) => (
+              <li
+                key={r.name}
+                className="rounded-card bg-dawn border border-dawn-60 p-7 flex flex-col"
+              >
+                <figure className="flex flex-col h-full">
+                  <blockquote className="text-[1.0625rem] leading-[1.7] text-white/80">
+                    &ldquo;{r.quote}&rdquo;
+                  </blockquote>
+                  <figcaption className="mt-6 pt-5 border-t border-dawn-60 text-[0.9375rem] font-bold text-white">
+                    {r.name}
+                  </figcaption>
+                </figure>
+              </li>
+            ))}
+          </StaggeredList>
+          <p className="mt-10">
+            <a
+              href={GOOGLE_REVIEWS_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-dragon-fire underline underline-offset-4 hover:text-fire-60 transition-colors"
+            >
+              Read all our Google reviews
+            </a>
+          </p>
+        </div>
+      </section>
+
       {/*
         Price sits after fit and after proof, and well clear of the hero.
         Someone arriving on "brand strategy workshop" needs to know what it is
@@ -584,19 +724,26 @@ export default async function BrandStrategyWorkshopPage() {
                 id="price-heading"
                 className="font-display text-h2 mt-4 text-dawn"
               >
-                From {WORKSHOP_PRICE_DISPLAY} plus VAT.
+                {WORKSHOP_PRICE_DISPLAY} plus VAT.
               </h2>
             </div>
             <div className="space-y-6 text-[1.0625rem] leading-[1.75] text-dawn/80">
               <p>
-                That covers the session itself and everything you leave with:
-                the positioning sentence, the words you have ruled out, and the
-                sequence for what to build next.
+                That covers the day, the analysis afterwards and the full
+                strategy document.
               </p>
               <p>
-                Where it lands above that depends on the size of your team,
-                whether the session runs to a full day, and how much work the
-                strategy needs afterwards.
+                Where you land in that range depends on the size and complexity
+                of the business, not how many people are in the room. A £15M
+                business with one founder in the workshop still has more to work
+                through than a £1M business with a team of six. We confirm the
+                figure on the Clarity Call before anything is booked.
+              </p>
+              <p>
+                What we won&apos;t do is promise sales figures that depend on
+                things outside our control. What we promise is a brand and
+                growth engine built to attract the right leads, from the right
+                audience, at the right price point.
               </p>
             </div>
           </div>
@@ -609,15 +756,11 @@ export default async function BrandStrategyWorkshopPage() {
         className="bg-dawn py-[120px]"
       >
         <div className="max-w-4xl mx-auto px-6 md:px-10">
-          <p className="text-[0.8rem] font-medium uppercase tracking-[0.12em] text-dragon-fire">
-            Common questions
-          </p>
           <h2
             id="workshop-faq-heading"
-            className="font-display text-h2 mt-3 text-white"
+            className="font-display text-h2 text-white"
           >
-            What people ask{" "}
-            <span className="italic text-dusk">before they book.</span>
+            Common questions
           </h2>
           <ul className="mt-12 border-t border-dawn-60">
             {faqs.map((f) => (
@@ -700,9 +843,9 @@ export default async function BrandStrategyWorkshopPage() {
       <NewsletterSignup location="brand-strategy-workshop" />
 
       <FinalCTA
-        heading="Book a discovery call."
-        subtext="Twenty minutes. Tell us what is not landing and we will tell you whether the workshop is the right starting point, or whether something cheaper would do."
-        primary={{ label: "Book a discovery call", href: motionHref, external: true }}
+        heading="Book a Clarity Call."
+        subtext="Thirty minutes to talk through where the business is and what you want to change. We'll help you work out what you need, whether we're the right people to help, and if we're not, who would be."
+        primary={{ label: "Book a Clarity Call", href: motionHref, external: true }}
         secondary={{ label: "Send a brief", href: "/contact" }}
       />
     </>

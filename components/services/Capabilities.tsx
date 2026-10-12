@@ -7,6 +7,8 @@ type Capability = {
   body: string;
   /** Omitted where no dedicated page exists yet. */
   href?: string;
+  /** A second paragraph under the body. */
+  note?: string;
 };
 
 // Deliberately not a service catalogue. These are the typical follow-on
@@ -50,6 +52,7 @@ const capabilities: Capability[] = [
     title: "Ongoing partnership",
     body:
       "Your design and brand team for the long stretch: embedded, on hand, with retainers shaped around the work that actually needs doing rather than a fixed package you have to grow into.",
+    note: "No capped rounds of amends. We keep going until you're happy, because we only publish work we're proud of.",
   },
 ];
 
@@ -90,6 +93,11 @@ export default function Capabilities() {
                 <p className="mt-3 text-[0.9375rem] leading-[1.65] text-white/65">
                   {c.body}
                 </p>
+                {c.note ? (
+                  <p className="mt-3 text-[0.9375rem] leading-[1.65] text-white/65">
+                    {c.note}
+                  </p>
+                ) : null}
                 {c.href ? (
                   <Link
                     href={c.href}

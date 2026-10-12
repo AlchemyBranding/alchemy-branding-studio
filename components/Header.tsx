@@ -98,7 +98,7 @@ export default function Header() {
               <WhatsAppIcon className="w-5 h-5" />
             </a>
             <Button href={motionHref} variant="primary" size="small" external>
-              Book a Call
+              Book a Clarity Call
             </Button>
           </div>
 
@@ -190,7 +190,7 @@ export default function Header() {
               <span className="text-[0.9375rem] font-medium">WhatsApp</span>
             </a>
             <Button href={motionHref} variant="primary" external>
-              Book a Call
+              Book a Clarity Call
             </Button>
           </div>
         </div>

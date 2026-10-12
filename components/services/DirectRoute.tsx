@@ -93,7 +93,7 @@ export default function DirectRoute() {
 
         <div className="mt-10">
           <Button variant="secondary" href={motionHref} external>
-            Book a call
+            Book a Clarity Call
           </Button>
         </div>
       </div>

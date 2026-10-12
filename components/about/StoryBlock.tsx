@@ -35,10 +35,10 @@ export default function StoryBlock() {
             without putting a job ad out.
           </p>
           <p>
-            That&apos;s the gap we fill. Senior brand and marketing
-            thinking, the work to back it up, and a steady hand on the
-            day-to-day so the business stops losing momentum between the
-            big projects.
+            Some have a small marketing team. Some have nobody. Either way,
+            what they need is the strategy worked out and written down, and a
+            plan to put it to work: with their own team and Jess guiding them,
+            or with Alchemy delivering it.
           </p>
 
           <div className="relative aspect-[16/9] w-full overflow-hidden rounded-card border border-dawn-80">

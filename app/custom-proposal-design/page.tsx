@@ -43,7 +43,7 @@ export default function CustomProposalDesignPage() {
             </p>
             <div className="mt-10 flex flex-wrap items-center gap-4">
               <Button variant="primary" href={motionHref} external>
-                Book a discovery call
+                Book a Clarity Call
               </Button>
               <Button variant="secondary" href="/contact">
                 Send a brief
@@ -78,8 +78,8 @@ export default function CustomProposalDesignPage() {
 
       <FinalCTA
         heading="Got a proposal that needs to land?"
-        subtext="Book a discovery call. We'll talk through your sales flow, the platform you're using, and what'd make the biggest difference."
-        primary={{ label: "Book a call", href: motionHref, external: true }}
+        subtext="Book a Clarity Call. We'll talk through your sales flow, the platform you're using, and what'd make the biggest difference."
+        primary={{ label: "Book a Clarity Call", href: motionHref, external: true }}
         secondary={{ label: "Send a brief", href: "/contact" }}
       />
     </>

@@ -215,8 +215,9 @@ function FallbackEpisode() {
           Conversations on building brands that scale.
         </h3>
         <p className="mt-4 text-[0.9375rem] leading-[1.65] text-white/65 max-w-xl">
-          Founders, marketers and operators on what actually moves the
-          needle. New episodes weekly.
+          Founders and operators on what actually helps a business grow.
+          Hosted by Jess Morgan. <strong className="font-bold text-white">A new
+          episode every month.</strong>
         </p>
         <div className="mt-6">
           <Button href={SHOW_URL} variant="primary" external>

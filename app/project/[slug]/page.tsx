@@ -167,8 +167,8 @@ export default async function CaseStudyPage({
 
       <FinalCTA
         heading="Got a project that needs this kind of work?"
-        subtext="Book a discovery call and we'll talk through it, or send us a brief."
-        primary={{ label: "Book a call", href: motionHref, external: true }}
+        subtext="Book a Clarity Call and we'll talk through it, or send us a brief."
+        primary={{ label: "Book a Clarity Call", href: motionHref, external: true }}
         secondary={{ label: "Send a brief", href: "/contact" }}
       />
     </>

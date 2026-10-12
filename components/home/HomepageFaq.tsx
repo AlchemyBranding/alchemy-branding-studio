@@ -4,22 +4,22 @@
  * open via Tailwind's group-open variant. Also emits a FAQPage
  * JSON-LD block so the questions can show as rich results in search.
  *
- * Decisions baked in from the brief + user notes:
- *  - No cost mentioned anywhere on the page (price stays a discovery
- *    call conversation).
- *  - Workshop length defaults to "typically half a day".
+ * Answers from the go-live copy approved by Dave and Jess on 8 Oct 2026
+ * (alchemy-marketing-plan/work/2026-10-website-copy/04-alchemy-home.md).
+ * The price range appears here and on the workshop page only, never in
+ * the hero or meta description.
  */
 
 type Faq = { q: string; a: string };
 
 const faqs: Faq[] = [
   {
-    q: "What is the Brand Strategy Workshop?",
-    a: "A focused working session where we get clear on who you are for, what you stand for, and how you are different. You leave with a defined brand strategy that guides your identity, website and content.",
+    q: "What is the Brand & Growth Workshop?",
+    a: "A day with your team working out where the business wants to be in five to ten years, how it plans to get there and how it wins customers, so your brand, sales and marketing are built to support that growth. Within two weeks you get a full strategy: positioning, who you're for, messaging, tone of voice, and a plan for putting it to work.",
   },
   {
     q: "What does it cost?",
-    a: "Scope and pricing depend on what your business needs. We talk through the work in a discovery call and confirm everything with you before any work begins.",
+    a: "£2,000 to £5,000 plus VAT, including the strategy document. Where you land depends on the size and complexity of the business, and we confirm the figure on the Clarity Call.",
   },
   {
     q: "Who do you work with?",
@@ -27,11 +27,15 @@ const faqs: Faq[] = [
   },
   {
     q: "What happens after the workshop?",
-    a: "You leave with a defined brand strategy. We deliver it either as a standalone document or as a brand portal that keeps your strategy and guidelines in one place, ready for your marketing and sales team to work from. Identity, website and content then flow from it, built in-house, with us, or both.",
+    a: "The strategy ends with our recommendation. You take it from here, with a follow-up at 90 days. Or Jess guides your team. Or we deliver it. You decide once you've seen it.",
   },
   {
     q: "How long does it take?",
-    a: "Typically half a day, scaling to a full day or more depending on the size of your team and the complexity of your business. We confirm the shape with you before we begin.",
+    a: "One day on site. The strategy follows within two weeks.",
+  },
+  {
+    q: "Do you cap rounds of amends?",
+    a: "No. We keep going until you're happy, because we only publish work we're proud of.",
   },
 ];
 

@@ -34,7 +34,7 @@ export default function ContactConfirmationPage() {
 
           <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
             <Button variant="primary" href={motionHref} external>
-              Book a call
+              Book a Clarity Call
             </Button>
             <Button variant="secondary" href="/portfolio">
               See our work

@@ -54,9 +54,9 @@ export default function Hero() {
           className="mt-8 max-w-2xl text-[1.125rem] leading-[1.6] text-white/85 animate-fade-up"
           style={{ animationDelay: "550ms" }}
         >
-          We help you clarify the brand, sharpen the message and turn
-          both into marketing that supports sales, so the right clients
-          understand you, trust you and choose you.
+          We work out how your business should be positioned and who it&apos;s
+          for, then build the brand and the plan to match, so everyone selling
+          it is pulling towards the same goals.
         </p>
 
         <div
@@ -64,7 +64,7 @@ export default function Hero() {
           style={{ animationDelay: "700ms" }}
         >
           <Button variant="primary" href={motionHref} external>
-            Book a call
+            Book a Clarity Call
           </Button>
           <Button variant="secondary" href="/portfolio">
             See our work

@@ -60,17 +60,31 @@ export default function WorkshopBlock() {
                 id="workshop-heading"
                 className="font-display text-h2 mt-4 text-white"
               >
-                Start with{" "}
-                <span className="italic text-dusk">the workshop.</span>
+                Growth stalls{" "}
+                <span className="italic text-dusk">without foundations.</span>
               </h2>
-              <p className="mt-8 text-[1.0625rem] leading-[1.75] text-white/75 max-w-xl">
-                The Brand Strategy Workshop is where we get clear on
-                who you are for, what you stand for, and why anyone
-                should choose you. It is the foundation everything
-                else is built on: identity, website, animation and
-                content all flow from it. And if you already know what
-                you need, you can commission that on its own.
-              </p>
+              <div className="mt-8 space-y-5 text-[1.0625rem] leading-[1.75] text-white/75 max-w-xl">
+                <p>
+                  The thinking behind most brands lives in the heads of the
+                  people who run the business. How it&apos;s positioned, who
+                  it&apos;s for, what it turns down. It&apos;s never been
+                  written down, so everyone selling and marketing the business
+                  is working from a guess.
+                </p>
+                <p>
+                  The{" "}
+                  <strong className="font-bold text-white">
+                    Brand &amp; Growth Workshop
+                  </strong>{" "}
+                  fixes that. One day with your team, then a full brand
+                  strategy within two weeks, and a clear recommendation for
+                  what comes next. Identity, website, animation and content all
+                  build from it.
+                </p>
+                <p>
+                  Already know what you need? You can commission it on its own.
+                </p>
+              </div>
             </Reveal>
 
             <Reveal delayMs={150}>
@@ -99,8 +113,8 @@ export default function WorkshopBlock() {
 
             <Reveal delayMs={300}>
               <div className="mt-10">
-                <Button variant="primary" href="/services">
-                  Explore the workshop
+                <Button variant="primary" href="/brand-strategy-workshop">
+                  Explore the workshop →
                 </Button>
               </div>
             </Reveal>

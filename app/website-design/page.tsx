@@ -143,7 +143,7 @@ export default async function WebsiteDesignPage() {
             </p>
             <div className="mt-10 flex flex-wrap items-center gap-4">
               <Button variant="primary" href={motionHref} external>
-                Book a call
+                Book a Clarity Call
               </Button>
               <Button variant="secondary" href="/portfolio">
                 See the work
@@ -344,9 +344,9 @@ export default async function WebsiteDesignPage() {
       <NewsletterSignup location="website-design" />
 
       <FinalCTA
-        heading="Book a call."
+        heading="Book a Clarity Call."
         subtext="Tell us what the site has to do. We will tell you honestly whether it is a website problem or a positioning one, and what we would fix first."
-        primary={{ label: "Book a call", href: motionHref, external: true }}
+        primary={{ label: "Book a Clarity Call", href: motionHref, external: true }}
         secondary={{ label: "Send a brief", href: "/contact" }}
       />
     </>

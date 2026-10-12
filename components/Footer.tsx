@@ -151,7 +151,7 @@ export default function Footer() {
               </li>
               <li className="pt-2">
                 <Button href={motionHref} variant="primary" size="small" external>
-                  Book a Call
+                  Book a Clarity Call
                 </Button>
               </li>
             </ul>

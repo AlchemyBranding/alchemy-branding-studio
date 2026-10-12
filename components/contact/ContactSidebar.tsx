@@ -11,8 +11,8 @@ type Card = {
 
 const cards: Card[] = [
   {
-    eyebrow: "Book a call",
-    title: "30-minute discovery call",
+    eyebrow: "Book a Clarity Call",
+    title: "30-minute Clarity Call",
     description:
       "Best for clarifying scope, timing, and whether we're a fit. Pick a slot that suits you.",
     cta: { label: "Open my diary →", href: motionHref, external: true },

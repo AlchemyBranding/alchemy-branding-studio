@@ -55,8 +55,8 @@ export default function ServicesPage() {
 
       <FinalCTA
         heading="Still can't quite name it?"
-        subtext="That's usually the right place to start. Book a call and we'll help you work out what's actually going on and what's worth fixing first."
-        primary={{ label: "Book a call", href: motionHref, external: true }}
+        subtext="That's usually the right place to start. Book a Clarity Call and we'll help you work out what's actually going on and what's worth fixing first."
+        primary={{ label: "Book a Clarity Call", href: motionHref, external: true }}
         secondary={{ label: "Send a brief", href: "/contact" }}
       />
     </>

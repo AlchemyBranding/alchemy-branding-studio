@@ -188,7 +188,7 @@ export default async function AnimationPage() {
           </p>
           <div className="mt-10 flex flex-wrap items-center gap-4">
             <Button variant="primary" href={motionHref} external>
-              Book a call
+              Book a Clarity Call
             </Button>
             <Button variant="secondary" href="/portfolio">
               See the work
@@ -460,8 +460,8 @@ export default async function AnimationPage() {
 
       <FinalCTA
         heading="Got something complicated to explain?"
-        subtext="Book a call and tell us what you're trying to get across. We'll tell you honestly whether animation is the right tool, and how we'd approach it."
-        primary={{ label: "Book a call", href: motionHref, external: true }}
+        subtext="Book a Clarity Call and tell us what you're trying to get across. We'll tell you honestly whether animation is the right tool, and how we'd approach it."
+        primary={{ label: "Book a Clarity Call", href: motionHref, external: true }}
         secondary={{ label: "See our work", href: "/portfolio" }}
       />
     </>

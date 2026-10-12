@@ -5,6 +5,10 @@ import { motionHref } from "@/lib/site";
 
 const outcomes = [
   {
+    title: "Where the business is going",
+    body: "Your growth goals for the next five to ten years, how you'll get there and how you win customers, so sales and marketing are set up to support it.",
+  },
+  {
     title: "Sharp positioning",
     body: "A short, memorable statement of who you serve, what you do, and why it matters, that your team can repeat under pressure.",
   },
@@ -17,8 +21,8 @@ const outcomes = [
     body: "Story, voice, messaging pillars, proof points: everything you need to brief copy, design, sales and hiring.",
   },
   {
-    title: "A roadmap for what's next",
-    body: "Identity, website, content, sales collateral: sequenced and costed, so the next 6–12 months are clear.",
+    title: "A recommendation for what's next",
+    body: "You take it from here, Jess guides your team, or we deliver it. Sequenced and costed, so the next 6 to 12 months are clear.",
   },
 ];
 
@@ -38,7 +42,7 @@ export default function Workshop() {
               id="workshop-heading"
               className="font-display text-h2 mt-4 text-dawn"
             >
-              The Brand Strategy Workshop.
+              The Brand &amp; Growth Workshop.
             </h2>
             <p className="mt-6 text-[1.125rem] leading-[1.7] text-dawn/70 max-w-lg">
               Where the problem isn&apos;t obvious yet, we start with a
@@ -46,6 +50,10 @@ export default function Workshop() {
               logo or the website or the campaign. The goal is to name
               what&apos;s actually broken, and end with a strategy you can
               use, not a deck that gathers dust.
+            </p>
+            <p className="mt-6 text-[1.125rem] leading-[1.7] text-dawn/70 max-w-lg">
+              One day with your team. Your brand strategy follows within two
+              weeks.
             </p>
             <p className="mt-6 text-[1.125rem] leading-[1.7] text-dawn/70 max-w-lg">
               Most teams leave the workshop with a clearer view of their
@@ -62,7 +70,7 @@ export default function Workshop() {
             */}
             <div className="mt-10 flex flex-wrap items-center gap-4">
               <Button variant="primary" href={motionHref} external>
-                Book a discovery call
+                Book a Clarity Call
               </Button>
               <Button variant="secondary" href="/brand-strategy-workshop">
                 How the workshop works
