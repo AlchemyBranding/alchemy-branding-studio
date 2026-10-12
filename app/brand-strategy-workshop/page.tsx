@@ -286,7 +286,7 @@ export default async function BrandStrategyWorkshopPage() {
         under the even veil. The slide behind her is darkened by the scrim, so
         its client text does not read.
       */}
-      <section className="relative isolate overflow-hidden bg-dawn pt-[160px] pb-[110px] md:pt-[200px] md:pb-[140px]">
+      <section className="relative isolate overflow-hidden bg-dusk pt-[160px] pb-[110px] md:pt-[200px] md:pb-[140px]">
         <Image
           src="/workshop/workshop-hero-jess.webp"
           alt="Jess Morgan leading a brand workshop in the Alchemy studio, in front of a slide of questions."
@@ -300,7 +300,7 @@ export default async function BrandStrategyWorkshopPage() {
             the full width. It gets an even veil instead. */}
         <div
           aria-hidden="true"
-          className="pointer-events-none absolute inset-0 z-[1] bg-dawn/72 md:hidden"
+          className="pointer-events-none absolute inset-0 z-[1] bg-dusk/72 md:hidden"
         />
         {/* Desktop: heavy under the copy on the right, easing off to the left
             so Jess, in the left third of the frame, stays in the clear. The
@@ -335,12 +335,12 @@ export default async function BrandStrategyWorkshopPage() {
               the fold. This clamp is the largest that still sets in four lines
               at 1920, which brings the hero to 1034px and the CTA to 842px. */}
           <h1 className="font-display mt-4 leading-[1.04] text-[clamp(2.75rem,5.2vw,5.25rem)]">
-            <span className="text-white">
+            <span className="text-dawn">
               Growth stalls without foundations.
             </span>{" "}
-            <span className="text-dusk italic">This is where we build them.</span>
+            <span className="text-dawn italic">This is where we build them.</span>
           </h1>
-          <div className="mt-8 max-w-2xl space-y-5 text-[1.125rem] leading-[1.7] text-white/65">
+          <div className="mt-8 max-w-2xl space-y-5 text-[1.125rem] leading-[1.7] text-dawn/65">
             <p>
               The thinking behind your brand usually lives in the heads of the
               people who run the business. How it&apos;s positioned, who
@@ -370,12 +370,12 @@ export default async function BrandStrategyWorkshopPage() {
       {/* What happens in the room */}
       <section
         aria-labelledby="in-the-room-heading"
-        className="bg-dawn-80 py-[120px] border-y border-dawn-60"
+        className="bg-dusk-80 py-[120px] border-y border-dusk-60"
       >
         <div className="max-w-7xl mx-auto px-6 md:px-10">
           <h2
             id="in-the-room-heading"
-            className="font-display text-h2 max-w-3xl text-white"
+            className="font-display text-h2 max-w-3xl text-dawn"
           >
             What happens in the room
           </h2>
@@ -383,12 +383,12 @@ export default async function BrandStrategyWorkshopPage() {
             {inTheRoom.map((item) => (
               <li
                 key={item.title}
-                className="rounded-card bg-dawn border border-dawn-60 p-7"
+                className="rounded-card bg-dusk border border-dusk-60 p-7"
               >
-                <h3 className="font-display text-[1.375rem] text-white">
+                <h3 className="font-display text-[1.375rem] text-dawn">
                   {item.title}
                 </h3>
-                <p className="mt-3 text-[1rem] leading-[1.65] text-white/65">
+                <p className="mt-3 text-[1rem] leading-[1.65] text-dawn/65">
                   {item.detail}
                 </p>
               </li>
@@ -400,19 +400,19 @@ export default async function BrandStrategyWorkshopPage() {
       {/* How the day works */}
       <section
         aria-labelledby="how-the-day-works-heading"
-        className="bg-dusk text-dawn py-[140px]"
+        className="bg-dawn text-dusk py-[140px]"
       >
         <div className="max-w-7xl mx-auto px-6 md:px-10">
           <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.3fr] gap-12 lg:gap-20 items-start">
             <div className="lg:sticky lg:top-32">
               <h2
                 id="how-the-day-works-heading"
-                className="font-display text-h2 text-dawn"
+                className="font-display text-h2 text-dusk"
               >
                 How the day works
               </h2>
             </div>
-            <div className="space-y-6 text-[1.0625rem] leading-[1.75] text-dawn/80">
+            <div className="space-y-6 text-[1.0625rem] leading-[1.75] text-dusk/80">
               {howTheDayWorks.map((para) => (
                 <p key={para}>{para}</p>
               ))}
@@ -440,23 +440,23 @@ export default async function BrandStrategyWorkshopPage() {
       {/* What you get */}
       <section
         aria-labelledby="outputs-heading"
-        className="bg-dawn py-[120px]"
+        className="bg-dusk py-[120px]"
       >
         <div className="max-w-7xl mx-auto px-6 md:px-10">
           <h2
             id="outputs-heading"
-            className="font-display text-h2 max-w-3xl text-white"
+            className="font-display text-h2 max-w-3xl text-dawn"
           >
             What you get
           </h2>
-          <div className="mt-10 max-w-3xl space-y-6 text-[1.0625rem] leading-[1.75] text-white/70">
+          <div className="mt-10 max-w-3xl space-y-6 text-[1.0625rem] leading-[1.75] text-dawn/70">
             <p>
-              <strong className="font-bold text-white">On the day:</strong> the
+              <strong className="font-bold text-dawn">On the day:</strong> the
               decisions. Who you&apos;re for, who you&apos;re not for, and how
               you want to be seen.
             </p>
             <p>
-              <strong className="font-bold text-white">
+              <strong className="font-bold text-dawn">
                 Within two weeks: your brand strategy.
               </strong>{" "}
               A full document that sets out how your business talks about
@@ -465,23 +465,23 @@ export default async function BrandStrategyWorkshopPage() {
           </div>
           <StaggeredList as="ol" className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-6">
             {strategyContents.map((item, i) => (
-              <li key={item.title} className="border-t border-dawn-60 pt-5">
+              <li key={item.title} className="border-t border-dusk-60 pt-5">
                 <span
                   aria-hidden="true"
                   className="text-dragon-fire font-bold text-[0.875rem]"
                 >
                   {String(i + 1).padStart(2, "0")}
                 </span>
-                <h3 className="font-display text-[1.25rem] mt-2 text-white">
+                <h3 className="font-display text-[1.25rem] mt-2 text-dawn">
                   {item.title}
                 </h3>
-                <p className="mt-2 text-[0.9375rem] leading-[1.6] text-white/60">
+                <p className="mt-2 text-[0.9375rem] leading-[1.6] text-dawn/65">
                   {item.detail}
                 </p>
               </li>
             ))}
           </StaggeredList>
-          <p className="mt-12 max-w-3xl text-[1.0625rem] leading-[1.75] text-white/70">
+          <p className="mt-12 max-w-3xl text-[1.0625rem] leading-[1.75] text-dawn/70">
             We send it over for you to digest, then go through it with you on a
             call.
           </p>
@@ -491,16 +491,16 @@ export default async function BrandStrategyWorkshopPage() {
       {/* What happens after */}
       <section
         aria-labelledby="after-heading"
-        className="bg-dawn-80 py-[120px] border-y border-dawn-60"
+        className="bg-dusk-80 py-[120px] border-y border-dusk-60"
       >
         <div className="max-w-7xl mx-auto px-6 md:px-10">
           <h2
             id="after-heading"
-            className="font-display text-h2 max-w-3xl text-white"
+            className="font-display text-h2 max-w-3xl text-dawn"
           >
             What happens after
           </h2>
-          <p className="mt-10 max-w-3xl text-[1.0625rem] leading-[1.75] text-white/70">
+          <p className="mt-10 max-w-3xl text-[1.0625rem] leading-[1.75] text-dawn/70">
             Most brand projects stop at the guidelines. This one ends with a
             recommendation for what happens next, based on what your business
             actually needs. It might be a rebrand. It might be content. It might
@@ -511,7 +511,7 @@ export default async function BrandStrategyWorkshopPage() {
             {afterOptions.map((item, i) => (
               <li
                 key={item.title}
-                className="rounded-card bg-dawn border border-dawn-60 p-7"
+                className="rounded-card bg-dusk border border-dusk-60 p-7"
               >
                 <span
                   aria-hidden="true"
@@ -519,16 +519,16 @@ export default async function BrandStrategyWorkshopPage() {
                 >
                   {String(i + 1).padStart(2, "0")}
                 </span>
-                <h3 className="mt-2 font-display text-[1.375rem] text-white">
+                <h3 className="mt-2 font-display text-[1.375rem] text-dawn">
                   {item.title}
                 </h3>
-                <p className="mt-3 text-[1rem] leading-[1.65] text-white/65">
+                <p className="mt-3 text-[1rem] leading-[1.65] text-dawn/65">
                   {item.detail}
                 </p>
               </li>
             ))}
           </StaggeredList>
-          <div className="mt-12 max-w-3xl space-y-6 text-[1.0625rem] leading-[1.75] text-white/70">
+          <div className="mt-12 max-w-3xl space-y-6 text-[1.0625rem] leading-[1.75] text-dawn/70">
             <p>
               Where we deliver it, you&apos;ll see progress within six weeks of
               signing off the next step: everyone in the business clear on the
@@ -536,7 +536,7 @@ export default async function BrandStrategyWorkshopPage() {
               to do to put them to work.
             </p>
             <p>
-              <strong className="font-bold text-white">
+              <strong className="font-bold text-dawn">
                 No capped rounds of amends.
               </strong>{" "}
               Plenty of businesses have paid an agency, run out of revisions and
@@ -573,7 +573,7 @@ export default async function BrandStrategyWorkshopPage() {
       */}
       <section
         aria-labelledby="who-heading"
-        className="relative isolate overflow-hidden bg-dusk text-dawn py-[140px]"
+        className="relative isolate overflow-hidden bg-dawn text-dusk py-[140px]"
       >
         <Image
           src="/workshop/workshop-audience.webp"
@@ -584,7 +584,7 @@ export default async function BrandStrategyWorkshopPage() {
         />
         <div
           aria-hidden="true"
-          className="pointer-events-none absolute inset-0 z-[1] bg-[linear-gradient(to_right,rgba(250,248,247,0.86)_0%,rgba(250,248,247,0.82)_45%,rgba(250,248,247,0.72)_75%,rgba(250,248,247,0.62)_100%)]"
+          className="pointer-events-none absolute inset-0 z-[1] bg-[linear-gradient(to_right,rgba(246,241,235,0.86)_0%,rgba(246,241,235,0.82)_45%,rgba(246,241,235,0.72)_75%,rgba(246,241,235,0.62)_100%)]"
         />
         <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-10">
           <p className="text-[0.8rem] font-medium uppercase tracking-[0.12em] text-dragon-fire">
@@ -592,11 +592,11 @@ export default async function BrandStrategyWorkshopPage() {
           </p>
           <h2
             id="who-heading"
-            className="font-display text-h2 mt-3 max-w-3xl text-dawn"
+            className="font-display text-h2 mt-3 max-w-3xl text-dusk"
           >
             Businesses that have outgrown how they describe themselves.
           </h2>
-          <div className="mt-10 max-w-3xl space-y-6 text-[1.0625rem] leading-[1.75] text-dawn/80">
+          <div className="mt-10 max-w-3xl space-y-6 text-[1.0625rem] leading-[1.75] text-dusk/80">
             <p>
               SMEs turning over roughly £500k to £15M. Usually something has
               changed. A service was added, the business moved upmarket, or it
@@ -615,7 +615,7 @@ export default async function BrandStrategyWorkshopPage() {
       {ordered.length > 0 ? (
         <section
           aria-labelledby="workshop-work-heading"
-          className="bg-dawn py-[120px]"
+          className="bg-dusk py-[120px]"
         >
           <div className="max-w-7xl mx-auto px-6 md:px-10">
             <p className="text-[0.8rem] font-medium uppercase tracking-[0.12em] text-dragon-fire">
@@ -623,7 +623,7 @@ export default async function BrandStrategyWorkshopPage() {
             </p>
             <h2
               id="workshop-work-heading"
-              className="font-display text-h2 mt-3 max-w-3xl text-white"
+              className="font-display text-h2 mt-3 max-w-3xl text-dawn"
             >
               Three brands that started in the same room.
             </h2>
@@ -642,12 +642,12 @@ export default async function BrandStrategyWorkshopPage() {
       {/* What clients say. Sits above the price (08-proof.md section 4). */}
       <section
         aria-labelledby="reviews-heading"
-        className="bg-dawn-80 py-[120px] border-y border-dawn-60"
+        className="bg-dusk-80 py-[120px] border-y border-dusk-60"
       >
         <div className="max-w-7xl mx-auto px-6 md:px-10">
           <h2
             id="reviews-heading"
-            className="font-display text-h2 max-w-3xl text-white"
+            className="font-display text-h2 max-w-3xl text-dawn"
           >
             What clients say
           </h2>
@@ -655,13 +655,13 @@ export default async function BrandStrategyWorkshopPage() {
             {reviews.map((r) => (
               <li
                 key={r.name}
-                className="rounded-card bg-dawn border border-dawn-60 p-7 flex flex-col"
+                className="rounded-card bg-dusk border border-dusk-60 p-7 flex flex-col"
               >
                 <figure className="flex flex-col h-full">
-                  <blockquote className="text-[1.0625rem] leading-[1.7] text-white/80">
+                  <blockquote className="text-[1.0625rem] leading-[1.7] text-dawn/80">
                     &ldquo;{r.quote}&rdquo;
                   </blockquote>
-                  <figcaption className="mt-6 pt-5 border-t border-dawn-60 text-[0.9375rem] font-bold text-white">
+                  <figcaption className="mt-6 pt-5 border-t border-dusk-60 text-[0.9375rem] font-bold text-dawn">
                     {r.name}
                   </figcaption>
                 </figure>
@@ -688,7 +688,7 @@ export default async function BrandStrategyWorkshopPage() {
       */}
       <section
         aria-labelledby="price-heading"
-        className="bg-dusk text-dawn py-[140px]"
+        className="bg-dawn text-dusk py-[140px]"
       >
         <div className="max-w-7xl mx-auto px-6 md:px-10">
           <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.3fr] gap-12 lg:gap-20 items-start">
@@ -698,12 +698,12 @@ export default async function BrandStrategyWorkshopPage() {
               </p>
               <h2
                 id="price-heading"
-                className="font-display text-h2 mt-4 text-dawn"
+                className="font-display text-h2 mt-4 text-dusk"
               >
                 {WORKSHOP_PRICE_DISPLAY} plus VAT.
               </h2>
             </div>
-            <div className="space-y-6 text-[1.0625rem] leading-[1.75] text-dawn/80">
+            <div className="space-y-6 text-[1.0625rem] leading-[1.75] text-dusk/80">
               <p>
                 That covers the day, the analysis afterwards and the full
                 strategy document.
@@ -729,21 +729,21 @@ export default async function BrandStrategyWorkshopPage() {
       {/* FAQ. Native <details>, same pattern as the homepage FAQ. */}
       <section
         aria-labelledby="workshop-faq-heading"
-        className="bg-dawn py-[120px]"
+        className="bg-dusk py-[120px]"
       >
         <div className="max-w-4xl mx-auto px-6 md:px-10">
           <h2
             id="workshop-faq-heading"
-            className="font-display text-h2 text-white"
+            className="font-display text-h2 text-dawn"
           >
             Common questions
           </h2>
-          <ul className="mt-12 border-t border-dawn-60">
+          <ul className="mt-12 border-t border-dusk-60">
             {faqs.map((f) => (
-              <li key={f.q} className="border-b border-dawn-60">
+              <li key={f.q} className="border-b border-dusk-60">
                 <details className="group">
                   <summary className="flex items-start justify-between gap-6 py-6 cursor-pointer list-none [&::-webkit-details-marker]:hidden hover:text-dragon-fire transition-colors duration-200">
-                    <span className="font-display text-[1.25rem] leading-[1.35] text-white group-hover:text-dragon-fire transition-colors duration-200">
+                    <span className="font-display text-[1.25rem] leading-[1.35] text-dawn group-hover:text-dragon-fire transition-colors duration-200">
                       {f.q}
                     </span>
                     <span
@@ -754,7 +754,7 @@ export default async function BrandStrategyWorkshopPage() {
                     </span>
                   </summary>
                   <div className="pb-7 -mt-1 max-w-3xl">
-                    <p className="text-[1rem] leading-[1.7] text-white/70">
+                    <p className="text-[1rem] leading-[1.7] text-dawn/70">
                       {f.a}
                     </p>
                   </div>
@@ -768,7 +768,7 @@ export default async function BrandStrategyWorkshopPage() {
       {/* Hands informational intent to the four articles that own it */}
       <section
         aria-labelledby="before-you-book-heading"
-        className="bg-dawn-80 py-[120px] border-y border-dawn-60"
+        className="bg-dusk-80 py-[120px] border-y border-dusk-60"
       >
         <div className="max-w-3xl mx-auto px-6 md:px-10">
           <p className="text-[0.8rem] font-medium uppercase tracking-[0.12em] text-dragon-fire">
@@ -776,11 +776,11 @@ export default async function BrandStrategyWorkshopPage() {
           </p>
           <h2
             id="before-you-book-heading"
-            className="font-display text-h2 mt-3 text-white"
+            className="font-display text-h2 mt-3 text-dawn"
           >
             You can run a version of this yourself.
           </h2>
-          <p className="mt-8 text-[1.0625rem] leading-[1.75] text-white/70">
+          <p className="mt-8 text-[1.0625rem] leading-[1.75] text-dawn/70">
             The{" "}
             <Link
               href="/5-brand-strategy-exercises-you-can-do-for-free"

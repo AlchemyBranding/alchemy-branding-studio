@@ -60,7 +60,7 @@ export default function Capabilities() {
   return (
     <section
       aria-labelledby="capabilities-heading"
-      className="bg-dawn py-[120px]"
+      className="bg-dusk py-[120px]"
     >
       <div className="max-w-7xl mx-auto px-6 md:px-10">
         <p className="text-[0.8rem] font-medium uppercase tracking-[0.12em] text-dragon-fire">
@@ -68,12 +68,12 @@ export default function Capabilities() {
         </p>
         <h2
           id="capabilities-heading"
-          className="font-display text-h2 mt-4 max-w-3xl text-white"
+          className="font-display text-h2 mt-4 max-w-3xl text-dawn"
         >
           Then we build what{" "}
-          <span className="italic text-dusk">the roadmap calls for.</span>
+          <span className="italic text-dawn">the roadmap calls for.</span>
         </h2>
-        <p className="mt-6 max-w-2xl text-[1.0625rem] leading-[1.7] text-white/65">
+        <p className="mt-6 max-w-2xl text-[1.0625rem] leading-[1.7] text-dawn/65">
           You don&apos;t need to know what you need yet. The workshop
           tells us. And if you already do know, that works too, which is
           the next section. Most teams go on to use some combination of
@@ -85,16 +85,16 @@ export default function Capabilities() {
             <li key={c.title} className="h-full">
               <TiltCard
                 strength={5}
-                className="rounded-card bg-dawn-80 border border-dawn-60 p-7 h-full flex flex-col"
+                className="rounded-card bg-dusk-80 border border-dusk-60 p-7 h-full flex flex-col"
               >
-                <h3 className="font-bold text-[1.125rem] text-white">
+                <h3 className="font-bold text-[1.125rem] text-dawn">
                   {c.title}
                 </h3>
-                <p className="mt-3 text-[0.9375rem] leading-[1.65] text-white/65">
+                <p className="mt-3 text-[0.9375rem] leading-[1.65] text-dawn/65">
                   {c.body}
                 </p>
                 {c.note ? (
-                  <p className="mt-3 text-[0.9375rem] leading-[1.65] text-white/65">
+                  <p className="mt-3 text-[0.9375rem] leading-[1.65] text-dawn/65">
                     {c.note}
                   </p>
                 ) : null}

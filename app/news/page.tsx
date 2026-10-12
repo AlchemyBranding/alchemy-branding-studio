@@ -24,16 +24,16 @@ export default async function NewsPage() {
 
   return (
     <>
-      <section className="bg-dawn pt-[160px] md:pt-[200px] pb-[80px]">
+      <section className="bg-dusk pt-[160px] md:pt-[200px] pb-[80px]">
         <div className="max-w-7xl mx-auto px-6 md:px-10">
           <p className="text-[0.8rem] font-medium uppercase tracking-[0.12em] text-dragon-fire">
             Insights
           </p>
           <h1 className="font-display text-display mt-4 max-w-5xl leading-[1.04]">
-            <span className="text-white">Thinking,</span>{" "}
-            <span className="text-dusk italic">in writing.</span>
+            <span className="text-dawn">Thinking,</span>{" "}
+            <span className="text-dawn italic">in writing.</span>
           </h1>
-          <p className="mt-8 max-w-2xl text-[1.125rem] leading-[1.7] text-white/65">
+          <p className="mt-8 max-w-2xl text-[1.125rem] leading-[1.7] text-dawn/65">
             Notes from inside the studio: strategy, positioning, brand
             systems, motion, and the everyday craft of making businesses
             sound like themselves.
@@ -41,7 +41,7 @@ export default async function NewsPage() {
         </div>
       </section>
 
-      <section className="bg-dawn pb-[120px]">
+      <section className="bg-dusk pb-[120px]">
         <div className="max-w-7xl mx-auto px-6 md:px-10">
           <BlogGrid posts={posts} />
         </div>

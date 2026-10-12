@@ -149,7 +149,7 @@ export default async function CaseStudyPage({
       <CaseStudyStats stats={cs.stats ?? []} />
 
       {cs.body && Array.isArray(cs.body) && cs.body.length > 0 ? (
-        <section className="bg-dawn py-[80px]">
+        <section className="bg-dusk py-[80px]">
           <div className="max-w-3xl mx-auto px-6 md:px-10">
             <PortableTextContent value={cs.body} />
           </div>

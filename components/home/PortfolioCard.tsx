@@ -81,7 +81,7 @@ export default function PortfolioCard({ project, variant = "small" }: Props) {
   return (
     <Link
       href={`/project/${project.slug}`}
-      className={`group relative block overflow-hidden rounded-card bg-dawn-80 ${aspect}`}
+      className={`group relative block overflow-hidden rounded-card bg-dusk-80 ${aspect}`}
       onMouseEnter={onEnter}
       onMouseLeave={onLeave}
     >
@@ -137,23 +137,23 @@ export default function PortfolioCard({ project, variant = "small" }: Props) {
 
       <div
         aria-hidden="true"
-        className="absolute inset-0 bg-gradient-to-t from-dawn/90 via-dawn/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+        className="absolute inset-0 bg-gradient-to-t from-dusk/90 via-dusk/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"
       />
 
       <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8 translate-y-3 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300 ease-out">
         <div className="flex items-center gap-3 flex-wrap">
           {primaryTag ? (
-            <span className="inline-block rounded-full bg-dragon-fire px-3 py-1 text-[0.75rem] font-bold uppercase tracking-wider text-white">
+            <span className="inline-block rounded-full bg-dragon-fire px-3 py-1 text-[0.75rem] font-bold uppercase tracking-wider text-dawn">
               {primaryTag}
             </span>
           ) : null}
           {project.clientName ? (
-            <span className="text-[0.75rem] text-white/70">
+            <span className="text-[0.75rem] text-dawn/70">
               {project.clientName}
             </span>
           ) : null}
         </div>
-        <h3 className="mt-3 text-white font-bold text-[1.125rem] leading-tight">
+        <h3 className="mt-3 text-dawn font-bold text-[1.125rem] leading-tight">
           {project.title}
         </h3>
       </div>
@@ -163,8 +163,8 @@ export default function PortfolioCard({ project, variant = "small" }: Props) {
 
 function PlaceholderArtwork({ title }: { title: string }) {
   return (
-    <div className="absolute inset-0 flex items-end p-6 bg-gradient-to-br from-dawn-60 via-dawn-80 to-dawn">
-      <span className="text-white/40 text-[0.75rem] uppercase tracking-wider">
+    <div className="absolute inset-0 flex items-end p-6 bg-gradient-to-br from-dusk-60 via-dusk-80 to-dusk">
+      <span className="text-dawn/65 text-[0.75rem] uppercase tracking-wider">
         {title}
       </span>
     </div>

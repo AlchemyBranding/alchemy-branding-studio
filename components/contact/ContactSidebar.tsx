@@ -42,15 +42,15 @@ export default function ContactSidebar() {
         return (
           <div
             key={card.title}
-            className="rounded-card bg-dawn-80 border border-dawn-60 p-7"
+            className="rounded-card bg-dusk-80 border border-dusk-60 p-7"
           >
             <p className="text-[0.75rem] font-bold uppercase tracking-[0.12em] text-dragon-fire">
               {card.eyebrow}
             </p>
-            <h3 className="mt-3 font-bold text-[1.125rem] text-white">
+            <h3 className="mt-3 font-bold text-[1.125rem] text-dawn">
               {card.title}
             </h3>
-            <p className="mt-2 text-[0.9rem] leading-[1.6] text-white/65 break-words">
+            <p className="mt-2 text-[0.9rem] leading-[1.6] text-dawn/65 break-words">
               {card.description}
             </p>
             {isExternal ? (

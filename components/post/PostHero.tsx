@@ -28,20 +28,20 @@ export default function PostHero(props: Props) {
     : null;
 
   return (
-    <header className="bg-dawn">
+    <header className="bg-dusk">
       <div className="pt-[140px] md:pt-[180px] pb-12 md:pb-16">
         <div className="max-w-4xl mx-auto px-6 md:px-10">
           {props.category ? (
-            <span className="inline-block rounded-full bg-dragon-fire px-3 py-1 text-[0.7rem] font-bold uppercase tracking-wider text-white">
+            <span className="inline-block rounded-full bg-dragon-fire px-3 py-1 text-[0.7rem] font-bold uppercase tracking-wider text-dawn">
               {props.category}
             </span>
           ) : null}
 
-          <h1 className="font-display text-[clamp(2.25rem,5vw,4.5rem)] leading-[1.1] mt-6 text-white">
+          <h1 className="font-display text-[clamp(2.25rem,5vw,4.5rem)] leading-[1.1] mt-6 text-dawn">
             {props.title}
           </h1>
 
-          <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3 text-[0.875rem] text-white/60">
+          <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3 text-[0.875rem] text-dawn/65">
             {props.author ? (
               <span className="flex items-center gap-3">
                 {props.author.photo?.asset ? (
@@ -59,10 +59,10 @@ export default function PostHero(props: Props) {
                 ) : (
                   <span
                     aria-hidden="true"
-                    className="w-8 h-8 rounded-full bg-dawn-60"
+                    className="w-8 h-8 rounded-full bg-dusk-60"
                   />
                 )}
-                <span className="text-white">{props.author.name}</span>
+                <span className="text-dawn">{props.author.name}</span>
               </span>
             ) : null}
             <span>{formatDate(props.publishedAt)}</span>
@@ -74,7 +74,7 @@ export default function PostHero(props: Props) {
       </div>
 
       {heroUrl ? (
-        <div className="relative w-full aspect-video bg-dawn-80 overflow-hidden">
+        <div className="relative w-full aspect-video bg-dusk-80 overflow-hidden">
           <Image
             src={heroUrl}
             alt={props.featuredImage?.alt ?? props.title}

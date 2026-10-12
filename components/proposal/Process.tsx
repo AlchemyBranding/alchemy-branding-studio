@@ -29,7 +29,7 @@ export default function Process() {
   return (
     <section
       aria-labelledby="process-heading"
-      className="bg-dawn py-[120px] border-t border-dawn-80"
+      className="bg-dusk py-[120px] border-t border-dusk-80"
     >
       <div className="max-w-7xl mx-auto px-6 md:px-10">
         <p className="text-[0.8rem] font-medium uppercase tracking-[0.12em] text-dragon-fire">
@@ -37,7 +37,7 @@ export default function Process() {
         </p>
         <h2
           id="process-heading"
-          className="font-display text-h2 mt-4 max-w-3xl text-white"
+          className="font-display text-h2 mt-4 max-w-3xl text-dawn"
         >
           Four weeks, four steps.
         </h2>
@@ -46,18 +46,18 @@ export default function Process() {
           {steps.map((s) => (
             <li
               key={s.n}
-              className="rounded-card bg-dawn-80 border border-dawn-60 p-7"
+              className="rounded-card bg-dusk-80 border border-dusk-60 p-7"
             >
               <p className="text-dragon-fire font-bold text-[1.5rem] leading-none">
                 {s.n}
               </p>
-              <p className="mt-3 text-[0.7rem] font-bold uppercase tracking-[0.12em] text-white/40">
+              <p className="mt-3 text-[0.7rem] font-bold uppercase tracking-[0.12em] text-dawn/65">
                 {s.duration}
               </p>
-              <h3 className="mt-2 font-bold text-[1.125rem] text-white">
+              <h3 className="mt-2 font-bold text-[1.125rem] text-dawn">
                 {s.title}
               </h3>
-              <p className="mt-3 text-[0.9375rem] leading-[1.65] text-white/65">
+              <p className="mt-3 text-[0.9375rem] leading-[1.65] text-dawn/65">
                 {s.body}
               </p>
             </li>

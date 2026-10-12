@@ -172,6 +172,11 @@ looks.
 
 ## Design tokens are in CSS, not a Tailwind theme
 
+`[12 Oct 2026]` **Tokens renamed to the brand guidelines.** `dusk` is now
+`#191919` (with `dusk-80` to `dusk-20`), `dawn` is now `#F6F1EB`, and there is
+no pure white (`--color-white` is an alias of Dawn). Older notes in this file
+use the old names: read their `dawn` as today's `dusk` and vice versa.
+
 `app/globals.css` holds them as custom properties: `--color-dawn` `#191919`,
 `--color-dusk`, `--color-dragon-fire` `#FE6D4C`, `--color-dawn-60`,
 `--radius-card` `12px`, `--text-h2`, `--text-display`. Check there before

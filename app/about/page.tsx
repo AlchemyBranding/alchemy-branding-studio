@@ -27,16 +27,16 @@ export default async function AboutPage() {
 
   return (
     <>
-      <section className="bg-dawn pt-[160px] md:pt-[200px] pb-[80px]">
+      <section className="bg-dusk pt-[160px] md:pt-[200px] pb-[80px]">
         <div className="max-w-7xl mx-auto px-6 md:px-10">
           <p className="text-[0.8rem] font-medium uppercase tracking-[0.12em] text-dragon-fire">
             About
           </p>
           <h1 className="font-display text-display mt-4 max-w-5xl leading-[1.04]">
-            <span className="text-white">Strategy and craft,</span>{" "}
-            <span className="text-dusk italic">in equal measure.</span>
+            <span className="text-dawn">Strategy and craft,</span>{" "}
+            <span className="text-dawn italic">in equal measure.</span>
           </h1>
-          <p className="mt-8 max-w-2xl text-[1.125rem] leading-[1.7] text-white/65">
+          <p className="mt-8 max-w-2xl text-[1.125rem] leading-[1.7] text-dawn/65">
             Alchemy is a creative studio for ambitious businesses. We help
             founders, marketing leaders and operators shape brands that hold
             up across the deck, the site, the campaign, the proposal.

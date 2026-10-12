@@ -155,7 +155,7 @@ export default async function AnimationPage() {
   return (
     <>
       {/* Hero */}
-      <section className="relative overflow-hidden bg-dawn pt-[160px] md:pt-[200px] pb-[80px]">
+      <section className="relative overflow-hidden bg-dusk pt-[160px] md:pt-[200px] pb-[80px]">
         <HeroReel fill />
 
         {/* Legibility overlay: the reel runs light in places (Tate & Lyle,
@@ -163,11 +163,11 @@ export default async function AnimationPage() {
             homepage uses. */}
         <div
           aria-hidden="true"
-          className="absolute inset-0 bg-gradient-to-r from-dawn via-dawn/85 to-dawn/40"
+          className="absolute inset-0 bg-gradient-to-r from-dusk via-dusk/85 to-dusk/40"
         />
         <div
           aria-hidden="true"
-          className="absolute inset-0 bg-gradient-to-t from-dawn/80 via-transparent to-dawn/50"
+          className="absolute inset-0 bg-gradient-to-t from-dusk/80 via-transparent to-dusk/50"
         />
 
         <div className="relative max-w-7xl mx-auto px-6 md:px-10">
@@ -175,10 +175,10 @@ export default async function AnimationPage() {
             Animation
           </p>
           <h1 className="font-display text-display mt-4 max-w-5xl leading-[1.04]">
-            <span className="text-white">Animation that makes the complicated</span>{" "}
-            <span className="text-dusk italic">feel simple.</span>
+            <span className="text-dawn">Animation that makes the complicated</span>{" "}
+            <span className="text-dawn italic">feel simple.</span>
           </h1>
-          <p className="mt-8 max-w-2xl text-[1.125rem] leading-[1.7] text-white/75">
+          <p className="mt-8 max-w-2xl text-[1.125rem] leading-[1.7] text-dawn/75">
             We make explainer videos and brand animation for businesses with
             something genuinely hard to get across: a regulation, a technology,
             a process, a product. We start with the one idea the piece has to
@@ -200,7 +200,7 @@ export default async function AnimationPage() {
       {/* Development artwork */}
       <section
         aria-labelledby="development-heading"
-        className="relative overflow-hidden bg-dawn-80 py-[120px] border-y border-dawn-60"
+        className="relative overflow-hidden bg-dusk-80 py-[120px] border-y border-dusk-60"
       >
         {/* Roughs and storyboards scattered as if left out on a table. The
             overlaps and shadows are baked into one composite rather than built
@@ -215,7 +215,7 @@ export default async function AnimationPage() {
         />
         <div
           aria-hidden="true"
-          className="absolute inset-0 bg-gradient-to-b from-dawn-80/88 via-dawn-80/20 to-dawn-80/88"
+          className="absolute inset-0 bg-gradient-to-b from-dusk-80/88 via-dusk-80/20 to-dusk-80/88"
         />
 
         <div className="relative max-w-7xl mx-auto px-6 md:px-10">
@@ -224,11 +224,11 @@ export default async function AnimationPage() {
           </p>
           <h2
             id="development-heading"
-            className="font-display text-h2 mt-3 max-w-3xl text-white"
+            className="font-display text-h2 mt-3 max-w-3xl text-dawn"
           >
             The look gets settled before anything moves.
           </h2>
-          <p className="mt-6 max-w-2xl text-[1.0625rem] leading-[1.7] text-white/90">
+          <p className="mt-6 max-w-2xl text-[1.0625rem] leading-[1.7] text-dawn/90">
             Every film starts on paper. Rough panels to work out the order,
             storyboards to test whether the story holds, then{" "}
             <Link
@@ -250,7 +250,7 @@ export default async function AnimationPage() {
                   {/* object-contain, not cover: these are drawings, and the
                       sheets are not all 16:9. Cropping a thumbnail page cuts
                       panels off the edges. */}
-                  <div className="relative aspect-video overflow-hidden rounded-2xl border border-dawn-60 bg-dawn shadow-2xl">
+                  <div className="relative aspect-video overflow-hidden rounded-2xl border border-dusk-60 bg-dusk shadow-2xl">
                     <Image
                       src={art.src}
                       alt={art.alt}
@@ -259,8 +259,8 @@ export default async function AnimationPage() {
                       className="object-contain"
                     />
                   </div>
-                    <figcaption className="mt-3 text-[0.875rem] text-white/85">
-                      <span className="text-white group-hover:text-dragon-fire transition-colors duration-200">
+                    <figcaption className="mt-3 text-[0.875rem] text-dawn/85">
+                      <span className="text-dawn group-hover:text-dragon-fire transition-colors duration-200">
                         {art.client}
                       </span>
                       <span aria-hidden="true"> · </span>
@@ -277,7 +277,7 @@ export default async function AnimationPage() {
       {/* What we make */}
       <section
         aria-labelledby="what-we-make-heading"
-        className="relative overflow-hidden bg-dawn-80 py-[120px] border-y border-dawn-60"
+        className="relative overflow-hidden bg-dusk-80 py-[120px] border-y border-dusk-60"
       >
         {/* Clip runs behind the section as texture, not as content. The scrim
             is deliberately heavy: this is body copy over moving pictures, which
@@ -288,7 +288,7 @@ export default async function AnimationPage() {
           poster="/video/loop-bumblebee-poster.jpg"
           description="A clip from the Bumblebee Conservation Trust animation: an illustrated bumblebee flying over a row of houses."
         />
-        <div aria-hidden="true" className="absolute inset-0 bg-dawn-80/64" />
+        <div aria-hidden="true" className="absolute inset-0 bg-dusk-80/64" />
 
         <div className="relative max-w-7xl mx-auto px-6 md:px-10">
           <p className="text-[0.8rem] font-medium uppercase tracking-[0.12em] text-dragon-fire">
@@ -296,7 +296,7 @@ export default async function AnimationPage() {
           </p>
           <h2
             id="what-we-make-heading"
-            className="font-display text-h2 mt-3 max-w-3xl text-white"
+            className="font-display text-h2 mt-3 max-w-3xl text-dawn"
           >
             From a single explainer to a whole motion system.
           </h2>
@@ -304,12 +304,12 @@ export default async function AnimationPage() {
             {whatWeMake.map((item) => (
               <li
                 key={item.title}
-                className="rounded-card bg-dawn border border-dawn-60 p-7"
+                className="rounded-card bg-dusk border border-dusk-60 p-7"
               >
-                <h3 className="font-display text-[1.375rem] text-white">
+                <h3 className="font-display text-[1.375rem] text-dawn">
                   {item.title}
                 </h3>
-                <p className="mt-3 text-[1rem] leading-[1.65] text-white/65">
+                <p className="mt-3 text-[1rem] leading-[1.65] text-dawn/65">
                   {item.detail}
                 </p>
               </li>
@@ -321,7 +321,7 @@ export default async function AnimationPage() {
       {/* YouTube channel */}
       <section
         aria-labelledby="youtube-heading"
-        className="relative overflow-hidden bg-dawn py-[120px] border-b border-dawn-60"
+        className="relative overflow-hidden bg-dusk py-[120px] border-b border-dusk-60"
       >
         {/* A real grab of the channel, so the proof is the actual back
             catalogue rather than a stock play button. It will date as YouTube
@@ -336,7 +336,7 @@ export default async function AnimationPage() {
         />
         <div
           aria-hidden="true"
-          className="absolute inset-0 bg-gradient-to-r from-dawn/92 via-dawn/70 to-dawn/38"
+          className="absolute inset-0 bg-gradient-to-r from-dusk/92 via-dusk/70 to-dusk/38"
         />
 
         <div className="relative max-w-7xl mx-auto px-6 md:px-10">
@@ -348,11 +348,11 @@ export default async function AnimationPage() {
               </p>
               <h2
                 id="youtube-heading"
-                className="font-display text-h2 mt-4 text-white"
+                className="font-display text-h2 mt-4 text-dawn"
               >
                 Watch the work in full.
               </h2>
-              <p className="mt-6 text-[1.0625rem] leading-[1.7] text-white/70">
+              <p className="mt-6 text-[1.0625rem] leading-[1.7] text-dawn/70">
                 The clips on this page are seconds long. The films are not. The
                 channel has the finished animations end to end, with the
                 voiceover and sound design they were built for, sorted into
@@ -372,7 +372,7 @@ export default async function AnimationPage() {
       {/* How we approach it */}
       <section
         aria-labelledby="approach-heading"
-        className="relative overflow-hidden bg-dawn py-[120px]"
+        className="relative overflow-hidden bg-dusk py-[120px]"
       >
         {/* Heaviest scrim of the three: this section's list items sit directly
             on the background with no card behind them. */}
@@ -382,7 +382,7 @@ export default async function AnimationPage() {
           poster="/video/loop-selwood-poster.jpg"
           description="A clip from the Selwood customer journey animation: illustrated staff at a depot, with the Selwood wordmark."
         />
-        <div aria-hidden="true" className="absolute inset-0 bg-dawn/76" />
+        <div aria-hidden="true" className="absolute inset-0 bg-dusk/76" />
 
         <div className="relative max-w-7xl mx-auto px-6 md:px-10">
           <p className="text-[0.8rem] font-medium uppercase tracking-[0.12em] text-dragon-fire">
@@ -390,11 +390,11 @@ export default async function AnimationPage() {
           </p>
           <h2
             id="approach-heading"
-            className="font-display text-h2 mt-3 max-w-3xl text-white"
+            className="font-display text-h2 mt-3 max-w-3xl text-dawn"
           >
             Animation works when the thinking comes first.
           </h2>
-          <p className="mt-6 max-w-2xl text-[1.0625rem] leading-[1.7] text-white/65">
+          <p className="mt-6 max-w-2xl text-[1.0625rem] leading-[1.7] text-dawn/65">
             Most of our animation grows out of brand and strategy work. That is
             why it lands: the film is built on the same thinking as everything
             else you put out, so it reinforces the brand rather than sitting
@@ -404,7 +404,7 @@ export default async function AnimationPage() {
             {approach.map((item, i) => (
               <li
                 key={item.title}
-                className="border-t border-dawn-60 pt-5"
+                className="border-t border-dusk-60 pt-5"
               >
                 <span
                   aria-hidden="true"
@@ -412,10 +412,10 @@ export default async function AnimationPage() {
                 >
                   {String(i + 1).padStart(2, "0")}
                 </span>
-                <h3 className="font-display text-[1.25rem] mt-2 text-white">
+                <h3 className="font-display text-[1.25rem] mt-2 text-dawn">
                   {item.title}
                 </h3>
-                <p className="mt-2 text-[0.9375rem] leading-[1.6] text-white/60">
+                <p className="mt-2 text-[0.9375rem] leading-[1.6] text-dawn/65">
                   {item.detail}
                 </p>
               </li>
@@ -428,7 +428,7 @@ export default async function AnimationPage() {
       {ordered.length > 0 ? (
         <section
           aria-labelledby="animation-work-heading"
-          className="relative overflow-hidden bg-dawn-80 py-[120px] border-t border-dawn-60"
+          className="relative overflow-hidden bg-dusk-80 py-[120px] border-t border-dusk-60"
         >
           <LoopClip
             fill
@@ -436,7 +436,7 @@ export default async function AnimationPage() {
             poster="/video/loop-cardiff-council-poster.jpg"
             description="A clip from the Cardiff Council MiPermit animation: illustrated drivers queuing in the rain beside the parking app."
           />
-          <div aria-hidden="true" className="absolute inset-0 bg-dawn-80/64" />
+          <div aria-hidden="true" className="absolute inset-0 bg-dusk-80/64" />
 
           <div className="relative max-w-7xl mx-auto px-6 md:px-10">
             <p className="text-[0.8rem] font-medium uppercase tracking-[0.12em] text-dragon-fire">
@@ -444,7 +444,7 @@ export default async function AnimationPage() {
             </p>
             <h2
               id="animation-work-heading"
-              className="font-display text-h2 mt-3 max-w-3xl text-white"
+              className="font-display text-h2 mt-3 max-w-3xl text-dawn"
             >
               Complex stories, told in motion.
             </h2>

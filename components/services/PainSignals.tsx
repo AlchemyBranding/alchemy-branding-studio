@@ -11,7 +11,7 @@ export default function PainSignals() {
   return (
     <section
       aria-labelledby="signals-heading"
-      className="bg-dawn py-[120px] border-t border-dawn-80"
+      className="bg-dusk py-[120px] border-t border-dusk-80"
     >
       <div className="max-w-7xl mx-auto px-6 md:px-10">
         <p className="text-[0.8rem] font-medium uppercase tracking-[0.12em] text-dragon-fire">
@@ -19,11 +19,11 @@ export default function PainSignals() {
         </p>
         <h2
           id="signals-heading"
-          className="font-display text-h2 mt-4 max-w-3xl text-white"
+          className="font-display text-h2 mt-4 max-w-3xl text-dawn"
         >
           The signals are usually small, until they aren&apos;t.
         </h2>
-        <p className="mt-6 max-w-2xl text-[1.0625rem] leading-[1.7] text-white/65">
+        <p className="mt-6 max-w-2xl text-[1.0625rem] leading-[1.7] text-dawn/65">
           By the time the brand becomes the problem, it&apos;s already
           costing you in close rates, hiring and confidence. Here&apos;s
           what we hear most:
@@ -33,7 +33,7 @@ export default function PainSignals() {
           {signals.map((signal, i) => (
             <li
               key={signal}
-              className="flex gap-5 border-t border-dawn-80 pt-6"
+              className="flex gap-5 border-t border-dusk-80 pt-6"
             >
               <span
                 aria-hidden="true"
@@ -41,7 +41,7 @@ export default function PainSignals() {
               >
                 {String(i + 1).padStart(2, "0")}
               </span>
-              <p className="text-[1.0625rem] leading-[1.6] text-white/80">
+              <p className="text-[1.0625rem] leading-[1.6] text-dawn/80">
                 {signal}
               </p>
             </li>

@@ -2,18 +2,17 @@
 name: Alchemy Branding Studio
 description: Workshop-led brand studio site, dark ground with one hot accent
 colors:
-  dawn: "#191919"
-  dawn-80: "#303030"
-  dawn-60: "#474747"
-  dawn-40: "#5E5E5E"
-  dawn-20: "#757575"
+  dusk: "#191919"
+  dusk-80: "#303030"
+  dusk-60: "#474747"
+  dusk-40: "#5E5E5E"
+  dusk-20: "#757575"
   dragon-fire: "#FE6D4C"
   fire-80: "#FE7C5E"
   fire-60: "#FE8A70"
   fire-40: "#FE9982"
   fire-20: "#FFB6A6"
-  dusk: "#FAF8F7"
-  white: "#FFFFFF"
+  dawn: "#F6F1EB"
   pixie-pink: "#FE86F6"
   curious-blue: "#3052F9"
   mindaro: "#C4FE79"
@@ -69,42 +68,45 @@ spacing:
 components:
   button-primary:
     backgroundColor: "{colors.dragon-fire}"
-    textColor: "{colors.dawn}"
+    textColor: "{colors.dusk}"
     rounded: "{rounded.pill}"
     padding: "14px 28px"
     typography: "{typography.eyebrow}"
   button-primary-hover:
     backgroundColor: "{colors.fire-80}"
   button-secondary:
-    backgroundColor: "{colors.dawn}"
-    textColor: "{colors.white}"
+    backgroundColor: "{colors.dusk}"
+    textColor: "{colors.dawn}"
     rounded: "{rounded.pill}"
     padding: "14px 28px"
   button-secondary-hover:
     textColor: "{colors.dragon-fire}"
   card:
-    backgroundColor: "{colors.dawn-80}"
-    textColor: "{colors.white}"
+    backgroundColor: "{colors.dusk-80}"
+    textColor: "{colors.dawn}"
     rounded: "{rounded.card}"
     padding: "28px"
   section-dark:
-    backgroundColor: "{colors.dawn}"
-    textColor: "{colors.white}"
-  section-light:
     backgroundColor: "{colors.dusk}"
     textColor: "{colors.dawn}"
+  section-light:
+    backgroundColor: "{colors.dawn}"
+    textColor: "{colors.dusk}"
   section-raised:
-    backgroundColor: "{colors.dawn-80}"
-    textColor: "{colors.white}"
+    backgroundColor: "{colors.dusk-80}"
+    textColor: "{colors.dawn}"
 ---
+
+> **Renamed 12 Oct 2026** to match the brand guidelines (slides 19 and 46). Dusk `#191919` is the near-black ground; Dawn `#F6F1EB` is the warm off-white (was `#FAF8F7`, named dusk). No pure white: text that was white is Dawn. Body text on Dusk runs at `dawn/65` or above.
+
 
 # Design
 
 ## Overview
 
-A dark studio site carrying one hot accent. The ground is Dawn, a warm
-near-black at `#191919`, and almost everything sits on it. Dusk, an off-white at
-`#FAF8F7`, inverts whole sections rather than appearing as panels inside dark
+A dark studio site carrying one hot accent. The ground is Dusk, a warm
+near-black at `#191919`, and almost everything sits on it. Dawn, an off-white at
+`#F6F1EB`, inverts whole sections rather than appearing as panels inside dark
 ones. Dragon Fire, a coral orange at `#FE6D4C`, is the only accent in regular
 use.
 
@@ -113,26 +115,26 @@ under 10% of any surface. Dragon Fire appears on eyebrows, links, buttons,
 markers and the focus ring. It is never a background field except on the final
 call to action.
 
-Structure is section-rhythmic rather than card-driven. Pages alternate Dawn and
-Dusk in long vertical bands, most of them a two-column grid with a sticky label
+Structure is section-rhythmic rather than card-driven. Pages alternate Dusk and
+Dawn in long vertical bands, most of them a two-column grid with a sticky label
 column on the left and the argument on the right. The type does the work: a
 serif display against a sans body, at a scale ratio wide enough that hierarchy
 never depends on colour.
 
 ## Colors
 
-**Neutrals.** Dawn `#191919` is the base. The `dawn-80` through `dawn-20` ramp
+**Neutrals.** Dusk `#191919` is the base. The `dusk-80` through `dusk-20` ramp
 (`#303030`, `#474747`, `#5E5E5E`, `#757575`) supplies raised surfaces, borders
-and muted text. `dawn-80` is the standard card and raised-band fill; `dawn-60`
+and muted text. `dusk-80` is the standard card and raised-band fill; `dusk-60`
 is the standard hairline border. Neutrals are warm rather than pure grey, which
 keeps them related to the accent.
 
 **Accent.** Dragon Fire `#FE6D4C` with a lightening ramp to `fire-20`
 `#FFB6A6`. `fire-80` is the button hover. `fire-60` is the link hover on dark.
-Dragon Fire on Dawn is the signature pairing and is also the focus-ring colour.
+Dragon Fire on Dusk is the signature pairing and is also the focus-ring colour.
 
-**Inversion.** Dusk `#FAF8F7` is a full-section background, not a surface. When
-a section is Dusk, body copy flips to Dawn at around 70 to 80% opacity and the
+**Inversion.** Dawn `#F6F1EB` is a full-section background, not a surface. When
+a section is Dawn, body copy flips to Dusk at around 70 to 80% opacity and the
 accent stays Dragon Fire.
 
 **Secondary palette.** Pixie Pink, Curious Blue, Mindaro, Space Green and Ultra
@@ -140,8 +142,8 @@ Violet exist in the tokens and are currently unused on service pages. Treat them
 as a deliberate reserve for editorial or data moments. Introducing one is a
 decision to make on purpose, not a way to add variety.
 
-**Contrast.** Body text on Dawn runs at `white/65` to `white/75`. That clears
-4.5:1 and must not be lowered. Anything below `white/60` on Dawn fails AA and is
+**Contrast.** Body text on Dusk runs at `dawn/65` to `dawn/75`. That clears
+4.5:1 and must not be lowered. Anything below `dawn/65` on Dusk is out (brand guidelines, 12 Oct 2026) and is
 not allowed for text.
 
 ## Typography
@@ -169,16 +171,16 @@ Headlines run wider, to `max-w-3xl` or `max-w-5xl`.
 Elevation is expressed through background steps and hairlines, not shadows.
 There is no shadow scale.
 
-The four levels, in order: Dawn `#191919` for base sections; `dawn-80`
-`#303030` for raised bands and cards; a `dawn-60` `#474747` 1px border for
-definition; and Dusk `#FAF8F7` for full inversion.
+The four levels, in order: Dusk `#191919` for base sections; `dusk-80`
+`#303030` for raised bands and cards; a `dusk-60` `#474747` 1px border for
+definition; and Dawn `#F6F1EB` for full inversion.
 
-A raised band is `bg-dawn-80` with `border-y border-dawn-60`. A card is
-`bg-dawn-80` with `border border-dawn-60` and a 12px radius. Cards never nest.
+A raised band is `bg-dusk-80` with `border-y border-dusk-60`. A card is
+`bg-dusk-80` with `border border-dusk-60` and a 12px radius. Cards never nest.
 
 Depth in hero areas comes from a soft radial glow rather than a shadow: a
 Dragon Fire radial gradient at 0.16 to 0.18 alpha, spanning the full section so
-no element edge shows, with no blur filter. Images that sit on Dawn should carry
+no element edge shows, with no blur filter. Images that sit on Dusk should carry
 their own transparency rather than a baked background, so anything behind them
 shows through.
 
@@ -186,8 +188,8 @@ shows through.
 
 **Buttons** are full pills, uppercase Satoshi at 0.875rem, tracked 0.08em, with
 a 200ms ease-out transform on hover (`scale-[1.02]`) and active
-(`scale-[0.99]`). Primary is Dragon Fire on Dawn text. Secondary is Dawn with a
-`dawn-80` border that turns Dragon Fire on hover. Two further variants,
+(`scale-[0.99]`). Primary is Dragon Fire on Dusk text. Secondary is Dusk with a
+`dusk-80` border that turns Dragon Fire on hover. Two further variants,
 `primary-on-fire` and `secondary-on-fire`, exist for the Dragon Fire final CTA
 band.
 
@@ -219,11 +221,11 @@ skim by.
 **Do** split headlines into a roman clause and an italic close. It is the
 strongest piece of brand equity in the type.
 
-**Do** invert whole sections to Dusk for rhythm. Roughly one tonal inversion per
+**Do** invert whole sections to Dawn for rhythm. Roughly one tonal inversion per
 page, so it stays an event.
 
-**Do** express depth with background steps and hairlines. `dawn-80` fills,
-`dawn-60` borders.
+**Do** express depth with background steps and hairlines. `dusk-80` fills,
+`dusk-60` borders.
 
 **Do** give any new motion a `prefers-reduced-motion` fallback that lands on the
 visible state.
@@ -231,7 +233,7 @@ visible state.
 **Don't** use shadows for elevation. There is no shadow scale and adding one
 would break the flat, printed feel.
 
-**Don't** drop body text below `white/65` on Dawn. It fails AA.
+**Don't** drop body text below `dawn/65` on Dusk. It fails AA.
 
 **Don't** reach for card grids. Three identical icon-and-heading cards is the
 generic-SaaS failure this brand is explicitly defined against. The two-column

@@ -55,7 +55,7 @@ export default function InsightsPreview({ posts }: { posts: RecentBlogPost[] }) 
   return (
     <section
       aria-labelledby="insights-heading"
-      className="bg-dawn py-[120px]"
+      className="bg-dusk py-[120px]"
     >
       <div className="max-w-7xl mx-auto px-6 md:px-10">
         <p className="text-[0.8rem] font-medium uppercase tracking-[0.12em] text-dragon-fire">
@@ -63,10 +63,10 @@ export default function InsightsPreview({ posts }: { posts: RecentBlogPost[] }) 
         </p>
         <h2
           id="insights-heading"
-          className="font-display text-h2 mt-3 max-w-3xl text-white"
+          className="font-display text-h2 mt-3 max-w-3xl text-dawn"
         >
           Straight talk on{" "}
-          <span className="italic text-dusk">brand and growth.</span>
+          <span className="italic text-dawn">brand and growth.</span>
         </h2>
 
         <ul className="mt-14 grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -74,9 +74,9 @@ export default function InsightsPreview({ posts }: { posts: RecentBlogPost[] }) 
             <li key={post._id}>
               <Link
                 href={`/${post.slug}`}
-                className="group block rounded-card bg-dawn-80 border border-dawn-60 overflow-hidden transition-colors duration-200 hover:border-dragon-fire/60"
+                className="group block rounded-card bg-dusk-80 border border-dusk-60 overflow-hidden transition-colors duration-200 hover:border-dragon-fire/60"
               >
-                <div className="relative aspect-video overflow-hidden bg-dawn">
+                <div className="relative aspect-video overflow-hidden bg-dusk">
                   {post.featuredImage?.asset ? (
                     <Image
                       src={urlFor(post.featuredImage)
@@ -89,25 +89,25 @@ export default function InsightsPreview({ posts }: { posts: RecentBlogPost[] }) 
                       className="object-cover transition-transform duration-400 ease-out group-hover:scale-[1.04]"
                     />
                   ) : (
-                    <div className="absolute inset-0 bg-gradient-to-br from-dawn-60 via-dawn-80 to-dawn" />
+                    <div className="absolute inset-0 bg-gradient-to-br from-dusk-60 via-dusk-80 to-dusk" />
                   )}
                 </div>
 
                 <div className="p-6">
                   {post.category ? (
-                    <span className="inline-block rounded-full bg-dragon-fire px-2.5 py-0.5 text-[0.7rem] font-bold uppercase tracking-wider text-white">
+                    <span className="inline-block rounded-full bg-dragon-fire px-2.5 py-0.5 text-[0.7rem] font-bold uppercase tracking-wider text-dawn">
                       {post.category}
                     </span>
                   ) : null}
-                  <h3 className="mt-3 text-white font-bold text-[1.125rem] leading-[1.3] transition-colors duration-200 group-hover:text-dragon-fire">
+                  <h3 className="mt-3 text-dawn font-bold text-[1.125rem] leading-[1.3] transition-colors duration-200 group-hover:text-dragon-fire">
                     {post.title}
                   </h3>
                   {post.excerpt ? (
-                    <p className="mt-2 text-[0.9rem] leading-[1.6] text-white/55 line-clamp-2">
+                    <p className="mt-2 text-[0.9rem] leading-[1.6] text-dawn/65 line-clamp-2">
                       {post.excerpt}
                     </p>
                   ) : null}
-                  <p className="mt-3 text-[0.8rem] font-medium text-white/35">
+                  <p className="mt-3 text-[0.8rem] font-medium text-dawn/65">
                     {formatDate(post.publishedAt)}
                   </p>
                 </div>

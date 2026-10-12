@@ -32,7 +32,7 @@ export default function CaseStudyHero(props: Props) {
   const year = publicationYear(props.publishedAt);
 
   return (
-    <section className="bg-dawn">
+    <section className="bg-dusk">
       <div className="pt-[140px] md:pt-[180px] pb-12 md:pb-16">
         <div className="max-w-7xl mx-auto px-6 md:px-10">
           {props.serviceTags && props.serviceTags.length > 0 ? (
@@ -40,7 +40,7 @@ export default function CaseStudyHero(props: Props) {
               {props.serviceTags.map((tag) => (
                 <li
                   key={tag}
-                  className="inline-block rounded-full bg-dragon-fire px-3 py-1 text-[0.7rem] font-bold uppercase tracking-wider text-white"
+                  className="inline-block rounded-full bg-dragon-fire px-3 py-1 text-[0.7rem] font-bold uppercase tracking-wider text-dawn"
                 >
                   {tag}
                 </li>
@@ -48,11 +48,11 @@ export default function CaseStudyHero(props: Props) {
             </ul>
           ) : null}
 
-          <h1 className="font-display text-display max-w-5xl text-white leading-[1.05]">
+          <h1 className="font-display text-display max-w-5xl text-dawn leading-[1.05]">
             {props.title}
           </h1>
           {props.subtitle ? (
-            <p className="mt-6 max-w-2xl text-[1.25rem] leading-[1.5] text-dusk italic font-display">
+            <p className="mt-6 max-w-2xl text-[1.25rem] leading-[1.5] text-dawn italic font-display">
               {props.subtitle}
             </p>
           ) : null}
@@ -61,7 +61,7 @@ export default function CaseStudyHero(props: Props) {
 
       {/* Hero media */}
       {props.heroVideoUrl ? (
-        <div className="relative w-full aspect-video bg-dawn-80 overflow-hidden">
+        <div className="relative w-full aspect-video bg-dusk-80 overflow-hidden">
           <video
             autoPlay
             muted
@@ -76,7 +76,7 @@ export default function CaseStudyHero(props: Props) {
           </video>
         </div>
       ) : heroUrl ? (
-        <div className="relative w-full aspect-video bg-dawn-80 overflow-hidden">
+        <div className="relative w-full aspect-video bg-dusk-80 overflow-hidden">
           <Image
             src={heroUrl}
             alt={props.heroImage?.alt ?? props.title}
@@ -89,7 +89,7 @@ export default function CaseStudyHero(props: Props) {
       ) : null}
 
       {/* Meta strip */}
-      <div className="border-y border-dawn-80">
+      <div className="border-y border-dusk-80">
         <div className="max-w-7xl mx-auto px-6 md:px-10 py-8 grid grid-cols-2 md:grid-cols-4 gap-6">
           {props.clientName ? (
             props.clientUrl ? (
@@ -134,7 +134,7 @@ function MetaLink({
           href={href}
           target="_blank"
           rel="noopener"
-          className="text-white/80 underline decoration-white/30 underline-offset-4 transition-colors hover:text-white hover:decoration-dragon-fire"
+          className="text-dawn/80 underline decoration-dawn/30 underline-offset-4 transition-colors hover:text-dawn hover:decoration-dragon-fire"
         >
           {value}
         </a>
@@ -149,7 +149,7 @@ function Meta({ label, value }: { label: string; value: string }) {
       <p className="text-[0.7rem] font-bold uppercase tracking-[0.12em] text-dragon-fire">
         {label}
       </p>
-      <p className="mt-1.5 text-[0.9375rem] text-white/80 leading-[1.5]">
+      <p className="mt-1.5 text-[0.9375rem] text-dawn/80 leading-[1.5]">
         {value}
       </p>
     </div>

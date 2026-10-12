@@ -1,9 +1,9 @@
 export const colors = {
-  dawn: "#191919",
-  dawn80: "#303030",
-  dawn60: "#474747",
-  dawn40: "#5E5E5E",
-  dawn20: "#757575",
+  dusk: "#191919",
+  dusk80: "#303030",
+  dusk60: "#474747",
+  dusk40: "#5E5E5E",
+  dusk20: "#757575",
 
   dragonFire: "#FE6D4C",
   fire80: "#FE7C5E",
@@ -11,8 +11,9 @@ export const colors = {
   fire40: "#FE9982",
   fire20: "#FFB6A6",
 
-  dusk: "#FAF8F7",
-  white: "#FFFFFF",
+  dawn: "#F6F1EB",
+  /** No pure white: kept as an alias of Dawn. */
+  white: "#F6F1EB",
 
   pixiePink: "#FE86F6",
   curiousBlue: "#3052F9",

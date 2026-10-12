@@ -17,11 +17,11 @@ type Props = {
 };
 
 const inputBase =
-  "w-full rounded-card bg-dawn-80 border border-dawn-60 px-4 py-3 text-white placeholder:text-white/35 " +
+  "w-full rounded-card bg-dusk-80 border border-dusk-60 px-4 py-3 text-dawn placeholder:text-dawn/35 " +
   "focus:outline-none focus:border-dragon-fire transition-colors duration-200";
 
 const labelBase =
-  "text-[0.8rem] font-medium uppercase tracking-[0.08em] text-white/60 mb-2 inline-block";
+  "text-[0.8rem] font-medium uppercase tracking-[0.08em] text-dawn/65 mb-2 inline-block";
 
 function pushDataLayer(event: Record<string, unknown>) {
   if (typeof window === "undefined") return;
@@ -83,7 +83,7 @@ export default function NewsletterSignup({ location = "homepage" }: Props) {
   return (
     <section
       aria-labelledby="newsletter-heading"
-      className="bg-dusk text-dawn py-[140px]"
+      className="bg-dawn text-dusk py-[140px]"
     >
       <div className="max-w-7xl mx-auto px-6 md:px-10">
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.1fr] gap-12 lg:gap-20 items-center">
@@ -93,12 +93,12 @@ export default function NewsletterSignup({ location = "homepage" }: Props) {
             </p>
             <h2
               id="newsletter-heading"
-              className="font-display text-h2 mt-4 text-dawn"
+              className="font-display text-h2 mt-4 text-dusk"
             >
               The checklist we run{" "}
               <span className="italic">before every workshop.</span>
             </h2>
-            <p className="mt-6 text-[1.0625rem] leading-[1.75] text-dawn/80">
+            <p className="mt-6 text-[1.0625rem] leading-[1.75] text-dusk/80">
               Twenty things we check before we start any brand build. Use it to
               find the gaps in your own brand: where it is vague, where it is
               inconsistent, and where it is quietly costing you work. Add your
@@ -111,12 +111,12 @@ export default function NewsletterSignup({ location = "homepage" }: Props) {
             {status === "success" ? (
               <div
                 role="status"
-                className="rounded-card bg-dawn-80 border border-dragon-fire/60 p-8 text-center"
+                className="rounded-card bg-dusk-80 border border-dragon-fire/60 p-8 text-center"
               >
-                <h3 className="font-display text-h3 text-white">
+                <h3 className="font-display text-h3 text-dawn">
                   Check your inbox.
                 </h3>
-                <p className="mt-3 text-white/70">
+                <p className="mt-3 text-dawn/70">
                   The brand checklist is on its way. Can&apos;t wait? Grab it
                   now.
                 </p>
@@ -139,7 +139,7 @@ export default function NewsletterSignup({ location = "homepage" }: Props) {
             ) : (
               <form
                 onSubmit={onSubmit}
-                className="rounded-card bg-dawn-80 border border-dawn-60 p-7 space-y-5"
+                className="rounded-card bg-dusk-80 border border-dusk-60 p-7 space-y-5"
                 noValidate
               >
                 <div>
@@ -181,7 +181,7 @@ export default function NewsletterSignup({ location = "homepage" }: Props) {
                         errors.consent ? "newsletter-consent-error" : undefined
                       }
                     />
-                    <span className="text-[0.8125rem] leading-[1.5] text-white/60">
+                    <span className="text-[0.8125rem] leading-[1.5] text-dawn/65">
                       Email me the checklist and the occasional brand note. No
                       spam, unsubscribe anytime.
                     </span>
@@ -215,7 +215,7 @@ export default function NewsletterSignup({ location = "homepage" }: Props) {
                 {serverError ? (
                   <p
                     role="alert"
-                    className="text-[0.875rem] text-dragon-fire bg-dawn rounded-card p-3 border border-dragon-fire/40"
+                    className="text-[0.875rem] text-dragon-fire bg-dusk rounded-card p-3 border border-dragon-fire/40"
                   >
                     {serverError}
                   </p>

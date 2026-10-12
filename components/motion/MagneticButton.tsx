@@ -44,7 +44,7 @@ export default function MagneticButton({
 
   const baseClass =
     "inline-flex items-center justify-center font-bold uppercase tracking-[0.08em] " +
-    "rounded-full px-7 py-3.5 text-[0.875rem] bg-dragon-fire text-dawn " +
+    "rounded-full px-7 py-3.5 text-[0.875rem] bg-dragon-fire text-dusk " +
     "transition-transform duration-[400ms] ease-[cubic-bezier(0.16,1,0.3,1)] " +
     "hover:bg-fire-80";
 

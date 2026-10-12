@@ -28,13 +28,13 @@ const iconMap = {
  */
 export default function Holding({ background }: { background: ReactNode }) {
   return (
-    <section className="relative flex min-h-[100svh] flex-col overflow-hidden bg-dawn">
+    <section className="relative flex min-h-[100svh] flex-col overflow-hidden bg-dusk">
       {background}
 
       {/* Heavy scrim so the type leads and the background reads as texture */}
       <div
         aria-hidden="true"
-        className="absolute inset-0 bg-gradient-to-b from-dawn/80 via-dawn/82 to-dawn/92"
+        className="absolute inset-0 bg-gradient-to-b from-dusk/80 via-dusk/82 to-dusk/92"
       />
 
       <div className="relative z-10 flex flex-1 flex-col">
@@ -55,21 +55,21 @@ export default function Holding({ background }: { background: ReactNode }) {
           <div className="mx-auto w-full max-w-5xl px-6 md:px-10">
             <p className="text-eyebrow text-dragon-fire">Launching soon</p>
 
-            <h1 className="mt-5 font-display text-[clamp(3rem,7vw,7rem)] leading-[1.02] text-white">
+            <h1 className="mt-5 font-display text-[clamp(3rem,7vw,7rem)] leading-[1.02] text-dawn">
               <span className="block">The new Alchemy</span>
-              <span className="block italic text-dusk">is almost here.</span>
+              <span className="block italic text-dawn">is almost here.</span>
             </h1>
 
-            <p className="mt-6 font-display text-[clamp(1.25rem,2.4vw,1.875rem)] leading-[1.3] text-white/90">
+            <p className="mt-6 font-display text-[clamp(1.25rem,2.4vw,1.875rem)] leading-[1.3] text-dawn/90">
               Brand strategy that fuels business growth.
             </p>
 
-            <p className="mt-8 max-w-2xl text-[1.125rem] leading-[1.7] text-white/75">
+            <p className="mt-8 max-w-2xl text-[1.125rem] leading-[1.7] text-dawn/75">
               We&apos;re putting the finishing touches to a new website: brand
               strategy, design and animation for ambitious businesses, in one
               clear place. It goes live shortly.
             </p>
-            <p className="mt-4 max-w-2xl text-[1.0625rem] leading-[1.7] text-white/55">
+            <p className="mt-4 max-w-2xl text-[1.0625rem] leading-[1.7] text-dawn/65">
               In the meantime, book a call or drop us a line. We&apos;d genuinely
               like to hear what you&apos;re working on.
             </p>
@@ -83,13 +83,13 @@ export default function Holding({ background }: { background: ReactNode }) {
               </Button>
             </div>
 
-            <p className="mt-8 text-[0.9rem] text-white/50">
+            <p className="mt-8 text-[0.9rem] text-dawn/65">
               Or listen to our podcast,{" "}
               <a
                 href="https://www.brandtoscale.co.uk"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-dragon-fire underline underline-offset-4 transition-colors duration-200 hover:text-white"
+                className="text-dragon-fire underline underline-offset-4 transition-colors duration-200 hover:text-dawn"
               >
                 Brand to Scale
               </a>
@@ -100,8 +100,8 @@ export default function Holding({ background }: { background: ReactNode }) {
 
         {/* Bottom: contact + socials */}
         <footer className="px-6 pb-8 md:px-10 md:pb-10">
-          <div className="flex flex-col gap-4 border-t border-white/10 pt-6 sm:flex-row sm:items-center sm:justify-between">
-            <p className="text-[0.85rem] text-white/45">
+          <div className="flex flex-col gap-4 border-t border-dawn/10 pt-6 sm:flex-row sm:items-center sm:justify-between">
+            <p className="text-[0.85rem] text-dawn/65">
               <a
                 href={`mailto:${siteConfig.email}`}
                 className="transition-colors duration-200 hover:text-dragon-fire"
@@ -119,7 +119,7 @@ export default function Holding({ background }: { background: ReactNode }) {
                       target="_blank"
                       rel="noopener noreferrer"
                       aria-label={label}
-                      className="inline-block text-white/50 transition-colors duration-200 hover:text-dragon-fire"
+                      className="inline-block text-dawn/65 transition-colors duration-200 hover:text-dragon-fire"
                     >
                       <Icon className="h-5 w-5" />
                     </a>

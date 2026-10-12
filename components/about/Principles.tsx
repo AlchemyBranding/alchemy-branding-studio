@@ -35,7 +35,7 @@ export default function Principles() {
   return (
     <section
       aria-labelledby="principles-heading"
-      className="bg-dusk text-dawn py-[120px]"
+      className="bg-dawn text-dusk py-[120px]"
     >
       <div className="max-w-7xl mx-auto px-6 md:px-10">
         <p className="text-[0.8rem] font-medium uppercase tracking-[0.12em] text-dragon-fire">
@@ -43,21 +43,21 @@ export default function Principles() {
         </p>
         <h2
           id="principles-heading"
-          className="font-display text-h2 mt-4 max-w-3xl text-dawn"
+          className="font-display text-h2 mt-4 max-w-3xl text-dusk"
         >
           Four principles, applied to everything.
         </h2>
 
         <ul className="mt-14 grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-14">
           {principles.map((p) => (
-            <li key={p.number} className="border-t border-dawn/15 pt-6">
+            <li key={p.number} className="border-t border-dusk/15 pt-6">
               <p className="text-dragon-fire font-bold text-[1.5rem] leading-none">
                 {p.number}
               </p>
-              <h3 className="mt-4 font-bold text-[1.25rem] text-dawn">
+              <h3 className="mt-4 font-bold text-[1.25rem] text-dusk">
                 {p.title}
               </h3>
-              <p className="mt-3 text-[1rem] leading-[1.7] text-dawn/70 max-w-md">
+              <p className="mt-3 text-[1rem] leading-[1.7] text-dusk/70 max-w-md">
                 {p.description}
               </p>
             </li>

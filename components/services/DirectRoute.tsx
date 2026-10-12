@@ -43,7 +43,7 @@ export default function DirectRoute() {
   return (
     <section
       aria-labelledby="direct-route-heading"
-      className="bg-dawn-80 py-[120px] border-y border-dawn-60"
+      className="bg-dusk-80 py-[120px] border-y border-dusk-60"
     >
       <div className="max-w-3xl mx-auto px-6 md:px-10">
         <p className="text-[0.8rem] font-medium uppercase tracking-[0.12em] text-dragon-fire">
@@ -51,20 +51,20 @@ export default function DirectRoute() {
         </p>
         <h2
           id="direct-route-heading"
-          className="font-display text-h2 mt-3 text-white"
+          className="font-display text-h2 mt-3 text-dawn"
         >
           If you already know{" "}
-          <span className="italic text-dusk">what you need.</span>
+          <span className="italic text-dawn">what you need.</span>
         </h2>
 
-        <p className="mt-8 text-[1.0625rem] leading-[1.75] text-white/70">
+        <p className="mt-8 text-[1.0625rem] leading-[1.75] text-dawn/70">
           Plenty of people arrive with the decision already made. A video with a
           date on it. A rebrand the board signed off months ago. A site that has
           to be live before the launch. A report that has to look like it came
           from a serious business. We take that work on its own, and we are good
           at it.
         </p>
-        <p className="mt-6 text-[1.0625rem] leading-[1.75] text-white/70">
+        <p className="mt-6 text-[1.0625rem] leading-[1.75] text-dawn/70">
           One condition, and it is the only one. If we think the thing
           underneath is the actual problem, we will say so before you commission
           anything, not halfway through. A logo will not fix a proposition
@@ -85,7 +85,7 @@ export default function DirectRoute() {
           ))}
         </ul>
 
-        <p className="mt-10 text-[1.0625rem] leading-[1.75] text-white/70">
+        <p className="mt-10 text-[1.0625rem] leading-[1.75] text-dawn/70">
           We also build reports, run social and content, and take on the odd
           thing that does not fit a list. If you are not sure which of these you
           are after, that is what the call is for.

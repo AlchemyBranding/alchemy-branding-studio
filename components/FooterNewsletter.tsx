@@ -11,8 +11,8 @@ type FieldErrors = Partial<Record<"email" | "consent", string>>;
 type Status = "idle" | "submitting" | "success" | "error";
 
 const inputBase =
-  "w-full rounded-card bg-dawn-80 border border-dawn-60 px-4 py-3 text-[0.9rem] text-white " +
-  "placeholder:text-white/35 focus:outline-none focus:border-dragon-fire transition-colors duration-200";
+  "w-full rounded-card bg-dusk-80 border border-dusk-60 px-4 py-3 text-[0.9rem] text-dawn " +
+  "placeholder:text-dawn/35 focus:outline-none focus:border-dragon-fire transition-colors duration-200";
 
 function pushDataLayer(event: Record<string, unknown>) {
   if (typeof window === "undefined") return;
@@ -69,16 +69,16 @@ export default function FooterNewsletter() {
   }
 
   return (
-    <div className="border-b border-dawn-80 pb-12 mb-12">
+    <div className="border-b border-dusk-80 pb-12 mb-12">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-start">
         <div>
           <p className="text-[0.75rem] font-bold uppercase tracking-[0.12em] text-dragon-fire">
             The brand checklist
           </p>
-          <h2 className="font-display text-h3 mt-3 text-white">
+          <h2 className="font-display text-h3 mt-3 text-dawn">
             Find the gaps before your buyers do.
           </h2>
-          <p className="mt-3 text-[0.9rem] leading-[1.6] text-white/60 max-w-md">
+          <p className="mt-3 text-[0.9rem] leading-[1.6] text-dawn/65 max-w-md">
             Twenty things we check before any brand build. Free, straight to
             your inbox.
           </p>
@@ -86,11 +86,11 @@ export default function FooterNewsletter() {
 
         <div className="lg:pt-1">
           {status === "success" ? (
-            <div role="status" className="text-[0.95rem] text-white/80">
-              <p className="font-display text-[1.125rem] text-white">
+            <div role="status" className="text-[0.95rem] text-dawn/80">
+              <p className="font-display text-[1.125rem] text-dawn">
                 Check your inbox.
               </p>
-              <p className="mt-2 text-white/60">
+              <p className="mt-2 text-dawn/65">
                 The checklist is on its way.{" "}
                 <a
                   href={CHECKLIST_PATH}
@@ -138,7 +138,7 @@ export default function FooterNewsletter() {
                   className="mt-0.5 size-4 shrink-0 accent-dragon-fire"
                   aria-invalid={Boolean(errors.consent)}
                 />
-                <span className="text-[0.75rem] leading-[1.5] text-white/45">
+                <span className="text-[0.75rem] leading-[1.5] text-dawn/65">
                   Email me the checklist and the occasional brand note. No spam,
                   unsubscribe anytime.
                 </span>

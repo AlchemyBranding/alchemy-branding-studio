@@ -3,13 +3,13 @@ import type { StoriStageStatus } from "@/sanity/lib/queries";
 const statusStyles: Record<StoriStageStatus, string> = {
   "signed-off": "bg-mindaro/15 text-mindaro border-mindaro/30",
   "in-progress": "bg-dragon-fire/15 text-fire-40 border-dragon-fire/30",
-  "not-started": "bg-dawn text-white/35 border-dawn-60",
+  "not-started": "bg-dusk text-dawn/65 border-dusk-60",
 };
 
 const statusDot: Record<StoriStageStatus, string> = {
   "signed-off": "bg-mindaro",
   "in-progress": "bg-dragon-fire",
-  "not-started": "bg-dawn-40",
+  "not-started": "bg-dusk-40",
 };
 
 type Props = {

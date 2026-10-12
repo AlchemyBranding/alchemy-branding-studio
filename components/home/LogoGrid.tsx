@@ -176,11 +176,11 @@ const clientLogos: ClientLogo[] = [
 
 export default function LogoGrid() {
   return (
-    <section aria-labelledby="clients-heading" className="bg-dawn-80 py-[72px]">
+    <section aria-labelledby="clients-heading" className="bg-dusk-80 py-[72px]">
       <div className="max-w-7xl mx-auto px-6 md:px-10">
         <p
           id="clients-heading"
-          className="text-center text-[0.75rem] font-medium uppercase tracking-[0.12em] text-white/40"
+          className="text-center text-[0.75rem] font-medium uppercase tracking-[0.12em] text-dawn/65"
         >
           Trusted by
         </p>
@@ -191,7 +191,7 @@ export default function LogoGrid() {
               <Link
                 href={`/project/${logo.slug}`}
                 aria-label={`${logo.name}: view case study`}
-                className="group relative flex h-20 md:h-24 items-center justify-center rounded-card bg-white px-3 transition-transform duration-300 hover:-translate-y-0.5 outline-none focus-visible:ring-2 focus-visible:ring-dragon-fire focus-visible:ring-offset-2 focus-visible:ring-offset-dawn-80"
+                className="group relative flex h-20 md:h-24 items-center justify-center rounded-card bg-dawn px-3 transition-transform duration-300 hover:-translate-y-0.5 outline-none focus-visible:ring-2 focus-visible:ring-dragon-fire focus-visible:ring-offset-2 focus-visible:ring-offset-dusk-80"
               >
                 {/* Monochrome (grayscale keeps internal detail); fades out to reveal the panel. */}
                 {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -212,10 +212,10 @@ export default function LogoGrid() {
 
                 {/* Hover panel: client name + one-line outcome, dark text on the light card. */}
                 <div className="absolute inset-0 hidden sm:flex flex-col items-center justify-center gap-1 px-3 text-center opacity-0 transition-opacity duration-300 group-hover:opacity-100 group-focus-visible:opacity-100">
-                  <span className="font-display text-[0.95rem] leading-tight text-dawn">
+                  <span className="font-display text-[0.95rem] leading-tight text-dusk">
                     {logo.name}
                   </span>
-                  <span className="text-[0.72rem] leading-snug text-dawn/55 line-clamp-2">
+                  <span className="text-[0.72rem] leading-snug text-dusk/65 line-clamp-2">
                     {logo.outcome}
                   </span>
                   <span className="mt-0.5 text-[0.68rem] font-medium uppercase tracking-[0.08em] text-dragon-fire">

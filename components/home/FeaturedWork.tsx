@@ -54,7 +54,7 @@ export default function FeaturedWork({
     <section
       id="featured-work"
       aria-labelledby="featured-work-heading"
-      className="bg-dawn py-[120px]"
+      className="bg-dusk py-[120px]"
     >
       <div className="max-w-7xl mx-auto px-6 md:px-10">
         <p className="text-[0.8rem] font-medium uppercase tracking-[0.12em] text-dragon-fire">
@@ -62,7 +62,7 @@ export default function FeaturedWork({
         </p>
         <h2
           id="featured-work-heading"
-          className="font-display text-h2 mt-3 max-w-3xl text-white"
+          className="font-display text-h2 mt-3 max-w-3xl text-dawn"
         >
           Brands we&apos;ve shaped, scaled and launched.
         </h2>

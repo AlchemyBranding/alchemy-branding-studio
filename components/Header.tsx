@@ -43,8 +43,8 @@ export default function Header() {
       <header
         className={`fixed top-0 inset-x-0 z-50 h-16 md:h-[72px] transition-colors duration-200 ${
           scrolled
-            ? "bg-dawn/85 backdrop-blur-md border-b border-dawn-80/60"
-            : "bg-dawn"
+            ? "bg-dusk/85 backdrop-blur-md border-b border-dusk-80/60"
+            : "bg-dusk"
         }`}
       >
         <div className="h-full max-w-7xl mx-auto px-6 md:px-10 flex items-center justify-between">
@@ -66,7 +66,7 @@ export default function Header() {
               const className = `text-[0.9375rem] font-medium transition-colors duration-200 ${
                 isActive(href)
                   ? "text-dragon-fire"
-                  : "text-white hover:text-dragon-fire"
+                  : "text-dawn hover:text-dragon-fire"
               }`;
               return external ? (
                 <a
@@ -93,7 +93,7 @@ export default function Header() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Message us on WhatsApp"
-              className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-[#25D366] text-white transition-transform duration-200 hover:scale-105 hover:bg-[#1ebe5b] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#25D366]"
+              className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-[#25D366] text-dawn transition-transform duration-200 hover:scale-105 hover:bg-[#1ebe5b] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#25D366]"
             >
               <WhatsAppIcon className="w-5 h-5" />
             </a>
@@ -109,7 +109,7 @@ export default function Header() {
             aria-expanded={mobileOpen}
             aria-controls="mobile-menu"
             onClick={() => setMobileOpen(true)}
-            className="lg:hidden text-white hover:text-dragon-fire transition-colors duration-200 p-2 -mr-2"
+            className="lg:hidden text-dawn hover:text-dragon-fire transition-colors duration-200 p-2 -mr-2"
           >
             <MenuIcon className="w-6 h-6" />
           </button>
@@ -119,7 +119,7 @@ export default function Header() {
       {/* Mobile full-screen overlay */}
       <div
         id="mobile-menu"
-        className={`fixed inset-0 z-[60] bg-dawn lg:hidden transition-opacity duration-300 ${
+        className={`fixed inset-0 z-[60] bg-dusk lg:hidden transition-opacity duration-300 ${
           mobileOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
         }`}
         aria-hidden={!mobileOpen}
@@ -139,7 +139,7 @@ export default function Header() {
               type="button"
               aria-label="Close menu"
               onClick={() => setMobileOpen(false)}
-              className="text-white hover:text-dragon-fire transition-colors duration-200 p-2 -mr-2"
+              className="text-dawn hover:text-dragon-fire transition-colors duration-200 p-2 -mr-2"
             >
               <CloseIcon className="w-6 h-6" />
             </button>
@@ -153,7 +153,7 @@ export default function Header() {
               const className = `text-[2rem] font-bold leading-none transition-colors duration-200 ${
                 isActive(href)
                   ? "text-dragon-fire"
-                  : "text-white hover:text-dragon-fire"
+                  : "text-dawn hover:text-dragon-fire"
               }`;
               return external ? (
                 <a
@@ -184,7 +184,7 @@ export default function Header() {
               href={whatsappHref}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-3 text-white hover:text-dragon-fire transition-colors duration-200"
+              className="inline-flex items-center gap-3 text-dawn hover:text-dragon-fire transition-colors duration-200"
             >
               <WhatsAppIcon className="w-5 h-5" />
               <span className="text-[0.9375rem] font-medium">WhatsApp</span>

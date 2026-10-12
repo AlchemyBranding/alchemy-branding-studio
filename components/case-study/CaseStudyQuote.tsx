@@ -7,7 +7,7 @@ export default function CaseStudyQuote({ quote, attribution }: Props) {
   return (
     <section
       aria-label="Client quote"
-      className="bg-dusk text-dawn py-[120px]"
+      className="bg-dawn text-dusk py-[120px]"
     >
       <div className="max-w-4xl mx-auto px-6 md:px-10 text-center">
         <span
@@ -16,11 +16,11 @@ export default function CaseStudyQuote({ quote, attribution }: Props) {
         >
           &ldquo;
         </span>
-        <p className="font-display text-[1.625rem] leading-[1.5] text-dawn max-w-3xl mx-auto">
+        <p className="font-display text-[1.625rem] leading-[1.5] text-dusk max-w-3xl mx-auto">
           {quote}
         </p>
         {attribution ? (
-          <p className="mt-8 text-[0.875rem] font-bold uppercase tracking-[0.12em] text-dawn-40">
+          <p className="mt-8 text-[0.875rem] font-bold uppercase tracking-[0.12em] text-dusk-40">
             {attribution}
           </p>
         ) : null}

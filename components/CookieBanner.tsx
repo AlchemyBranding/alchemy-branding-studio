@@ -64,7 +64,7 @@ export default function CookieBanner() {
       {/* Dimming backdrop makes the choice prominent on landing. Not
           click-to-dismiss — a deliberate accept/decline is required. */}
       <div
-        className="absolute inset-0 bg-dawn/80 backdrop-blur-sm"
+        className="absolute inset-0 bg-dusk/80 backdrop-blur-sm"
         aria-hidden="true"
       />
       <div
@@ -72,17 +72,17 @@ export default function CookieBanner() {
         aria-modal="true"
         aria-labelledby="cookie-consent-title"
         aria-describedby="cookie-consent-desc"
-        className="relative w-full max-w-xl rounded-card border border-dragon-fire/70 bg-dawn-80 p-7 shadow-2xl shadow-black/50 md:p-8"
+        className="relative w-full max-w-xl rounded-card border border-dragon-fire/70 bg-dusk-80 p-7 shadow-2xl shadow-black/50 md:p-8"
       >
         <h2
           id="cookie-consent-title"
-          className="font-display text-h3 text-white"
+          className="font-display text-h3 text-dawn"
         >
           Before you explore
         </h2>
         <p
           id="cookie-consent-desc"
-          className="mt-3 text-[0.95rem] leading-[1.6] text-white/75"
+          className="mt-3 text-[0.95rem] leading-[1.6] text-dawn/75"
         >
           We use cookies to understand how people use this site and to make it
           better. Choose whether to allow them.{" "}
@@ -98,7 +98,7 @@ export default function CookieBanner() {
           <button
             type="button"
             onClick={() => persist("declined")}
-            className="px-2 py-2 text-[0.9rem] text-white/60 transition-colors duration-200 hover:text-white"
+            className="px-2 py-2 text-[0.9rem] text-dawn/65 transition-colors duration-200 hover:text-dawn"
           >
             Decline
           </button>

@@ -45,7 +45,7 @@ export default function HomepageFaq() {
       <FaqJsonLd faqs={faqs} />
       <section
         aria-labelledby="faq-heading"
-        className="bg-dawn-80 py-[140px] border-t border-dawn-60"
+        className="bg-dusk-80 py-[140px] border-t border-dusk-60"
       >
         <div className="max-w-4xl mx-auto px-6 md:px-10">
           <p className="text-[0.8rem] font-medium uppercase tracking-[0.12em] text-dragon-fire">
@@ -53,18 +53,18 @@ export default function HomepageFaq() {
           </p>
           <h2
             id="faq-heading"
-            className="font-display text-h2 mt-4 text-white"
+            className="font-display text-h2 mt-4 text-dawn"
           >
             What people ask{" "}
-            <span className="italic text-dusk">before the call.</span>
+            <span className="italic text-dawn">before the call.</span>
           </h2>
 
-          <ul className="mt-14 border-t border-dawn-60">
+          <ul className="mt-14 border-t border-dusk-60">
             {faqs.map((f) => (
-              <li key={f.q} className="border-b border-dawn-60">
+              <li key={f.q} className="border-b border-dusk-60">
                 <details className="group">
                   <summary className="flex items-start justify-between gap-6 py-6 cursor-pointer list-none [&::-webkit-details-marker]:hidden hover:text-dragon-fire transition-colors duration-200">
-                    <span className="font-display text-[1.25rem] leading-[1.35] text-white group-hover:text-dragon-fire transition-colors duration-200">
+                    <span className="font-display text-[1.25rem] leading-[1.35] text-dawn group-hover:text-dragon-fire transition-colors duration-200">
                       {f.q}
                     </span>
                     <span
@@ -75,7 +75,7 @@ export default function HomepageFaq() {
                     </span>
                   </summary>
                   <div className="pb-7 -mt-1 max-w-3xl">
-                    <p className="text-[1rem] leading-[1.7] text-white/70">
+                    <p className="text-[1rem] leading-[1.7] text-dawn/70">
                       {f.a}
                     </p>
                   </div>

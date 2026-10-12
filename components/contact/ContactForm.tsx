@@ -38,11 +38,11 @@ type FieldErrors = Partial<
 type Status = "idle" | "submitting" | "success" | "error";
 
 const inputBase =
-  "w-full rounded-card bg-dawn-80 border border-dawn-60 px-4 py-3 text-white placeholder:text-white/35 " +
+  "w-full rounded-card bg-dusk-80 border border-dusk-60 px-4 py-3 text-dawn placeholder:text-dawn/35 " +
   "focus:outline-none focus:border-dragon-fire transition-colors duration-200";
 
 const labelBase =
-  "text-[0.8rem] font-medium uppercase tracking-[0.08em] text-white/60 mb-2 inline-block";
+  "text-[0.8rem] font-medium uppercase tracking-[0.08em] text-dawn/65 mb-2 inline-block";
 
 export default function ContactForm() {
   const [status, setStatus] = useState<Status>("idle");
@@ -99,12 +99,12 @@ export default function ContactForm() {
     return (
       <div
         role="status"
-        className="rounded-card bg-dawn-80 border border-dragon-fire/60 p-8 text-center"
+        className="rounded-card bg-dusk-80 border border-dragon-fire/60 p-8 text-center"
       >
-        <h3 className="font-display text-h3 text-white">
+        <h3 className="font-display text-h3 text-dawn">
           Thanks, we&apos;ve got it.
         </h3>
-        <p className="mt-3 text-white/70">
+        <p className="mt-3 text-dawn/70">
           We&apos;ll reply within one business day. If it&apos;s urgent,
           WhatsApp us. We&apos;re faster there.
         </p>
@@ -166,7 +166,7 @@ export default function ContactForm() {
 
       <div>
         <label htmlFor="company" className={labelBase}>
-          Company <span className="text-white/35 normal-case">(optional)</span>
+          Company <span className="text-dawn/65 normal-case">(optional)</span>
         </label>
         <input
           id="company"
@@ -250,7 +250,7 @@ export default function ContactForm() {
       {serverError ? (
         <p
           role="alert"
-          className="text-[0.875rem] text-dragon-fire bg-dawn-80 rounded-card p-3 border border-dragon-fire/40"
+          className="text-[0.875rem] text-dragon-fire bg-dusk-80 rounded-card p-3 border border-dragon-fire/40"
         >
           {serverError}
         </p>
@@ -260,7 +260,7 @@ export default function ContactForm() {
         <Button variant="primary" type="submit" disabled={status === "submitting"}>
           {status === "submitting" ? "Sending…" : "Send message"}
         </Button>
-        <p className="text-[0.8rem] text-white/40">
+        <p className="text-[0.8rem] text-dawn/65">
           We&apos;ll reply within one business day.
         </p>
       </div>

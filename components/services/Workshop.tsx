@@ -30,7 +30,7 @@ export default function Workshop() {
   return (
     <section
       aria-labelledby="workshop-heading"
-      className="bg-dusk text-dawn py-[140px]"
+      className="bg-dawn text-dusk py-[140px]"
     >
       <div className="max-w-7xl mx-auto px-6 md:px-10">
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_1fr] gap-12 lg:gap-20 items-start">
@@ -40,22 +40,22 @@ export default function Workshop() {
             </p>
             <h2
               id="workshop-heading"
-              className="font-display text-h2 mt-4 text-dawn"
+              className="font-display text-h2 mt-4 text-dusk"
             >
               The Brand &amp; Growth Workshop.
             </h2>
-            <p className="mt-6 text-[1.125rem] leading-[1.7] text-dawn/70 max-w-lg">
+            <p className="mt-6 text-[1.125rem] leading-[1.7] text-dusk/70 max-w-lg">
               Where the problem isn&apos;t obvious yet, we start with a
               structured workshop with your leadership team, before the
               logo or the website or the campaign. The goal is to name
               what&apos;s actually broken, and end with a strategy you can
               use, not a deck that gathers dust.
             </p>
-            <p className="mt-6 text-[1.125rem] leading-[1.7] text-dawn/70 max-w-lg">
+            <p className="mt-6 text-[1.125rem] leading-[1.7] text-dusk/70 max-w-lg">
               One day with your team. Your brand strategy follows within two
               weeks.
             </p>
-            <p className="mt-6 text-[1.125rem] leading-[1.7] text-dawn/70 max-w-lg">
+            <p className="mt-6 text-[1.125rem] leading-[1.7] text-dusk/70 max-w-lg">
               Most teams leave the workshop with a clearer view of their
               business than they came in with.
             </p>
@@ -76,7 +76,7 @@ export default function Workshop() {
               </Button>
             </div>
 
-            <div className="mt-10 relative aspect-[16/9] w-full max-w-lg overflow-hidden rounded-card border border-dawn/15">
+            <div className="mt-10 relative aspect-[16/9] w-full max-w-lg overflow-hidden rounded-card border border-dusk/15">
               <Image
                 src="/desk-chairs.jpg"
                 alt="The Alchemy studio set up for a brand strategy workshop"
@@ -91,15 +91,15 @@ export default function Workshop() {
             {outcomes.map((o, i) => (
               <li
                 key={o.title}
-                className="rounded-card bg-white/60 border border-dawn/10 p-7"
+                className="rounded-card bg-dawn/60 border border-dusk/10 p-7"
               >
                 <p className="text-dragon-fire font-bold text-[0.9rem] tracking-wider">
                   Outcome 0{i + 1}
                 </p>
-                <h3 className="mt-2 font-bold text-[1.25rem] text-dawn">
+                <h3 className="mt-2 font-bold text-[1.25rem] text-dusk">
                   {o.title}
                 </h3>
-                <p className="mt-3 text-[1rem] leading-[1.65] text-dawn/70">
+                <p className="mt-3 text-[1rem] leading-[1.65] text-dusk/70">
                   {o.body}
                 </p>
               </li>

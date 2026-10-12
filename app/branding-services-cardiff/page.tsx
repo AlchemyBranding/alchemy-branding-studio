@@ -51,16 +51,16 @@ export default function BrandingCardiffPage() {
   return (
     <>
       {/* Hero */}
-      <section className="bg-dawn pt-[160px] md:pt-[200px] pb-[80px]">
+      <section className="bg-dusk pt-[160px] md:pt-[200px] pb-[80px]">
         <div className="max-w-7xl mx-auto px-6 md:px-10">
           <p className="text-[0.8rem] font-medium uppercase tracking-[0.12em] text-dragon-fire">
             Branding in Cardiff
           </p>
           <h1 className="font-display text-display mt-4 max-w-5xl leading-[1.04]">
-            <span className="text-white">Branding for Cardiff&apos;s</span>{" "}
-            <span className="text-dusk italic">most ambitious businesses.</span>
+            <span className="text-dawn">Branding for Cardiff&apos;s</span>{" "}
+            <span className="text-dawn italic">most ambitious businesses.</span>
           </h1>
-          <p className="mt-8 max-w-2xl text-[1.125rem] leading-[1.7] text-white/65">
+          <p className="mt-8 max-w-2xl text-[1.125rem] leading-[1.7] text-dawn/65">
             Alchemy is a brand strategy, design and animation studio working
             with businesses across Cardiff and South Wales. We start with a
             clear strategy, then build the identity, website and content that
@@ -81,7 +81,7 @@ export default function BrandingCardiffPage() {
       {/* What we do */}
       <section
         aria-labelledby="cardiff-capabilities-heading"
-        className="bg-dawn-80 py-[120px] border-y border-dawn-60"
+        className="bg-dusk-80 py-[120px] border-y border-dusk-60"
       >
         <div className="max-w-7xl mx-auto px-6 md:px-10">
           <p className="text-[0.8rem] font-medium uppercase tracking-[0.12em] text-dragon-fire">
@@ -89,7 +89,7 @@ export default function BrandingCardiffPage() {
           </p>
           <h2
             id="cardiff-capabilities-heading"
-            className="font-display text-h2 mt-3 max-w-3xl text-white"
+            className="font-display text-h2 mt-3 max-w-3xl text-dawn"
           >
             Everything your brand needs, in one studio.
           </h2>
@@ -97,10 +97,10 @@ export default function BrandingCardiffPage() {
             {capabilities.map((item) => {
               const card = (
                 <>
-                  <h3 className="font-display text-[1.375rem] text-white group-hover:text-dragon-fire transition-colors duration-200">
+                  <h3 className="font-display text-[1.375rem] text-dawn group-hover:text-dragon-fire transition-colors duration-200">
                     {item.title}
                   </h3>
-                  <p className="mt-3 text-[1rem] leading-[1.65] text-white/65">
+                  <p className="mt-3 text-[1rem] leading-[1.65] text-dawn/65">
                     {item.detail}
                   </p>
                   {item.href ? (
@@ -115,12 +115,12 @@ export default function BrandingCardiffPage() {
                   {item.href ? (
                     <Link
                       href={item.href}
-                      className="group block h-full rounded-card bg-dawn border border-dawn-60 p-7 hover:border-dragon-fire transition-colors duration-200"
+                      className="group block h-full rounded-card bg-dusk border border-dusk-60 p-7 hover:border-dragon-fire transition-colors duration-200"
                     >
                       {card}
                     </Link>
                   ) : (
-                    <div className="group h-full rounded-card bg-dawn border border-dawn-60 p-7">
+                    <div className="group h-full rounded-card bg-dusk border border-dusk-60 p-7">
                       {card}
                     </div>
                   )}
@@ -134,7 +134,7 @@ export default function BrandingCardiffPage() {
       {/* Local proof */}
       <section
         aria-labelledby="cardiff-local-heading"
-        className="bg-dawn py-[120px]"
+        className="bg-dusk py-[120px]"
       >
         <div className="max-w-7xl mx-auto px-6 md:px-10 grid grid-cols-1 lg:grid-cols-[1fr_1.1fr] gap-12 lg:gap-20 items-center">
           <div>
@@ -143,14 +143,14 @@ export default function BrandingCardiffPage() {
             </p>
             <h2
               id="cardiff-local-heading"
-              className="font-display text-h2 mt-4 text-white"
+              className="font-display text-h2 mt-4 text-dawn"
             >
               Trusted by businesses across{" "}
-              <span className="italic text-dusk">South Wales.</span>
+              <span className="italic text-dawn">South Wales.</span>
             </h2>
           </div>
           <div>
-            <p className="text-[1.0625rem] leading-[1.75] text-white/70">
+            <p className="text-[1.0625rem] leading-[1.75] text-dawn/70">
               We have built brands for a functional fitness gym in Crickhowell,
               coffee shops and wellness studios in Abergavenny, a public-sector
               campaign for Gwent Police, and ambitious businesses well beyond

@@ -12,7 +12,7 @@ export default function Included() {
   return (
     <section
       aria-labelledby="included-heading"
-      className="bg-dusk text-dawn py-[120px]"
+      className="bg-dawn text-dusk py-[120px]"
     >
       <div className="max-w-7xl mx-auto px-6 md:px-10 grid grid-cols-1 lg:grid-cols-[1fr_1.4fr] gap-12 lg:gap-20">
         <div>
@@ -21,11 +21,11 @@ export default function Included() {
           </p>
           <h2
             id="included-heading"
-            className="font-display text-h2 mt-4 text-dawn"
+            className="font-display text-h2 mt-4 text-dusk"
           >
             A complete proposal system. Not just a pretty cover.
           </h2>
-          <p className="mt-6 text-[1.0625rem] leading-[1.7] text-dawn/70 max-w-md">
+          <p className="mt-6 text-[1.0625rem] leading-[1.7] text-dusk/70 max-w-md">
             Designed so your team can spin up new proposals fast, and every
             one of them looks like it came from the same business.
           </p>
@@ -35,7 +35,7 @@ export default function Included() {
           {items.map((item, i) => (
             <li
               key={item}
-              className="flex gap-5 rounded-card bg-white/60 border border-dawn/10 p-5"
+              className="flex gap-5 rounded-card bg-dawn/60 border border-dusk/10 p-5"
             >
               <span
                 aria-hidden="true"
@@ -43,7 +43,7 @@ export default function Included() {
               >
                 {String(i + 1).padStart(2, "0")}
               </span>
-              <p className="text-[1rem] leading-[1.6] text-dawn/80">{item}</p>
+              <p className="text-[1rem] leading-[1.6] text-dusk/80">{item}</p>
             </li>
           ))}
         </ul>

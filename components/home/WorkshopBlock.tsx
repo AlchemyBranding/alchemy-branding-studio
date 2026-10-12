@@ -46,7 +46,7 @@ export default function WorkshopBlock() {
     <section
       id="workshop"
       aria-labelledby="workshop-heading"
-      className="bg-dawn py-[140px] overflow-hidden"
+      className="bg-dusk py-[140px] overflow-hidden"
     >
       <div className="max-w-7xl mx-auto px-6 md:px-10">
         <div className="grid grid-cols-1 lg:grid-cols-[1.05fr_1fr] gap-12 lg:gap-20 items-center">
@@ -58,12 +58,12 @@ export default function WorkshopBlock() {
               </p>
               <h2
                 id="workshop-heading"
-                className="font-display text-h2 mt-4 text-white"
+                className="font-display text-h2 mt-4 text-dawn"
               >
                 Growth stalls{" "}
-                <span className="italic text-dusk">without foundations.</span>
+                <span className="italic text-dawn">without foundations.</span>
               </h2>
-              <div className="mt-8 space-y-5 text-[1.0625rem] leading-[1.75] text-white/75 max-w-xl">
+              <div className="mt-8 space-y-5 text-[1.0625rem] leading-[1.75] text-dawn/75 max-w-xl">
                 <p>
                   The thinking behind most brands lives in the heads of the
                   people who run the business. How it&apos;s positioned, who
@@ -73,7 +73,7 @@ export default function WorkshopBlock() {
                 </p>
                 <p>
                   The{" "}
-                  <strong className="font-bold text-white">
+                  <strong className="font-bold text-dawn">
                     Brand &amp; Growth Workshop
                   </strong>{" "}
                   fixes that. One day with your team, then a full brand
@@ -99,10 +99,10 @@ export default function WorkshopBlock() {
                       className="mt-2 block w-5 h-px shrink-0 bg-dragon-fire"
                     />
                     <div>
-                      <p className="text-[1rem] font-bold text-white">
+                      <p className="text-[1rem] font-bold text-dawn">
                         {c.title}
                       </p>
-                      <p className="mt-1 text-[0.875rem] leading-[1.55] text-white/60">
+                      <p className="mt-1 text-[0.875rem] leading-[1.55] text-dawn/65">
                         {c.body}
                       </p>
                     </div>
@@ -195,7 +195,7 @@ function Frame({
 }) {
   return (
     <div
-      className={`${className} rounded-card overflow-hidden bg-dawn-80 border border-dawn-60`}
+      className={`${className} rounded-card overflow-hidden bg-dusk-80 border border-dusk-60`}
     >
       {src ? (
         <Image
@@ -206,8 +206,8 @@ function Frame({
           className="object-cover"
         />
       ) : (
-        <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-dawn-60 via-dawn-80 to-dawn">
-          <span className="text-[0.625rem] uppercase tracking-[0.2em] text-white/30 text-center px-4">
+        <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-dusk-60 via-dusk-80 to-dusk">
+          <span className="text-[0.625rem] uppercase tracking-[0.2em] text-dawn/65 text-center px-4">
             {alt}
           </span>
         </div>
