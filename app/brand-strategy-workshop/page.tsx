@@ -64,12 +64,11 @@ const gbp = (n: number) => `£${n.toLocaleString("en-GB")}`;
 const WORKSHOP_PRICE_DISPLAY = `${gbp(WORKSHOP_PRICE_MIN_GBP)} to ${gbp(WORKSHOP_PRICE_MAX_GBP)}`;
 
 /**
- * Where "Read all our Google reviews" points. Replace with the Business
- * Profile's own share link (Google Business Profile, Share, copy link) if the
- * search URL below does not land on the profile.
+ * Where "Read all our Google reviews" points: the Google Maps share link for
+ * the Alchemy Branding Studio Business Profile (from Dave, 12 Oct 2026).
  */
 const GOOGLE_REVIEWS_URL =
-  "https://www.google.com/maps/search/?api=1&query=Alchemy+Branding+Studio+Abergavenny";
+  "https://maps.app.goo.gl/vrUkJdjPqChccic47";
 
 /**
  * Service and Offer, following the JSON-LD pattern already used for Article,
