@@ -29,7 +29,7 @@ export async function generateMetadata(): Promise<Metadata> {
     defaults: {
       title: "Brand strategy that fuels business growth",
       description:
-        "Brand strategy, design and animation for ambitious SMEs. We make your brand clear, credible and hard to overlook, so the right clients choose you.",
+        "We work out how your business should be positioned and who it's for, then build the brand, website and content to match. For ambitious SMEs.",
     },
   });
 }
@@ -62,8 +62,11 @@ export default async function HomePage() {
       <HomepageFaq />
       {/* 5.10 Newsletter — brand checklist lead magnet */}
       <NewsletterSignup location="homepage" />
-      {/* 5.11 FinalCTA (defaults: Book a call primary, Send a brief secondary) */}
-      <FinalCTA />
+      {/* 5.11 FinalCTA (Book a Clarity Call primary, Send a brief secondary) */}
+      <FinalCTA
+        heading="Not sure where your brand stands?"
+        subtext="Book a 30-minute Clarity Call to talk through where the business is and what you want to change. We'll help you work out what you need, whether we're the right people to help, and if we're not, who would be."
+      />
     </>
   );
 }

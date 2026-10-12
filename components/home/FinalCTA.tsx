@@ -16,7 +16,7 @@ const defaults = {
   heading: "Not sure where your brand stands?",
   subtext:
     "Book 30 minutes. We will talk through where you are, what is not working, and what is worth fixing first.",
-  primary: { label: "Book a call", href: motionHref, external: true },
+  primary: { label: "Book a Clarity Call", href: motionHref, external: true },
   secondary: { label: "Send a brief", href: "/contact" },
 } as const;
 
@@ -34,11 +34,11 @@ export default function FinalCTA({
       <div className="max-w-3xl mx-auto px-6 md:px-10 text-center">
         <h2
           id="final-cta-heading"
-          className="font-display text-h2 text-dawn"
+          className="font-display text-h2 text-dusk"
         >
           {heading}
         </h2>
-        <p className="mt-6 max-w-md mx-auto text-dawn text-[1rem] leading-[1.6]">
+        <p className="mt-6 max-w-md mx-auto text-dusk text-[1rem] leading-[1.6]">
           {subtext}
         </p>
         <div className="mt-10 flex flex-wrap items-center justify-center gap-4">

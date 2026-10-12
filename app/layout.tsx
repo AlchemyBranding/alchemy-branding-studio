@@ -52,7 +52,7 @@ export default function RootLayout({
         <link rel="stylesheet" href="https://use.typekit.net/vhr5zqe.css" />
         <JsonLd />
       </head>
-      <body className="bg-dawn text-white min-h-full flex flex-col">
+      <body className="bg-dusk text-dawn min-h-full flex flex-col">
         <HideOnStudio>
           <Header />
         </HideOnStudio>

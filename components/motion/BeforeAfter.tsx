@@ -35,7 +35,7 @@ export default function BeforeAfter({
     <div
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
-      className={`relative bg-dawn-80 ${className}`}
+      className={`relative bg-dusk-80 ${className}`}
     >
       <Image
         src={afterSrc}
@@ -55,7 +55,7 @@ export default function BeforeAfter({
       />
       <span
         aria-hidden="true"
-        className={`absolute top-4 left-4 rounded-full bg-dawn/90 px-3 py-1 text-[0.7rem] font-bold uppercase tracking-[0.12em] text-white transition-opacity duration-300 ${
+        className={`absolute top-4 left-4 rounded-full bg-dusk/90 px-3 py-1 text-[0.7rem] font-bold uppercase tracking-[0.12em] text-dawn transition-opacity duration-300 ${
           hovered ? "opacity-100" : "opacity-0"
         }`}
       >
@@ -63,7 +63,7 @@ export default function BeforeAfter({
       </span>
       <span
         aria-hidden="true"
-        className={`absolute top-4 left-4 rounded-full bg-dragon-fire px-3 py-1 text-[0.7rem] font-bold uppercase tracking-[0.12em] text-dawn transition-opacity duration-300 ${
+        className={`absolute top-4 left-4 rounded-full bg-dragon-fire px-3 py-1 text-[0.7rem] font-bold uppercase tracking-[0.12em] text-dusk transition-opacity duration-300 ${
           hovered ? "opacity-0" : "opacity-100"
         }`}
       >

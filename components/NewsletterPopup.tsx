@@ -33,7 +33,7 @@ type FieldErrors = Partial<Record<"email" | "consent", string>>;
 type Status = "idle" | "submitting" | "success" | "error";
 
 const inputBase =
-  "w-full rounded-card bg-dawn border border-dawn-60 px-4 py-3 text-white placeholder:text-white/35 " +
+  "w-full rounded-card bg-dusk border border-dusk-60 px-4 py-3 text-dawn placeholder:text-dawn/35 " +
   "focus:outline-none focus:border-dragon-fire transition-colors duration-200";
 
 function pushDataLayer(event: Record<string, unknown>) {
@@ -204,7 +204,7 @@ export default function NewsletterPopup() {
 
   return (
     <div
-      className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-dawn/85 backdrop-blur-sm"
+      className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-dusk/85 backdrop-blur-sm"
       onMouseDown={(e) => {
         if (e.target === e.currentTarget) close();
       }}
@@ -214,21 +214,21 @@ export default function NewsletterPopup() {
         role="dialog"
         aria-modal="true"
         aria-labelledby="popup-heading"
-        className="relative w-full max-w-md rounded-card bg-dawn-80 border border-dawn-60 p-7 shadow-2xl"
+        className="relative w-full max-w-md rounded-card bg-dusk-80 border border-dusk-60 p-7 shadow-2xl"
       >
         <button
           type="button"
           onClick={close}
           aria-label="Close"
-          className="absolute right-4 top-4 text-white/40 hover:text-white transition-colors text-[1.5rem] leading-none"
+          className="absolute right-4 top-4 text-dawn/65 hover:text-dawn transition-colors text-[1.5rem] leading-none"
         >
           &times;
         </button>
 
         {status === "success" ? (
           <div role="status" className="text-center pt-2">
-            <h2 className="font-display text-h3 text-white">Check your inbox.</h2>
-            <p className="mt-3 text-white/70">
+            <h2 className="font-display text-h3 text-dawn">Check your inbox.</h2>
+            <p className="mt-3 text-dawn/70">
               The brand checklist is on its way. Can&apos;t wait? Grab it now.
             </p>
             <div className="mt-6 flex justify-center">
@@ -255,12 +255,12 @@ export default function NewsletterPopup() {
             </p>
             <h2
               id="popup-heading"
-              className="font-display text-h3 mt-2 text-white"
+              className="font-display text-h3 mt-2 text-dawn"
             >
               The checklist we run{" "}
               <span className="italic">before every workshop.</span>
             </h2>
-            <p className="mt-3 text-[0.95rem] leading-[1.6] text-white/65">
+            <p className="mt-3 text-[0.95rem] leading-[1.6] text-dawn/65">
               Twenty things we check before any brand build. Find the gaps in
               your own brand in five minutes. Add your email and we will send it
               over.
@@ -294,7 +294,7 @@ export default function NewsletterPopup() {
                   className="mt-1 size-4 shrink-0 accent-dragon-fire"
                   aria-invalid={Boolean(errors.consent)}
                 />
-                <span className="text-[0.8125rem] leading-[1.5] text-white/60">
+                <span className="text-[0.8125rem] leading-[1.5] text-dawn/65">
                   Email me the checklist and the occasional brand note. No spam,
                   unsubscribe anytime.
                 </span>
@@ -322,7 +322,7 @@ export default function NewsletterPopup() {
               {serverError ? (
                 <p
                   role="alert"
-                  className="text-[0.875rem] text-dragon-fire bg-dawn rounded-card p-3 border border-dragon-fire/40"
+                  className="text-[0.875rem] text-dragon-fire bg-dusk rounded-card p-3 border border-dragon-fire/40"
                 >
                   {serverError}
                 </p>

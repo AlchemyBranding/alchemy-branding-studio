@@ -9,7 +9,7 @@ export default function CaseStudyStats({ stats }: Props) {
   if (!stats || stats.length === 0) return null;
 
   return (
-    <section className="bg-dawn border-b border-dawn-80 py-[80px] md:py-[100px]">
+    <section className="bg-dusk border-b border-dusk-80 py-[80px] md:py-[100px]">
       <div className="max-w-7xl mx-auto px-6 md:px-10">
         <p className="text-[0.7rem] font-bold uppercase tracking-[0.12em] text-dragon-fire">
           The numbers
@@ -25,7 +25,7 @@ export default function CaseStudyStats({ stats }: Props) {
         >
           {stats.map((s, i) => (
             <div key={`${s.label}-${i}`}>
-              <div className="font-display text-[clamp(2.75rem,5vw,5rem)] leading-none text-white">
+              <div className="font-display text-[clamp(2.75rem,5vw,5rem)] leading-none text-dawn">
                 <Counter
                   to={s.value}
                   prefix={s.prefix ?? ""}
@@ -33,7 +33,7 @@ export default function CaseStudyStats({ stats }: Props) {
                   decimals={s.decimals ?? 0}
                 />
               </div>
-              <p className="mt-4 text-[0.9375rem] text-white/65 leading-[1.5] max-w-xs">
+              <p className="mt-4 text-[0.9375rem] text-dawn/65 leading-[1.5] max-w-xs">
                 {s.label}
               </p>
             </div>

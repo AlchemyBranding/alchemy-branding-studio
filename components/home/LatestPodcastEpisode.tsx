@@ -65,22 +65,30 @@ export default function LatestPodcastEpisode() {
   return (
     <section
       aria-labelledby="podcast-heading"
-      className="bg-dawn pb-[140px]"
+      className="bg-dusk pb-[140px]"
     >
       <div className="max-w-7xl mx-auto px-6 md:px-10">
-        <div className="rounded-card bg-dawn-80 border border-dawn-60 p-8 md:p-12 overflow-hidden">
+        <div className="rounded-card bg-dusk-80 border border-dusk-60 p-8 md:p-12 overflow-hidden">
           {/* Section header */}
           <div className="flex flex-wrap items-end justify-between gap-6">
             <div>
+              {/* Brand to Scale logo, Dawn on Dusk only (guidelines slide 27). */}
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/brand-to-scale/brand-to-scale-line-dawn.svg"
+                alt=""
+                aria-hidden="true"
+                className="h-6 w-auto mb-5"
+              />
               <p className="text-[0.8rem] font-medium uppercase tracking-[0.12em] text-dragon-fire">
                 The podcast
               </p>
               <h2
                 id="podcast-heading"
-                className="font-display text-h3 mt-3 text-white"
+                className="font-display text-h3 mt-3 text-dawn"
               >
                 Brand to Scale,{" "}
-                <span className="italic text-dusk">the podcast.</span>
+                <span className="italic text-dawn">the podcast.</span>
               </h2>
             </div>
             <Button href={SHOW_URL} variant="secondary" external>
@@ -116,7 +124,7 @@ function LiveEpisode({
           (img.transistorcdn.com) isn't in next.config remotePatterns,
           and adding it for a single dynamic image isn't worth the
           maintenance overhead. */}
-      <div className="aspect-square w-full max-w-[220px] mx-auto md:mx-0 rounded-card overflow-hidden bg-dawn border border-dawn-60">
+      <div className="aspect-square w-full max-w-[220px] mx-auto md:mx-0 rounded-card overflow-hidden bg-dusk border border-dusk-60">
         {episode.artwork ? (
           // eslint-disable-next-line @next/next/no-img-element
           <img
@@ -130,7 +138,7 @@ function LiveEpisode({
 
       {/* Metadata + description + player */}
       <div className="min-w-0">
-        <p className="text-[0.75rem] font-medium uppercase tracking-[0.12em] text-white/40">
+        <p className="text-[0.75rem] font-medium uppercase tracking-[0.12em] text-dawn/65">
           {[
             episode.episodeNumber ? `Episode ${episode.episodeNumber}` : null,
             episode.pubDateLabel,
@@ -139,10 +147,10 @@ function LiveEpisode({
             .filter(Boolean)
             .join(" · ")}
         </p>
-        <h3 className="mt-3 font-display text-[1.5rem] leading-[1.2] text-white">
+        <h3 className="mt-3 font-display text-[1.5rem] leading-[1.2] text-dawn">
           {episode.title}
         </h3>
-        <p className="mt-4 text-[0.9375rem] leading-[1.65] text-white/65 line-clamp-4">
+        <p className="mt-4 text-[0.9375rem] leading-[1.65] text-dawn/65 line-clamp-4">
           {episode.description}
         </p>
 
@@ -172,7 +180,7 @@ function LiveEpisode({
                 href={platforms.spotify}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-[0.875rem] font-medium text-white/80 hover:text-dragon-fire transition-colors duration-200"
+                className="inline-flex items-center gap-2 text-[0.875rem] font-medium text-dawn/80 hover:text-dragon-fire transition-colors duration-200"
               >
                 Follow on Spotify
                 <span aria-hidden="true">→</span>
@@ -183,7 +191,7 @@ function LiveEpisode({
                 href={platforms.apple}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-[0.875rem] font-medium text-white/80 hover:text-dragon-fire transition-colors duration-200"
+                className="inline-flex items-center gap-2 text-[0.875rem] font-medium text-dawn/80 hover:text-dragon-fire transition-colors duration-200"
               >
                 Listen on Apple Podcasts
                 <span aria-hidden="true">→</span>
@@ -205,18 +213,26 @@ function FallbackEpisode() {
     <div className="mt-10 grid grid-cols-1 md:grid-cols-[220px_1fr] gap-8 md:gap-10">
       <div
         aria-hidden="true"
-        className="aspect-square w-full max-w-[220px] mx-auto md:mx-0 rounded-card bg-gradient-to-br from-dawn-60 via-dawn to-dawn-80 border border-dawn-60"
-      />
+        className="aspect-square w-full max-w-[220px] mx-auto md:mx-0 rounded-card bg-dusk border border-dusk-60 flex items-center justify-center"
+      >
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src="/brand-to-scale/brand-to-scale-stacked-dawn.svg"
+          alt=""
+          className="w-[62%] h-auto"
+        />
+      </div>
       <div className="min-w-0">
-        <p className="text-[0.75rem] font-medium uppercase tracking-[0.12em] text-white/40">
+        <p className="text-[0.75rem] font-medium uppercase tracking-[0.12em] text-dawn/65">
           Latest episode
         </p>
-        <h3 className="mt-3 font-display text-[1.5rem] leading-[1.2] text-white">
+        <h3 className="mt-3 font-display text-[1.5rem] leading-[1.2] text-dawn">
           Conversations on building brands that scale.
         </h3>
-        <p className="mt-4 text-[0.9375rem] leading-[1.65] text-white/65 max-w-xl">
-          Founders, marketers and operators on what actually moves the
-          needle. New episodes weekly.
+        <p className="mt-4 text-[0.9375rem] leading-[1.65] text-dawn/65 max-w-xl">
+          Founders and operators on what actually helps a business grow.
+          Hosted by Jess Morgan. <strong className="font-bold text-dawn">A new
+          episode every month.</strong>
         </p>
         <div className="mt-6">
           <Button href={SHOW_URL} variant="primary" external>

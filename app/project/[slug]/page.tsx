@@ -149,7 +149,7 @@ export default async function CaseStudyPage({
       <CaseStudyStats stats={cs.stats ?? []} />
 
       {cs.body && Array.isArray(cs.body) && cs.body.length > 0 ? (
-        <section className="bg-dawn py-[80px]">
+        <section className="bg-dusk py-[80px]">
           <div className="max-w-3xl mx-auto px-6 md:px-10">
             <PortableTextContent value={cs.body} />
           </div>
@@ -167,8 +167,8 @@ export default async function CaseStudyPage({
 
       <FinalCTA
         heading="Got a project that needs this kind of work?"
-        subtext="Book a discovery call and we'll talk through it, or send us a brief."
-        primary={{ label: "Book a call", href: motionHref, external: true }}
+        subtext="Book a Clarity Call and we'll talk through it, or send us a brief."
+        primary={{ label: "Book a Clarity Call", href: motionHref, external: true }}
         secondary={{ label: "Send a brief", href: "/contact" }}
       />
     </>

@@ -94,7 +94,7 @@ export default async function WebsiteDesignPage() {
         where there is no room beside the text. The composite's own background
         is transparent, so the dragon-fire burst behind it shows through around
         the laptop and through its drop shadow. It was a JPEG with #191919
-        baked in, which was invisible against bg-dawn until the burst went in
+        baked in, which was invisible against bg-dusk until the burst went in
         behind it and turned it into a black rectangle over the glow.
 
         The laptop is a licensed Freepik mockup from ALCHEMY 2025/17 LANDING
@@ -103,7 +103,7 @@ export default async function WebsiteDesignPage() {
         plain rectangle left the mockup's own screen content showing down one
         edge. Reveal falls back to a plain render under prefers-reduced-motion.
       */}
-      <section className="relative overflow-hidden bg-dawn pt-[160px] md:pt-[200px] pb-[80px]">
+      <section className="relative overflow-hidden bg-dusk pt-[160px] md:pt-[200px] pb-[80px]">
         {/*
           Dragon-fire glow behind the laptop, the same treatment as the
           WorkshopBlock stack on the homepage, sized up to give the flat dawn
@@ -127,12 +127,12 @@ export default async function WebsiteDesignPage() {
               Websites
             </p>
             <h1 className="font-display text-display mt-4 max-w-5xl leading-[1.04]">
-              <span className="text-white">
+              <span className="text-dawn">
                 A website redesign is the brand strategy,
               </span>{" "}
-              <span className="text-dusk italic">rebuilt.</span>
+              <span className="text-dawn italic">rebuilt.</span>
             </h1>
-            <p className="mt-8 max-w-2xl text-[1.125rem] leading-[1.7] text-white/65">
+            <p className="mt-8 max-w-2xl text-[1.125rem] leading-[1.7] text-dawn/65">
               Most website redesigns start with a design and work backwards to
               an argument. That order is why they run long, why the copy gets
               written last, and why the finished site reads as an expensive
@@ -143,7 +143,7 @@ export default async function WebsiteDesignPage() {
             </p>
             <div className="mt-10 flex flex-wrap items-center gap-4">
               <Button variant="primary" href={motionHref} external>
-                Book a call
+                Book a Clarity Call
               </Button>
               <Button variant="secondary" href="/portfolio">
                 See the work
@@ -168,7 +168,7 @@ export default async function WebsiteDesignPage() {
       {/* The argument */}
       <section
         aria-labelledby="order-heading"
-        className="bg-dusk text-dawn py-[140px]"
+        className="bg-dawn text-dusk py-[140px]"
       >
         <div className="max-w-7xl mx-auto px-6 md:px-10">
           <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.3fr] gap-12 lg:gap-20 items-start">
@@ -178,14 +178,14 @@ export default async function WebsiteDesignPage() {
               </p>
               <h2
                 id="order-heading"
-                className="font-display text-h2 mt-4 text-dawn"
+                className="font-display text-h2 mt-4 text-dusk"
               >
                 Build it before the argument is settled{" "}
                 <span className="italic">and you get a brochure.</span>
               </h2>
             </div>
 
-            <div className="space-y-6 text-[1.0625rem] leading-[1.75] text-dawn/80">
+            <div className="space-y-6 text-[1.0625rem] leading-[1.75] text-dusk/80">
               <p>
                 A website is not a separate project from your brand. It is where
                 the brand does most of its work, usually well before anyone
@@ -224,7 +224,7 @@ export default async function WebsiteDesignPage() {
       {/* What we build */}
       <section
         aria-labelledby="included-heading"
-        className="bg-dawn py-[120px]"
+        className="bg-dusk py-[120px]"
       >
         <div className="max-w-7xl mx-auto px-6 md:px-10">
           <p className="text-[0.8rem] font-medium uppercase tracking-[0.12em] text-dragon-fire">
@@ -232,7 +232,7 @@ export default async function WebsiteDesignPage() {
           </p>
           <h2
             id="included-heading"
-            className="font-display text-h2 mt-3 max-w-3xl text-white"
+            className="font-display text-h2 mt-3 max-w-3xl text-dawn"
           >
             Designed, built, and handed over working.
           </h2>
@@ -240,12 +240,12 @@ export default async function WebsiteDesignPage() {
             {included.map((item) => (
               <li
                 key={item.title}
-                className="rounded-card bg-dawn-80 border border-dawn-60 p-7"
+                className="rounded-card bg-dusk-80 border border-dusk-60 p-7"
               >
-                <h3 className="font-display text-[1.375rem] text-white">
+                <h3 className="font-display text-[1.375rem] text-dawn">
                   {item.title}
                 </h3>
-                <p className="mt-3 text-[1rem] leading-[1.65] text-white/65">
+                <p className="mt-3 text-[1rem] leading-[1.65] text-dawn/65">
                   {item.detail}
                 </p>
               </li>
@@ -262,7 +262,7 @@ export default async function WebsiteDesignPage() {
       */}
       <section
         aria-labelledby="cost-heading"
-        className="bg-dawn-80 py-[120px] border-y border-dawn-60"
+        className="bg-dusk-80 py-[120px] border-y border-dusk-60"
       >
         <div className="max-w-7xl mx-auto px-6 md:px-10">
           <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.3fr] gap-12 lg:gap-20 items-start">
@@ -272,14 +272,14 @@ export default async function WebsiteDesignPage() {
               </p>
               <h2
                 id="cost-heading"
-                className="font-display text-h2 mt-4 text-white"
+                className="font-display text-h2 mt-4 text-dawn"
               >
                 What a website redesign costs.
               </h2>
             </div>
 
-            <div className="space-y-6 text-[1.0625rem] leading-[1.75] text-white/70">
-              <p className="font-display text-[1.75rem] leading-[1.3] text-white">
+            <div className="space-y-6 text-[1.0625rem] leading-[1.75] text-dawn/70">
+              <p className="font-display text-[1.75rem] leading-[1.3] text-dawn">
                 From {FROM_PRICE_DISPLAY} plus VAT.
               </p>
               <p>
@@ -317,7 +317,7 @@ export default async function WebsiteDesignPage() {
       {projects.length > 0 ? (
         <section
           aria-labelledby="website-work-heading"
-          className="bg-dusk text-dawn py-[140px]"
+          className="bg-dawn text-dusk py-[140px]"
         >
           <div className="max-w-7xl mx-auto px-6 md:px-10">
             <p className="text-[0.8rem] font-medium uppercase tracking-[0.12em] text-dragon-fire">
@@ -325,7 +325,7 @@ export default async function WebsiteDesignPage() {
             </p>
             <h2
               id="website-work-heading"
-              className="font-display text-h2 mt-3 max-w-3xl text-dawn"
+              className="font-display text-h2 mt-3 max-w-3xl text-dusk"
             >
               Sites built on a settled argument.
             </h2>
@@ -344,9 +344,9 @@ export default async function WebsiteDesignPage() {
       <NewsletterSignup location="website-design" />
 
       <FinalCTA
-        heading="Book a call."
+        heading="Book a Clarity Call."
         subtext="Tell us what the site has to do. We will tell you honestly whether it is a website problem or a positioning one, and what we would fix first."
-        primary={{ label: "Book a call", href: motionHref, external: true }}
+        primary={{ label: "Book a Clarity Call", href: motionHref, external: true }}
         secondary={{ label: "Send a brief", href: "/contact" }}
       />
     </>

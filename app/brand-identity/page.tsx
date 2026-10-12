@@ -155,7 +155,7 @@ export default async function BrandIdentityPage() {
         converge on one hero shape. Below lg it drops into the flow as a
         landscape crop, where there is no room beside the text.
       */}
-      <section className="relative overflow-hidden bg-dawn pt-[160px] md:pt-[200px] pb-[80px]">
+      <section className="relative overflow-hidden bg-dusk pt-[160px] md:pt-[200px] pb-[80px]">
         <div
           aria-hidden="true"
           className="pointer-events-none absolute inset-0 z-0 bg-[radial-gradient(75%_50%_at_78%_24%,rgba(255,110,73,0.14),transparent_70%)] lg:bg-[radial-gradient(46%_78%_at_76%_50%,rgba(255,110,73,0.17),transparent_70%)]"
@@ -167,14 +167,14 @@ export default async function BrandIdentityPage() {
             {/* Not text-display: at a 56% column the 7rem ceiling wrapped to
                 five lines and pushed the buttons under the fold. */}
             <h1 className="font-display mt-4 text-[clamp(2.5rem,4.4vw,4.5rem)] leading-[1.06] tracking-[-0.01em]">
-              <span className="text-white">
+              <span className="text-dawn">
                 A brand identity that holds together
               </span>{" "}
-              <span className="text-dusk italic">
+              <span className="text-dawn italic">
                 once other people start using it.
               </span>
             </h1>
-            <p className="mt-8 max-w-2xl text-[1.125rem] leading-[1.75] text-white/70">
+            <p className="mt-8 max-w-2xl text-[1.125rem] leading-[1.75] text-dawn/70">
               We design brand identities for businesses that have outgrown the
               one they have. The logo is the part everyone talks about and the
               smallest part of the job. What decides whether an identity
@@ -185,7 +185,7 @@ export default async function BrandIdentityPage() {
             </p>
             <div className="mt-10 flex flex-wrap items-center gap-4">
               <Button variant="primary" href={motionHref} external>
-                Book a call
+                Book a Clarity Call
               </Button>
               <Button variant="secondary" href="/portfolio">
                 See the work
@@ -220,7 +220,7 @@ export default async function BrandIdentityPage() {
       */}
       <section
         aria-labelledby="what-we-make-heading"
-        className="bg-dusk text-dawn py-[140px]"
+        className="bg-dawn text-dusk py-[140px]"
       >
         <div className="max-w-7xl mx-auto px-6 md:px-10">
           <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.3fr] gap-12 lg:gap-20 items-start">
@@ -228,7 +228,7 @@ export default async function BrandIdentityPage() {
               <p className="text-eyebrow text-dragon-fire">What we make</p>
               <h2
                 id="what-we-make-heading"
-                className="font-display text-h2 mt-4 text-dawn"
+                className="font-display text-h2 mt-4 text-dusk"
               >
                 A mark, and everything that{" "}
                 <span className="italic">keeps it honest.</span>
@@ -239,7 +239,7 @@ export default async function BrandIdentityPage() {
               {whatWeMake.map((item, i) => (
                 <li
                   key={item.title}
-                  className="grid grid-cols-[2.5rem_1fr] gap-x-4 border-t border-dawn/15 py-7 first:border-t-0 first:pt-0 md:grid-cols-[3.5rem_1fr] md:gap-x-6"
+                  className="grid grid-cols-[2.5rem_1fr] gap-x-4 border-t border-dusk/15 py-7 first:border-t-0 first:pt-0 md:grid-cols-[3.5rem_1fr] md:gap-x-6"
                 >
                   <span
                     aria-hidden="true"
@@ -248,10 +248,10 @@ export default async function BrandIdentityPage() {
                     {String(i + 1).padStart(2, "0")}
                   </span>
                   <div>
-                    <h3 className="font-display text-[1.375rem] leading-[1.25] text-dawn md:text-[1.625rem]">
+                    <h3 className="font-display text-[1.375rem] leading-[1.25] text-dusk md:text-[1.625rem]">
                       {item.title}
                     </h3>
-                    <p className="mt-3 max-w-[62ch] text-[1.0625rem] leading-[1.7] text-dawn/70">
+                    <p className="mt-3 max-w-[62ch] text-[1.0625rem] leading-[1.7] text-dusk/70">
                       {item.detail}
                     </p>
                   </div>
@@ -275,7 +275,7 @@ export default async function BrandIdentityPage() {
                   />
                 ))}
               </StaggeredList>
-              <figcaption className="mt-4 text-[0.9375rem] leading-[1.6] text-dawn/55">
+              <figcaption className="mt-4 text-[0.9375rem] leading-[1.6] text-dusk/65">
                 Two identities, four surfaces:{" "}
                 <Link
                   href="/project/handled-with-care-repositioning-christie-residential"
@@ -298,14 +298,14 @@ export default async function BrandIdentityPage() {
       </section>
 
       {/* How we approach it */}
-      <section aria-labelledby="approach-heading" className="bg-dawn py-[120px]">
+      <section aria-labelledby="approach-heading" className="bg-dusk py-[120px]">
         <div className="max-w-7xl mx-auto px-6 md:px-10">
           <p className="text-[0.8rem] font-medium uppercase tracking-[0.12em] text-dragon-fire">
             How we approach it
           </p>
           <h2
             id="approach-heading"
-            className="font-display text-h2 mt-3 max-w-3xl text-white"
+            className="font-display text-h2 mt-3 max-w-3xl text-dawn"
           >
             The design is the last decision, not the first.
           </h2>
@@ -321,19 +321,19 @@ export default async function BrandIdentityPage() {
                   width={900}
                   height={675}
                   sizes="(min-width: 768px) 33vw, 100vw"
-                  className="aspect-[4/3] w-full rounded-card border border-dawn-60 object-cover"
+                  className="aspect-[4/3] w-full rounded-card border border-dusk-60 object-cover"
                 />
-                <div className="mt-5 border-t border-dawn-60 pt-5">
+                <div className="mt-5 border-t border-dusk-60 pt-5">
                   <span
                     aria-hidden="true"
                     className="font-display text-[1.125rem] leading-none text-dragon-fire"
                   >
                     {String(i + 1).padStart(2, "0")}
                   </span>
-                  <h3 className="font-display text-[1.3125rem] mt-2 text-white">
+                  <h3 className="font-display text-[1.3125rem] mt-2 text-dawn">
                     {item.title}
                   </h3>
-                  <p className="mt-2 text-[0.9375rem] leading-[1.65] text-white/65">
+                  <p className="mt-2 text-[0.9375rem] leading-[1.65] text-dawn/65">
                     {item.detail}
                   </p>
                 </div>
@@ -346,7 +346,7 @@ export default async function BrandIdentityPage() {
       {/* What changes in the business */}
       <section
         aria-labelledby="outcome-heading"
-        className="bg-dusk text-dawn py-[140px]"
+        className="bg-dawn text-dusk py-[140px]"
       >
         <div className="max-w-7xl mx-auto px-6 md:px-10">
           <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.3fr] gap-12 lg:gap-20 items-start">
@@ -356,7 +356,7 @@ export default async function BrandIdentityPage() {
               </p>
               <h2
                 id="outcome-heading"
-                className="font-display text-h2 mt-4 text-dawn"
+                className="font-display text-h2 mt-4 text-dusk"
               >
                 You stop paying for it <span className="italic">twice.</span>
               </h2>
@@ -369,7 +369,7 @@ export default async function BrandIdentityPage() {
                 className="mt-8 aspect-[4/3] w-full rounded-card object-cover"
               />
             </div>
-            <div className="space-y-6 text-[1.0625rem] leading-[1.75] text-dawn/80">
+            <div className="space-y-6 text-[1.0625rem] leading-[1.75] text-dusk/80">
               <p>
                 Your team stops asking which version of the logo to use, and
                 stops inventing a new layout for every deck.
@@ -393,7 +393,7 @@ export default async function BrandIdentityPage() {
       {ordered.length > 0 ? (
         <section
           aria-labelledby="identity-work-heading"
-          className="bg-dawn py-[120px]"
+          className="bg-dusk py-[120px]"
         >
           <div className="max-w-7xl mx-auto px-6 md:px-10">
             <p className="text-[0.8rem] font-medium uppercase tracking-[0.12em] text-dragon-fire">
@@ -401,7 +401,7 @@ export default async function BrandIdentityPage() {
             </p>
             <h2
               id="identity-work-heading"
-              className="font-display text-h2 mt-3 max-w-3xl text-white"
+              className="font-display text-h2 mt-3 max-w-3xl text-dawn"
             >
               Identities built to be used, not admired.
             </h2>
@@ -420,7 +420,7 @@ export default async function BrandIdentityPage() {
       {/* Hands informational intent to the articles that own it */}
       <section
         aria-labelledby="before-heading"
-        className="bg-dawn-80 py-[120px] border-y border-dawn-60"
+        className="bg-dusk-80 py-[120px] border-y border-dusk-60"
       >
         <div className="max-w-3xl mx-auto px-6 md:px-10">
           <p className="text-[0.8rem] font-medium uppercase tracking-[0.12em] text-dragon-fire">
@@ -428,11 +428,11 @@ export default async function BrandIdentityPage() {
           </p>
           <h2
             id="before-heading"
-            className="font-display text-h2 mt-3 text-white"
+            className="font-display text-h2 mt-3 text-dawn"
           >
             Some of this you can judge yourself.
           </h2>
-          <p className="mt-8 text-[1.0625rem] leading-[1.75] text-white/70">
+          <p className="mt-8 text-[1.0625rem] leading-[1.75] text-dawn/70">
             The{" "}
             <Link
               href="/master-brand-identity-vs-image-actionable-tips"
@@ -470,9 +470,9 @@ export default async function BrandIdentityPage() {
       <NewsletterSignup location="brand-identity" />
 
       <FinalCTA
-        heading="Book a call."
+        heading="Book a Clarity Call."
         subtext="Tell us what is not working. We will tell you honestly whether it is an identity problem or a positioning one, and which to fix first."
-        primary={{ label: "Book a call", href: motionHref, external: true }}
+        primary={{ label: "Book a Clarity Call", href: motionHref, external: true }}
         secondary={{ label: "Send a brief", href: "/contact" }}
       />
     </>

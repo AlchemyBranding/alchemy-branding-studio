@@ -30,7 +30,7 @@ type PortalLink = {
 
 const links: PortalLink[] = [
   {
-    label: "The Brand Strategy Workshop",
+    label: "The Brand & Growth Workshop",
     note: "Where every brand build starts",
     href: "/brand-strategy-workshop",
   },
@@ -47,7 +47,7 @@ const links: PortalLink[] = [
     href: "https://www.brandtoscale.co.uk",
     external: true,
   },
-  { label: "Book a call", href: motionHref, external: true },
+  { label: "Book a Clarity Call", href: motionHref, external: true },
   { label: "Message us on WhatsApp", href: whatsappHref, external: true },
 ];
 
@@ -64,8 +64,8 @@ function PortalLinkRow({ link, primary }: { link: PortalLink; primary?: boolean 
   const base =
     "group flex items-center justify-between gap-4 rounded-card px-6 py-4 transition-colors duration-200";
   const cls = primary
-    ? `${base} bg-dragon-fire text-dawn hover:bg-fire-80`
-    : `${base} bg-dawn-80 border border-dawn-60 text-white hover:border-dragon-fire`;
+    ? `${base} bg-dragon-fire text-dusk hover:bg-fire-80`
+    : `${base} bg-dusk-80 border border-dusk-60 text-dawn hover:border-dragon-fire`;
 
   const inner = (
     <>
@@ -74,7 +74,7 @@ function PortalLinkRow({ link, primary }: { link: PortalLink; primary?: boolean 
         {link.note ? (
           <span
             className={`mt-0.5 text-[0.8rem] leading-snug ${
-              primary ? "text-dawn/70" : "text-white/45"
+              primary ? "text-dusk/70" : "text-dawn/65"
             }`}
           >
             {link.note}
@@ -84,7 +84,7 @@ function PortalLinkRow({ link, primary }: { link: PortalLink; primary?: boolean 
       <span
         aria-hidden="true"
         className={`shrink-0 text-[1.1rem] transition-transform duration-200 group-hover:translate-x-0.5 ${
-          primary ? "text-dawn" : "text-dragon-fire"
+          primary ? "text-dusk" : "text-dragon-fire"
         }`}
       >
         &rarr;
@@ -115,7 +115,7 @@ function PortalLinkRow({ link, primary }: { link: PortalLink; primary?: boolean 
 
 export default function PortalPage() {
   return (
-    <section className="bg-dawn px-6 py-[100px]">
+    <section className="bg-dusk px-6 py-[100px]">
       <div className="max-w-md mx-auto flex flex-col items-center text-center">
         <Image
           src="/alchemy-logo-white.svg"
@@ -125,7 +125,7 @@ export default function PortalPage() {
           priority
           className="h-10 w-auto"
         />
-        <p className="mt-5 text-[0.95rem] leading-relaxed text-white/60 max-w-xs">
+        <p className="mt-5 text-[0.95rem] leading-relaxed text-dawn/65 max-w-xs">
           {siteConfig.description}
         </p>
 
@@ -146,7 +146,7 @@ export default function PortalPage() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={`${person.name} on LinkedIn`}
-                className="group flex items-center justify-center gap-2 rounded-card bg-dawn-80 border border-dawn-60 px-4 py-4 text-white hover:border-dragon-fire transition-colors duration-200"
+                className="group flex items-center justify-center gap-2 rounded-card bg-dusk-80 border border-dusk-60 px-4 py-4 text-dawn hover:border-dragon-fire transition-colors duration-200"
               >
                 <LinkedInIcon className="w-4 h-4 text-dragon-fire shrink-0" />
                 <span className="font-bold text-[0.9rem]">{person.name}</span>
@@ -165,7 +165,7 @@ export default function PortalPage() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={label}
-                  className="text-white/55 hover:text-dragon-fire transition-colors duration-200 inline-block"
+                  className="text-dawn/65 hover:text-dragon-fire transition-colors duration-200 inline-block"
                 >
                   <Icon className="w-5 h-5" />
                 </a>
@@ -176,7 +176,7 @@ export default function PortalPage() {
 
         <a
           href={`mailto:${siteConfig.email}`}
-          className="mt-6 text-[0.85rem] text-white/50 hover:text-dragon-fire transition-colors duration-200"
+          className="mt-6 text-[0.85rem] text-dawn/65 hover:text-dragon-fire transition-colors duration-200"
         >
           {siteConfig.email}
         </a>

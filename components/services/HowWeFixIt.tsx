@@ -22,7 +22,7 @@ export default function HowWeFixIt() {
   return (
     <section
       aria-labelledby="how-we-fix-heading"
-      className="bg-dawn-80 py-[140px] border-t border-dawn-60"
+      className="bg-dusk-80 py-[140px] border-t border-dusk-60"
     >
       <div className="max-w-7xl mx-auto px-6 md:px-10">
         <p className="text-[0.8rem] font-medium uppercase tracking-[0.12em] text-dragon-fire">
@@ -30,12 +30,12 @@ export default function HowWeFixIt() {
         </p>
         <h2
           id="how-we-fix-heading"
-          className="font-display text-h2 mt-4 max-w-3xl text-white"
+          className="font-display text-h2 mt-4 max-w-3xl text-dawn"
         >
           Here&apos;s how{" "}
-          <span className="italic text-dusk">we fix it.</span>
+          <span className="italic text-dawn">we fix it.</span>
         </h2>
-        <p className="mt-6 max-w-2xl text-[1.0625rem] leading-[1.7] text-white/65">
+        <p className="mt-6 max-w-2xl text-[1.0625rem] leading-[1.7] text-dawn/65">
           When the brief is open, we don&apos;t start with a logo, a
           content calendar or a list of things to post. We start by
           working out what you actually stand for, then build everything
@@ -46,22 +46,22 @@ export default function HowWeFixIt() {
           {steps.map((s, i) => (
             <li
               key={s.title}
-              className="rounded-card bg-dawn border border-dawn-60 p-7"
+              className="rounded-card bg-dusk border border-dusk-60 p-7"
             >
               <p className="text-dragon-fire font-bold text-[0.9rem] tracking-wider">
                 {String(i + 1).padStart(2, "0")}
               </p>
-              <h3 className="mt-3 font-bold text-[1.25rem] text-white">
+              <h3 className="mt-3 font-bold text-[1.25rem] text-dawn">
                 {s.title}
               </h3>
-              <p className="mt-3 text-[0.9375rem] leading-[1.65] text-white/65">
+              <p className="mt-3 text-[0.9375rem] leading-[1.65] text-dawn/65">
                 {s.body}
               </p>
             </li>
           ))}
         </ol>
 
-        <p className="mt-14 max-w-3xl text-[1.0625rem] leading-[1.75] text-white/75">
+        <p className="mt-14 max-w-3xl text-[1.0625rem] leading-[1.75] text-dawn/75">
           All of it led by Dave and Jess, with specialists pulled in
           from our network only when a project genuinely needs them.
           No layers, no hand-offs to people you&apos;ve never met, just

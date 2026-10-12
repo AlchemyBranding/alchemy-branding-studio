@@ -16,7 +16,7 @@ export default function Image() {
           width: "100%",
           height: "100%",
           background: "#191919",
-          color: "#FFFFFF",
+          color: "#F6F1EB",
           padding: "80px",
           display: "flex",
           flexDirection: "column",
@@ -55,14 +55,14 @@ export default function Image() {
             justifyContent: "space-between",
             alignItems: "flex-end",
             fontSize: 22,
-            color: "rgba(255,255,255,0.6)",
+            color: "rgba(246,241,235,0.6)",
           }}
         >
           <span>alchemybranding.studio</span>
           <span
             style={{
               padding: "10px 20px",
-              border: "1px solid rgba(255,255,255,0.2)",
+              border: "1px solid rgba(246,241,235,0.2)",
               borderRadius: 999,
               fontSize: 18,
               letterSpacing: 2,
@@ -70,7 +70,7 @@ export default function Image() {
               fontWeight: 700,
             }}
           >
-            Book a call
+            Book a Clarity Call
           </span>
         </div>
       </div>

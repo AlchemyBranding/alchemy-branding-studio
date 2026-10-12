@@ -4,7 +4,7 @@ export default function StoryBlock() {
   return (
     <section
       aria-labelledby="story-heading"
-      className="bg-dawn py-[120px] border-t border-dawn-80"
+      className="bg-dusk py-[120px] border-t border-dusk-80"
     >
       <div className="max-w-7xl mx-auto px-6 md:px-10">
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_2fr] gap-12 lg:gap-20">
@@ -14,12 +14,12 @@ export default function StoryBlock() {
           </p>
           <h2
             id="story-heading"
-            className="font-display text-h2 mt-4 text-white"
+            className="font-display text-h2 mt-4 text-dawn"
           >
             We work with businesses whose brand hasn&apos;t caught up to the company they&apos;ve become.
           </h2>
         </div>
-        <div className="text-[1.0625rem] leading-[1.7] text-white/75 space-y-5 max-w-2xl">
+        <div className="text-[1.0625rem] leading-[1.7] text-dawn/75 space-y-5 max-w-2xl">
           <p>
             Most of the businesses we work with are in the same spot. The
             company has grown up. The brand hasn&apos;t. Marketing feels
@@ -35,13 +35,13 @@ export default function StoryBlock() {
             without putting a job ad out.
           </p>
           <p>
-            That&apos;s the gap we fill. Senior brand and marketing
-            thinking, the work to back it up, and a steady hand on the
-            day-to-day so the business stops losing momentum between the
-            big projects.
+            Some have a small marketing team. Some have nobody. Either way,
+            what they need is the strategy worked out and written down, and a
+            plan to put it to work: with their own team and Jess guiding them,
+            or with Alchemy delivering it.
           </p>
 
-          <div className="relative aspect-[16/9] w-full overflow-hidden rounded-card border border-dawn-80">
+          <div className="relative aspect-[16/9] w-full overflow-hidden rounded-card border border-dusk-80">
             <Image
               src="/dave-jess-talk.jpg"
               alt="Jess and Dave in conversation during a brand talk"

@@ -45,7 +45,7 @@ export default function HeroReel({ fill = false }: { fill?: boolean }) {
       className={
         fill
           ? "absolute inset-0"
-          : "relative aspect-video overflow-hidden rounded-2xl border border-dawn-60 bg-dawn-80 shadow-2xl"
+          : "relative aspect-video overflow-hidden rounded-2xl border border-dusk-60 bg-dusk-80 shadow-2xl"
       }
     >
       <video

@@ -47,11 +47,11 @@ export default function TopicCard({ topic }: Props) {
   return (
     <div
       className={`rounded-card border p-6 ${
-        isComplete ? "border-mindaro/40 bg-mindaro/10" : "border-dawn-60 bg-dawn-80"
+        isComplete ? "border-mindaro/40 bg-mindaro/10" : "border-dusk-60 bg-dusk-80"
       }`}
     >
       <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
-        <h3 className="font-display text-[1.15rem] text-white">{topic.title}</h3>
+        <h3 className="font-display text-[1.15rem] text-dawn">{topic.title}</h3>
         {isComplete ? (
           <span className="inline-flex items-center gap-1.5 rounded-full border border-mindaro/30 bg-mindaro/15 px-2.5 py-1 text-[0.7rem] font-medium text-mindaro">
             <svg
@@ -69,14 +69,14 @@ export default function TopicCard({ topic }: Props) {
             Complete, EN and CY
           </span>
         ) : topic.lead ? (
-          <span className="text-[0.75rem] uppercase tracking-[0.08em] text-white/40">
+          <span className="text-[0.75rem] uppercase tracking-[0.08em] text-dawn/65">
             Lead: {topic.lead}
           </span>
         ) : null}
       </div>
 
       {topic.deadlineNote ? (
-        <p className="mt-3 inline-flex items-center gap-1.5 rounded-full bg-dragon-fire px-3 py-1 text-[0.72rem] font-bold uppercase tracking-[0.06em] text-dawn">
+        <p className="mt-3 inline-flex items-center gap-1.5 rounded-full bg-dragon-fire px-3 py-1 text-[0.72rem] font-bold uppercase tracking-[0.06em] text-dusk">
           <svg
             viewBox="0 0 16 16"
             className="h-3 w-3"
@@ -100,7 +100,7 @@ export default function TopicCard({ topic }: Props) {
       ) : (
         <>
           {topic.note ? (
-            <p className="mt-2 text-[0.8rem] text-white/45">{topic.note}</p>
+            <p className="mt-2 text-[0.8rem] text-dawn/65">{topic.note}</p>
           ) : null}
           <div className="mt-4 flex flex-wrap gap-2">
             {stageOrder.map(({ key, label }) => {

@@ -21,7 +21,7 @@ export default function TeamGrid({ team }: { team: TeamMember[] }) {
   return (
     <section
       aria-labelledby="team-heading"
-      className="bg-dawn py-[120px]"
+      className="bg-dusk py-[120px]"
     >
       <div className="max-w-7xl mx-auto px-6 md:px-10">
         <p className="text-[0.8rem] font-medium uppercase tracking-[0.12em] text-dragon-fire">
@@ -29,12 +29,12 @@ export default function TeamGrid({ team }: { team: TeamMember[] }) {
         </p>
         <h2
           id="team-heading"
-          className="font-display text-h2 mt-4 max-w-3xl text-white"
+          className="font-display text-h2 mt-4 max-w-3xl text-dawn"
         >
           A proper partnership,{" "}
-          <span className="italic text-dusk">not a faceless agency.</span>
+          <span className="italic text-dawn">not a faceless agency.</span>
         </h2>
-        <div className="mt-8 max-w-3xl text-[1.0625rem] leading-[1.75] text-white/75 space-y-5">
+        <div className="mt-8 max-w-3xl text-[1.0625rem] leading-[1.75] text-dawn/75 space-y-5">
           <p>
             We&apos;re built deliberately lean. No account managers, no
             layers, no big-agency overheads quietly padding your invoice,
@@ -59,7 +59,7 @@ export default function TeamGrid({ team }: { team: TeamMember[] }) {
         <ul className="mt-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12">
           {items.map((member) => (
             <li key={member._id}>
-              <div className="relative aspect-square rounded-card overflow-hidden bg-dawn-80">
+              <div className="relative aspect-square rounded-card overflow-hidden bg-dusk-80">
                 {member.photo?.asset ? (
                   <Image
                     src={urlFor(member.photo).width(800).height(800).auto("format").url()}
@@ -69,12 +69,12 @@ export default function TeamGrid({ team }: { team: TeamMember[] }) {
                     className="object-cover"
                   />
                 ) : (
-                  <div className="absolute inset-0 bg-gradient-to-br from-dawn-60 via-dawn-80 to-dawn" />
+                  <div className="absolute inset-0 bg-gradient-to-br from-dusk-60 via-dusk-80 to-dusk" />
                 )}
               </div>
               <div className="mt-5 flex items-start justify-between gap-4">
                 <div className="min-w-0">
-                  <h3 className="font-bold text-[1.125rem] text-white">
+                  <h3 className="font-bold text-[1.125rem] text-dawn">
                     {member.name}
                   </h3>
                   <p className="mt-1 text-[0.875rem] text-dragon-fire">
@@ -87,14 +87,14 @@ export default function TeamGrid({ team }: { team: TeamMember[] }) {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={`${member.name} on LinkedIn`}
-                    className="shrink-0 text-white/50 hover:text-dragon-fire transition-colors duration-200"
+                    className="shrink-0 text-dawn/65 hover:text-dragon-fire transition-colors duration-200"
                   >
                     <LinkedInIcon className="w-5 h-5" />
                   </a>
                 ) : null}
               </div>
               {member.bio ? (
-                <p className="mt-3 text-[0.9375rem] leading-[1.65] text-white/65 whitespace-pre-line">
+                <p className="mt-3 text-[0.9375rem] leading-[1.65] text-dawn/65 whitespace-pre-line">
                   {member.bio}
                 </p>
               ) : null}

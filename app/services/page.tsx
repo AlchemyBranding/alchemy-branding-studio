@@ -25,16 +25,16 @@ export async function generateMetadata(): Promise<Metadata> {
 export default function ServicesPage() {
   return (
     <>
-      <section className="bg-dawn pt-[160px] md:pt-[200px] pb-[80px]">
+      <section className="bg-dusk pt-[160px] md:pt-[200px] pb-[80px]">
         <div className="max-w-7xl mx-auto px-6 md:px-10">
           <p className="text-[0.8rem] font-medium uppercase tracking-[0.12em] text-dragon-fire">
             Services
           </p>
           <h1 className="font-display text-display mt-4 max-w-5xl leading-[1.04]">
-            <span className="text-white">Something&apos;s off.</span>{" "}
-            <span className="text-dusk italic">You can&apos;t name it.</span>
+            <span className="text-dawn">Something&apos;s off.</span>{" "}
+            <span className="text-dawn italic">You can&apos;t name it.</span>
           </h1>
-          <p className="mt-8 max-w-2xl text-[1.125rem] leading-[1.7] text-white/65">
+          <p className="mt-8 max-w-2xl text-[1.125rem] leading-[1.7] text-dawn/65">
             The site&apos;s live. The campaigns are running. The deck
             looks fine. On paper, it all works and yet something
             underneath isn&apos;t pulling its weight, and you
@@ -55,8 +55,8 @@ export default function ServicesPage() {
 
       <FinalCTA
         heading="Still can't quite name it?"
-        subtext="That's usually the right place to start. Book a call and we'll help you work out what's actually going on and what's worth fixing first."
-        primary={{ label: "Book a call", href: motionHref, external: true }}
+        subtext="That's usually the right place to start. Book a Clarity Call and we'll help you work out what's actually going on and what's worth fixing first."
+        primary={{ label: "Book a Clarity Call", href: motionHref, external: true }}
         secondary={{ label: "Send a brief", href: "/contact" }}
       />
     </>

@@ -32,14 +32,14 @@ const sizes: Record<Size, string> = {
 
 const variants: Record<Variant, string> = {
   primary:
-    "bg-dragon-fire text-dawn hover:bg-fire-80",
+    "bg-dragon-fire text-dusk hover:bg-fire-80",
   secondary:
-    "bg-dawn text-white border border-dawn-80 hover:border-dragon-fire hover:text-dragon-fire",
+    "bg-dusk text-dawn border border-dusk-80 hover:border-dragon-fire hover:text-dragon-fire",
   // For use on a Dragon Fire background (final CTA).
   "primary-on-fire":
-    "bg-dawn text-white hover:bg-dawn-80",
+    "bg-dusk text-dawn hover:bg-dusk-80",
   "secondary-on-fire":
-    "bg-transparent text-dawn border border-dawn hover:bg-dawn hover:text-dragon-fire",
+    "bg-transparent text-dusk border border-dusk hover:bg-dusk hover:text-dragon-fire",
 };
 
 export default function Button(props: ButtonAsLink | ButtonAsButton) {

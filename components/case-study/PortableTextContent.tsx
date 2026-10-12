@@ -51,22 +51,22 @@ function vimeoId(url: string): string | null {
 
 /**
  * Tone-aware components map. The blog body sits on a light cream
- * background (bg-dusk) and needs dark text; case study body sits on
+ * background (bg-dawn) and needs dark text; case study body sits on
  * the dark dawn background and uses white text. The structural
  * styling (margins, sizes, decorations) is identical in both.
  */
 function buildComponents(tone: "dark" | "light"): PortableTextComponents {
   // Body text colours
   const bodyText =
-    tone === "light" ? "text-dawn/80" : "text-white/80";
+    tone === "light" ? "text-dusk/80" : "text-dawn/80";
   const headingText =
-    tone === "light" ? "text-dawn" : "text-white";
+    tone === "light" ? "text-dusk" : "text-dawn";
   const captionText =
-    tone === "light" ? "text-dawn/55" : "text-white/55";
+    tone === "light" ? "text-dusk/65" : "text-dawn/65";
   const blockquoteText =
-    tone === "light" ? "text-dawn" : "text-white";
+    tone === "light" ? "text-dusk" : "text-dawn";
   const imageBg =
-    tone === "light" ? "bg-dawn/5" : "bg-dawn-80";
+    tone === "light" ? "bg-dusk/5" : "bg-dusk-80";
 
   return {
   types: {

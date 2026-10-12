@@ -100,7 +100,7 @@ function AssetIcon({ kind }: { kind: AssetKind }) {
   return (
     <svg
       viewBox="0 0 16 16"
-      className="h-4 w-4 shrink-0 text-white/35 transition-colors group-hover:text-dragon-fire"
+      className="h-4 w-4 shrink-0 text-dawn/65 transition-colors group-hover:text-dragon-fire"
       fill="none"
       stroke="currentColor"
       strokeWidth="1.2"
@@ -152,31 +152,31 @@ export default function AssetList({ assets, title }: Props) {
   return (
     <div className="mt-5">
       {title ? (
-        <p className="text-[0.7rem] font-medium uppercase tracking-[0.1em] text-white/35">
+        <p className="text-[0.7rem] font-medium uppercase tracking-[0.1em] text-dawn/65">
           {title}
         </p>
       ) : null}
 
-      <ul className={`${title ? "mt-2" : ""} border-t border-dawn-60`}>
+      <ul className={`${title ? "mt-2" : ""} border-t border-dusk-60`}>
         {inProductionOrder(assets).map((asset) => {
           const kind = kindFor(asset);
           const source = sourceFor(asset.url);
 
           return (
-            <li key={`${asset.label}-${asset.url}`} className="border-b border-dawn-60">
+            <li key={`${asset.label}-${asset.url}`} className="border-b border-dusk-60">
               <a
                 href={asset.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group flex items-center gap-3 py-2.5 text-[0.85rem] transition-colors hover:bg-dawn-60/30"
+                className="group flex items-center gap-3 py-2.5 text-[0.85rem] transition-colors hover:bg-dusk-60/30"
               >
                 <AssetIcon kind={kind} />
                 <span className="sr-only">{iconLabels[kind]}: </span>
-                <span className="flex-1 text-white/75 transition-colors group-hover:text-white">
+                <span className="flex-1 text-dawn/75 transition-colors group-hover:text-dawn">
                   {asset.label}
                 </span>
                 {source ? (
-                  <span className="shrink-0 text-[0.7rem] text-white/30 transition-colors group-hover:text-white/50">
+                  <span className="shrink-0 text-[0.7rem] text-dawn/65 transition-colors group-hover:text-dawn/50">
                     {source}
                   </span>
                 ) : null}

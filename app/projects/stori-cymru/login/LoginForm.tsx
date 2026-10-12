@@ -43,9 +43,9 @@ export default function LoginForm() {
   return (
     <form
       onSubmit={handleSubmit}
-      className="mt-8 w-full max-w-xs rounded-card bg-dawn-80 border border-dawn-60 p-6"
+      className="mt-8 w-full max-w-xs rounded-card bg-dusk-80 border border-dusk-60 p-6"
     >
-      <label htmlFor="password" className="block text-[0.8rem] font-bold text-white/80">
+      <label htmlFor="password" className="block text-[0.8rem] font-bold text-dawn/80">
         Password
       </label>
       <input
@@ -55,7 +55,7 @@ export default function LoginForm() {
         autoFocus
         value={password}
         onChange={(e) => setPassword(e.target.value)}
-        className="mt-2 w-full rounded-sm bg-dawn border border-dawn-60 px-4 py-3 text-white placeholder:text-white/30 focus:border-dragon-fire outline-none"
+        className="mt-2 w-full rounded-sm bg-dusk border border-dusk-60 px-4 py-3 text-dawn placeholder:text-dawn/30 focus:border-dragon-fire outline-none"
         placeholder="Enter the project password"
       />
 
@@ -68,7 +68,7 @@ export default function LoginForm() {
       <button
         type="submit"
         disabled={submitting || password.length === 0}
-        className="mt-5 w-full rounded-full bg-dragon-fire px-6 py-3 text-[0.875rem] font-bold uppercase tracking-[0.08em] text-dawn transition-colors duration-200 hover:bg-fire-80 disabled:opacity-50"
+        className="mt-5 w-full rounded-full bg-dragon-fire px-6 py-3 text-[0.875rem] font-bold uppercase tracking-[0.08em] text-dusk transition-colors duration-200 hover:bg-fire-80 disabled:opacity-50"
       >
         {submitting ? "Checking..." : "View project"}
       </button>

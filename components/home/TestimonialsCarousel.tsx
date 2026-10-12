@@ -54,7 +54,7 @@ export default function TestimonialsCarousel({
   return (
     <section
       aria-labelledby="testimonials-heading"
-      className="bg-dusk text-dawn pt-[120px] pb-[120px]"
+      className="bg-dawn text-dusk pt-[120px] pb-[120px]"
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
       onFocus={() => setPaused(true)}
@@ -66,7 +66,7 @@ export default function TestimonialsCarousel({
         </p>
         <h2
           id="testimonials-heading"
-          className="font-display text-h2 mt-3 text-dawn"
+          className="font-display text-h2 mt-3 text-dusk"
         >
           People we&apos;ve worked with.
         </h2>
@@ -105,7 +105,7 @@ export default function TestimonialsCarousel({
             >
               &ldquo;
             </span>
-            <p className="font-display text-[1.5rem] leading-[1.5] text-dawn max-w-2xl">
+            <p className="font-display text-[1.5rem] leading-[1.5] text-dusk max-w-2xl">
               {current.quote}
             </p>
             <div className="mt-8 flex items-center gap-4">
@@ -120,15 +120,15 @@ export default function TestimonialsCarousel({
               ) : (
                 <div
                   aria-hidden="true"
-                  className="w-[52px] h-[52px] rounded-full border-2 border-dragon-fire bg-dawn-20"
+                  className="w-[52px] h-[52px] rounded-full border-2 border-dragon-fire bg-dusk-20"
                 />
               )}
               <div className="text-left">
-                <p className="font-bold text-dawn text-[1rem] leading-tight">
+                <p className="font-bold text-dusk text-[1rem] leading-tight">
                   {current.name}
                 </p>
                 {attribution ? (
-                  <p className="text-[0.875rem] text-dawn-40">{attribution}</p>
+                  <p className="text-[0.875rem] text-dusk-40">{attribution}</p>
                 ) : null}
               </div>
             </div>
@@ -150,7 +150,7 @@ export default function TestimonialsCarousel({
                 aria-label={`Show testimonial ${i + 1}`}
                 onClick={() => setIndex(i)}
                 className={`w-2 h-2 rounded-full transition-colors duration-200 ${
-                  i === index ? "bg-dragon-fire" : "bg-dawn-20 hover:bg-dawn-40"
+                  i === index ? "bg-dragon-fire" : "bg-dusk-20 hover:bg-dusk-40"
                 }`}
               />
             ))}

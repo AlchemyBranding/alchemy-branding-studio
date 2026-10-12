@@ -21,7 +21,7 @@ export default function Platforms() {
   return (
     <section
       aria-labelledby="platforms-heading"
-      className="bg-dawn py-[120px] border-t border-dawn-80"
+      className="bg-dusk py-[120px] border-t border-dusk-80"
     >
       <div className="max-w-7xl mx-auto px-6 md:px-10">
         <p className="text-[0.8rem] font-medium uppercase tracking-[0.12em] text-dragon-fire">
@@ -29,11 +29,11 @@ export default function Platforms() {
         </p>
         <h2
           id="platforms-heading"
-          className="font-display text-h2 mt-4 max-w-3xl text-white"
+          className="font-display text-h2 mt-4 max-w-3xl text-dawn"
         >
           Built inside the tool your team already runs.
         </h2>
-        <p className="mt-6 max-w-2xl text-[1.0625rem] leading-[1.7] text-white/65">
+        <p className="mt-6 max-w-2xl text-[1.0625rem] leading-[1.7] text-dawn/65">
           We don&apos;t hand over flat PDFs. The deliverable is a live
           template in your platform of choice. Your sales team can
           duplicate, edit and send without touching us.
@@ -43,10 +43,10 @@ export default function Platforms() {
           {platforms.map((p) => (
             <li
               key={p.name}
-              className="rounded-card bg-dawn-80 border border-dawn-60 p-7"
+              className="rounded-card bg-dusk-80 border border-dusk-60 p-7"
             >
-              <h3 className="font-bold text-[1.125rem] text-white">{p.name}</h3>
-              <p className="mt-3 text-[0.9375rem] leading-[1.65] text-white/65">
+              <h3 className="font-bold text-[1.125rem] text-dawn">{p.name}</h3>
+              <p className="mt-3 text-[0.9375rem] leading-[1.65] text-dawn/65">
                 {p.note}
               </p>
             </li>

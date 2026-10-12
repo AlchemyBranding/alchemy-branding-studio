@@ -61,28 +61,28 @@ export default async function StoriCymruProjectPage() {
 
   return (
     <>
-      <section className="bg-dawn pt-[140px] md:pt-[180px] pb-16 border-b border-dawn-80">
+      <section className="bg-dusk pt-[140px] md:pt-[180px] pb-16 border-b border-dusk-80">
         <div className="max-w-4xl mx-auto px-6 md:px-10">
           <div className="flex flex-wrap items-center justify-between gap-4">
             <p className="text-eyebrow text-dragon-fire">Client project</p>
             <LogoutButton />
           </div>
-          <h1 className="font-display text-display mt-4 text-white">{project.title}</h1>
+          <h1 className="font-display text-display mt-4 text-dawn">{project.title}</h1>
           {project.subtitle ? (
-            <p className="mt-2 text-[1.05rem] text-white/60">{project.subtitle}</p>
+            <p className="mt-2 text-[1.05rem] text-dawn/65">{project.subtitle}</p>
           ) : null}
 
-          <p className="mt-8 text-[1rem] leading-relaxed text-white/70 max-w-2xl">
+          <p className="mt-8 text-[1rem] leading-relaxed text-dawn/70 max-w-2xl">
             {project.overview}
           </p>
 
           <div className="mt-10 grid grid-cols-1 sm:grid-cols-3 gap-8 max-w-2xl">
             {stats.map((stat) => (
               <div key={stat.label}>
-                <div className="font-display text-[clamp(2rem,4vw,2.75rem)] leading-none text-white">
+                <div className="font-display text-[clamp(2rem,4vw,2.75rem)] leading-none text-dawn">
                   {stat.value}
                 </div>
-                <p className="mt-2 text-[0.85rem] text-white/55 leading-snug">{stat.label}</p>
+                <p className="mt-2 text-[0.85rem] text-dawn/65 leading-snug">{stat.label}</p>
               </div>
             ))}
           </div>
@@ -90,13 +90,13 @@ export default async function StoriCymruProjectPage() {
       </section>
 
       {tiers.map((tier) => (
-        <section key={tier._id} className="bg-dawn py-16 border-b border-dawn-80">
+        <section key={tier._id} className="bg-dusk py-16 border-b border-dusk-80">
           <div className="max-w-4xl mx-auto px-6 md:px-10">
             <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
-              <h2 className="font-display text-h2 text-white">{tier.label}</h2>
-              <span className="text-[0.9rem] text-white/40">({tier.ageRange})</span>
+              <h2 className="font-display text-h2 text-dawn">{tier.label}</h2>
+              <span className="text-[0.9rem] text-dawn/65">({tier.ageRange})</span>
             </div>
-            <p className="mt-3 text-[0.95rem] text-white/60 max-w-2xl leading-relaxed">
+            <p className="mt-3 text-[0.95rem] text-dawn/65 max-w-2xl leading-relaxed">
               {tier.description}
             </p>
 
@@ -111,42 +111,42 @@ export default async function StoriCymruProjectPage() {
         </section>
       ))}
 
-      <section className="bg-dawn py-16 border-b border-dawn-80">
+      <section className="bg-dusk py-16 border-b border-dusk-80">
         <div className="max-w-4xl mx-auto px-6 md:px-10 grid grid-cols-1 md:grid-cols-2 gap-12">
           <div>
-            <h2 className="font-display text-h3 text-white">Safeguarding &amp; tone</h2>
+            <h2 className="font-display text-h3 text-dawn">Safeguarding &amp; tone</h2>
             <ul className="mt-4 space-y-2">
               {(project.safeguardingPrinciples ?? []).map((principle) => (
-                <li key={principle} className="flex items-start gap-2 text-[0.9rem] text-white/65">
+                <li key={principle} className="flex items-start gap-2 text-[0.9rem] text-dawn/65">
                   <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-dragon-fire shrink-0" aria-hidden="true" />
                   {principle}
                 </li>
               ))}
             </ul>
             {project.safeguardingNote ? (
-              <p className="mt-4 text-[0.85rem] text-white/50 leading-relaxed">
+              <p className="mt-4 text-[0.85rem] text-dawn/65 leading-relaxed">
                 {project.safeguardingNote}
               </p>
             ) : null}
           </div>
 
           <div>
-            <h2 className="font-display text-h3 text-white">Welsh delivery</h2>
+            <h2 className="font-display text-h3 text-dawn">Welsh delivery</h2>
             {project.welshIntro ? (
-              <p className="mt-4 text-[0.9rem] text-white/65 leading-relaxed">
+              <p className="mt-4 text-[0.9rem] text-dawn/65 leading-relaxed">
                 {project.welshIntro}
               </p>
             ) : null}
             <ul className="mt-4 space-y-2">
               {(project.welshResponsibilities ?? []).map((item) => (
-                <li key={item} className="flex items-start gap-2 text-[0.9rem] text-white/65">
+                <li key={item} className="flex items-start gap-2 text-[0.9rem] text-dawn/65">
                   <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-dragon-fire shrink-0" aria-hidden="true" />
                   {item}
                 </li>
               ))}
             </ul>
             {project.voiceoverArtistName ? (
-              <p className="mt-4 text-[0.85rem] text-white/50 leading-relaxed">
+              <p className="mt-4 text-[0.85rem] text-dawn/65 leading-relaxed">
                 Voiceover artist:{" "}
                 {project.voiceoverArtistUrl ? (
                   <a
@@ -167,9 +167,9 @@ export default async function StoriCymruProjectPage() {
         </div>
       </section>
 
-      <section className="bg-dawn py-10">
+      <section className="bg-dusk py-10">
         <div className="max-w-4xl mx-auto px-6 md:px-10 flex flex-wrap items-center justify-between gap-6">
-          <p className="text-[0.8rem] text-white/40">
+          <p className="text-[0.8rem] text-dawn/65">
             {updated ? `Last updated ${updated} · ` : ""}Alchemy Branding Studio ·{" "}
             <a href={`mailto:${siteConfig.email}`} className="hover:text-dragon-fire">
               {siteConfig.email}

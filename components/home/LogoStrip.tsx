@@ -49,7 +49,7 @@ export default function LogoStrip() {
   return (
     <section
       aria-label="Trusted by"
-      className="bg-dawn-80 py-12 overflow-hidden border-y border-dawn-60"
+      className="bg-dusk-80 py-12 overflow-hidden border-y border-dusk-60"
     >
       <p className="text-center text-[0.75rem] font-bold uppercase tracking-[0.12em] text-dragon-fire mb-8">
         Trusted by

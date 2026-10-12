@@ -86,7 +86,7 @@ export default function ZoomableImage({
           />
           <span
             aria-hidden
-            className="pointer-events-none absolute bottom-3 right-3 rounded-full bg-dawn/75 px-3 py-1.5 text-[0.6875rem] font-bold uppercase tracking-[0.08em] text-white opacity-0 transition-opacity duration-200 group-hover:opacity-100 group-focus-visible:opacity-100 motion-reduce:transition-none"
+            className="pointer-events-none absolute bottom-3 right-3 rounded-full bg-dusk/75 px-3 py-1.5 text-[0.6875rem] font-bold uppercase tracking-[0.08em] text-dawn opacity-0 transition-opacity duration-200 group-hover:opacity-100 group-focus-visible:opacity-100 motion-reduce:transition-none"
           >
             Click to enlarge
           </span>
@@ -104,14 +104,14 @@ export default function ZoomableImage({
           aria-modal="true"
           aria-label={alt || caption || "Enlarged image"}
           onClick={close}
-          className="fixed inset-0 z-[100] flex flex-col bg-dawn/95 p-4 md:p-8 backdrop-blur-sm"
+          className="fixed inset-0 z-[100] flex flex-col bg-dusk/95 p-4 md:p-8 backdrop-blur-sm"
         >
           <div className="flex justify-end">
             <button
               ref={closeRef}
               type="button"
               onClick={close}
-              className="rounded-full border border-white/20 bg-white/5 px-4 py-2 text-[0.8125rem] font-bold uppercase tracking-[0.08em] text-white transition-colors duration-200 hover:bg-white/15 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-dragon-fire"
+              className="rounded-full border border-dawn/20 bg-dawn/5 px-4 py-2 text-[0.8125rem] font-bold uppercase tracking-[0.08em] text-dawn transition-colors duration-200 hover:bg-dawn/15 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-dragon-fire"
             >
               Close
             </button>
@@ -134,7 +134,7 @@ export default function ZoomableImage({
           </div>
 
           {caption ? (
-            <p className="mt-4 shrink-0 text-center text-[0.875rem] text-white/60">
+            <p className="mt-4 shrink-0 text-center text-[0.875rem] text-dawn/65">
               {caption}
             </p>
           ) : null}

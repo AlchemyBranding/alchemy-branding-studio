@@ -5,6 +5,10 @@ import { motionHref } from "@/lib/site";
 
 const outcomes = [
   {
+    title: "Where the business is going",
+    body: "Your growth goals for the next five to ten years, how you'll get there and how you win customers, so sales and marketing are set up to support it.",
+  },
+  {
     title: "Sharp positioning",
     body: "A short, memorable statement of who you serve, what you do, and why it matters, that your team can repeat under pressure.",
   },
@@ -17,8 +21,8 @@ const outcomes = [
     body: "Story, voice, messaging pillars, proof points: everything you need to brief copy, design, sales and hiring.",
   },
   {
-    title: "A roadmap for what's next",
-    body: "Identity, website, content, sales collateral: sequenced and costed, so the next 6–12 months are clear.",
+    title: "A recommendation for what's next",
+    body: "You take it from here, Jess guides your team, or we deliver it. Sequenced and costed, so the next 6 to 12 months are clear.",
   },
 ];
 
@@ -26,7 +30,7 @@ export default function Workshop() {
   return (
     <section
       aria-labelledby="workshop-heading"
-      className="bg-dusk text-dawn py-[140px]"
+      className="bg-dawn text-dusk py-[140px]"
     >
       <div className="max-w-7xl mx-auto px-6 md:px-10">
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_1fr] gap-12 lg:gap-20 items-start">
@@ -36,21 +40,24 @@ export default function Workshop() {
             </p>
             <h2
               id="workshop-heading"
-              className="font-display text-h2 mt-4 text-dawn"
+              className="font-display text-h2 mt-4 text-dusk"
             >
-              The Brand Strategy Workshop.
+              The Brand &amp; Growth Workshop.
             </h2>
-            <p className="mt-6 text-[1.125rem] leading-[1.7] text-dawn/70 max-w-lg">
+            <p className="mt-6 text-[1.125rem] leading-[1.7] text-dusk/70 max-w-lg">
               Where the problem isn&apos;t obvious yet, we start with a
               structured workshop with your leadership team, before the
               logo or the website or the campaign. The goal is to name
               what&apos;s actually broken, and end with a strategy you can
               use, not a deck that gathers dust.
             </p>
-            <p className="mt-6 text-[1.125rem] leading-[1.7] text-dawn/70 max-w-lg">
+            <p className="mt-6 text-[1.125rem] leading-[1.7] text-dusk/70 max-w-lg">
+              One day with your team. Your brand strategy follows within two
+              weeks.
+            </p>
+            <p className="mt-6 text-[1.125rem] leading-[1.7] text-dusk/70 max-w-lg">
               Most teams leave the workshop with a clearer view of their
-              business than they came in with. The next steps usually
-              build themselves.
+              business than they came in with.
             </p>
 
             {/*
@@ -62,14 +69,14 @@ export default function Workshop() {
             */}
             <div className="mt-10 flex flex-wrap items-center gap-4">
               <Button variant="primary" href={motionHref} external>
-                Book a discovery call
+                Book a Clarity Call
               </Button>
               <Button variant="secondary" href="/brand-strategy-workshop">
                 How the workshop works
               </Button>
             </div>
 
-            <div className="mt-10 relative aspect-[16/9] w-full max-w-lg overflow-hidden rounded-card border border-dawn/15">
+            <div className="mt-10 relative aspect-[16/9] w-full max-w-lg overflow-hidden rounded-card border border-dusk/15">
               <Image
                 src="/desk-chairs.jpg"
                 alt="The Alchemy studio set up for a brand strategy workshop"
@@ -84,15 +91,15 @@ export default function Workshop() {
             {outcomes.map((o, i) => (
               <li
                 key={o.title}
-                className="rounded-card bg-white/60 border border-dawn/10 p-7"
+                className="rounded-card bg-dawn/60 border border-dusk/10 p-7"
               >
                 <p className="text-dragon-fire font-bold text-[0.9rem] tracking-wider">
                   Outcome 0{i + 1}
                 </p>
-                <h3 className="mt-2 font-bold text-[1.25rem] text-dawn">
+                <h3 className="mt-2 font-bold text-[1.25rem] text-dusk">
                   {o.title}
                 </h3>
-                <p className="mt-3 text-[1rem] leading-[1.65] text-dawn/70">
+                <p className="mt-3 text-[1rem] leading-[1.65] text-dusk/70">
                   {o.body}
                 </p>
               </li>

@@ -42,14 +42,14 @@ export default function PortfolioGrid({ projects }: Props) {
 
   if (projects.length === 0) {
     return (
-      <div className="rounded-card border border-dawn-60 bg-dawn-80 p-12 text-center">
+      <div className="rounded-card border border-dusk-60 bg-dusk-80 p-12 text-center">
         <p className="text-[0.8rem] font-medium uppercase tracking-[0.12em] text-dragon-fire">
           Coming soon
         </p>
-        <h2 className="font-display text-h3 text-white mt-3">
+        <h2 className="font-display text-h3 text-dawn mt-3">
           Case studies will appear here as they&apos;re published.
         </h2>
-        <p className="mt-4 text-white/60 max-w-md mx-auto">
+        <p className="mt-4 text-dawn/65 max-w-md mx-auto">
           Add a Case Study in Sanity (Studio → Case study), assign service
           tags, set a hero image, and it&apos;ll land in this grid in
           publish-date order.
@@ -77,8 +77,8 @@ export default function PortfolioGrid({ projects }: Props) {
                 onClick={() => setActive(tag)}
                 className={`rounded-full px-4 py-2 text-[0.8125rem] font-bold uppercase tracking-[0.08em] transition-colors duration-200 ${
                   isActive
-                    ? "bg-dragon-fire text-dawn"
-                    : "bg-dawn-80 text-white/60 hover:bg-dawn-60 hover:text-white border border-dawn-60"
+                    ? "bg-dragon-fire text-dusk"
+                    : "bg-dusk-80 text-dawn/65 hover:bg-dusk-60 hover:text-dawn border border-dusk-60"
                 }`}
               >
                 {tag}
@@ -89,8 +89,8 @@ export default function PortfolioGrid({ projects }: Props) {
       ) : null}
 
       {filtered.length === 0 ? (
-        <div className="rounded-card border border-dawn-60 bg-dawn-80 p-12 text-center">
-          <p className="text-white/60">No projects in {active} yet.</p>
+        <div className="rounded-card border border-dusk-60 bg-dusk-80 p-12 text-center">
+          <p className="text-dawn/65">No projects in {active} yet.</p>
         </div>
       ) : (
         <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">

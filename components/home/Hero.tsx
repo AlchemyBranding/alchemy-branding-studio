@@ -6,7 +6,7 @@ export default function Hero() {
   return (
     <section
       aria-label="Hero"
-      className="relative h-[100svh] min-h-[640px] overflow-hidden bg-dawn"
+      className="relative h-[100svh] min-h-[640px] overflow-hidden bg-dusk"
     >
       <video
         autoPlay
@@ -31,7 +31,7 @@ export default function Hero() {
           hero copy sits, so it reads over the busy showreel underneath. */}
       <div
         aria-hidden="true"
-        className="absolute inset-0 bg-gradient-to-b from-dawn/20 via-dawn/40 to-dawn/85"
+        className="absolute inset-0 bg-gradient-to-b from-dusk/20 via-dusk/40 to-dusk/85"
       />
 
       <div className="relative h-full max-w-7xl mx-auto px-6 md:px-10 flex flex-col justify-end pb-28 md:pb-32">
@@ -46,17 +46,17 @@ export default function Hero() {
           className="font-display text-[clamp(3.5rem,7vw,8rem)] leading-[1.02] mt-4 animate-fade-up"
           style={{ animationDelay: "400ms" }}
         >
-          <span className="block text-white">Look the part.</span>
-          <span className="block italic text-dusk">Win the work.</span>
+          <span className="block text-dawn">Look the part.</span>
+          <span className="block italic text-dawn">Win the work.</span>
         </h1>
 
         <p
-          className="mt-8 max-w-2xl text-[1.125rem] leading-[1.6] text-white/85 animate-fade-up"
+          className="mt-8 max-w-2xl text-[1.125rem] leading-[1.6] text-dawn/85 animate-fade-up"
           style={{ animationDelay: "550ms" }}
         >
-          We help you clarify the brand, sharpen the message and turn
-          both into marketing that supports sales, so the right clients
-          understand you, trust you and choose you.
+          We work out how your business should be positioned and who it&apos;s
+          for, then build the brand and the plan to match, so everyone selling
+          it is pulling towards the same goals.
         </p>
 
         <div
@@ -64,7 +64,7 @@ export default function Hero() {
           style={{ animationDelay: "700ms" }}
         >
           <Button variant="primary" href={motionHref} external>
-            Book a call
+            Book a Clarity Call
           </Button>
           <Button variant="secondary" href="/portfolio">
             See our work
@@ -75,7 +75,7 @@ export default function Hero() {
       <a
         href="#featured-work"
         aria-label="Scroll to featured work"
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-white/50 hover:text-dragon-fire transition-colors duration-200"
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-dawn/65 hover:text-dragon-fire transition-colors duration-200"
       >
         <span className="text-[0.75rem] uppercase tracking-[0.12em]">
           Scroll

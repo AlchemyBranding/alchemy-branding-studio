@@ -21,7 +21,7 @@ export default function WhoWeWorkWith() {
   return (
     <section
       aria-labelledby="who-heading"
-      className="bg-dawn py-[120px] border-t border-dawn-80"
+      className="bg-dusk py-[120px] border-t border-dusk-80"
     >
       <div className="max-w-7xl mx-auto px-6 md:px-10 grid grid-cols-1 lg:grid-cols-[1fr_1.4fr] gap-12 lg:gap-20">
         <div>
@@ -30,11 +30,11 @@ export default function WhoWeWorkWith() {
           </p>
           <h2
             id="who-heading"
-            className="font-display text-h2 mt-4 text-white"
+            className="font-display text-h2 mt-4 text-dawn"
           >
             Ambitious, growing, ready to fix the foundations.
           </h2>
-          <p className="mt-6 text-[1.0625rem] leading-[1.7] text-white/65 max-w-md">
+          <p className="mt-6 text-[1.0625rem] leading-[1.7] text-dawn/65 max-w-md">
             We&apos;re not the right fit for everyone. The businesses we
             do our best work with usually look like this:
           </p>
@@ -44,12 +44,12 @@ export default function WhoWeWorkWith() {
           {traits.map((t) => (
             <div
               key={t.label}
-              className="grid grid-cols-[120px_1fr] gap-6 border-t border-dawn-80 pt-6"
+              className="grid grid-cols-[120px_1fr] gap-6 border-t border-dusk-80 pt-6"
             >
               <dt className="text-[0.75rem] font-bold uppercase tracking-[0.12em] text-dragon-fire">
                 {t.label}
               </dt>
-              <dd className="text-[1.0625rem] leading-[1.6] text-white/80">
+              <dd className="text-[1.0625rem] leading-[1.6] text-dawn/80">
                 {t.detail}
               </dd>
             </div>

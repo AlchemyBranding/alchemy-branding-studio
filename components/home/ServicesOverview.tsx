@@ -43,7 +43,7 @@ export default function ServicesOverview() {
     <section
       id="services"
       aria-labelledby="services-heading"
-      className="bg-dawn py-[120px]"
+      className="bg-dusk py-[120px]"
     >
       <div className="max-w-7xl mx-auto px-6 md:px-10">
         <p className="text-[0.8rem] font-medium uppercase tracking-[0.12em] text-dragon-fire">
@@ -51,11 +51,11 @@ export default function ServicesOverview() {
         </p>
         <h2
           id="services-heading"
-          className="font-display text-h2 mt-3 max-w-3xl text-white"
+          className="font-display text-h2 mt-3 max-w-3xl text-dawn"
         >
           Strategy and craft, built to scale.
         </h2>
-        <p className="mt-6 max-w-xl text-[1.125rem] leading-[1.7] text-white/65">
+        <p className="mt-6 max-w-xl text-[1.125rem] leading-[1.7] text-dawn/65">
           We help founders, marketing leaders and operators ship brands that
           look, sound and feel like the businesses they want to become.
         </p>
@@ -65,15 +65,15 @@ export default function ServicesOverview() {
             <li key={service.title}>
               <Link
                 href={service.href}
-                className="group block h-full rounded-card bg-dawn-80 border border-dawn-60 p-8 transition-all duration-300 ease-out hover:border-dragon-fire hover:-translate-y-1"
+                className="group block h-full rounded-card bg-dusk-80 border border-dusk-60 p-8 transition-all duration-300 ease-out hover:border-dragon-fire hover:-translate-y-1"
               >
                 <p className="text-dragon-fire font-bold text-[1.5rem] leading-none">
                   {service.number}
                 </p>
-                <h3 className="mt-4 font-bold text-[1.125rem] text-white">
+                <h3 className="mt-4 font-bold text-[1.125rem] text-dawn">
                   {service.title}
                 </h3>
-                <p className="mt-2 text-[0.9rem] leading-[1.6] text-white/60">
+                <p className="mt-2 text-[0.9rem] leading-[1.6] text-dawn/65">
                   {service.description}
                 </p>
                 <p className="mt-6 text-[0.875rem] font-medium text-dragon-fire group-hover:underline underline-offset-4">
