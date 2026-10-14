@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-import { motionHref, siteConfig, whatsappHref } from "@/lib/site";
+import { bookingHref, siteConfig, whatsappHref } from "@/lib/site";
 
 type Card = {
   eyebrow: string;
@@ -15,7 +15,7 @@ const cards: Card[] = [
     title: "30-minute Clarity Call",
     description:
       "Best for clarifying scope, timing, and whether we're a fit. Pick a slot that suits you.",
-    cta: { label: "Open my diary →", href: motionHref, external: true },
+    cta: { label: "Open the diary →", href: bookingHref, external: true },
   },
   {
     eyebrow: "WhatsApp",

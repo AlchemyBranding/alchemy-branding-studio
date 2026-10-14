@@ -10,7 +10,7 @@ import {
   VimeoIcon,
   YouTubeIcon,
 } from "@/components/icons";
-import { motionHref, siteConfig, socialLinks, whatsappHref } from "@/lib/site";
+import { bookingHref, siteConfig, socialLinks, whatsappHref } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Alchemy Branding Studio — Links",
@@ -47,7 +47,7 @@ const links: PortalLink[] = [
     href: "https://www.brandtoscale.co.uk",
     external: true,
   },
-  { label: "Book a Clarity Call", href: motionHref, external: true },
+  { label: "Book a Clarity Call", href: bookingHref, external: true },
   { label: "Message us on WhatsApp", href: whatsappHref, external: true },
 ];
 

@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import BlogGrid from "@/components/blog/BlogGrid";
 import FinalCTA from "@/components/home/FinalCTA";
 import { getPageMetadata } from "@/lib/seo";
-import { motionHref } from "@/lib/site";
+import { bookingHref } from "@/lib/site";
 import { safeFetch } from "@/sanity/lib/fetch";
 import { allBlogPostsQuery, type RecentBlogPost } from "@/sanity/lib/queries";
 
@@ -50,7 +50,7 @@ export default async function NewsPage() {
       <FinalCTA
         heading="Ready to apply this to your brand?"
         subtext="Book a Clarity Call. We'll talk through where you're at, what's not working, and whether the workshop's right for you."
-        primary={{ label: "Book a Clarity Call", href: motionHref, external: true }}
+        primary={{ label: "Book a Clarity Call", href: bookingHref, external: true }}
         secondary={{ label: "Send a brief", href: "/contact" }}
       />
     </>

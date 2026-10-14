@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 
 import Button from "@/components/Button";
 import { CloseIcon, MenuIcon, WhatsAppIcon } from "@/components/icons";
-import { motionHref, navLinks, whatsappHref } from "@/lib/site";
+import { bookingHref, navLinks, whatsappHref } from "@/lib/site";
 
 export default function Header() {
   const pathname = usePathname();
@@ -97,7 +97,7 @@ export default function Header() {
             >
               <WhatsAppIcon className="w-5 h-5" />
             </a>
-            <Button href={motionHref} variant="primary" size="small" external>
+            <Button href={bookingHref} variant="primary" size="small" external>
               Book a Clarity Call
             </Button>
           </div>
@@ -189,7 +189,7 @@ export default function Header() {
               <WhatsAppIcon className="w-5 h-5" />
               <span className="text-[0.9375rem] font-medium">WhatsApp</span>
             </a>
-            <Button href={motionHref} variant="primary" external>
+            <Button href={bookingHref} variant="primary" external>
               Book a Clarity Call
             </Button>
           </div>

@@ -9,7 +9,7 @@ import Reveal from "@/components/motion/Reveal";
 import StaggeredList from "@/components/motion/StaggeredList";
 import WorkGrid from "@/components/home/WorkGrid";
 import { getPageMetadata } from "@/lib/seo";
-import { motionHref } from "@/lib/site";
+import { bookingHref } from "@/lib/site";
 import { safeFetch } from "@/sanity/lib/fetch";
 import {
   caseStudiesBySlugsQuery,
@@ -184,7 +184,7 @@ export default async function BrandIdentityPage() {
               against it.
             </p>
             <div className="mt-10 flex flex-wrap items-center gap-4">
-              <Button variant="primary" href={motionHref} external>
+              <Button variant="primary" href={bookingHref} external>
                 Book a Clarity Call
               </Button>
               <Button variant="secondary" href="/portfolio">
@@ -472,7 +472,7 @@ export default async function BrandIdentityPage() {
       <FinalCTA
         heading="Book a Clarity Call."
         subtext="Tell us what is not working. We will tell you honestly whether it is an identity problem or a positioning one, and which to fix first."
-        primary={{ label: "Book a Clarity Call", href: motionHref, external: true }}
+        primary={{ label: "Book a Clarity Call", href: bookingHref, external: true }}
         secondary={{ label: "Send a brief", href: "/contact" }}
       />
     </>

@@ -9,9 +9,10 @@ export const whatsappHref = `https://wa.me/${
   process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "447734794779"
 }`;
 
-export const motionHref =
-  process.env.NEXT_PUBLIC_MOTION_URL ??
-  "https://app.usemotion.com/meet/dave-morgan/discovery-call";
+// Jess's Clarity Call booking page in Opus; utm_source tells Opus where the booking came from.
+export const bookingHref =
+  process.env.NEXT_PUBLIC_BOOKING_URL ??
+  "https://opus.alchemybranding.studio/book/clarity-call?utm_source=website";
 
 export const navLinks: ReadonlyArray<{
   label: string;

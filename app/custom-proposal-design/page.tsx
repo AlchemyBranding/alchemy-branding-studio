@@ -6,7 +6,7 @@ import Included from "@/components/proposal/Included";
 import Platforms from "@/components/proposal/Platforms";
 import Process from "@/components/proposal/Process";
 import { getPageMetadata } from "@/lib/seo";
-import { motionHref } from "@/lib/site";
+import { bookingHref } from "@/lib/site";
 
 export async function generateMetadata(): Promise<Metadata> {
   return getPageMetadata({
@@ -42,7 +42,7 @@ export default function CustomProposalDesignPage() {
               want to win against.
             </p>
             <div className="mt-10 flex flex-wrap items-center gap-4">
-              <Button variant="primary" href={motionHref} external>
+              <Button variant="primary" href={bookingHref} external>
                 Book a Clarity Call
               </Button>
               <Button variant="secondary" href="/contact">
@@ -79,7 +79,7 @@ export default function CustomProposalDesignPage() {
       <FinalCTA
         heading="Got a proposal that needs to land?"
         subtext="Book a Clarity Call. We'll talk through your sales flow, the platform you're using, and what'd make the biggest difference."
-        primary={{ label: "Book a Clarity Call", href: motionHref, external: true }}
+        primary={{ label: "Book a Clarity Call", href: bookingHref, external: true }}
         secondary={{ label: "Send a brief", href: "/contact" }}
       />
     </>

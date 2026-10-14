@@ -4,7 +4,7 @@ import Link from "next/link";
 import Button from "@/components/Button";
 import FinalCTA from "@/components/home/FinalCTA";
 import { getPageMetadata } from "@/lib/seo";
-import { motionHref } from "@/lib/site";
+import { bookingHref } from "@/lib/site";
 
 export async function generateMetadata(): Promise<Metadata> {
   return getPageMetadata({
@@ -68,7 +68,7 @@ export default function BrandingCardiffPage() {
             the work.
           </p>
           <div className="mt-10 flex flex-wrap items-center gap-4">
-            <Button variant="primary" href={motionHref} external>
+            <Button variant="primary" href={bookingHref} external>
               Book a Clarity Call
             </Button>
             <Button variant="secondary" href="/brand-strategy-workshop">
@@ -169,7 +169,7 @@ export default function BrandingCardiffPage() {
       <FinalCTA
         heading="Thinking about your brand?"
         subtext="Book 30 minutes. We'll give you an honest read on where your brand stands and what we'd do first."
-        primary={{ label: "Book a Clarity Call", href: motionHref, external: true }}
+        primary={{ label: "Book a Clarity Call", href: bookingHref, external: true }}
         secondary={{ label: "Send a brief", href: "/contact" }}
       />
     </>

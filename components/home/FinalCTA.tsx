@@ -1,5 +1,5 @@
 import Button from "@/components/Button";
-import { motionHref } from "@/lib/site";
+import { bookingHref } from "@/lib/site";
 
 type Cta = { label: string; href: string; external?: boolean };
 
@@ -16,7 +16,7 @@ const defaults = {
   heading: "Not sure where your brand stands?",
   subtext:
     "Book 30 minutes. We will talk through where you are, what is not working, and what is worth fixing first.",
-  primary: { label: "Book a Clarity Call", href: motionHref, external: true },
+  primary: { label: "Book a Clarity Call", href: bookingHref, external: true },
   secondary: { label: "Send a brief", href: "/contact" },
 } as const;
 

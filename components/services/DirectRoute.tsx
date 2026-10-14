@@ -1,7 +1,7 @@
 import Link from "next/link";
 
 import Button from "@/components/Button";
-import { motionHref } from "@/lib/site";
+import { bookingHref } from "@/lib/site";
 
 /**
  * The direct route. Added 9 September 2026, from
@@ -92,7 +92,7 @@ export default function DirectRoute() {
         </p>
 
         <div className="mt-10">
-          <Button variant="secondary" href={motionHref} external>
+          <Button variant="secondary" href={bookingHref} external>
             Book a Clarity Call
           </Button>
         </div>

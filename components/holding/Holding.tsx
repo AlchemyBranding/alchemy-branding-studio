@@ -10,7 +10,7 @@ import {
   VimeoIcon,
   YouTubeIcon,
 } from "@/components/icons";
-import { motionHref, siteConfig, socialLinks } from "@/lib/site";
+import { bookingHref, siteConfig, socialLinks } from "@/lib/site";
 
 const iconMap = {
   facebook: FacebookIcon,
@@ -75,7 +75,7 @@ export default function Holding({ background }: { background: ReactNode }) {
             </p>
 
             <div className="mt-10 flex flex-wrap items-center gap-4">
-              <Button variant="primary" href={motionHref} external>
+              <Button variant="primary" href={bookingHref} external>
                 Book a call
               </Button>
               <Button variant="secondary" href={`mailto:${siteConfig.email}`}>

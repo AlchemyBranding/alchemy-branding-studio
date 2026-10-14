@@ -8,7 +8,7 @@ import PainSignals from "@/components/services/PainSignals";
 import WhoWeWorkWith from "@/components/services/WhoWeWorkWith";
 import Workshop from "@/components/services/Workshop";
 import { getPageMetadata } from "@/lib/seo";
-import { motionHref } from "@/lib/site";
+import { bookingHref } from "@/lib/site";
 
 export async function generateMetadata(): Promise<Metadata> {
   return getPageMetadata({
@@ -56,7 +56,7 @@ export default function ServicesPage() {
       <FinalCTA
         heading="Still can't quite name it?"
         subtext="That's usually the right place to start. Book a Clarity Call and we'll help you work out what's actually going on and what's worth fixing first."
-        primary={{ label: "Book a Clarity Call", href: motionHref, external: true }}
+        primary={{ label: "Book a Clarity Call", href: bookingHref, external: true }}
         secondary={{ label: "Send a brief", href: "/contact" }}
       />
     </>

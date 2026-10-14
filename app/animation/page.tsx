@@ -9,7 +9,7 @@ import { YouTubeIcon } from "@/components/icons";
 import FinalCTA from "@/components/home/FinalCTA";
 import WorkGrid from "@/components/home/WorkGrid";
 import { getPageMetadata } from "@/lib/seo";
-import { motionHref, socialLinks } from "@/lib/site";
+import { bookingHref, socialLinks } from "@/lib/site";
 import { safeFetch } from "@/sanity/lib/fetch";
 import {
   caseStudiesBySlugsQuery,
@@ -187,7 +187,7 @@ export default async function AnimationPage() {
             the rest of your brand.
           </p>
           <div className="mt-10 flex flex-wrap items-center gap-4">
-            <Button variant="primary" href={motionHref} external>
+            <Button variant="primary" href={bookingHref} external>
               Book a Clarity Call
             </Button>
             <Button variant="secondary" href="/portfolio">
@@ -461,7 +461,7 @@ export default async function AnimationPage() {
       <FinalCTA
         heading="Got something complicated to explain?"
         subtext="Book a Clarity Call and tell us what you're trying to get across. We'll tell you honestly whether animation is the right tool, and how we'd approach it."
-        primary={{ label: "Book a Clarity Call", href: motionHref, external: true }}
+        primary={{ label: "Book a Clarity Call", href: bookingHref, external: true }}
         secondary={{ label: "See our work", href: "/portfolio" }}
       />
     </>

@@ -9,7 +9,7 @@ import Reveal from "@/components/motion/Reveal";
 import StaggeredList from "@/components/motion/StaggeredList";
 import WorkGrid from "@/components/home/WorkGrid";
 import { getPageMetadata } from "@/lib/seo";
-import { motionHref, siteConfig } from "@/lib/site";
+import { bookingHref, siteConfig } from "@/lib/site";
 import { safeFetch } from "@/sanity/lib/fetch";
 import {
   caseStudiesBySlugsQuery,
@@ -355,7 +355,7 @@ export default async function BrandStrategyWorkshopPage() {
             </p>
           </div>
           <div className="mt-10 flex flex-wrap items-center gap-4">
-            <Button variant="primary" href={motionHref} external>
+            <Button variant="primary" href={bookingHref} external>
               Book a Clarity Call
             </Button>
             <Button variant="secondary" href="/contact">
@@ -820,7 +820,7 @@ export default async function BrandStrategyWorkshopPage() {
       <FinalCTA
         heading="Book a Clarity Call."
         subtext="Thirty minutes to talk through where the business is and what you want to change. We'll help you work out what you need, whether we're the right people to help, and if we're not, who would be."
-        primary={{ label: "Book a Clarity Call", href: motionHref, external: true }}
+        primary={{ label: "Book a Clarity Call", href: bookingHref, external: true }}
         secondary={{ label: "Send a brief", href: "/contact" }}
       />
     </>

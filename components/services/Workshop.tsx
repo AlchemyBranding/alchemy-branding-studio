@@ -1,7 +1,7 @@
 import Image from "next/image";
 
 import Button from "@/components/Button";
-import { motionHref } from "@/lib/site";
+import { bookingHref } from "@/lib/site";
 
 const outcomes = [
   {
@@ -68,7 +68,7 @@ export default function Workshop() {
               is still one click away from the CTA at the foot of this page.
             */}
             <div className="mt-10 flex flex-wrap items-center gap-4">
-              <Button variant="primary" href={motionHref} external>
+              <Button variant="primary" href={bookingHref} external>
                 Book a Clarity Call
               </Button>
               <Button variant="secondary" href="/brand-strategy-workshop">

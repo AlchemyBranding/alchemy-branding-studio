@@ -14,7 +14,7 @@ import {
 import Spotlight from "@/components/motion/Spotlight";
 import {
   groupSites,
-  motionHref,
+  bookingHref,
   navLinks,
   siteConfig,
   socialLinks,
@@ -150,7 +150,7 @@ export default function Footer() {
                 </a>
               </li>
               <li className="pt-2">
-                <Button href={motionHref} variant="primary" size="small" external>
+                <Button href={bookingHref} variant="primary" size="small" external>
                   Book a Clarity Call
                 </Button>
               </li>

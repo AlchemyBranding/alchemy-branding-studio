@@ -9,7 +9,7 @@ import FinalCTA from "@/components/home/FinalCTA";
 import PostHero from "@/components/post/PostHero";
 import RelatedPosts from "@/components/post/RelatedPosts";
 import { indexableRobots } from "@/lib/seo";
-import { motionHref, reservedSlugs, siteConfig } from "@/lib/site";
+import { bookingHref, reservedSlugs, siteConfig } from "@/lib/site";
 import { urlFor } from "@/sanity/lib/image";
 import { safeFetch } from "@/sanity/lib/fetch";
 import {
@@ -182,7 +182,7 @@ export default async function BlogPostPage({
       <FinalCTA
         heading="Liked this? See how it shows up in our work."
         subtext="Book a Clarity Call, or browse projects where we've put this thinking into practice."
-        primary={{ label: "Book a Clarity Call", href: motionHref, external: true }}
+        primary={{ label: "Book a Clarity Call", href: bookingHref, external: true }}
         secondary={{ label: "See the work", href: "/portfolio" }}
       />
     </>

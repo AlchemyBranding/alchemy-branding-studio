@@ -11,7 +11,7 @@ import PortableTextContent from "@/components/case-study/PortableTextContent";
 import RelatedProjects from "@/components/case-study/RelatedProjects";
 import FinalCTA from "@/components/home/FinalCTA";
 import { indexableRobots } from "@/lib/seo";
-import { motionHref, siteConfig } from "@/lib/site";
+import { bookingHref, siteConfig } from "@/lib/site";
 import { urlFor } from "@/sanity/lib/image";
 import { safeFetch } from "@/sanity/lib/fetch";
 import {
@@ -168,7 +168,7 @@ export default async function CaseStudyPage({
       <FinalCTA
         heading="Got a project that needs this kind of work?"
         subtext="Book a Clarity Call and we'll talk through it, or send us a brief."
-        primary={{ label: "Book a Clarity Call", href: motionHref, external: true }}
+        primary={{ label: "Book a Clarity Call", href: bookingHref, external: true }}
         secondary={{ label: "Send a brief", href: "/contact" }}
       />
     </>

@@ -3,7 +3,7 @@ import Link from "next/link";
 
 import Button from "@/components/Button";
 import ContactThankYouTracking from "@/components/contact/ContactThankYouTracking";
-import { motionHref, siteConfig } from "@/lib/site";
+import { bookingHref, siteConfig } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Thank you — your message is in",
@@ -33,7 +33,7 @@ export default function ContactConfirmationPage() {
           </p>
 
           <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
-            <Button variant="primary" href={motionHref} external>
+            <Button variant="primary" href={bookingHref} external>
               Book a Clarity Call
             </Button>
             <Button variant="secondary" href="/portfolio">
