@@ -4,8 +4,8 @@ import { useState } from "react";
 import type { FormEvent } from "react";
 
 import Button from "@/components/Button";
+import { NEWSLETTER_CONFIRM_HEADING, NEWSLETTER_CONFIRM_TEXT, NEWSLETTER_CONSENT } from "@/lib/newsletter";
 
-const CHECKLIST_PATH = "/alchemy-brand-checklist.pdf";
 
 type FieldErrors = Partial<Record<"email" | "consent", string>>;
 type Status = "idle" | "submitting" | "success" | "error";
@@ -37,6 +37,8 @@ export default function FooterNewsletter() {
       email: String(data.get("email") ?? ""),
       consent: data.get("consent") === "on",
       company: String(data.get("company") ?? ""),
+      page: window.location.pathname,
+      form: "footer",
     };
 
     try {
@@ -88,24 +90,9 @@ export default function FooterNewsletter() {
           {status === "success" ? (
             <div role="status" className="text-[0.95rem] text-dawn/80">
               <p className="font-display text-[1.125rem] text-dawn">
-                Check your inbox.
+                {NEWSLETTER_CONFIRM_HEADING}
               </p>
-              <p className="mt-2 text-dawn/65">
-                The checklist is on its way.{" "}
-                <a
-                  href={CHECKLIST_PATH}
-                  download
-                  onClick={() =>
-                    pushDataLayer({
-                      event: "checklist_download",
-                      form_location: "footer",
-                    })
-                  }
-                  className="text-dragon-fire underline underline-offset-4 hover:text-fire-80 transition-colors"
-                >
-                  Download it now.
-                </a>
-              </p>
+              <p className="mt-2 text-dawn/65">{NEWSLETTER_CONFIRM_TEXT}</p>
             </div>
           ) : (
             <form onSubmit={onSubmit} noValidate className="space-y-3">
@@ -139,8 +126,7 @@ export default function FooterNewsletter() {
                   aria-invalid={Boolean(errors.consent)}
                 />
                 <span className="text-[0.75rem] leading-[1.5] text-dawn/65">
-                  Email me the checklist and the occasional brand note. No spam,
-                  unsubscribe anytime.
+                  {NEWSLETTER_CONSENT}
                 </span>
               </label>
 
