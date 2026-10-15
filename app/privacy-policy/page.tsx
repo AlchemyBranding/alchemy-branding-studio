@@ -16,7 +16,7 @@ export default function PrivacyPolicyPage() {
     <LegalLayout
       eyebrow="Legal"
       title="Privacy Policy"
-      lastUpdated="30 June 2026"
+      lastUpdated="15 October 2026"
     >
       <p>
         This policy explains how Alchemy Branding Studio (&ldquo;Alchemy&rdquo;,
@@ -34,10 +34,10 @@ export default function PrivacyPolicyPage() {
       <p>We collect personal data in three ways:</p>
       <ul>
         <li>
-          <strong>When you fill in a form.</strong> Our contact form, free brand
-          audit form, and any other intake forms ask for things like your name,
-          email, company, website and the details of your enquiry. You decide
-          what to give us.
+          <strong>When you fill in a form.</strong> Our contact form asks for
+          your name, email, company and the details of your enquiry. Our brand
+          checklist and newsletter sign-up asks only for your email and your
+          agreement. You decide what to give us.
         </li>
         <li>
           <strong>When you email or message us.</strong> If you email us, message
@@ -47,7 +47,7 @@ export default function PrivacyPolicyPage() {
         <li>
           <strong>When you browse the site.</strong> We load Google Tag Manager
           to manage your cookie choice. Until you accept, no analytics or
-          advertising cookies are set &mdash; Google Consent Mode keeps everything
+          advertising cookies are set: Google Consent Mode keeps everything
           in a cookieless, privacy-preserving state. If you accept, Google
           Analytics 4 and Google Ads conversion measurement run. We also honour{" "}
           <strong>Global Privacy Control (GPC)</strong> browser signals as an
@@ -61,11 +61,15 @@ export default function PrivacyPolicyPage() {
         <li>To reply to your enquiry and discuss whether we&apos;re a fit for
           your project.</li>
         <li>To deliver work you&apos;ve engaged us for.</li>
+        <li>To send you the brand checklist and our occasional newsletter, if
+          you&apos;ve signed up and confirmed your email. Every email has a link
+          to unsubscribe.</li>
         <li>To understand how the site is used (only with your consent).</li>
         <li>To meet our legal and accounting obligations.</li>
       </ul>
       <p>
-        We rely on your <strong>consent</strong> for cookies/analytics, on{" "}
+        We rely on your <strong>consent</strong> for cookies/analytics and for
+        the newsletter, on{" "}
         <strong>legitimate interest</strong> for responding to enquiries and
         running our business, and on <strong>contract</strong> for delivering
         engaged work.
@@ -96,7 +100,15 @@ export default function PrivacyPolicyPage() {
           </tr>
           <tr>
             <td>Resend</td>
-            <td>Delivers the emails our forms generate to our inbox.</td>
+            <td>Sends our emails: enquiries from our contact form to our inbox,
+              and the newsletter with its confirmation and welcome emails.</td>
+          </tr>
+          <tr>
+            <td>Opus, our own system (hosted by Vercel and Supabase, in London)</td>
+            <td>Where we keep enquiries, bookings and newsletter sign-ups. For a
+              sign-up we keep your email, the wording you agreed to, the page you
+              signed up on and when you confirmed. Your IP address is only kept
+              as a scrambled code, to stop spam.</td>
           </tr>
           <tr>
             <td>Google (Tag Manager, Analytics 4, Ads)</td>
@@ -105,8 +117,8 @@ export default function PrivacyPolicyPage() {
               See <Link href="/cookie-policy">Cookie Policy</Link>.</td>
           </tr>
           <tr>
-            <td>Motion / WhatsApp / our email host</td>
-            <td>The booking, messaging and email channels we operate on.</td>
+            <td>WhatsApp / our email host</td>
+            <td>The messaging and email channels we operate on.</td>
           </tr>
         </tbody>
       </table>

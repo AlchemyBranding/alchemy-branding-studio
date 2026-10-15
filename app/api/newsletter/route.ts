@@ -1,31 +1,31 @@
 import { NextResponse } from "next/server";
 
+import { NEWSLETTER_CONSENT } from "@/lib/newsletter";
+
 /**
- * Newsletter signup endpoint for the homepage brand-checklist lead magnet.
+ * Newsletter and brand-checklist sign-up, for the three forms (inline section, footer, pop-up).
  *
- * Mirrors the simulated-until-configured pattern used by /api/contact:
- * until the HubSpot env vars are present it validates the input and
- * returns { ok: true, simulated: true } so the form can be iterated on
- * without provisioning HubSpot. Once HUBSPOT_PORTAL_ID and
- * HUBSPOT_NEWSLETTER_FORM_GUID are set in Vercel, it forwards the email
- * to the HubSpot Forms Submissions API.
+ * Each sign-up goes to Opus (Alchemy's own system), server to server, with the shared key
+ * NEWSLETTER_SIGNUP_KEY. Opus records the consent (the exact wording below, the page and the form),
+ * emails the person to confirm their address (double opt-in), and sends the checklist once they do.
+ * Opus is the only place sign-ups go.
+ *
+ * There is no fallback: if Opus can't be reached, the visitor is told to try again. In production a
+ * missing key is the same error, never a pretend success. Only local development (no key) simulates.
  */
 
-const PORTAL_ID = process.env.HUBSPOT_PORTAL_ID;
-const FORM_GUID = process.env.HUBSPOT_NEWSLETTER_FORM_GUID;
-const CONSENT_TEXT = process.env.HUBSPOT_CONSENT_TEXT;
-const NEWSLETTER_SUBSCRIPTION_ID = process.env.HUBSPOT_NEWSLETTER_SUBSCRIPTION_ID;
-// Data-residency region. This portal is on EU (app-eu1), so default to eu1.
-// na1 uses the global api.hsforms.com host; other regions use api-<region>.
-const REGION = process.env.HUBSPOT_FORMS_REGION || "eu1";
-const FORMS_HOST =
-  REGION === "na1" ? "api.hsforms.com" : `api-${REGION}.hsforms.com`;
+const OPUS_SIGNUP_URL = process.env.OPUS_NEWSLETTER_SIGNUP_URL || "https://opus.alchemybranding.studio/api/newsletter-signup";
+const SIGNUP_KEY = process.env.NEWSLETTER_SIGNUP_KEY;
+const TRY_AGAIN = "Couldn't sign you up just then. Please try again.";
 
 type NewsletterPayload = {
   email?: string;
   consent?: boolean | string;
-  /** Honeypot — must stay empty. */
+  /** Honeypot: must stay empty. */
   company?: string;
+  /** The page the form was on, and which form (homepage, footer, popup...). */
+  page?: string;
+  form?: string;
 };
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -33,6 +33,14 @@ const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 function isConsented(value: NewsletterPayload["consent"]) {
   return value === true || value === "true" || value === "on";
 }
+
+/** The visitor's address, which Opus only ever stores as a keyed hash (for its sign-up limits). */
+function visitorIp(request: Request) {
+  const forwarded = request.headers.get("x-forwarded-for")?.split(",")[0]?.trim();
+  return forwarded || request.headers.get("x-real-ip") || "";
+}
+
+const short = (v: unknown, max: number) => (typeof v === "string" ? v.trim().slice(0, max) : "");
 
 export async function POST(request: Request) {
   let body: NewsletterPayload;
@@ -42,7 +50,7 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "Invalid JSON" }, { status: 400 });
   }
 
-  // Honeypot — bots fill hidden fields, humans don't.
+  // Honeypot: bots fill hidden fields, humans don't.
   if (body.company && body.company.trim() !== "") {
     return NextResponse.json({ ok: true });
   }
@@ -56,80 +64,48 @@ export async function POST(request: Request) {
   }
 
   if (Object.keys(errors).length > 0) {
-    return NextResponse.json(
-      { error: "Invalid input", fields: errors },
-      { status: 422 },
-    );
+    return NextResponse.json({ error: "Invalid input", fields: errors }, { status: 422 });
   }
 
-  if (!PORTAL_ID || !FORM_GUID) {
-    // Dev / unconfigured fallback — log and pretend it worked so the form
-    // can be iterated on before HubSpot is provisioned.
-    console.info("[newsletter] HubSpot env not set, skipping submission:", {
-      email,
-    });
-    return NextResponse.json({ ok: true, simulated: true });
+  if (!SIGNUP_KEY) {
+    if (process.env.NODE_ENV !== "production") {
+      // Local development only: pretend it worked so the forms can be worked on without Opus.
+      console.info("[newsletter] NEWSLETTER_SIGNUP_KEY not set (development): not sent to Opus.");
+      return NextResponse.json({ ok: true, simulated: true });
+    }
+    console.error("[newsletter] NEWSLETTER_SIGNUP_KEY is not set: sign-ups can't reach Opus.");
+    return NextResponse.json({ error: TRY_AGAIN }, { status: 503 });
   }
-
-  const endpoint = `https://${FORMS_HOST}/submissions/v3/integration/submit/${PORTAL_ID}/${FORM_GUID}`;
 
   try {
-    const res = await fetch(endpoint, {
+    const res = await fetch(OPUS_SIGNUP_URL, {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+      headers: { "Content-Type": "application/json", Authorization: `Bearer ${SIGNUP_KEY}` },
       body: JSON.stringify({
-        fields: [{ objectTypeId: "0-1", name: "email", value: email }],
-        // Record the visitor's on-site opt-in in HubSpot so the contact is
-        // logged as subscribed rather than "Not Specified". Requires
-        // HUBSPOT_CONSENT_TEXT; when HUBSPOT_NEWSLETTER_SUBSCRIPTION_ID is also
-        // set, the contact is explicitly opted in to that subscription type
-        // (the newsletter). Omitted entirely otherwise, so it stays safe on
-        // portals without the data-privacy feature (e.g. Starter plans).
-        ...(CONSENT_TEXT
-          ? {
-              legalConsentOptions: {
-                consent: {
-                  consentToProcess: true,
-                  text: CONSENT_TEXT,
-                  ...(NEWSLETTER_SUBSCRIPTION_ID
-                    ? {
-                        communications: [
-                          {
-                            value: true,
-                            subscriptionTypeId: Number(
-                              NEWSLETTER_SUBSCRIPTION_ID,
-                            ),
-                            text: CONSENT_TEXT,
-                          },
-                        ],
-                      }
-                    : {}),
-                },
-              },
-            }
-          : {}),
-        context: {
-          pageName: "Newsletter signup",
-          pageUri: "/",
-        },
+        email,
+        consent: true,
+        consentText: NEWSLETTER_CONSENT,
+        page: short(body.page, 500) || null,
+        form: short(body.form, 60) || null,
+        honeypot: "",
+        ip: visitorIp(request),
       }),
+      signal: AbortSignal.timeout(10_000),
+      cache: "no-store",
     });
 
-    if (!res.ok) {
-      const detail = await res.text().catch(() => "");
-      console.error("[newsletter] HubSpot error:", res.status, detail);
-      return NextResponse.json(
-        { error: "Couldn't sign you up just then. Please try again." },
-        { status: 502 },
-      );
+    if (res.status === 422) {
+      // Opus found something wrong with the address: show its words on the form.
+      const detail = (await res.json().catch(() => ({}))) as { error?: string; fields?: Record<string, string> };
+      return NextResponse.json({ error: detail.error ?? "Invalid input", fields: detail.fields ?? {} }, { status: 422 });
     }
-
+    if (!res.ok) {
+      console.error("[newsletter] Opus answered", res.status);
+      return NextResponse.json({ error: TRY_AGAIN }, { status: 502 });
+    }
     return NextResponse.json({ ok: true });
   } catch (err) {
-    console.error("[newsletter] request failed:", err);
-    return NextResponse.json(
-      { error: "Couldn't sign you up just then. Please try again." },
-      { status: 502 },
-    );
+    console.error("[newsletter] couldn't reach Opus:", err instanceof Error ? err.message : err);
+    return NextResponse.json({ error: TRY_AGAIN }, { status: 502 });
   }
 }

@@ -5,8 +5,8 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import type { FormEvent } from "react";
 
 import Button from "@/components/Button";
+import { NEWSLETTER_CONFIRM_HEADING, NEWSLETTER_CONFIRM_TEXT, NEWSLETTER_CONSENT } from "@/lib/newsletter";
 
-const CHECKLIST_PATH = "/alchemy-brand-checklist.pdf";
 const STORAGE_KEY = "alchemy-checklist-popup";
 const CAP_DAYS = 30;
 const SCROLL_THRESHOLD = 0.4; // fraction of page scrolled
@@ -166,6 +166,8 @@ export default function NewsletterPopup() {
       email: String(data.get("email") ?? ""),
       consent: data.get("consent") === "on",
       company: String(data.get("company") ?? ""),
+      page: window.location.pathname,
+      form: "popup",
     };
 
     try {
@@ -227,26 +229,10 @@ export default function NewsletterPopup() {
 
         {status === "success" ? (
           <div role="status" className="text-center pt-2">
-            <h2 className="font-display text-h3 text-dawn">Check your inbox.</h2>
-            <p className="mt-3 text-dawn/70">
-              The brand checklist is on its way. Can&apos;t wait? Grab it now.
-            </p>
-            <div className="mt-6 flex justify-center">
-              <Button
-                variant="primary"
-                href={CHECKLIST_PATH}
-                download
-                data-autofocus
-                onClick={() =>
-                  pushDataLayer({
-                    event: "checklist_download",
-                    form_location: "popup",
-                  })
-                }
-              >
-                Download the checklist
-              </Button>
-            </div>
+            <h2 className="font-display text-h3 text-dawn" tabIndex={-1} data-autofocus>
+              {NEWSLETTER_CONFIRM_HEADING}
+            </h2>
+            <p className="mt-3 text-dawn/70">{NEWSLETTER_CONFIRM_TEXT}</p>
           </div>
         ) : (
           <>
@@ -295,8 +281,7 @@ export default function NewsletterPopup() {
                   aria-invalid={Boolean(errors.consent)}
                 />
                 <span className="text-[0.8125rem] leading-[1.5] text-dawn/65">
-                  Email me the checklist and the occasional brand note. No spam,
-                  unsubscribe anytime.
+                  {NEWSLETTER_CONSENT}
                 </span>
               </label>
               {errors.consent ? (

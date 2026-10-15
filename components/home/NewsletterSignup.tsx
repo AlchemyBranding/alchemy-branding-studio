@@ -4,9 +4,9 @@ import { useState } from "react";
 import type { FormEvent } from "react";
 
 import Button from "@/components/Button";
+import { NEWSLETTER_CONFIRM_HEADING, NEWSLETTER_CONFIRM_TEXT, NEWSLETTER_CONSENT } from "@/lib/newsletter";
 
 /** Path to the lead-magnet PDF in /public. */
-const CHECKLIST_PATH = "/alchemy-brand-checklist.pdf";
 
 type FieldErrors = Partial<Record<"email" | "consent", string>>;
 type Status = "idle" | "submitting" | "success" | "error";
@@ -41,11 +41,14 @@ export default function NewsletterSignup({ location = "homepage" }: Props) {
     setErrors({});
     setServerError(null);
 
-    const data = new FormData(event.currentTarget);
+    const form = event.currentTarget; // currentTarget is null after the await
+    const data = new FormData(form);
     const payload = {
       email: String(data.get("email") ?? ""),
       consent: data.get("consent") === "on",
       company: String(data.get("company") ?? ""),
+      page: window.location.pathname,
+      form: location,
     };
 
     try {
@@ -69,7 +72,7 @@ export default function NewsletterSignup({ location = "homepage" }: Props) {
 
       pushDataLayer({ event: "newsletter_signup", form_location: location });
       setStatus("success");
-      event.currentTarget.reset();
+      form.reset();
     } catch (err) {
       setStatus("error");
       setServerError(
@@ -114,27 +117,9 @@ export default function NewsletterSignup({ location = "homepage" }: Props) {
                 className="rounded-card bg-dusk-80 border border-dragon-fire/60 p-8 text-center"
               >
                 <h3 className="font-display text-h3 text-dawn">
-                  Check your inbox.
+                  {NEWSLETTER_CONFIRM_HEADING}
                 </h3>
-                <p className="mt-3 text-dawn/70">
-                  The brand checklist is on its way. Can&apos;t wait? Grab it
-                  now.
-                </p>
-                <div className="mt-6 flex justify-center">
-                  <Button
-                    variant="primary"
-                    href={CHECKLIST_PATH}
-                    download
-                    onClick={() =>
-                      pushDataLayer({
-                        event: "checklist_download",
-                        form_location: location,
-                      })
-                    }
-                  >
-                    Download the checklist
-                  </Button>
-                </div>
+                <p className="mt-3 text-dawn/70">{NEWSLETTER_CONFIRM_TEXT}</p>
               </div>
             ) : (
               <form
@@ -182,8 +167,7 @@ export default function NewsletterSignup({ location = "homepage" }: Props) {
                       }
                     />
                     <span className="text-[0.8125rem] leading-[1.5] text-dawn/65">
-                      Email me the checklist and the occasional brand note. No
-                      spam, unsubscribe anytime.
+                      {NEWSLETTER_CONSENT}
                     </span>
                   </label>
                   {errors.consent ? (

@@ -15,9 +15,8 @@ const serviceOptions = [
 ] as const;
 
 // Required, and kept in step with the channels in the marketing plan, so every
-// enquiry arrives with a source. Changing a label here changes what lands in
-// HubSpot's enquiry_source property: keep the HubSpot dropdown options identical.
-// HubSpot free caps a dropdown at 10 options, so the list stays at 10.
+// enquiry arrives with a source. The answer goes in the enquiry email's subject
+// ("via ..."), which Opus reads into Enquiries.
 const heardAboutOptions = [
   "Google search",
   "Google Maps or Business Profile",
