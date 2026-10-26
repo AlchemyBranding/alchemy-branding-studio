@@ -49,6 +49,7 @@ const graph = {
       legalName: "Alchemist Palace Ltd",
       url: `${siteConfig.url}/`,
       logo,
+      image: logo,
       email: siteConfig.email,
       telephone: siteConfig.phoneE164,
       address: postalAddress,
