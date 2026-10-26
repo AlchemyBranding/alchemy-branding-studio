@@ -27,7 +27,7 @@ export async function generateMetadata(): Promise<Metadata> {
     pageKey: "home",
     path: "/",
     defaults: {
-      title: "Brand strategy that fuels business growth",
+      title: "Alchemy Branding Studio | Brand strategy, Abergavenny, South Wales",
       description:
         "We work out how your business should be positioned and who it's for, then build the brand, website and content to match. For ambitious SMEs.",
     },
