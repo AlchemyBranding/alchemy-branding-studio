@@ -1,65 +1,102 @@
-import { siteConfig, socialLinks } from "@/lib/site";
+import { siteConfig } from "@/lib/site";
 
-const organizationSchema = {
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  name: siteConfig.name,
-  url: siteConfig.url,
-  logo: `${siteConfig.url}/alchemy-logo-white.svg`,
-  description: siteConfig.description,
-  email: siteConfig.email,
-  sameAs: socialLinks.map((s) => s.href),
+/**
+ * Site-wide structured data, rendered once from the root layout.
+ *
+ * Source of truth: alchemy-marketing-plan/15-ai-visibility.md sections 3 and 3b
+ * (decided 26 Oct 2026). Rules from that brief:
+ * - One public postal address everywhere: the registered office in Cardiff.
+ *   Never the old Hatherleigh Place address or a home address.
+ * - Every fact here must also be visible on the site (footer, homepage, about).
+ *   No ratings, reviews, prices, opening hours or geo coordinates.
+ * - The Google Business Profile is a service-area business with its address
+ *   hidden, so it never shows International House on the map. This schema
+ *   carries the registered office as the postal address only.
+ *
+ * Not included yet, on purpose:
+ * - telephone: the footer shows a WhatsApp link but no visible number.
+ * - foundingDate: no page says when the studio started.
+ * - Google Business Profile and DesignRush in sameAs: links still to come.
+ */
+
+const organizationId = `${siteConfig.url}/#organization`;
+const businessId = `${siteConfig.url}/#business`;
+const logo = `${siteConfig.url}/alchemy-logo-dark.svg`;
+
+const sameAs = [
+  "https://www.linkedin.com/company/alchemy-branding-studio",
+  "https://www.instagram.com/alchemybrandingstudio",
+  "https://www.facebook.com/alchemybrandingstudio",
+  "https://www.youtube.com/@alchemybrandingstudio",
+  "https://clutch.co/profile/alchemy-branding-studio",
+  "https://www.brandtoscale.co.uk",
+];
+
+const postalAddress = {
+  "@type": "PostalAddress",
+  streetAddress: "International House, 10 Churchill Way",
+  addressLocality: "Cardiff",
+  postalCode: "CF10 2HE",
+  addressCountry: "GB",
 };
 
-const localBusinessSchema = {
+const graph = {
   "@context": "https://schema.org",
-  "@type": ["LocalBusiness", "ProfessionalService"],
-  name: siteConfig.name,
-  url: siteConfig.url,
-  image: `${siteConfig.url}/opengraph-image`,
-  description: siteConfig.description,
-  email: siteConfig.email,
-  telephone:
-    process.env.NEXT_PUBLIC_WHATSAPP_NUMBER
-      ? `+${process.env.NEXT_PUBLIC_WHATSAPP_NUMBER}`
-      : "+447734794779",
-  // Must match the Google Business Profile, which is in Abergavenny. The only
-  // Cardiff address is a virtual office, and Google does not allow a Business
-  // Profile at one, so Cardiff is named as a served area instead. No street or
-  // postcode until it is settled whether the profile shows its address.
-  // alchemy-content-engine/decisions/OPEN.md item 58.
-  address: {
-    "@type": "PostalAddress",
-    addressCountry: "GB",
-    addressRegion: "Wales",
-    addressLocality: "Abergavenny",
-  },
-  priceRange: "££££",
-  areaServed: [
-    { "@type": "City", name: "Cardiff" },
-    { "@type": "City", name: "Newport" },
-    { "@type": "City", name: "Bristol" },
-    { "@type": "AdministrativeArea", name: "Monmouthshire" },
-    { "@type": "AdministrativeArea", name: "Wales" },
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": organizationId,
+      name: siteConfig.name,
+      legalName: "Alchemist Palace Ltd",
+      url: `${siteConfig.url}/`,
+      logo,
+      email: siteConfig.email,
+      address: postalAddress,
+      founder: [
+        {
+          "@type": "Person",
+          name: "Jess Morgan",
+          jobTitle: "Co-founder & Strategy Director",
+        },
+        {
+          "@type": "Person",
+          name: "Dave Morgan",
+          jobTitle: "Co-founder & Operations Director",
+        },
+      ],
+      sameAs,
+    },
+    {
+      "@type": "ProfessionalService",
+      "@id": businessId,
+      name: siteConfig.name,
+      url: `${siteConfig.url}/`,
+      logo,
+      image: logo,
+      email: siteConfig.email,
+      address: postalAddress,
+      areaServed: [
+        { "@type": "City", name: "Abergavenny" },
+        { "@type": "AdministrativeArea", name: "Monmouthshire" },
+        { "@type": "City", name: "Cardiff" },
+        { "@type": "City", name: "Newport" },
+        { "@type": "Place", name: "South Wales" },
+        { "@type": "AdministrativeArea", name: "Wales" },
+        { "@type": "Country", name: "United Kingdom" },
+      ],
+      parentOrganization: { "@id": organizationId },
+    },
   ],
-  sameAs: socialLinks.map((s) => s.href),
 };
 
 export default function JsonLd() {
   return (
-    <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(organizationSchema),
-        }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(localBusinessSchema),
-        }}
-      />
-    </>
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{
+        // Escape "<" so no string in the data can close the script tag early.
+        __html: JSON.stringify(graph).replace(/</g, "\\u003c"),
+      }}
+    />
   );
 }

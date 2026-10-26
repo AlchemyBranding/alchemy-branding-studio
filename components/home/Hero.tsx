@@ -50,8 +50,18 @@ export default function Hero() {
           <span className="block italic text-dawn">Win the work.</span>
         </h1>
 
+        {/* Location line for local and AI search. Wording fixed in
+            alchemy-marketing-plan/15-ai-visibility.md section 3b. */}
         <p
-          className="mt-8 max-w-2xl text-[1.125rem] leading-[1.6] text-dawn/85 animate-fade-up"
+          className="mt-6 max-w-2xl text-[1rem] leading-[1.6] text-dawn/75 animate-fade-up"
+          style={{ animationDelay: "475ms" }}
+        >
+          Brand strategy studio based in Abergavenny, working across Cardiff
+          and South Wales.
+        </p>
+
+        <p
+          className="mt-6 max-w-2xl text-[1.125rem] leading-[1.6] text-dawn/85 animate-fade-up"
           style={{ animationDelay: "550ms" }}
         >
           We work out how your business should be positioned and who it&apos;s

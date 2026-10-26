@@ -207,6 +207,16 @@ export default function Footer() {
           </div>
           <p>Design &amp; animation by Alchemy</p>
         </div>
+
+        {/* Company details. The registered office is the only public postal
+            address (15-ai-visibility.md section 3b). Never the old
+            Hatherleigh Place address or a home address. Must match the
+            address in components/JsonLd.tsx. */}
+        <address className="mt-6 not-italic text-[0.8rem] leading-relaxed text-dawn/65">
+          Alchemist Palace Ltd, trading as Alchemy Branding Studio. Registered
+          office: International House, 10 Churchill Way, Cardiff CF10 2HE.
+          Company number 13447052.
+        </address>
       </div>
       </Spotlight>
     </footer>
