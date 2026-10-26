@@ -31,6 +31,8 @@ const sameAs = [
   "https://www.brandtoscale.co.uk",
   // Google Business Profile (share link from the profile, 26 Oct 2026).
   "https://share.google/hnY5QJ4JKMvmJpVjN",
+  // Alchemy marketing TikTok (run by Jess).
+  "https://www.tiktok.com/@jessalchemy",
 ];
 
 const postalAddress = {
@@ -84,6 +86,14 @@ const graph = {
         { "@type": "AdministrativeArea", name: "Monmouthshire" },
         { "@type": "City", name: "Cardiff" },
         { "@type": "City", name: "Newport" },
+        { "@type": "AdministrativeArea", name: "Torfaen" },
+        { "@type": "AdministrativeArea", name: "Blaenau Gwent" },
+        { "@type": "AdministrativeArea", name: "Caerphilly" },
+        { "@type": "AdministrativeArea", name: "Vale of Glamorgan" },
+        { "@type": "AdministrativeArea", name: "Rhondda Cynon Taf" },
+        { "@type": "AdministrativeArea", name: "Bridgend" },
+        { "@type": "City", name: "Swansea" },
+        { "@type": "Place", name: "South West England" },
         { "@type": "Place", name: "South Wales" },
         { "@type": "AdministrativeArea", name: "Wales" },
         { "@type": "Country", name: "United Kingdom" },
