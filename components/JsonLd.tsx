@@ -15,7 +15,6 @@ import { siteConfig } from "@/lib/site";
  *
  * Not included yet, on purpose:
  * - foundingDate: no page says when the studio started.
- * - DesignRush in sameAs: no profile yet.
  */
 
 const organizationId = `${siteConfig.url}/#organization`;
@@ -28,6 +27,7 @@ const sameAs = [
   "https://www.facebook.com/alchemybrandingstudio",
   "https://www.youtube.com/@alchemybrandingstudio",
   "https://clutch.co/profile/alchemy-branding-studio",
+  "https://www.designrush.com/agency/profile/alchemy-branding-studio",
   "https://www.brandtoscale.co.uk",
   // Google Business Profile (share link from the profile, 26 Oct 2026).
   "https://share.google/hnY5QJ4JKMvmJpVjN",
