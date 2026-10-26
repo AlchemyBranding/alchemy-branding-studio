@@ -141,6 +141,14 @@ export default function Footer() {
               </li>
               <li>
                 <a
+                  href={`tel:${siteConfig.phoneE164}`}
+                  className="text-[0.9rem] text-dawn/70 hover:text-dragon-fire transition-colors duration-200"
+                >
+                  {siteConfig.phone}
+                </a>
+              </li>
+              <li>
+                <a
                   href={whatsappHref}
                   target="_blank"
                   rel="noopener noreferrer"

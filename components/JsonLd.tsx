@@ -14,7 +14,6 @@ import { siteConfig } from "@/lib/site";
  *   carries the registered office as the postal address only.
  *
  * Not included yet, on purpose:
- * - telephone: the footer shows a WhatsApp link but no visible number.
  * - foundingDate: no page says when the studio started.
  * - Google Business Profile and DesignRush in sameAs: links still to come.
  */
@@ -51,6 +50,7 @@ const graph = {
       url: `${siteConfig.url}/`,
       logo,
       email: siteConfig.email,
+      telephone: siteConfig.phoneE164,
       address: postalAddress,
       founder: [
         {
@@ -74,6 +74,7 @@ const graph = {
       logo,
       image: logo,
       email: siteConfig.email,
+      telephone: siteConfig.phoneE164,
       address: postalAddress,
       areaServed: [
         { "@type": "City", name: "Abergavenny" },

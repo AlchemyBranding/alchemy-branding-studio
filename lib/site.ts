@@ -3,6 +3,11 @@ export const siteConfig = {
   description: "Brand strategy, design and animation for ambitious businesses.",
   url: "https://alchemybranding.studio",
   email: "hello@alchemybranding.studio",
+  // Public business number. Shown in the footer and used in the JSON-LD, so
+  // the two always match (15-ai-visibility.md section 3b: same name, address
+  // and phone on every listing).
+  phone: "07734 794779",
+  phoneE164: "+447734794779",
 } as const;
 
 export const whatsappHref = `https://wa.me/${
