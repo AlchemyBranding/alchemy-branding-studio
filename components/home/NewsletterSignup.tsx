@@ -91,7 +91,7 @@ export default function NewsletterSignup({ location = "homepage" }: Props) {
       <div className="max-w-7xl mx-auto px-6 md:px-10">
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.1fr] gap-12 lg:gap-20 items-center">
           <div>
-            <p className="text-[0.8rem] font-medium uppercase tracking-[0.12em] text-dragon-fire">
+            <p className="text-[0.8rem] font-medium uppercase tracking-[0.12em] text-space-green">
               Free download
             </p>
             <h2

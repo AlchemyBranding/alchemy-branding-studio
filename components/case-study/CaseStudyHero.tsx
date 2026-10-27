@@ -40,7 +40,7 @@ export default function CaseStudyHero(props: Props) {
               {props.serviceTags.map((tag) => (
                 <li
                   key={tag}
-                  className="inline-block rounded-full bg-dragon-fire px-3 py-1 text-[0.7rem] font-bold uppercase tracking-wider text-dawn"
+                  className="inline-block rounded-full bg-dragon-fire px-3 py-1 text-[0.7rem] font-bold uppercase tracking-wider text-dusk"
                 >
                   {tag}
                 </li>

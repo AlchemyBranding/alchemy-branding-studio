@@ -163,7 +163,7 @@ export default async function BlogPostPage({
         <section className="bg-dawn pb-[80px]">
           <div className="max-w-3xl mx-auto px-6 md:px-10">
             <div className="rounded-card bg-dusk/5 border border-dusk/15 p-6">
-              <p className="text-[0.75rem] font-bold uppercase tracking-[0.12em] text-dragon-fire">
+              <p className="text-[0.75rem] font-bold uppercase tracking-[0.12em] text-space-green">
                 Written by
               </p>
               <p className="mt-2 text-dusk">

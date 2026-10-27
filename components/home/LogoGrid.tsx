@@ -218,7 +218,7 @@ export default function LogoGrid() {
                   <span className="text-[0.72rem] leading-snug text-dusk/65 line-clamp-2">
                     {logo.outcome}
                   </span>
-                  <span className="mt-0.5 text-[0.68rem] font-medium uppercase tracking-[0.08em] text-dragon-fire">
+                  <span className="mt-0.5 text-[0.68rem] font-medium uppercase tracking-[0.08em] text-space-green">
                     View project
                   </span>
                 </div>

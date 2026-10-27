@@ -95,7 +95,7 @@ export default function InsightsPreview({ posts }: { posts: RecentBlogPost[] }) 
 
                 <div className="p-6">
                   {post.category ? (
-                    <span className="inline-block rounded-full bg-dragon-fire px-2.5 py-0.5 text-[0.7rem] font-bold uppercase tracking-wider text-dawn">
+                    <span className="inline-block rounded-full bg-dragon-fire px-2.5 py-0.5 text-[0.7rem] font-bold uppercase tracking-wider text-dusk">
                       {post.category}
                     </span>
                   ) : null}

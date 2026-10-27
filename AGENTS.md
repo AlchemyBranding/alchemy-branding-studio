@@ -153,11 +153,13 @@ constraint was the Dragon Fire eyebrow, which needs its ground at 51 or darker
 to reach 4.5:1 and therefore sets how far right the scrim has to stay heavy.
 Re-tune with the harness rather than by hand if the copy or the crop moves.
 
-One known failure, and it predates any of this: `text-dragon-fire` on a light
-ground is 2.6:1, under the 4.5:1 that 0.8rem text needs. Every eyebrow on every
-`bg-dusk` section is affected, so it is a site-wide decision rather than a
-page-level fix. Adding a photograph behind "Who it suits" moved it to 2.5:1,
-which is to say it changed nothing.
+`[27 Oct 2026]` **Dragon Fire is never a text colour on Dawn** (2.5:1, brand
+guidelines slides 21 and 24). On Dawn: eyebrows and step numbers are
+`text-space-green`, inline links are `text-dusk` underlined with
+`decoration-dragon-fire`. Tags on Dragon Fire take `text-dusk`, never Dawn.
+Dragon Fire text on Dusk is fine. Reviews and results bands sit on
+`bg-space-green` with Dawn words, at most one Mindaro highlight, and no Dusk
+text (1.9:1).
 
 ### `text-display` assumes a full-width headline
 

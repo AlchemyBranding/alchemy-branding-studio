@@ -9,9 +9,9 @@ export default function CaseStudyStats({ stats }: Props) {
   if (!stats || stats.length === 0) return null;
 
   return (
-    <section className="bg-dusk border-b border-dusk-80 py-[80px] md:py-[100px]">
+    <section className="bg-space-green py-[80px] md:py-[100px]">
       <div className="max-w-7xl mx-auto px-6 md:px-10">
-        <p className="text-[0.7rem] font-bold uppercase tracking-[0.12em] text-dragon-fire">
+        <p className="text-[0.7rem] font-bold uppercase tracking-[0.12em] text-dawn/80">
           The numbers
         </p>
         <div
@@ -33,7 +33,7 @@ export default function CaseStudyStats({ stats }: Props) {
                   decimals={s.decimals ?? 0}
                 />
               </div>
-              <p className="mt-4 text-[0.9375rem] text-dawn/65 leading-[1.5] max-w-xs">
+              <p className="mt-4 text-[0.9375rem] text-dawn/80 leading-[1.5] max-w-xs">
                 {s.label}
               </p>
             </div>

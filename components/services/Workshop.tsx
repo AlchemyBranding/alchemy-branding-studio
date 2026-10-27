@@ -35,7 +35,7 @@ export default function Workshop() {
       <div className="max-w-7xl mx-auto px-6 md:px-10">
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_1fr] gap-12 lg:gap-20 items-start">
           <div className="lg:sticky lg:top-32">
-            <p className="text-[0.8rem] font-medium uppercase tracking-[0.12em] text-dragon-fire">
+            <p className="text-[0.8rem] font-medium uppercase tracking-[0.12em] text-space-green">
               Where we start
             </p>
             <h2
@@ -93,7 +93,7 @@ export default function Workshop() {
                 key={o.title}
                 className="rounded-card bg-dawn/60 border border-dusk/10 p-7"
               >
-                <p className="text-dragon-fire font-bold text-[0.9rem] tracking-wider">
+                <p className="text-space-green font-bold text-[0.9rem] tracking-wider">
                   Outcome 0{i + 1}
                 </p>
                 <h3 className="mt-2 font-bold text-[1.25rem] text-dusk">
