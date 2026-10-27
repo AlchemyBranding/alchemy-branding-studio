@@ -16,7 +16,7 @@ export default function Included() {
     >
       <div className="max-w-7xl mx-auto px-6 md:px-10 grid grid-cols-1 lg:grid-cols-[1fr_1.4fr] gap-12 lg:gap-20">
         <div>
-          <p className="text-[0.8rem] font-medium uppercase tracking-[0.12em] text-dragon-fire">
+          <p className="text-[0.8rem] font-medium uppercase tracking-[0.12em] text-space-green">
             What you get
           </p>
           <h2
@@ -39,7 +39,7 @@ export default function Included() {
             >
               <span
                 aria-hidden="true"
-                className="text-dragon-fire font-bold shrink-0 w-7"
+                className="text-space-green font-bold shrink-0 w-7"
               >
                 {String(i + 1).padStart(2, "0")}
               </span>

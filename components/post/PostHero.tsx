@@ -32,7 +32,7 @@ export default function PostHero(props: Props) {
       <div className="pt-[140px] md:pt-[180px] pb-12 md:pb-16">
         <div className="max-w-4xl mx-auto px-6 md:px-10">
           {props.category ? (
-            <span className="inline-block rounded-full bg-dragon-fire px-3 py-1 text-[0.7rem] font-bold uppercase tracking-wider text-dawn">
+            <span className="inline-block rounded-full bg-dragon-fire px-3 py-1 text-[0.7rem] font-bold uppercase tracking-wider text-dusk">
               {props.category}
             </span>
           ) : null}

@@ -225,7 +225,7 @@ export default async function BrandIdentityPage() {
         <div className="max-w-7xl mx-auto px-6 md:px-10">
           <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.3fr] gap-12 lg:gap-20 items-start">
             <div className="lg:sticky lg:top-32">
-              <p className="text-eyebrow text-dragon-fire">What we make</p>
+              <p className="text-eyebrow text-space-green">What we make</p>
               <h2
                 id="what-we-make-heading"
                 className="font-display text-h2 mt-4 text-dusk"
@@ -243,7 +243,7 @@ export default async function BrandIdentityPage() {
                 >
                   <span
                     aria-hidden="true"
-                    className="font-display text-[1.5rem] leading-none text-dragon-fire md:text-[2rem]"
+                    className="font-display text-[1.5rem] leading-none text-space-green md:text-[2rem]"
                   >
                     {String(i + 1).padStart(2, "0")}
                   </span>
@@ -279,14 +279,14 @@ export default async function BrandIdentityPage() {
                 Two identities, four surfaces:{" "}
                 <Link
                   href="/project/handled-with-care-repositioning-christie-residential"
-                  className="text-dragon-fire underline underline-offset-4 hover:text-fire-60 transition-colors"
+                  className="text-dusk underline decoration-dragon-fire decoration-2 underline-offset-4 hover:decoration-dusk transition-colors"
                 >
                   Christie Residential
                 </Link>{" "}
                 on a garden board and a tote,{" "}
                 <Link
                   href="/project/sales-made-easy-branding-design-and-support"
-                  className="text-dragon-fire underline underline-offset-4 hover:text-fire-60 transition-colors"
+                  className="text-dusk underline decoration-dragon-fire decoration-2 underline-offset-4 hover:decoration-dusk transition-colors"
                 >
                   Sales Made Easy
                 </Link>{" "}
@@ -351,7 +351,7 @@ export default async function BrandIdentityPage() {
         <div className="max-w-7xl mx-auto px-6 md:px-10">
           <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.3fr] gap-12 lg:gap-20 items-start">
             <div className="lg:sticky lg:top-32">
-              <p className="text-[0.8rem] font-medium uppercase tracking-[0.12em] text-dragon-fire">
+              <p className="text-[0.8rem] font-medium uppercase tracking-[0.12em] text-space-green">
                 What changes
               </p>
               <h2

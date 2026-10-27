@@ -38,7 +38,7 @@ export default function Principles() {
       className="bg-dawn text-dusk py-[120px]"
     >
       <div className="max-w-7xl mx-auto px-6 md:px-10">
-        <p className="text-[0.8rem] font-medium uppercase tracking-[0.12em] text-dragon-fire">
+        <p className="text-[0.8rem] font-medium uppercase tracking-[0.12em] text-space-green">
           How we work
         </p>
         <h2
@@ -51,7 +51,7 @@ export default function Principles() {
         <ul className="mt-14 grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-14">
           {principles.map((p) => (
             <li key={p.number} className="border-t border-dusk/15 pt-6">
-              <p className="text-dragon-fire font-bold text-[1.5rem] leading-none">
+              <p className="text-space-green font-bold text-[1.5rem] leading-none">
                 {p.number}
               </p>
               <h3 className="mt-4 font-bold text-[1.25rem] text-dusk">

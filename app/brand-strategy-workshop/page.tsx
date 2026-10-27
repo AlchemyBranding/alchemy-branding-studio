@@ -586,7 +586,7 @@ export default async function BrandStrategyWorkshopPage() {
           className="pointer-events-none absolute inset-0 z-[1] bg-[linear-gradient(to_right,rgba(246,241,235,0.86)_0%,rgba(246,241,235,0.82)_45%,rgba(246,241,235,0.72)_75%,rgba(246,241,235,0.62)_100%)]"
         />
         <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-10">
-          <p className="text-[0.8rem] font-medium uppercase tracking-[0.12em] text-dragon-fire">
+          <p className="text-[0.8rem] font-medium uppercase tracking-[0.12em] text-space-green">
             Who it suits
           </p>
           <h2
@@ -641,7 +641,7 @@ export default async function BrandStrategyWorkshopPage() {
       {/* What clients say. Sits above the price (08-proof.md section 4). */}
       <section
         aria-labelledby="reviews-heading"
-        className="bg-dusk-80 py-[120px] border-y border-dusk-60"
+        className="bg-space-green py-[120px]"
       >
         <div className="max-w-7xl mx-auto px-6 md:px-10">
           <h2
@@ -654,13 +654,13 @@ export default async function BrandStrategyWorkshopPage() {
             {reviews.map((r) => (
               <li
                 key={r.name}
-                className="rounded-card bg-dusk border border-dusk-60 p-7 flex flex-col"
+                className="rounded-card bg-dusk/20 border border-dawn/15 p-7 flex flex-col"
               >
                 <figure className="flex flex-col h-full">
-                  <blockquote className="text-[1.0625rem] leading-[1.7] text-dawn/80">
+                  <blockquote className="text-[1.0625rem] leading-[1.7] text-dawn/85">
                     &ldquo;{r.quote}&rdquo;
                   </blockquote>
-                  <figcaption className="mt-6 pt-5 border-t border-dusk-60 text-[0.9375rem] font-bold text-dawn">
+                  <figcaption className="mt-6 pt-5 border-t border-dawn/15 text-[0.9375rem] font-bold text-dawn">
                     {r.name}
                   </figcaption>
                 </figure>
@@ -672,7 +672,7 @@ export default async function BrandStrategyWorkshopPage() {
               href={GOOGLE_REVIEWS_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-dragon-fire underline underline-offset-4 hover:text-fire-60 transition-colors"
+              className="text-dawn underline decoration-dawn/50 underline-offset-4 hover:decoration-dawn transition-colors"
             >
               Read all our Google reviews
             </a>
@@ -692,7 +692,7 @@ export default async function BrandStrategyWorkshopPage() {
         <div className="max-w-7xl mx-auto px-6 md:px-10">
           <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.3fr] gap-12 lg:gap-20 items-start">
             <div className="lg:sticky lg:top-32">
-              <p className="text-[0.8rem] font-medium uppercase tracking-[0.12em] text-dragon-fire">
+              <p className="text-[0.8rem] font-medium uppercase tracking-[0.12em] text-space-green">
                 What it costs
               </p>
               <h2

@@ -143,7 +143,7 @@ export default function PortfolioCard({ project, variant = "small" }: Props) {
       <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8 translate-y-3 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300 ease-out">
         <div className="flex items-center gap-3 flex-wrap">
           {primaryTag ? (
-            <span className="inline-block rounded-full bg-dragon-fire px-3 py-1 text-[0.75rem] font-bold uppercase tracking-wider text-dawn">
+            <span className="inline-block rounded-full bg-dragon-fire px-3 py-1 text-[0.75rem] font-bold uppercase tracking-wider text-dusk">
               {primaryTag}
             </span>
           ) : null}

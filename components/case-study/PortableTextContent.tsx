@@ -63,6 +63,12 @@ function buildComponents(tone: "dark" | "light"): PortableTextComponents {
     tone === "light" ? "text-dusk" : "text-dawn";
   const captionText =
     tone === "light" ? "text-dusk/65" : "text-dawn/65";
+  // Dragon Fire text fails on Dawn (2.5:1), so on light grounds links are
+  // Dusk with a Dragon Fire underline (brand guidelines slide 21).
+  const linkText =
+    tone === "light"
+      ? "text-dusk underline decoration-dragon-fire decoration-2 underline-offset-4 hover:decoration-dusk"
+      : "text-dragon-fire underline underline-offset-4 hover:no-underline";
   const blockquoteText =
     tone === "light" ? "text-dusk" : "text-dawn";
   const imageBg =
@@ -171,7 +177,7 @@ function buildComponents(tone: "dark" | "light"): PortableTextComponents {
             href={href}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-dragon-fire underline underline-offset-4 hover:no-underline"
+            className={linkText}
           >
             {children}
           </a>
@@ -180,7 +186,7 @@ function buildComponents(tone: "dark" | "light"): PortableTextComponents {
       return (
         <Link
           href={href}
-          className="text-dragon-fire underline underline-offset-4 hover:no-underline"
+          className={linkText}
         >
           {children}
         </Link>

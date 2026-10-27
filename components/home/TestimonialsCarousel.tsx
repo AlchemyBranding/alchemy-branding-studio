@@ -54,19 +54,19 @@ export default function TestimonialsCarousel({
   return (
     <section
       aria-labelledby="testimonials-heading"
-      className="bg-dawn text-dusk pt-[120px] pb-[120px]"
+      className="bg-space-green text-dawn pt-[120px] pb-[120px]"
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
       onFocus={() => setPaused(true)}
       onBlur={() => setPaused(false)}
     >
       <div className="max-w-4xl mx-auto px-6 md:px-10 text-center">
-        <p className="text-[0.8rem] font-medium uppercase tracking-[0.12em] text-dragon-fire">
+        <p className="text-[0.8rem] font-medium uppercase tracking-[0.12em] text-dawn/75">
           What clients say
         </p>
         <h2
           id="testimonials-heading"
-          className="font-display text-h2 mt-3 text-dusk"
+          className="font-display text-h2 mt-3 text-dawn"
         >
           People we&apos;ve worked with.
         </h2>
@@ -78,7 +78,7 @@ export default function TestimonialsCarousel({
                 type="button"
                 onClick={() => go(-1)}
                 aria-label="Previous testimonial"
-                className="absolute left-0 top-1/2 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full text-dragon-fire/55 transition-all duration-200 hover:bg-dragon-fire/10 hover:text-dragon-fire focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-dragon-fire/50 md:-left-2"
+                className="absolute left-0 top-1/2 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full text-dawn/60 transition-all duration-200 hover:bg-dawn/10 hover:text-dawn focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-dawn/60 md:-left-2"
               >
                 <ChevronLeftIcon className="h-6 w-6" />
               </button>
@@ -86,7 +86,7 @@ export default function TestimonialsCarousel({
                 type="button"
                 onClick={() => go(1)}
                 aria-label="Next testimonial"
-                className="absolute right-0 top-1/2 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full text-dragon-fire/55 transition-all duration-200 hover:bg-dragon-fire/10 hover:text-dragon-fire focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-dragon-fire/50 md:-right-2"
+                className="absolute right-0 top-1/2 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full text-dawn/60 transition-all duration-200 hover:bg-dawn/10 hover:text-dawn focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-dawn/60 md:-right-2"
               >
                 <ChevronRightIcon className="h-6 w-6" />
               </button>
@@ -101,11 +101,11 @@ export default function TestimonialsCarousel({
           >
             <span
               aria-hidden="true"
-              className="font-display text-[5rem] leading-none text-dragon-fire/40 -mb-6"
+              className="font-display text-[5rem] leading-none text-mindaro -mb-6"
             >
               &ldquo;
             </span>
-            <p className="font-display text-[1.5rem] leading-[1.5] text-dusk max-w-2xl">
+            <p className="font-display text-[1.5rem] leading-[1.5] text-dawn max-w-2xl">
               {current.quote}
             </p>
             <div className="mt-8 flex items-center gap-4">
@@ -115,20 +115,20 @@ export default function TestimonialsCarousel({
                   alt={current.photo.alt || current.name}
                   width={52}
                   height={52}
-                  className="rounded-full border-2 border-dragon-fire object-cover"
+                  className="rounded-full border-2 border-dawn/40 object-cover"
                 />
               ) : (
                 <div
                   aria-hidden="true"
-                  className="w-[52px] h-[52px] rounded-full border-2 border-dragon-fire bg-dusk-20"
+                  className="w-[52px] h-[52px] rounded-full border-2 border-dawn/40 bg-dawn/15"
                 />
               )}
               <div className="text-left">
-                <p className="font-bold text-dusk text-[1rem] leading-tight">
+                <p className="font-bold text-dawn text-[1rem] leading-tight">
                   {current.name}
                 </p>
                 {attribution ? (
-                  <p className="text-[0.875rem] text-dusk-40">{attribution}</p>
+                  <p className="text-[0.875rem] text-dawn/75">{attribution}</p>
                 ) : null}
               </div>
             </div>
@@ -150,7 +150,7 @@ export default function TestimonialsCarousel({
                 aria-label={`Show testimonial ${i + 1}`}
                 onClick={() => setIndex(i)}
                 className={`w-2 h-2 rounded-full transition-colors duration-200 ${
-                  i === index ? "bg-dragon-fire" : "bg-dusk-20 hover:bg-dusk-40"
+                  i === index ? "bg-dawn" : "bg-dawn/30 hover:bg-dawn/60"
                 }`}
               />
             ))}

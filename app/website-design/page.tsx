@@ -173,7 +173,7 @@ export default async function WebsiteDesignPage() {
         <div className="max-w-7xl mx-auto px-6 md:px-10">
           <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.3fr] gap-12 lg:gap-20 items-start">
             <div className="lg:sticky lg:top-32">
-              <p className="text-[0.8rem] font-medium uppercase tracking-[0.12em] text-dragon-fire">
+              <p className="text-[0.8rem] font-medium uppercase tracking-[0.12em] text-space-green">
                 Why the order matters
               </p>
               <h2
@@ -209,7 +209,7 @@ export default async function WebsiteDesignPage() {
                 That is why the website work sits downstream of the{" "}
                 <Link
                   href="/brand-strategy-workshop"
-                  className="text-dragon-fire underline underline-offset-4"
+                  className="text-dusk underline decoration-dragon-fire decoration-2 underline-offset-4 hover:decoration-dusk transition-colors"
                 >
                   brand strategy workshop
                 </Link>
@@ -320,7 +320,7 @@ export default async function WebsiteDesignPage() {
           className="bg-dawn text-dusk py-[140px]"
         >
           <div className="max-w-7xl mx-auto px-6 md:px-10">
-            <p className="text-[0.8rem] font-medium uppercase tracking-[0.12em] text-dragon-fire">
+            <p className="text-[0.8rem] font-medium uppercase tracking-[0.12em] text-space-green">
               Selected work
             </p>
             <h2
