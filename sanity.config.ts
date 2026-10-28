@@ -21,5 +21,23 @@ export default defineConfig({
         ? [...prev, previewAction]
         : prev,
   },
+  form: {
+    components: {
+      portableText: {
+        // Sanity 5 turned "smart typography" on by default: it rewrites -- as a
+        // dash, straight quotes as curly and ... as an ellipsis, and stores the
+        // result. Our copy rules ban em dashes, so it's off for every rich-text
+        // field. Text is saved exactly as typed.
+        plugins: (props) =>
+          props.renderDefault({
+            ...props,
+            plugins: {
+              ...props.plugins,
+              typography: { ...props.plugins.typography, enabled: false },
+            },
+          }),
+      },
+    },
+  },
   plugins: [structureTool(), visionTool({ defaultApiVersion: apiVersion })],
 });

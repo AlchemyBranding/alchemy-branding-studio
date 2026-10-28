@@ -7,7 +7,7 @@ import type { NextRequest } from "next/server";
 const SESSION_COOKIE = "stori_cymru_session";
 const LOGIN_PATH = "/projects/stori-cymru/login";
 
-export function middleware(request: NextRequest) {
+export function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
   if (pathname === LOGIN_PATH) {
