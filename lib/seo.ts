@@ -19,7 +19,8 @@ type PageKey =
   | "brand-identity"
   | "brand-strategy-workshop"
   | "website-design"
-  | "branding-services-cardiff";
+  | "branding-services-cardiff"
+  | "roundtable";
 
 type Args = {
   pageKey: PageKey;

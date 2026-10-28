@@ -51,6 +51,7 @@ const STATIC_ROUTES: ReadonlyArray<{ path: string; priority: number }> = [
   // Commercial service pages. The workshop page carries the largest non-brand
   // query on the site, so it sits with /services rather than at the 0.7 default.
   { path: "/brand-strategy-workshop", priority: 0.9 },
+  { path: "/roundtable", priority: 0.6 },
   { path: "/website-design", priority: 0.8 },
   { path: "/brand-identity", priority: 0.8 },
   { path: "/animation", priority: 0.7 },

@@ -16,6 +16,7 @@ const MIN_DWELL_MS = 7000; // engagement gate (mobile-safe: never on entry)
 const SUPPRESS_PREFIXES = [
   "/studio",
   "/contact",
+  "/roundtable",
   "/portal",
   // The three service pages already carry the same Brand Checklist opt-in
   // inline, so this was the existing "pages with their own form" rule simply
