@@ -1,4 +1,4 @@
-import { EyeOpenIcon } from "@sanity/icons";
+import { EyeOpenIcon } from "@sanity/icons/EyeOpen";
 import { createPreviewSecret } from "@sanity/preview-url-secret/create-secret";
 import { type DocumentActionComponent, useClient, useCurrentUser } from "sanity";
 
