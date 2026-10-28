@@ -6,13 +6,13 @@
     "dev": "node --use-system-ca node_modules/next/dist/bin/next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "eslint app components lib"
   },
   "dependencies": {
     "@portabletext/react": "4.0.3",
     "@sanity/image-url": "^2.1.1",
     "@sanity/vision": "4.22.0",
-    "next": "15.5.28",
+    "next": "16.4.3",
     "next-sanity": "11.6.13",
     "react": "19.2.9",
     "react-dom": "19.2.9",
@@ -25,7 +25,7 @@
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint": "^9",
-    "eslint-config-next": "15.5.28",
+    "eslint-config-next": "16.4.3",
     "tailwindcss": "^4",
     "typescript": "^5"
   }

@@ -16,7 +16,7 @@ export default function LogoutButton() {
       await fetch("/api/stori-cymru-login/logout", { method: "POST" });
     } catch {
       // The cookie clear is the only thing that matters; if the request
-      // failed the redirect below still bounces off the middleware gate.
+      // failed the redirect below still bounces off the proxy gate (proxy.ts).
     }
     router.push(LOGIN_PATH);
     router.refresh();
