@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import Button from "@/components/Button";
+import CookieSettingsLink from "@/components/CookieSettingsLink";
 import FooterNewsletter from "@/components/FooterNewsletter";
 import {
   FacebookIcon,
@@ -212,6 +213,8 @@ export default function Footer() {
             <Link href="/cookie-policy" className="hover:text-dragon-fire transition-colors duration-200">
               Cookie Policy
             </Link>
+            <span aria-hidden="true">|</span>
+            <CookieSettingsLink />
           </div>
           <p>Design &amp; animation by Alchemy</p>
         </div>

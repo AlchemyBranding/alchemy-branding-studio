@@ -16,7 +16,7 @@ export default function CookiePolicyPage() {
     <LegalLayout
       eyebrow="Legal"
       title="Cookie Policy"
-      lastUpdated="30 June 2026"
+      lastUpdated="30 October 2026"
     >
       <p>
         This page explains what cookies and similar storage we use on{" "}
@@ -119,9 +119,10 @@ export default function CookiePolicyPage() {
       <ul>
         <li>
           <strong>On this site.</strong> Use the cookie banner the first time
-          you visit. To change your mind later, clear the{" "}
-          <code>alchemy-cookie-consent</code> entry from this site&apos;s
-          localStorage and the banner will appear again.
+          you visit. You can change your choice at any time using the{" "}
+          &ldquo;Cookie settings&rdquo; link in the footer of every page. If
+          you switch to decline, we also delete the analytics cookies already
+          set.
         </li>
         <li>
           <strong>In your browser.</strong> Every modern browser lets you view

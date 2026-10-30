@@ -7,6 +7,40 @@ import Button from "@/components/Button";
 
 const STORAGE_KEY = "alchemy-cookie-consent";
 
+/** Window event that reopens the banner (fired by CookieSettingsLink). */
+export const OPEN_COOKIE_SETTINGS_EVENT = "alchemy:open-cookie-settings";
+
+/** Analytics/ads cookies listed in the cookie policy. */
+const TRACKING_COOKIE = /^(_ga|_ga_.*|_gid|_gat|_gat_.*|_gcl_au)$/;
+
+/**
+ * Delete analytics/ads cookies already set. Consent Mode stops new tracking
+ * on decline but does not remove existing cookies, so a visitor who
+ * withdraws consent needs them cleared. GA sets them on the root domain, so
+ * try the bare host, the dotted host and each parent domain.
+ */
+function clearTrackingCookies() {
+  const names = document.cookie
+    .split(";")
+    .map((c) => c.split("=")[0]?.trim())
+    .filter((n): n is string => !!n && TRACKING_COOKIE.test(n));
+  if (names.length === 0) return;
+
+  const parts = window.location.hostname.split(".");
+  const domains: (string | null)[] = [null];
+  for (let i = 0; i < parts.length - 1; i++) {
+    domains.push("." + parts.slice(i).join("."));
+  }
+  const expired = "expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/";
+  for (const name of names) {
+    for (const domain of domains) {
+      document.cookie = domain
+        ? `${name}=; ${expired}; domain=${domain}`
+        : `${name}=; ${expired}`;
+    }
+  }
+}
+
 export default function CookieBanner() {
   const [mounted, setMounted] = useState(false);
   const [visible, setVisible] = useState(false);
@@ -32,6 +66,14 @@ export default function CookieBanner() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  // Let visitors reopen the banner to change their choice at any time
+  // (PECR: withdrawing consent must be as easy as giving it).
+  useEffect(() => {
+    const open = () => setVisible(true);
+    window.addEventListener(OPEN_COOKIE_SETTINGS_EVENT, open);
+    return () => window.removeEventListener(OPEN_COOKIE_SETTINGS_EVENT, open);
+  }, []);
+
   function persist(value: "accepted" | "declined") {
     try {
       window.localStorage.setItem(STORAGE_KEY, value);
@@ -39,6 +81,7 @@ export default function CookieBanner() {
       // no-op
     }
     setVisible(false);
+    if (value === "declined") clearTrackingCookies();
 
     // Google Consent Mode v2: GTM loaded with all consent denied by default;
     // flip to the visitor's choice here and signal GTM via the dataLayer.
