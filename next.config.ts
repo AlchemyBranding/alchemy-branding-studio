@@ -2,11 +2,36 @@ import type { NextConfig } from "next";
 
 import { legacyBlogSlugs } from "./lib/legacy-blog-slugs";
 
+// Security headers on every response. Added 2 Nov 2026 for the Coalition
+// (cyber insurer) attack-surface findings. The CSP is deliberately loose on
+// scripts, styles and media: the site loads Google Tag Manager and embedded
+// video, and a strict script policy would break them. It still blocks the
+// site being framed by other sites, plugins, <base> tag hijacks and forms
+// posting off-site, and upgrades any stray http requests to https.
+const securityHeaders = [
+  {
+    key: "Content-Security-Policy",
+    value: [
+      "frame-ancestors 'self'",
+      "base-uri 'self'",
+      "object-src 'none'",
+      "form-action 'self'",
+      "upgrade-insecure-requests",
+    ].join("; "),
+  },
+  { key: "X-Frame-Options", value: "SAMEORIGIN" },
+  { key: "X-Content-Type-Options", value: "nosniff" },
+  { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
+];
+
 const nextConfig: NextConfig = {
   images: {
     remotePatterns: [
       { protocol: "https", hostname: "cdn.sanity.io" },
     ],
+  },
+  async headers() {
+    return [{ source: "/:path*", headers: securityHeaders }];
   },
   async redirects() {
     return [
