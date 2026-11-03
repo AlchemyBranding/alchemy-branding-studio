@@ -16,7 +16,7 @@ export default function PrivacyPolicyPage() {
     <LegalLayout
       eyebrow="Legal"
       title="Privacy Policy"
-      lastUpdated="15 October 2026"
+      lastUpdated="3 November 2026"
     >
       <p>
         This policy explains how Alchemy Branding Studio (&ldquo;Alchemy&rdquo;,
@@ -64,6 +64,13 @@ export default function PrivacyPolicyPage() {
         <li>To send you the brand checklist and our occasional newsletter, if
           you&apos;ve signed up and confirmed your email. Every email has a link
           to unsubscribe.</li>
+        <li>To see which parts of the newsletter are useful. Our newsletter
+          emails record whether you opened them and which links you clicked,
+          using a tiny invisible image and links that pass through our email
+          provider on the way to the page. We keep this with your record in
+          Opus. If you&apos;d rather we didn&apos;t know, turn off automatic
+          image loading in your email app; unsubscribing stops it
+          altogether.</li>
         <li>To understand how the site is used (only with your consent).</li>
         <li>To meet our legal and accounting obligations.</li>
       </ul>
@@ -101,7 +108,9 @@ export default function PrivacyPolicyPage() {
           <tr>
             <td>Resend</td>
             <td>Sends our emails: enquiries from our contact form to our inbox,
-              and the newsletter with its confirmation and welcome emails.</td>
+              and the newsletter with its confirmation and welcome emails. For
+              the newsletter, Resend also records opens and link clicks and
+              passes them to Opus.</td>
           </tr>
           <tr>
             <td>Opus, our own system (hosted by Vercel and Supabase, in London)</td>
