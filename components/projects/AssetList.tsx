@@ -1,4 +1,5 @@
 import type { StoriAsset } from "@/sanity/lib/queries";
+import MediaPlayer from "./MediaPlayer";
 
 type AssetKind = NonNullable<StoriAsset["kind"]>;
 
@@ -116,34 +117,14 @@ function AssetIcon({ kind }: { kind: AssetKind }) {
 /**
  * Plays the compressed copy uploaded to Sanity, so the client can watch
  * without opening Dropbox (their IT blocks it). Renders nothing until a
- * web copy exists; the source link above always remains.
+ * web copy exists; the source link above always remains. The player itself
+ * loads lazily and retries a failed load, for the reasons in MediaPlayer.
  */
 function AssetPlayer({ asset, kind }: { asset: StoriAsset; kind: AssetKind }) {
   if (!asset.webFileUrl) return null;
   if (kind !== "video" && kind !== "audio") return null;
 
-  if (kind === "audio") {
-    return (
-      <audio
-        controls
-        preload="none"
-        src={asset.webFileUrl}
-        className="mt-2 mb-3 w-full"
-        aria-label={`${asset.label} audio player`}
-      />
-    );
-  }
-
-  return (
-    <video
-      controls
-      preload="metadata"
-      playsInline
-      src={asset.webFileUrl}
-      className="mt-2 mb-3 w-full rounded-card bg-black"
-      aria-label={`${asset.label} video player`}
-    />
-  );
+  return <MediaPlayer src={asset.webFileUrl} label={asset.label} kind={kind} />;
 }
 
 export default function AssetList({ assets, title }: Props) {
