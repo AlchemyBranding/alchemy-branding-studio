@@ -21,6 +21,16 @@ const placeholderTestimonials: FeaturedTestimonial[] = [
 
 const ADVANCE_MS = 6000;
 
+// Shown in the avatar circle when a testimonial has no photo
+// (most Google reviewers don't have one).
+function initials(name: string) {
+  const words = name.replace(/&/g, " ").split(/\s+/).filter(Boolean);
+  return words
+    .slice(0, 2)
+    .map((w) => w[0].toUpperCase())
+    .join("");
+}
+
 export default function TestimonialsCarousel({
   testimonials,
 }: {
@@ -120,8 +130,10 @@ export default function TestimonialsCarousel({
               ) : (
                 <div
                   aria-hidden="true"
-                  className="w-[52px] h-[52px] rounded-full border-2 border-dawn/40 bg-dawn/15"
-                />
+                  className="flex w-[52px] h-[52px] items-center justify-center rounded-full border-2 border-dawn/40 bg-dawn/15 text-[1.1rem] font-bold text-dawn"
+                >
+                  {initials(current.name)}
+                </div>
               )}
               <div className="text-left">
                 <p className="font-bold text-dawn text-[1rem] leading-tight">

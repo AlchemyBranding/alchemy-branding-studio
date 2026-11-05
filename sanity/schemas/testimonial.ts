@@ -16,7 +16,7 @@ export const testimonial = defineType({
       name: "photo",
       title: "Photo",
       type: "altImage",
-      validation: (rule) => rule.required(),
+      description: "Optional. Without one, the carousel shows the person's initials.",
     }),
     defineField({
       name: "name",
