@@ -3,18 +3,18 @@
  * the form and the Event markup can't disagree. `slug` must match an open event in Opus (its events
  * table, 0073), or requests are refused there. Change these for the next date.
  *
- * Date and venue are provisional as of 28 Oct 2026: `venue` stays null until it is booked, and the
- * page says "venue to be confirmed" until then.
+ * Date set 4 Nov 2026 (review answers, Q1): a working lunch. `venue` stays null until it is booked,
+ * and the page says "venue to be confirmed" until then.
  */
 export const ROUNDTABLE = {
-  slug: "roundtable-cardiff-2026-12",
+  slug: "roundtable-cardiff-2027-03",
   name: "Brand to Scale Roundtable",
   city: "Cardiff",
-  /** ISO, Europe/London. */
-  startsAt: "2026-12-03T08:00:00+00:00",
-  endsAt: "2026-12-03T10:30:00+00:00",
-  dateLabel: "Thursday 3 December 2026",
-  timeLabel: "8:00 to 10:30",
+  /** ISO, Europe/London (GMT in March, before the clocks change). */
+  startsAt: "2027-03-04T12:00:00+00:00",
+  endsAt: "2027-03-04T14:00:00+00:00",
+  dateLabel: "Thursday 4 March 2027",
+  timeLabel: "12:00 to 14:00",
   venue: null as null | { name: string; address: string; access: string },
   seats: 15,
   updatesConsent: "Email me about this and future Brand to Scale Roundtables. Unsubscribe anytime.",
