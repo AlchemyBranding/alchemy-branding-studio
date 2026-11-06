@@ -8,7 +8,7 @@ import { ROUNDTABLE } from "@/lib/roundtable";
 import { siteConfig } from "@/lib/site";
 
 /**
- * The Brand to Scale Roundtable: a free, invitation-led breakfast for 12 to 15 founders and MDs,
+ * The Brand to Scale Roundtable: a free, invitation-led working lunch for 12 to 15 founders and MDs,
  * led by Jess. Its job is to fill the table with the right people; the form sends requests to Opus
  * (app/api/roundtable). Copy approved 28 Oct 2026 (CLAUDE_CODE/alchemist-workshop/02). Date and
  * venue are provisional and live in lib/roundtable.ts. Never promise results on this page.
@@ -23,9 +23,9 @@ export async function generateMetadata(): Promise<Metadata> {
     pageKey: "roundtable",
     path: "/roundtable",
     defaults: {
-      title: "Brand to Scale Roundtable: a breakfast for founders in Cardiff",
+      title: "Brand to Scale Roundtable: a working lunch for founders in Cardiff",
       description:
-        "A free morning round one table with Jess Morgan and a dozen founders and MDs, looking honestly at what holds a brand back as the business grows. Cardiff, 3 December.",
+        "A free working lunch round one table with Jess Morgan and a dozen founders and MDs, looking honestly at what holds a brand back as the business grows. Cardiff, 4 March 2027.",
     },
   });
 }
@@ -36,31 +36,29 @@ const forYouIf = [
   "you're too close to the business to see what others see.",
 ];
 
-const morning = [
-  { time: "8:00", what: "Coffee and breakfast" },
-  { time: "8:20", what: "Round the table: who you are, and the one growth question on your mind" },
-  { time: "8:40", what: "Jess on why a brand stops keeping up with the business, and what that costs (20 minutes)" },
-  { time: "9:00", what: "Discussion, led by Jess, built around the questions from the table" },
-  { time: "9:45", what: "Your own one-page brand and growth check" },
-  { time: "10:05", what: "What we heard, and what to do with it" },
-  { time: "10:15", what: "Time to talk. Away by 10:30" },
+// Running order from the v2 run sheet (alchemist-workshop/04-run-sheet-v2).
+const lunch = [
+  { time: "12:00", what: "Lunch" },
+  { time: "12:15", what: "Round the table: who you are, and the one growth question on your mind" },
+  { time: "12:30", what: "Jess on why a brand stops keeping up with the business, and what that costs (20 minutes)" },
+  { time: "12:50", what: "Discussion, led by Jess, built around the questions from the table" },
+  { time: "13:35", what: "Your own one-page brand and growth check" },
+  { time: "13:50", what: "What we heard, and what to do with it. Away by 14:00" },
 ];
 
+// Agreed 4 Nov 2026 (review answers, Q10 part 2), "for now".
 const leaveWith = [
-  "A one-page brand and growth check, filled in for your business.",
-  "The questions from the table that apply to you, written down.",
-  "A dozen people at the same stage, in the same region.",
-  "If you want it, a 30-minute call with Jess afterwards to go through your check.",
+  "Your own brand and growth check, scored, with the one gap to close first, and the option of a 30-minute Clarity Call with Jess to go through it.",
 ];
 
 const faqs: { q: string; a: string }[] = [
   { q: "Is it really free?", a: "Yes. There's no charge and nothing to buy on the day. Seats are limited, so we ask a few questions first to make sure the table works for everyone." },
   { q: "Is this a sales event?", a: "No. There's no pitch. If you'd like to carry on the conversation afterwards, you can book a call with Jess. Most people come for the conversation and the people round the table." },
-  { q: "How is this different from Alchemy's Brand & Growth Workshop?", a: "The workshop is a paid, in-depth session for one leadership team. The Roundtable is a free morning with other founders, a chance to step back and see your brand from the outside." },
+  { q: "How is this different from Alchemy's Brand & Growth Workshop?", a: "The workshop is a paid, in-depth session for one leadership team. The Roundtable is a free lunch with other founders, a chance to step back and see your brand from the outside." },
   { q: "Who else will be there?", a: "Founders and MDs of established businesses across South Wales and the South West. We keep the table small and mixed, and avoid seating direct competitors together." },
   { q: "Can I bring a colleague?", a: "Seats are one per business so the table stays balanced. If a co-founder would get more from it than you, tell us when you request your seat." },
   { q: "What if I can't make it after booking?", a: "Let us know as soon as you can and we'll offer your seat to someone on the waiting list." },
-  { q: "Will there be other dates?", a: "Yes. The Roundtable runs every quarter, starting in Cardiff, with Bristol next. Request a seat and we'll tell you about future dates." },
+  { q: "Will there be other dates?", a: "More dates to follow, with Bristol next. Request a seat and we'll tell you about future dates." },
   {
     q: "Is it accessible, and can you cater for my diet?",
     a: ROUNDTABLE.venue
@@ -75,16 +73,19 @@ const eventSchema = {
   "@context": "https://schema.org",
   "@type": "Event",
   name: ROUNDTABLE.name,
-  description: "A free breakfast roundtable for founders and MDs, led by Jess Morgan of Alchemy Branding Studio.",
+  description: "A free working-lunch roundtable for founders and MDs, led by Jess Morgan of Alchemy Branding Studio.",
   startDate: ROUNDTABLE.startsAt,
   endDate: ROUNDTABLE.endsAt,
   eventStatus: "https://schema.org/EventScheduled",
   eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
-  location: {
-    "@type": "Place",
-    name: ROUNDTABLE.venue?.name ?? `${ROUNDTABLE.city} (venue to be confirmed)`,
-    address: ROUNDTABLE.venue?.address ?? `${ROUNDTABLE.city}, Wales, UK`,
-  },
+  // Until a venue is booked the location is the city only: no venue name, no street address.
+  location: ROUNDTABLE.venue
+    ? { "@type": "Place", name: ROUNDTABLE.venue.name, address: ROUNDTABLE.venue.address }
+    : {
+        "@type": "Place",
+        name: ROUNDTABLE.city,
+        address: { "@type": "PostalAddress", addressLocality: ROUNDTABLE.city, addressCountry: "GB" },
+      },
   image: [`${siteConfig.url}/roundtable/roundtable-jess.webp`],
   organizer: { "@type": "Organization", name: "Alchemy Branding Studio", url: siteConfig.url },
   performer: { "@type": "Person", name: "Jess Morgan" },
@@ -111,10 +112,11 @@ export default function RoundtablePage() {
           <div>
             <p className="text-[0.8rem] font-medium uppercase tracking-[0.12em] text-dragon-fire">{ROUNDTABLE.name}</p>
             <h1 className="font-display mt-4 leading-[1.05] text-[clamp(2.5rem,4.1vw,4rem)] text-dawn">
-              One table. One morning. <span className="italic">An honest look at your brand as the business grows.</span>
+              Leave with a clear view of where your brand is holding your business back,{" "}
+              <span className="italic">worked out over lunch with Jess Morgan and a dozen founders.</span>
             </h1>
             <p className="mt-8 max-w-xl text-[1.125rem] leading-[1.7] text-dawn/65">
-              The Brand to Scale Roundtable brings 12 to 15 founders and MDs together with Jess Morgan for a working breakfast in {ROUNDTABLE.city}. No pitches,
+              The Brand to Scale Roundtable brings 12 to 15 founders and MDs together with Jess Morgan for a working lunch in {ROUNDTABLE.city}. No pitches,
               no slides to sit through: a frank conversation about the point where a business outgrows its brand, and a clear picture of where yours stands.
             </p>
             <div className="mt-10 flex flex-wrap items-center gap-4">
@@ -177,15 +179,15 @@ export default function RoundtablePage() {
         </div>
       </section>
 
-      {/* The morning, and what you leave with */}
-      <section aria-labelledby="morning-heading" className="bg-dusk py-[110px]">
+      {/* The lunch, and what you leave with */}
+      <section aria-labelledby="lunch-heading" className="bg-dusk py-[110px]">
         <div className="max-w-7xl mx-auto px-6 md:px-10 grid grid-cols-1 md:grid-cols-2 gap-14">
           <div>
-            <h2 id="morning-heading" className="font-display text-h2 text-dawn">
-              The morning
+            <h2 id="lunch-heading" className="font-display text-h2 text-dawn">
+              The lunch
             </h2>
             <ol className="mt-10 border-t border-dusk-60">
-              {morning.map((m) => (
+              {lunch.map((m) => (
                 <li key={m.time} className="grid grid-cols-[4.5rem_1fr] gap-4 py-4 border-b border-dusk-60">
                   <span className="font-display text-dragon-fire tabular-nums">{m.time}</span>
                   <span className="text-dawn/75 leading-[1.6]">{m.what}</span>
