@@ -116,8 +116,8 @@ export default function RoundtablePage() {
               <span className="italic">worked out over lunch with Jess Morgan and a dozen founders.</span>
             </h1>
             <p className="mt-8 max-w-xl text-[1.125rem] leading-[1.7] text-dawn/65">
-              The Brand to Scale Roundtable brings 12 to 15 founders and MDs together with Jess Morgan for a working lunch in {ROUNDTABLE.city}. No pitches,
-              no slides to sit through: a frank conversation about the point where a business outgrows its brand, and a clear picture of where yours stands.
+              The Brand to Scale Roundtable brings 12 to 15 founders and MDs together with Jess Morgan for a working lunch in {ROUNDTABLE.city}. No pitches: a
+              frank conversation about the point where a business outgrows its brand, and your own scored check of where yours stands.
             </p>
             <div className="mt-10 flex flex-wrap items-center gap-4">
               <Button variant="primary" href="#request">
