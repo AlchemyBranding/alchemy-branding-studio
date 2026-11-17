@@ -425,10 +425,12 @@ export default function BrandingCardiffPage() {
           </div>
           <div>
             <p className="text-[1.0625rem] leading-[1.75] text-dawn/70">
-              {/* Copy unchanged. Each named client links to its case study:
-                  Welch Fitness (Crickhowell), Bean & Bread (Abergavenny),
-                  Belle Vitale Wellness (Llanover, Abergavenny), Gwent Police
-                  Recognise and Respond. */}
+              {/* Each named client links to its case study: Welch Fitness
+                  (Crickhowell), Bean & Bread (Abergavenny), Belle Vitale
+                  Wellness (Llanover, Abergavenny), Gwent Police Recognise and
+                  Respond. The Cardiff sentence was added 17 Nov at Dave's
+                  request. Both Cardiff projects are animation work, so they
+                  sit in their own sentence rather than under "built brands". */}
               We have built brands for a{" "}
               <Link href="/project/revitalising-welch-fitness-a-remarkable-rebranding-journey" className={inlineLink}>
                 functional fitness gym in Crickhowell
@@ -445,7 +447,16 @@ export default function BrandingCardiffPage() {
               <Link href="/project/gwent-police-recognise-respond-campaign" className={inlineLink}>
                 public-sector campaign for Gwent Police
               </Link>
-              , and ambitious businesses well beyond the M4. Being on your doorstep means we can sit in the room with
+              , and ambitious businesses well beyond the M4. In Cardiff itself,
+              we made{" "}
+              <Link href="/project/cardiff-council-mipermit-animated-explainers" className={inlineLink}>
+                three animations for Cardiff Council&apos;s cashless parking scheme
+              </Link>{" "}
+              and{" "}
+              <Link href="/project/renold-couplings-75th-anniversary-storytelling-film" className={inlineLink}>
+                a film marking 75 years of Renold Couplings in the city
+              </Link>
+              . Being on your doorstep means we can sit in the room with
               you for the Brand &amp; Growth Workshop where every project starts.
             </p>
             <div className="mt-10">
