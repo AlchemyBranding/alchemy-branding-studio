@@ -237,7 +237,7 @@ export default function BrandingCardiffPage() {
                 Brand strategy for Cardiff businesses
               </span>{" "}
               <span className="text-dawn italic">
-                that are better than they look.
+                that deserve to be better known.
               </span>
             </h1>
             <p className="mt-8 max-w-2xl text-[1.125rem] leading-[1.7] text-dawn/75">
