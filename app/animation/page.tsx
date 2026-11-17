@@ -26,9 +26,13 @@ export async function generateMetadata(): Promise<Metadata> {
       // phrase in its own metaTitle, so the two were competing for one term
       // that only has informational intent behind it. The article owns it now
       // and this page links to it; the title went back to commercial intent.
-      title: "Explainer Videos and Brand Animation for SMEs",
+      // 17 Nov 2026: title and description now name South Wales, from the
+      // brief approved by Dave (alchemy-marketing-plan/work/
+      // 2026-11-17-animation-page-brief.md). The root layout's title.template
+      // appends "| Alchemy", so it is not repeated here.
+      title: "Animation Studio in South Wales | Explainer Videos",
       description:
-        "Explainer videos and brand animation that make the complicated clear in seconds. We settle the one idea the film has to land, then design around it.",
+        "Explainer videos and brand animation from a South Wales studio, for Cardiff Council, Gwent Police, Age Cymru and DS Smith.",
     },
   });
 }
@@ -121,6 +125,65 @@ const ANIMATION_CASE_STUDY_SLUGS = [
   "bumblebee-conservation-trust-bee-the-change-animation",
 ];
 
+// Welsh proof block (brief item 5). Clients already public on the site only.
+// Each line is that case study's own title, so no new claims are made here.
+const welshWork = [
+  {
+    client: "Cardiff Council",
+    detail: "Three animations for a cashless, paperless parking scheme.",
+    href: "/project/cardiff-council-mipermit-animated-explainers",
+  },
+  {
+    client: "Gwent Police",
+    detail: "Four training films that made a new procedure stick.",
+    href: "/project/gwent-police-recognise-respond-animation-series",
+  },
+  {
+    client: "Age Cymru",
+    detail:
+      "An animated film for a new dementia advocacy service, in English and Welsh.",
+    href: "/project/age-cymru-dementia-advocacy-bilingual-animation",
+  },
+  {
+    client: "Aneurin Bevan University Health Board",
+    detail: "An animated campaign that reached UK cinema screens.",
+    href: "/project/aneurin-bevan-help-us-help-you-animated-campaign",
+  },
+  {
+    client: "Hafan Cymru",
+    detail: "Five bilingual films on healthy relationships, equality and abuse.",
+    href: "/project/hafan-cymru-spectrum-bilingual-animation-series",
+  },
+];
+
+// Short FAQ (brief item 7). The explainer-cost question waits for its blog
+// post (due 1 Dec 2026); add it then, linking to the post.
+const faqs: { q: string; a: string }[] = [
+  {
+    q: "Where are you based?",
+    a: "Abergavenny, working across Cardiff, South Wales and the UK.",
+  },
+  {
+    q: "Do you make Welsh-language animation?",
+    a: "Yes. We've made bilingual films for Age Cymru, Hafan Cymru and the Bumblebee Conservation Trust.",
+  },
+];
+
+// FAQPage only. The sitewide ProfessionalService/LocalBusiness block in
+// components/JsonLd.tsx stays as it is.
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqs.map(({ q, a }) => ({
+    "@type": "Question",
+    name: q,
+    acceptedAnswer: { "@type": "Answer", text: a },
+  })),
+};
+
+const inlineLink =
+  "text-dawn underline decoration-dragon-fire underline-offset-4 hover:text-dragon-fire transition-colors duration-200";
+
 const approach = [
   {
     title: "Script and idea first.",
@@ -154,6 +217,11 @@ export default async function AnimationPage() {
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
+
       {/* Hero */}
       <section className="relative overflow-hidden bg-dusk pt-[160px] md:pt-[200px] pb-[80px]">
         <HeroReel fill />
@@ -178,7 +246,12 @@ export default async function AnimationPage() {
             <span className="text-dawn">Animation that makes the complicated</span>{" "}
             <span className="text-dawn italic">feel simple.</span>
           </h1>
-          <p className="mt-8 max-w-2xl text-[1.125rem] leading-[1.7] text-dawn/75">
+          {/* Brief item 4: the first line under the H1 names South Wales. */}
+          <p className="mt-6 md:mt-8 max-w-2xl text-[1.1875rem] md:text-[1.25rem] leading-[1.55] text-dawn">
+            We&apos;re an animation studio in South Wales, based in Abergavenny
+            and working across Cardiff and the UK.
+          </p>
+          <p className="mt-4 max-w-2xl text-[1.125rem] leading-[1.7] text-dawn/75">
             We make explainer videos and brand animation for businesses with
             something genuinely hard to get across: a regulation, a technology,
             a process, a product. We start with the one idea the piece has to
@@ -194,6 +267,45 @@ export default async function AnimationPage() {
               See the work
             </Button>
           </div>
+        </div>
+      </section>
+
+      {/* Welsh proof block (brief item 5) */}
+      <section
+        aria-labelledby="wales-heading"
+        className="bg-dusk py-[100px] border-t border-dusk-60"
+      >
+        <div className="max-w-7xl mx-auto px-6 md:px-10">
+          <p className="text-[0.8rem] font-medium uppercase tracking-[0.12em] text-dragon-fire">
+            In Wales
+          </p>
+          <h2
+            id="wales-heading"
+            className="font-display text-h2 mt-3 max-w-3xl text-dawn"
+          >
+            Animation for organisations{" "}
+            <span className="italic text-dawn">across Wales.</span>
+          </h2>
+          <ul className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {welshWork.map((item) => (
+              <li key={item.href}>
+                <Link
+                  href={item.href}
+                  className="group block h-full rounded-card bg-dusk-80 border border-dusk-60 p-7 hover:border-dragon-fire transition-colors duration-200"
+                >
+                  <h3 className="font-display text-[1.375rem] leading-[1.3] text-dawn group-hover:text-dragon-fire transition-colors duration-200">
+                    {item.client}
+                  </h3>
+                  <p className="mt-3 text-[1rem] leading-[1.65] text-dawn/65">
+                    {item.detail}
+                  </p>
+                  <span className="mt-4 inline-block text-[0.8rem] font-medium uppercase tracking-[0.08em] text-dragon-fire">
+                    See the work &rarr;
+                  </span>
+                </Link>
+              </li>
+            ))}
+          </ul>
         </div>
       </section>
 
@@ -315,6 +427,26 @@ export default async function AnimationPage() {
               </li>
             ))}
           </ul>
+          {/* Brief item 6: bilingual line, with the three bilingual films
+              on the site as proof. */}
+          <p className="mt-10 max-w-3xl text-[1.0625rem] leading-[1.7] text-dawn/85">
+            <span className="font-bold text-dawn">
+              English, Welsh and bilingual animation.
+            </span>{" "}
+            Bilingual films for{" "}
+            <Link href="/project/age-cymru-dementia-advocacy-bilingual-animation" className={inlineLink}>
+              Age Cymru
+            </Link>
+            ,{" "}
+            <Link href="/project/hafan-cymru-spectrum-bilingual-animation-series" className={inlineLink}>
+              Hafan Cymru
+            </Link>{" "}
+            and the{" "}
+            <Link href="/project/bumblebee-conservation-trust-bee-the-change-animation" className={inlineLink}>
+              Bumblebee Conservation Trust
+            </Link>
+            .
+          </p>
         </div>
       </section>
 
@@ -457,6 +589,34 @@ export default async function AnimationPage() {
           </div>
         </section>
       ) : null}
+
+      {/* Short FAQ (brief item 7). Answers open on the page, not behind a
+          toggle, so they read the same to people and to AI tools. */}
+      <section
+        aria-labelledby="animation-faq-heading"
+        className="bg-dusk py-[120px] border-t border-dusk-60"
+      >
+        <div className="max-w-4xl mx-auto px-6 md:px-10">
+          <h2
+            id="animation-faq-heading"
+            className="font-display text-h2 text-dawn"
+          >
+            Questions
+          </h2>
+          <dl className="mt-12 border-t border-dusk-60">
+            {faqs.map((f) => (
+              <div key={f.q} className="border-b border-dusk-60 py-8">
+                <dt className="font-display text-[1.25rem] leading-[1.35] text-dawn">
+                  {f.q}
+                </dt>
+                <dd className="mt-3 max-w-3xl text-[1rem] leading-[1.7] text-dawn/70">
+                  {f.a}
+                </dd>
+              </div>
+            ))}
+          </dl>
+        </div>
+      </section>
 
       <FinalCTA
         heading="Got something complicated to explain?"
