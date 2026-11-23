@@ -188,7 +188,7 @@ const approach = [
   {
     title: "Script and idea first.",
     detail:
-      "We get clear on the single thing the piece has to land before any design starts.",
+      "We get clear on the single thing the piece has to say before any design starts.",
   },
   {
     title: "Designed, not templated.",
@@ -255,7 +255,7 @@ export default async function AnimationPage() {
             We make explainer videos and brand animation for businesses with
             something genuinely hard to get across: a regulation, a technology,
             a process, a product. We start with the one idea the piece has to
-            land, lock the look in style frames, then animate around it. The
+            get across, lock the look in style frames, then animate around it. The
             result earns attention without shouting, and says the same thing as
             the rest of your brand.
           </p>
@@ -528,7 +528,7 @@ export default async function AnimationPage() {
           </h2>
           <p className="mt-6 max-w-2xl text-[1.0625rem] leading-[1.7] text-dawn/65">
             Most of our animation grows out of brand and strategy work. That is
-            why it lands: the film is built on the same thinking as everything
+            why it works: the film is built on the same thinking as everything
             else you put out, so it reinforces the brand rather than sitting
             beside it.
           </p>
@@ -620,7 +620,7 @@ export default async function AnimationPage() {
 
       <FinalCTA
         heading="Got something complicated to explain?"
-        subtext="Book a Clarity Call and tell us what you're trying to get across. We'll tell you honestly whether animation is the right tool, and how we'd approach it."
+        subtext="Book a Clarity Call and tell us what you're trying to get across. We'll tell you straight whether animation is the right tool, and how we'd approach it."
         primary={{ label: "Book a Clarity Call", href: bookingHref, external: true }}
         secondary={{ label: "See our work", href: "/portfolio" }}
       />
