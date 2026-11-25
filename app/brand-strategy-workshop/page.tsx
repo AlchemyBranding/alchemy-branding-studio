@@ -333,13 +333,24 @@ export default async function BrandStrategyWorkshopPage() {
               column: six lines, a 1383px hero, and the CTA 1192px down, below
               the fold. This clamp is the largest that still sets in four lines
               at 1920, which brings the hero to 1034px and the CTA to 842px. */}
-          <h1 className="font-display mt-4 leading-[1.04] text-[clamp(2.75rem,5.2vw,5.25rem)]">
-            <span className="text-dawn">
-              Growth stalls without foundations.
-            </span>{" "}
-            <span className="text-dawn italic">This is where we build them.</span>
+          {/* 25 Nov 2026: the hero gained a subhead and a paragraph, so the H1
+              came down from clamp(2.75rem,5.2vw,5.25rem) to set in two lines
+              on desktop and keep the CTA above the fold at 1440x900. */}
+          <h1 className="font-display mt-4 leading-[1.06] text-dawn text-[clamp(2.5rem,4vw,4rem)]">
+            Brand strategy workshop for SME leadership teams
           </h1>
+          {/* The previous H1, kept as the subhead (25 Nov 2026). The H1 now
+              carries the search term; this line carries the idea. */}
+          <p className="font-display mt-6 leading-[1.2] text-dawn text-[clamp(1.5rem,2.3vw,2.25rem)]">
+            Growth stalls without foundations.{" "}
+            <span className="italic">This is where we build them.</span>
+          </p>
           <div className="mt-8 max-w-2xl space-y-5 text-[1.125rem] leading-[1.7] text-dawn/65">
+            <p>
+              A brand strategy workshop is one day with the people who run your
+              business, so your positioning, audience and voice are decided and
+              written down, not guessed.
+            </p>
             <p>
               The thinking behind your brand usually lives in the heads of the
               people who run the business. How it&apos;s positioned, who
@@ -453,6 +464,20 @@ export default async function BrandStrategyWorkshopPage() {
               <strong className="font-bold text-dawn">On the day:</strong> the
               decisions. Who you&apos;re for, who you&apos;re not for, and how
               you want to be seen.
+            </p>
+            {/* 25 Nov 2026: link to the positioning article. The only mention
+                of positioning in this section is the heading of card 02, so
+                the link gets its own line rather than a linked heading. */}
+            <p>
+              Not sure what positioning means in practice? Read{" "}
+              <Link
+                href="/brand-positioning"
+                className="text-dragon-fire underline underline-offset-4 hover:text-fire-60 transition-colors"
+              >
+                brand positioning: what it is, and how to tell if yours is
+                working
+              </Link>
+              .
             </p>
             <p>
               <strong className="font-bold text-dawn">

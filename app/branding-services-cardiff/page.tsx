@@ -15,17 +15,26 @@ import { bookingHref, siteConfig } from "@/lib/site";
   wording there first, not here.
 */
 
+// Title, description, H1 and the second intro sentence changed 25 Nov 2026
+// (SEO strand: the page now targets "branding agency Cardiff").
+const CARDIFF_TITLE = "Branding Agency Cardiff | Alchemy Branding Studio";
+
 export async function generateMetadata(): Promise<Metadata> {
-  return getPageMetadata({
+  const meta = await getPageMetadata({
     pageKey: "branding-services-cardiff",
     path: "/branding-services-cardiff",
     defaults: {
-      // The root layout's title.template appends "| Alchemy". Do not add it here.
-      title: "Brand Strategy Workshop & Branding Agency, Cardiff",
+      title: CARDIFF_TITLE,
       description:
-        "Brand strategy for ambitious Cardiff and South Wales businesses. Start with a Brand & Growth Workshop, then build the brand, website and content on it.",
+        "Branding agency for Cardiff and South Wales SMEs. Strategy first, then identity, websites and animation. Based in Abergavenny.",
     },
   });
+  // The title already ends in the full studio name, so it is set as absolute
+  // to stop the root layout's template adding "| Alchemy" after it. A title
+  // set in Sanity still goes through the template as before.
+  return meta.title === CARDIFF_TITLE
+    ? { ...meta, title: { absolute: CARDIFF_TITLE } }
+    : meta;
 }
 
 type Capability = { title: string; detail: string; href: string };
@@ -234,15 +243,17 @@ export default function BrandingCardiffPage() {
                 (AGENTS.md, "text-display assumes a full-width headline"). */}
             <h1 className="font-display leading-[1.04] text-[clamp(2.75rem,5.2vw,5.25rem)]">
               <span className="text-dawn">
-                Brand strategy for Cardiff businesses
+                A branding agency for Cardiff and South Wales businesses
               </span>{" "}
               <span className="text-dawn italic">
                 that deserve to be better known.
               </span>
             </h1>
             <p className="mt-8 max-w-2xl text-[1.125rem] leading-[1.7] text-dawn/75">
-              The thinking behind your brand lives in your head. Your team,
-              your agency and your website are guessing at it. We work it out
+              The thinking behind your brand lives in your head. We work with
+              SMEs across Cardiff and South Wales, from our base in
+              Abergavenny. Your team, your agency and your website are
+              guessing at it. We work it out
               with you in a Brand &amp; Growth Workshop, then build the look,
               the words and the plan around it.
             </p>
