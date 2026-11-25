@@ -62,6 +62,24 @@ export const blogPost = defineType({
       validation: (rule) => rule.required(),
     }),
     defineField({
+      name: "updatedAt",
+      title: "Updated at",
+      type: "datetime",
+      group: "content",
+      description:
+        "Optional. Set this when the post has been meaningfully revised. Shows as \"Updated\" next to the published date. Leave empty for typo fixes.",
+      validation: (rule) =>
+        rule.custom((value, context) => {
+          const published = (context.document as { publishedAt?: string } | undefined)
+            ?.publishedAt;
+          if (!value || !published) return true;
+          return (
+            new Date(value as string) >= new Date(published) ||
+            "Updated date can't be before the published date."
+          );
+        }),
+    }),
+    defineField({
       name: "featuredImage",
       title: "Featured image",
       type: "altImage",

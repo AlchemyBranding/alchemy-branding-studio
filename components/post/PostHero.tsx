@@ -5,7 +5,12 @@ import type { BlogPostAuthor, BlogPostDetail } from "@/sanity/lib/queries";
 
 type Props = Pick<
   BlogPostDetail,
-  "title" | "category" | "publishedAt" | "featuredImage" | "readTimeMins"
+  | "title"
+  | "category"
+  | "publishedAt"
+  | "updatedAt"
+  | "featuredImage"
+  | "readTimeMins"
 > & {
   author: BlogPostAuthor | null;
 };
@@ -26,6 +31,13 @@ export default function PostHero(props: Props) {
   const heroUrl = props.featuredImage?.asset
     ? urlFor(props.featuredImage).width(2400).auto("format").url()
     : null;
+
+  // Only show "Updated" when it falls on a later calendar day than the
+  // publish date; same-day edits read as noise.
+  const showUpdated =
+    !!props.updatedAt &&
+    formatDate(props.updatedAt) !== formatDate(props.publishedAt) &&
+    new Date(props.updatedAt) > new Date(props.publishedAt);
 
   return (
     <header className="bg-dusk">
@@ -65,7 +77,20 @@ export default function PostHero(props: Props) {
                 <span className="text-dawn">{props.author.name}</span>
               </span>
             ) : null}
-            <span>{formatDate(props.publishedAt)}</span>
+            <span>
+              <time dateTime={props.publishedAt}>
+                {formatDate(props.publishedAt)}
+              </time>
+              {showUpdated ? (
+                <>
+                  <span aria-hidden="true"> · </span>
+                  Updated{" "}
+                  <time dateTime={props.updatedAt!}>
+                    {formatDate(props.updatedAt!)}
+                  </time>
+                </>
+              ) : null}
+            </span>
             {props.readTimeMins ? (
               <span>{props.readTimeMins} min read</span>
             ) : null}

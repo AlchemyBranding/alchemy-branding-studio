@@ -171,6 +171,7 @@ export const blogPostBySlugQuery = defineQuery(`
     "slug": slug.current,
     category,
     publishedAt,
+    updatedAt,
     excerpt,
     featuredImage ${altImageProjection},
     body,
@@ -179,6 +180,7 @@ export const blogPostBySlugQuery = defineQuery(`
       _id,
       name,
       role,
+      "bio": coalesce(blogBio, bio),
       photo ${altImageProjection}
     },
     "relatedPosts": relatedPosts[]->{
@@ -264,11 +266,13 @@ export type BlogPostAuthor = {
   _id: string;
   name: string;
   role: string;
+  bio: string | null;
   photo: SanityImageRef | null;
 };
 
 export type BlogPostDetail = RecentBlogPost & {
   _updatedAt: string;
+  updatedAt: string | null;
   body: unknown[] | null;
   readTimeMins: number | null;
   author: BlogPostAuthor | null;

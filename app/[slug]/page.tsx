@@ -84,6 +84,7 @@ export async function generateMetadata({
       images: [{ url: seoOg, width: 1200, height: 630 }],
       type: "article",
       publishedTime: post.publishedAt,
+      modifiedTime: post.updatedAt ?? undefined,
       authors: post.author ? [post.author.name] : undefined,
     },
     twitter: {
@@ -132,7 +133,7 @@ export default async function BlogPostPage({
         description={articleDescription}
         image={articleImage}
         datePublished={post.publishedAt}
-        dateModified={post._updatedAt}
+        dateModified={post.updatedAt ?? post._updatedAt}
         authorName={post.author?.name ?? null}
       />
       <BreadcrumbJsonLd
@@ -146,6 +147,7 @@ export default async function BlogPostPage({
         title={post.title}
         category={post.category}
         publishedAt={post.publishedAt}
+        updatedAt={post.updatedAt}
         featuredImage={post.featuredImage}
         readTimeMins={post.readTimeMins}
         author={post.author}
@@ -172,6 +174,11 @@ export default async function BlogPostPage({
                   <span className="text-dusk/65">, {post.author.role}</span>
                 ) : null}
               </p>
+              {post.author.bio ? (
+                <p className="mt-3 text-dusk/80 leading-relaxed">
+                  {post.author.bio}
+                </p>
+              ) : null}
             </div>
           </div>
         </section>

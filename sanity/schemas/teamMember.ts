@@ -40,6 +40,14 @@ export const teamMember = defineType({
           .warning(),
     }),
     defineField({
+      name: "blogBio",
+      title: "Blog bio",
+      type: "text",
+      rows: 4,
+      description:
+        "Optional. Shown under \"Written by\" at the end of blog posts, in first person. Falls back to the Bio above if empty. Aim for 40 to 80 words.",
+    }),
+    defineField({
       name: "linkedinUrl",
       title: "LinkedIn URL",
       type: "url",
