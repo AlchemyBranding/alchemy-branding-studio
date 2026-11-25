@@ -9,6 +9,9 @@ export const metadata: Metadata = {
   description:
     "How Alchemy Branding Studio collects, uses and protects your personal data.",
   robots: { index: true, follow: true },
+  // Without this the page inherits the root layout's canonical ("/") and
+  // tells Google it is a duplicate of the homepage.
+  alternates: { canonical: "/privacy-policy" },
 };
 
 export default function PrivacyPolicyPage() {

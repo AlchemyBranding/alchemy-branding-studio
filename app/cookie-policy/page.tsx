@@ -9,6 +9,9 @@ export const metadata: Metadata = {
   description:
     "The cookies and similar storage Alchemy Branding Studio uses on this site, and how to manage them.",
   robots: { index: true, follow: true },
+  // Without this the page inherits the root layout's canonical ("/") and
+  // tells Google it is a duplicate of the homepage.
+  alternates: { canonical: "/cookie-policy" },
 };
 
 export default function CookiePolicyPage() {
