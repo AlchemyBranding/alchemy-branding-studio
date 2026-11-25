@@ -60,8 +60,21 @@ const STATIC_ROUTES: ReadonlyArray<{ path: string; priority: number }> = [
   { path: "/privacy-policy", priority: 0.7 },
 ];
 
-// Verbatim from next-sitemap.config.js.
-const BLOG_QUERY = `*[_type == "blogPost" && defined(slug.current) && defined(publishedAt)] {
+/**
+ * Blog slugs that next.config.ts redirects elsewhere. A URL that redirects must
+ * never be in the sitemap. These posts were meant to be unpublished on
+ * 17 Aug 2026, but Search Console found `our-new-website-is-live` still listed
+ * on 25 Nov 2026 because its Sanity document was still published. Listing them
+ * here keeps them out of the sitemap whatever state Sanity is in. When you add
+ * a root-level redirect for a post's slug in next.config.ts, add it here too.
+ */
+const REDIRECTED_BLOG_SLUGS = [
+  "our-new-website-is-live",
+  "why-we-dogs-are-the-best-office-companions",
+];
+
+// Verbatim from next-sitemap.config.js, plus the redirected-slug exclusion.
+const BLOG_QUERY = `*[_type == "blogPost" && defined(slug.current) && defined(publishedAt) && !(slug.current in $redirected)] {
   "slug": slug.current,
   "lastmod": coalesce(_updatedAt, publishedAt)
 }`;
@@ -87,7 +100,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   try {
     const [posts, caseStudies] = await Promise.all([
-      client.fetch<SanityRoute[]>(BLOG_QUERY),
+      client.fetch<SanityRoute[]>(BLOG_QUERY, {
+        redirected: REDIRECTED_BLOG_SLUGS,
+      }),
       client.fetch<SanityRoute[]>(CASE_STUDY_QUERY),
     ]);
 
