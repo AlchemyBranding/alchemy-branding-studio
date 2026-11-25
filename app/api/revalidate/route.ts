@@ -51,7 +51,9 @@ function pathsForPayload(p: WebhookPayload): string[] {
     case "testimonial":
       return ["/"];
     case "teamMember":
-      return ["/about"];
+      // Every blog post shows its author's name, role, photo and bio, so the
+      // post pages themselves are refreshed too (see POST below).
+      return ["/about", "/news"];
     case "author":
       // Authors are dereferenced from blogPost. The post pages re-fetch on
       // their own ISR window — we just need /news so the byline updates show.
@@ -94,6 +96,10 @@ export async function POST(req: NextRequest) {
 
   const paths = pathsForPayload(body);
   for (const path of paths) revalidatePath(path);
+  // A team member edit changes the byline and "Written by" card on every post
+  // they wrote. The webhook payload doesn't say which posts those are, so
+  // refresh the whole blog post route; pages rebuild lazily on next visit.
+  if (body._type === "teamMember") revalidatePath("/[slug]", "page");
 
   return NextResponse.json({
     revalidated: paths,
