@@ -62,10 +62,10 @@ which verifies the HMAC signature with `next-sanity/webhook` and then runs
 
 | Document type | Paths purged |
 | --- | --- |
-| `blogPost` | `/`, `/news`, `/<slug>` |
-| `caseStudy` | `/`, `/portfolio`, `/project/<slug>` |
+| `blogPost` | `/`, `/news`, `/sitemap.xml`, `/<slug>` |
+| `caseStudy` | `/`, `/portfolio`, `/sitemap.xml`, `/project/<slug>` |
 | `testimonial` | `/` |
-| `teamMember` | `/about` |
+| `teamMember` | `/about`, `/news`, and every blog post page (`/[slug]`) |
 | `author` | `/news` |
 | `pageSeo` | the page mapped from `pageKey` (see `pageKeyToPath` in the route) |
 
@@ -79,6 +79,16 @@ must stay in sync.
   one in the Sanity webhook config. Re-paste both from the same source.
 - **`500 SANITY_REVALIDATE_SECRET not configured`** — env var missing on
   the deployment. Add it to Vercel and redeploy.
+- **Where the live webhook points** — as of 26 Nov 2026 the webhook in
+  Sanity calls `https://alchemy-branding-studio.vercel.app/api/revalidate`,
+  not the custom domain. That works, because both serve the same production
+  deployment and share one cache. Its delivery log is readable with
+  `sanity hook logs "Next.js revalidate" --project kr13x7nd --detailed`.
+- **Webhook fires, response is `200`, but page stays stale for about an
+  hour** — the page rebuilt from stale data. The public client in
+  `sanity/lib/client.ts` must keep `useCdn: false`. With the API CDN on, the
+  rebuild after the webhook can read the CDN's old copy and cache it for the
+  full hour (seen 25 Nov 2026 when a post was unpublished).
 - **Webhook fires, response is `200`, but page still stale** — check that
   the published slug in Sanity exactly matches the URL you're loading
   (trailing whitespace in the slug field will break the match). Also
